@@ -182,14 +182,14 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-There is a very strong consensus on the positive role of fiscal capacities on state formation. Unfortunately, current theories focused on Latin America do not sufficiently explain the origins of fiscal capacities. Taking a sectoral politics approach, this paper argues that the political monopoly pursued by agricultural economic elites was broken contingent on the emergence of a strong industrial sector. This major structural transformation triggered a series of institutional investments, as well as economic, political and social changes, planting the seed of states with high capacities. When agricultural monopolists were not challenged, these institutional investments never existed or were weak. The paper tests this theory using cross-national panel data from 1900 to 2010 for a sample of Latin American countries. The Chilean example is offered as a shadow case to illustrate the mechanisms at work. Both approaches strongly confirm the theory.
+There is a very strong consensus on the positive role of fiscal capacities on state formation. Unfortunately, current theories focused on Latin America do not sufficiently explain the origins of fiscal capacities. Taking a sectoral politics approach, this paper argues that the political monopoly pursued by agricultural economic elites was broken contingent on the emergence of a strong industrial sector. This major structural transformation triggered a series of institutional investments, as well as economic, political and social changes, planting the seed of states with high capacities. When agricultural monopolists were not challenged, these institutional investments never existed or were weak. The paper tests this theory using cross-national panel data from 1900 to 2010 for a sample of Latin American countries. The Chilean example is offered as a shadow case to illustrate the mechanisms at work, confirming the assumptions made in the econometric section.
 
 
 
 
 \end{abstract}
 
-{\bf\vspace{10mm}\hspace{50mm} 14,556 words, total} \\
+{\bf\vspace{10mm}\hspace{50mm} 11,005 words, total} \\
 
 \hspace*{3.3cm}{\bf Download the last version of the paper} \href{https://github.com/hbahamonde/IncomeTaxAdoption/raw/Summer_2016/Bahamonde_IncomeTaxAdoption.pdf}{\texttt{here}.}
 
