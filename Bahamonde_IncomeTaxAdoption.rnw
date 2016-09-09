@@ -155,7 +155,7 @@
 % TITLE SECTION
 %----------------------------------------------------------------------------------------
 
-\title{\vspace{-10mm}\fontsize{18pt}{15pt}\selectfont\textbf{Structural Transformations and The Political Roots of Fiscal Capacities in Latin America}} % Article title
+\title{\vspace{-10mm}\fontsize{18pt}{15pt}\selectfont\textbf{Structural Transformations and The Political Roots of Fiscal Capacities in Latin America, 1900-2010}} % Article title
 
 
 \author[1]{
