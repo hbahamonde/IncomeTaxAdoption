@@ -33,6 +33,13 @@
 \usepackage[svgnames]{xcolor}
 \usepackage{epigraph}
 
+\usepackage{longtable}
+\usepackage{geometry}
+\usepackage{pdflscape}
+
+
+
+
 
 %----------------------------------------------------------------------------------------
 % DOCUMENT ID (Department, Professor, Course, etc.) 
@@ -42,7 +49,7 @@
 \pagestyle{fancy} % All pages have headers and footers
 \fancyhead{} % Blank out the default header
 \fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Paper 1  $\bullet$ v.2} % Custom header text
+\fancyhead[C]{Job Market Paper} % Custom header text
 \fancyfoot[RO,LE]{\thepage} % Custom footer text
 
 %----------------------------------------------------------------------------------------
@@ -148,13 +155,13 @@
 % TITLE SECTION
 %----------------------------------------------------------------------------------------
 
-\title{\vspace{-15mm}\fontsize{18pt}{7pt}\selectfont\textbf{Structural Transformations and The Political Roots of Fiscal Capacities in LA}} % Article title
+\title{\vspace{-10mm}\fontsize{18pt}{15pt}\selectfont\textbf{Structural Transformations and The Political Roots of Fiscal Capacities in Latin America, 1900-2010}} % Article title
 
 
 \author[1]{
 \large
 \textsc{H\'ector Bahamonde}\\ 
-%\thanks{I thank Bob Kaufman, Dan Kelemen, Doug Blair and Paul Poast for all the useful comments. I also thank the School of Arts and Sciences at Rutgers for granting me funds to collect part of the data used in this project. All errors are my own.}
+\thanks{I thank Bob Kaufman, Dan Kelemen, Doug Blair, Christopher Zorn, Paul Poast, Matthias vom Hau, Jose Pablo Silva and participants of the 50th LASA Congress for all the useful comments. I also thank the School of Arts and Sciences at Rutgers for granting me funds to collect part of the data used in this project and the Department of Political Science at Rutgers University for conference travel funds. All errors are my own.}
 \normalsize PhD Candidate $\bullet$ Political Science Dpt. $\bullet$ Rutgers University \\
 \normalsize \texttt{e:}\href{mailto:hector.bahamonde@rutgers.edu}{\texttt{hector.bahamonde@rutgers.edu}}\\
 \normalsize \texttt{w:}\href{http://www.hectorbahamonde.com}{\texttt{www.hectorbahamonde.com}}
@@ -175,8 +182,16 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-There is a very strong consensus on the role of fiscal capacities on state formation. However, the available models developed for Europe do not perform well for Latin American countries. Taking a sectoral politics approach, we argue that the political monopoly pursued by agricultural incumbents was broken when an emerging industrial sector accepted to be income-taxed in exchange for industrial tariffs (i.e. protectionism) and better institutional guarantees of political representation, leading to the 19th century political oligarchies. We test these relationships using cross-national panel data from 1900 to 2010 for a sample of Latin American countries. More historical details are discussed presenting Chile as a shadow case to illustrate the mechanisms at work. Both approaches strongly confirm the theory.
+There is a very strong consensus on the positive role of fiscal capacities on state formation. Unfortunately, current theories focused on Latin America do not sufficiently explain the origins of fiscal capacities. Taking a sectoral politics approach, this paper argues that the political monopoly pursued by agricultural economic elites was broken contingent on the emergence of a strong industrial sector. This major structural transformation triggered a series of institutional investments, as well as economic, political and social changes, planting the seed of states with high capacities. When agricultural monopolists were not challenged, these institutional investments never existed or were weak. The paper tests this theory using cross-national panel data from 1900 to 2010 for a sample of Latin American countries. The Chilean example is offered as a shadow case to illustrate the mechanisms at work, confirming the assumptions made in the econometric models.
+
+
+
+
 \end{abstract}
+
+{\bf\vspace{10mm}\hspace{50mm} 11,161 words, total} \\
+
+\hspace*{1.3cm}{\bf Please consider downloading the last version of the paper} \href{https://github.com/hbahamonde/IncomeTaxAdoption/raw/Summer_2016/Bahamonde_IncomeTaxAdoption.pdf}{\texttt{here}.}
 
 
 
@@ -187,640 +202,284 @@ There is a very strong consensus on the role of fiscal capacities on state forma
 
 %\tableofcontents
 
-
 \newpage
-
- Bob: 
- - you need to make clearer what you mean by the trade-off between short term costs (foregoing expropriation?) and long-term gains of growing taxation.  
-
- - unclear about what kind of expropriation you're talking about -- can you give examples?  
-
- - I'd also like to see a bit more flesh on the bones when you talk about fiscal capacity -- perhaps in the Chilean case, if not more generally.  Presumably, you mean not only an income tax, but also an expansion of the bureaucracy that is supposed to monitor and collect it.  
- 	- Do you have information that this actually took place in Chile or elsewhere after they passed the income tax?  
- 	- Did they reform the Finance Ministry, for example, or add to the tax agency budget? 
-
- Dan: 
- 	- Equifinality: is this the only path for income taxation? I have to include an ``alternative explanations'' section. 
-
- Me: 
-
- Put more meat/meaning to the Cox prediction/simulation plot. For ex., how much longer does it take for a country with ``low'' industrial development? Make sure I put concrete numbers in the Discussion section. CALCULATE THE FISCAL DEVELOOPMENT DELAY
-
- Also, criticize this idea that incumbent elites will block all new technologies that might endanger their political/economical advantaged  positions (was it Boix?). Here, (I have to say) I follow Olson: Why not instead of block it, tax it?
-
-THIS IS A TEST
-
-
-\newpage
-
 
 \section{Introduction}
 
-\epigraph{\emph{the only important coercion which is crucial to development is taxation}}{Arthur Lewis, 1965}
+\epigraph{\emph{The only important coercion which is crucial to development is taxation}}{Arthur Lewis, 1965}
 
-\epigraph{\emph{the budget is the skeleton of the state stripped of all misleading ideologies}}{Schumpeter, 1991}
+\epigraph{\emph{The budget is the skeleton of the state stripped of all misleading ideologies}}{Schumpeter, 1991}
+
+
+<<echo=FALSE, cache= F>>=
+knitr::read_chunk('/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/IncomeTaxAdoption.R')
+@
 
 
 % Hook
+According  to most political economists, fiscal sociologists, development economist and economic historians, fiscal capacities are a prerequisite for ``strong'' states. Much effort has been devoted to understanding the relationship between the politics of taxation and state capacities in a number of European cases. However, there is still much work that needs to be done in order to understand the development of post-colonial Latin American fiscal capacities. For example, the political and economic \emph{origins} of fiscal capacities in Latin America remain unclear. Particularly, it is difficult to extend models originally developed to understand the medieval European case, as wars in Latin America have been insufficient to mobilize domestic resources. Moreover, elite structures were very different, challenging the standard assumptions and incentives of these models. \emph{What have been the factors that led post-colonial Latin American countries to self-impose a system to directly tax individuals? What is the relationship between fiscal capacities and state-building in the Latin American context?} These questions are key to understanding the development of the modern state in Latin America and in this paper we shed some light on them.
 
- According  to many political economists, fiscal sociologists, development economist and economic historians, fiscal capacities are a necessary condition for political development and state formation. Several European cases confirm this insight. However there is still much work to do to understand the development of post-colonial Latin America state capacities. For example, though the consensus on the importance of fiscal capacities exists, the political and economic \emph{origins} of the fiscal capacities in LA  are still unclear. \emph{Why do some countries have ``better'' fiscal capacities than others? What have been the factors that led post-colonial Latin American countries to self-impose a system to directly tax individuals?} These questions are key to understand the development of the modern state in Latin America. Particularly, it is difficult to use models developed to medieval Europe as wars have been insufficient to mobilize domestic resources. Moreover, elite structures were very different, challenging the standard assumptions and incentives of these models. Hence we must inquire what are the \emph{conditions} that provided for fiscal capacities and trace down its origins, specifically, in the Latin American context.
 
-%Summary of the paper
-This paper explains the conditions under which post-colonial Latin American states invested in fiscal capacities. We argue that these capacities were product of a bargaining conflict between agricultural political incumbents and an emerging and politically excluded industrial sector. When the rate of industrial output was fast enough to compensate for long-term  losses relative to short-run expropriation-type strategies, agricultural monopolistic incumbents imposed a system to tax income. In exchange, the industrial class demanded commercial protectionism in the form of tariffs, and political representation via institutionalized oligarchic competition (i.e. only elites). Both the taxation and political representation dimensions triggered a series of institutional investments such as institutions of checks-and-balances to monitor and enforce that taxation, including the development of professional bureaucracies. When industrial output was slow, agricultural monopolistic incumbents faced higher opportunity costs and rather than ``wait and tax'' industrial output, they shifted to expropriation-type strategies. The agricultural political monopoly was not broken, and the endogenous incentives to invest in institutions never existed. These countries then were trapped in underdevelopment sub-optimal equilibriums. We test these relationships using econometric methods for panel data, particularly hazard models, and qualitative/historical evidence following a shadow case design. Both methodologies strongly support the argument.
+
+% Why care paragraph // How this paper situates in the literature
+Though much effort has been devoted to the study of \emph{tax reforms}, we know little about the \emph{origins of taxation} in Latin America. For example, \citet[]{Fairfield2013} studies different strategies policymakers pursue to tax elites starting in 1990. \citet[]{Mahon2004} and \citet{Focanti2013} study causes of tax reform in Latin America starting around 1980s and 1990, respectively. Similarly, \citet[]{Ross2004} studies the relationship between taxation and representation between 1971 and 1997, whereas \citet{Sokoloff2007a} study the evolution of tax institutions comparing the U.S. with Latin America. However, we share \citet[5]{DiJohn2006}'s diagnosis that there is no attempt to explain \emph{why} and \emph{how} state and fiscal capacities emerged. We contribute to the literature on state and fiscal capacities by presenting a comparative macro-structural argument that traces under which conditions endogenous investments in fiscal capacities were more likely to happen in Latin America starting in 1900. 
+
+% argument 1
+This paper argues that the implementation of a modern fiscal system was product of an inter-sectoral conflict that took place around the 1900's between the agricultural elite and an emerging and politically excluded industrial sector. The early passage of the income tax law was the tipping point that transformed ``weak'' states into ``strong'' states, not for the new revenue collected, but because the administration of the income tax law and the inter-elite bargaining process associated with the passage of the law triggered a series of other institutional investments. When agricultural elites were contested, the income tax law was imposed early in history, tying the countries to an institutional development path. However, when the agricultural elites were not contested, they systematically expropriated the industrial sector, and the late implementation of the tax did not reflect this early sectoral conflict but other mechanics which did not necessarily conduce to state development. 
+
+% argument 2
+The type of conflict was economic and military in nature, but the outcome was political. When the rate of industrial output was fast enough to compensate for long-term losses relative to delayed access to liquidity, agricultural elites did not expropriate industrial wealth but rather imposed an income tax. That is, when industrial growth was promising in the long-run, agricultural incumbents were better off encouraging (via protectionist tariffs) and taxing it (via an income tax), rather than expropriating it (and having immediate access to those resources). In exchange for taxation, the industrial class demanded political representation in the form of a competitive oligarchic system and protectionist tariffs. Both the taxation and political representation dimensions triggered a series of institutional investments such as institutions of checks-and-balances (to monitor tax spending and channel inter-elite conflict) and skilled bureaucracies with enough know-how (to collect and administer the tax). In turn, protectionist tariffs helped the industrial sector to expand further, generating a strong urban middle class, which supplied the state with a critical mass of educated individuals\footnote{The paper proposes a roughly simultaneous process. However, \citet[43]{Rota2011a} suggests a different timing. He explains that ``[t]he modernization of bureaucracy \emph{preceded} the process of democratization''. Emphasis is mine.}. When industrial output was slow, landowners - who were political monopolists - faced higher opportunity costs and rather than ``wait and tax'' industrial output ``tomorrow'', they shifted to expropriation-type strategies ``today''. In these cases, the agricultural political monopoly was not broken, and the endogenous incentives to invest in institutions to share political power and improve bureaucratic bodies never existed. These countries were then trapped in an underdeveloped sub-optimal equilibria. These relationships are tested using econometric methods for panel data, particularly hazard models, while the Chilean example is offered as a shadow case to illustrate the mechanisms at work, confirming the assumptions made in the econometric models.
+
 
 % How Taxation Relates to State Building: Fiscal Sociology
 \section{Taxation and State Formation}
 
-% what this paper does
-This paper seeks to explain internal state capacities, specifically, by tracing the political origins of fiscal capacities. The literature on state formation situates taxation as one of the two main state capacities\footnote{
-	The other one being \emph{legal capacities} and the study of the role of contract enforcement and  property rights protection. See \citet{Cardenas2010} and also \citet{Besley2010}.
-	}, and how states raised (or not) revenues, including the ability to tax incomes.
-
 % question no new // Tilly vs Centeno
-This issue is not new. There are several explanations on the relationship between taxation and state formation. Starting with \citet{Tilly:1992rr}\footnote{See also \citet[p. 162, 170]{Ames1977} where they argue that in Europe, ``[m]edieval taxation developed from the ``extraordinary'' revenues, and ultimately became the fiscal basis of government [...] When governments found efficient sources of tax revenues in wartime it would have served their best interests to make these incomes permanent and unconditional''.}, the idea that international conflicts forced motivated kings to levy taxes, has gained much scholarly support. As the argument goes, local elites bargained representation to monitor the king's behavior\footnote{
-	\citet{Stasavage:2011aa}. See also \citet{Levi:1989lq}.
-	}. However, these mechanisms have been recently challenged\footnote{
-		\citet{Boucoyannis2015}.}. Particularly, outside Europe, the relationship between war and state formation is still contested\footnote{
-		\citet[p. 1218]{Besley2009} does find that ``The United States first introduced a form of income taxation in 1861 during the Civil War, and the Internal Revenue Service (IRS) was founded on the back of this with the Revenue Act of 1862''.
-		}. \citet{Centeno:2002qf} finds that there were not enough wars to mobilize domestic sources of revenue, and that the few wars that existed were financed by acquiring debts. \citet[p. 665]{Arias2012} finds that in M\'exico, ``a focal central authority'' was required \emph{prior} to be able to centralize fiscal institutions in the presence of external threats. Given all these theoretical and empirical difficulties, some have gone up in the ``ladder of abstraction'', and replaced ``war'' for ``interstate rivalries''\footnote{\citet[]{Thies2005a}.}, while others have interacted the presence of military conflict with state-military alliances\footnote{\citet[p.  37]{Lopez-Alves:2000zl}.}. Clearly, the political  \emph{origins} of fiscal capacities still remain disputed\footnote{In fact, \citet[p. 314]{Lange2008}, in their ``instigating'' model, find that the exact opposite: states with high levels of state infrastructural power contain more violence.
-		}.
-
-% This paper changes the focus from only "external incentives" to domestic ones
-This paper acknowledges the possible influence of external threats. However it presents an argument based on \emph{endogenous domestic} factors that lead (or not) early (and late) Latin American countries to invest in fiscal institutions. Most of the literature on state formation puts its emphasis on the financial \emph{needs} caused by wars\footnote{
-	Great work done by \citet[]{Mahoney:2010aa}, \citet[]{Soifer} and \citet[]{Kurtz2006,Kurtz:2013aa} are not considered here. They focus on the legacies of different \emph{types of colonial institutions} and different \emph{types of colonial rules}. Although these are great contributions, this paper focuses mostly on the origins of \emph{fiscal capacities} and its relationship with state formation.
-	}. While my focus also shares the same emphasis centered on \emph{fiscal needs}, it changes the focus from \emph{external incentives}, to the \emph{domestic incentives} political and economical elites had to to legally \emph{robber} (i.e. ``tax'') domestic profit via an income tax.
-
+Though a number of scholars studying Europe correctly point out that there exists a positive relationship between military conflict, taxation and political representation\footnote{See for example \citet{Tilly:1992rr}, \citet{Levi:1989lq}, \citet[162, 170]{Ames1977}, \citet{Dincecco2012}, \citet{Ertman} and \citet{Stasavage:2011aa}.}, this mechanism has been challenged for the Latin American cases\footnote{However, \citet{Boucoyannis2015} proposes an interesting alternative mechanism for the European case too. For the U.S. case, \citet[1218]{Besley2009} find that ``The United States first introduced a form of income taxation in 1861 during the Civil War, and the Internal Revenue Service (IRS) was founded on the back of this with the Revenue Act of 1862''.}. For example, \citet{Centeno:2002qf} finds that there were not enough wars to mobilize domestic sources of revenue, and that the few wars that existed were financed by acquiring debt. Others find that the relationship between conflict and state-building is conditional on \emph{prior} state capacities. For example, \citet[665]{Arias2012} finds that in M\'exico, ``a focal central authority'' was required prior to being able to centralize fiscal institutions in the presence of external threats. However, it is not clear where \emph{prior} centralization comes from. Given all these theoretical and empirical difficulties, some have gone up in the ``ladder of abstraction'' and replaced ``war'' for ``interstate rivalries,''\footnote{\citet[]{Thies2005a}.} while others have interacted the presence of military conflict and state-military alliances\footnote{\citet[ 37]{Lopez-Alves:2000zl}.}. Though in the Latin American context taxation and state-building seem to be linked, it is not clear what the \emph{origins} of fiscal capacities are\footnote{A rather counterintuitive argument is presented by \citet[314]{Lange2008}. They introduce the ``instigating'' model, where they find that states with high levels of state infrastructural power contain more violence.}. 
 
 % Introducing Fiscal Sociology. 
-Fiscal capacities form the very roots of the modern state. This paper presents an argument building on the ``fiscal sociology'' tradition. This paradigm argues that the political economy of public finances offers the key to a theory of the state\footnote{	\citet[p. 99]{Musgrave1992}.}. According to \citet[p. 108]{Schumpeter:1991yq}, ``[t]axes not only helped to create the state. They helped to form it''. From an historical perspective, the fiscal sociology paradigm proposes that the great modern cleavage was not the rise of capitalism (Marx) nor the rise of modern bureaucracy (Weber), but the rise of the ``tax state'', which developed institutions to penetrate the private, i.e. \emph{individual}, economies\footnote{\citet[p. 298]{Moore2004a}. This view is also shared by \citet[p. 100]{Schumpeter:1991yq} and \citet[p. 42]{Lewis:1965fr} - See epigraphs.}. From a conceptual perspective, the mere concept of ``tax state'' is misleading: ``tax'' has so much to do with ``state'' that the expression ``tax state'' might almost be considered a pleonasm\footnote{\citet[p. 101]{Schumpeter:1991yq}.}.
-
-% Not all kind of taxes play a formative role: DIRECT vs INDIRECT
-\emph{Not} all kind of taxes play a \emph{formative} role. For example, states can levy revenues via tariffs and/or taxing revenues originated in the exploitation of natural resources. These \emph{indirect} sources of revenue do not lead to the development of strong fiscal capacities since the state needs little organizational and political effort to collect those taxes. This paper claims that the endogenous domestic incentives to invest in \emph{bureaucratic capacities} is key to understand any state-formation process. Without a strong bureaucracy able to collect and administer taxes is very difficult to conceive any theory of the state. That is why taxation and bureaucratization are correlated\footnote{It is important to emphasize that we are referring to a system of taxation and bureaucratization \emph{after} the collapse of colonial Latin America, i.e. about the time when the \emph{liberal} experiments took place. A simple association between the development of bureaucracies and political (i.e. ``democratic'') development would be incorrect. For example, \citet[p. 26]{Mahoney:2010aa} explains how more complex ``colonizer institutions'' (i.e., ``mercantilist'' institutions)  played \emph{against} political development. Consequently, building on this framework, we focus on the ``liberal'' bureaucracies that took place after the independence. For example, Peru had very strong ``colonizer institutions'', but shows very weak state capacities compared to Chile, which had weak ``colonizer institutions'' relative to Per\'u. Consequently, and very much in line with the concept of the ``reversal of fortunes'' (\citet{Acemoglu:2002uh}), strong colonial states are not associated with strong modern/liberal states. In a similar vein, as others have argued, ``[t]he modernization of bureaucracy preceded the process of democratization'', as it is the case of Spain after 1845 (\citet[p. 43]{Rota2011a}).}. As others have argued, ``administrative constraints are identified as the main constraint to the ability of states to collect revenues in general and direct taxes such as income tax in particular''\footnote{\citet[p. 5]{DiJohn2006}.}. Hence, given the  (nearly) null impact of indirect taxation on bureaucratization, that revenue is considered ``unearned income''\footnote{\citet[p. 304]{Moore2004a}.} or ``easy-to-collect source of revenues''\footnote{\citet[p. 10]{Coatsworth2002}.}. The relationship between taxation and bureaucratization also holds for LA. ``In Latin America, for instance, when the state depends heavily on the taxation of international trade, rather than domestic economic activity, the state apparatus tends to be less developed because the collection of tariffs and duties does not require an elaborate fiscal structure''\footnote{\citet[p. 177]{Campbell1993}.}. 
+For these reasons, this paper studies state capacities looking at the \emph{origins} of fiscal capacities. Building on the ``fiscal sociology'' paradigm, we argue that the political economy of public finances offers ``the key'' for a theory of the state\footnote{\citet[99]{Musgrave1992}.}. According to \citet[108]{Schumpeter:1991yq}, ``[t]axes not only helped to create the state. They helped to form it''. From a historical perspective, this paradigm proposes that the great modern cleavage was not the rise of capitalism (Marx) nor the rise of modern bureaucracy (Weber), but the rise of the ``tax state'', which developed institutions to penetrate  private or \emph{individual} economies\footnote{\citet[298]{Moore2004a}. This view is also shared by \citet[100]{Schumpeter:1991yq} and \citet[42]{Lewis:1965fr} - See epigraphs.}. While from a conceptual perspective, the mere idea of ``tax state'' might be  misleading: ``tax'' has so much to do with ``state'' that the expression ``tax state'' might almost be considered a \emph{pleonasm}\footnote{\citet[101]{Schumpeter:1991yq}.}. Critically, this approach argues that the origins of the fiscal apparatus are rooted in sectoral and class conflicts. For example, some have even argued that ``tax struggles are among the oldest forms of class struggle''\footnote{Goldscheid (1925), in \citet[168]{Campbell1993}.}.
 
 
-% Income tax is the most difficult tax // separate //
-\emph{Direct} taxation leads to the development of strong fiscal capacities\footnote{
-	In fact, according to,  \citet[p. 53]{Best1976} ``indirect taxes are but substitutes for direct taxes''. This view is also supported by \citet[p. 14]{Moore2004}.
-	}. Direct taxation involves a compulsory transfer from private hands into the government sector for public purposes\footnote{\emph{Cfr.} Raja Chellia, ``Trends in Taxation in Developing Countries'', in \citet[p. 282]{Migdal:1988nr}.}. The most invasive way of direct taxation is \emph{income taxation}, and its introduction ``was one of the major events in fiscal history that contributed to the growth in government observed during the past 150 years''\footnote{\citet[p. 171]{Aidt2009a}.}. Income taxation separates private from public property, inserting the state in the private economic sphere\footnote{\citet[p. 98]{Musgrave1992}.}. In other words, it implies ``meddling'' in \emph{private} (domestic) affairs. Direct taxes require not only the development of the know-how to be able to collect, administer and enforce those taxes (accounting, for example), but also they presume a strong \emph{political} coercive (and legitimated) power able to do it in a sustained manner. Following the fiscal sociology tradition, this paper asserts that the introduction of income taxation in early Latin American countries played a mayor role in the formation of post-colonial states. 
+% Not all kinds of taxes play a formative role: DIRECT vs INDIRECT
 
-% political (class) and technical constrains
-Income tax is the hardest to collect, administer and enforce of all taxes. The literature emphasizes both technical and political constrains. ``The detrimental factors commonly identified in developing country tax systems are: insufficient staff with appropriate skills, low public-sector wages, lack of up-to-date equipment and facilities [and] poor information collection and identification of taxpayers''\footnote{\citet[p. 5]{DiJohn2006}.}. For example, ``[i]n 1967 the national income tax office in Guatemala employed 194 people, only 9 of whom had graduated from  a college''\footnote{\citet[p. 5]{DiJohn2006}.}. Political constrains are also big impediments of income taxation. One of the most important ones, is class struggles. Some have argued that ``tax struggles are among the oldest forms of class struggle''\footnote{Goldscheid (1925), in \citet[p. 168]{Campbell1993}.}. Taking a macro-historical and class-centered standpoints, this paper argues that it is theoretically appropriated to think of ``how tax revenues depend upon the interests of different classes as they attempt to use political power via the state for their own needs and purposes''\footnote{
-	\citet[p. 50]{Best1976}. Furthermore, he argues that the ``actual composition of taxes can be viewed as dependent upon the distribution of power rather than as an expression of the free choice of the majority of the people'' (in \citet[p. 71]{Best1976}). For a similar analysis, see also \citet[p. 169]{Campbell1993}.
-	}.
+% INDIRECT TAXES
+Although it is true that taxation causes state-building, \emph{not} all kinds of taxes play a state-\emph{formative} role. Broadly speaking, there are two general types of taxes, \emph{indirect} and \emph{direct} taxes. Indirect taxes are, for our purposes, taxes that are collected by a third party, i.e. not the state. Hence, indirect taxes do not need the development of strong fiscal capacities. According to  \citet[53]{Best1976}, ``indirect taxes are but substitutes for direct taxes,'' and hence they are typically administered by weak states\footnote{This view is also supported by \citet[14]{Moore2004}.}. Since indirect taxes are easier to levy, this kind of revenue is generally considered ``unearned income''\footnote{\citet[304]{Moore2004a}.} or ``easy-to-collect source of revenues''\footnote{\citet[10]{Coatsworth2002}.}. Given the low costs states have to incur to collect indirect taxes, they have a nearly null impact on state-building, stable domestic alliances and bureaucratization. In fact, when early Latin American states have depended heavily on the taxation of international trade, the state apparatus has tended to be less developed\footnote{\citet[177]{Campbell1993}.}. Since customs administrations have always been concentrated in a few critical locations, especially ports, tariffs and customs duties did not require an elaborate fiscal structure\footnote{\citet[132]{Bertola2012}.}.
+
+% Income tax is the most difficult tax // % Political impediments and difficult to collect (INTRO)
+What played a formative role was the implementation of income taxation, which is a ``state-builder'' institution. Since direct taxation involves a \emph{compulsory transfer} from private hands to the government sector for public purposes\footnote{\emph{Cfr.} Raja Chellia, ``Trends in Taxation in Developing Countries'', in \citet[282]{Migdal:1988nr}.}, they are harder to collect\footnote{\citet[62]{Kurtz:2013aa}.}. Amongst all types of direct taxes, the most invasive one (and hence the most difficult one to levy) is \emph{income taxation}. This type of tax is quite complex since it classifies and transfers private income into public property\footnote{\citet[98]{Musgrave1992}.}. From a historical standpoint, its introduction ``was one of the major events in fiscal history that contributed to the growth in government observed during the past 150 years''\footnote{\citet[171]{Aidt2009a}.}. Political alliances should exist to overcome logistic, institutional and political domestic challenges associated with direct taxation. Critically, economic elites, should agree to comply with direct taxation\footnote{\citet[71]{Best1976} argues that the ``actual composition of taxes can be viewed as dependent upon the distribution of power rather than as an expression of the free choice of the majority of the people''.} and inter-elite class tensions should be resolved prior to adopting these policies. As others have pointed out, since tax revenues depend upon the interests of different classes as they attempt to use state power for their own  purposes\footnote{\citet[50]{Best1976}.}, class conflicts are more likely to resolve in favor of direct taxation where income inequality \emph{within the elite} is low\footnote{\citet[157]{Tani1966} explains that the absence of ``wealth groups'' makes passing the income tax law easier.}. Here it is argued that a political compromise within the elite was the critical juncture that helped to create the endogenous incentives to overcome the initial lack of administrative skills to collect direct taxes. As others have explained, ``administrative constraints are identified as the main constraint to the ability of states to collect [an] income tax''\footnote{\citet[5]{DiJohn2006}.}. Thus, cases where the income tax law was imposed very late developed incompetent bureaucracies and low levels of stateness. For example, Chile imposed the income tax law in 1924, and the \emph{Servicio de Impuestos Internos} is among the finest tax institutions in Latin America. However, Guatemala imposed the income tax law very late, in 1963, and by 1967 the national income tax office employed 194 people, and only 9 of whom had graduated from college\footnote{\citet[5]{DiJohn2006}.}. 
 
 
-% Conclusion: Fiscal capacities form the very roots of the modern state.
-Given that taxation is the best response of financial needs (both \emph{international} and \emph{domestic}), fiscal capacities form the very roots of the modern state. Many scholars find that income taxation, alone, explains considerable variance of state capacities\footnote{See for example, \citet[p. 15]{Hanson2013b} and \citet[]{Centeno:2002qf}.}. However, others have argued in favor of others measurements of ``stateness''. For example, some scholars have argued in favor of military conscription or censuses\footnote{For the latter, see for example, \citet{Lee2013a}.}. Multidimensional measurements are also very popular. Contrasting several existent indexes of state capacities, \citet[p. 7]{Fukuyama:2004nr} argues that ``stateness'' is a two-dimensional concept, namely, the \emph{scope of state activities}, which refers to different state functions and the \emph{strength of state power}, or the ability of states to execute policies. In a later work, however, \citet[p. 347]{Fukuyama2013}  suggests a  different two-dimensional framework, \emph{capacity} and \emph{autonomy}. Similarly, \citet[p. 357]{Mann2008a} argues that the state is composed by two dimensions too, a \emph{despotic} and an \emph{infrastructural} power\footnote{
-	\citet[p. 224]{Soifer2008} argue in favor of the infrastructural approach proposed by \citet[]{Mann1984a}.
-	}. Finally, \citet{Soifer2012} proposes a three-dimensional measurement of state capacity, i.e. \emph{security}, \emph{administrative} and \emph{extractive}. Multidimensional conceptualizations of state capacities do improve our understanding of the complexity of state capacities\footnote{
-	As \citet[p. 9]{Fukuyama:2004nr} explains, ``[a] country like Egypt, for example, has very effective internal security apparatus and yet cannot execute simple tasks like processing visa applications or licensing small businesses efficiently''. In Singerman, (1995).
-	}. Beyond being a measurement commentary, this paper develops a theory for the origins of, what we believe, is one of the \emph{main} state capacities. Moreover, from an empirical and conceptual standpoints, parsimonious explanations about a complex phenomena\footnote{
-	\citet[p. 112]{Mann1984a} argues that ``[t]he state is undeniably a messy concept''.
-	} enjoy from different advantages too. Hence, in this paper we focus on the origins of fiscal capacities, particularly, direct taxation, and more specifically, the development of income taxation.
 
-% The purpose of this paper
-The purpose of this paper is to explain the origins of \emph{strong} and \emph{weak} \emph{state} capacities, tracing down their origins to \emph{strong} and \emph{weak} \emph{fiscal} capacities, focusing on the political origins of indirect taxation, and particularly, income taxation. It is important to stress that this paper does not equate  \emph{higher taxation levels} with \emph{higher levels of ``stateness''}. For example, since ``American institutions [were] deliberately designed to weaken or limit the exercise of state power''\footnote{\citet[p. 6]{Fukuyama:2004nr}.}, the U.S. taxes very little. However, it is not reasonable to say that the U.S. has a ``weak state''. Rather, this paper proposes that the \emph{development} of a direct tax system, particularly, \emph{income taxation}, is causally related to the origins of state capacities\footnote{
-	See for example \citet[p. 117]{Besley2014}, where they argue that ``[t]axation has played a central role in the development of states''.
-}. Furthermore, following some fiscal economists, here we argue that what is linked to state capacities is not the actual tax-to-GDP ratio, but rather, ``tax efforts''. This index measures the ratio between the proportion of actual collection and taxable capacity\footnote{
-	For example, \citet[p. 54]{Best1976} calculates tax efforts for Central America.
-}. As explained in the \hyperref[argument]{argument} section and illustrated in our \hyperref[unpacking]{case study}, the income tax system was fundamental for the formation of the LA states, not the for the actual tax money levied  but for the set of institutions and political compromises that were needed to implement such a system.
-  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% WHy care paragraph
-The problem at hand is of the greatest importance. The idea that higher fiscal capacities are related to more capable states is widely accepted by many political economists\footnote{For an example, see \citet[]{Besley:2011aa}.}. However, it is unclear what the \emph{origins} of income taxation are. Much effort has been put in the study of tax reforms. For example,  \citet[]{Fairfield2013} studies different strategies policymakers pursue to tax elites starting in 1990. \citet[]{Mahon2004} studies the causes of tax reform in LA starting around 1980s. Similarly, \citet[]{Ross2004} studies the relationship between taxation and representation between 1971 and 1997. Although we acknowledge these contributions, we expand on those findings to study earlier (i.e. post-colonial) periods of state-formation. Finally, \citet{Sokoloff2007a} studies the evolution of tax institutions comparing the U.S. with Latin America. However, as this paper shows, there is quite a lot of (unstudied) variance \emph{within} LA\footnote{
-	In a similar diagnostic, \citet[p. 5]{DiJohn2006} finds that in most studies regarding taxation and institutional development ``[t]here is no attempt to explain \emph{why} and \emph{how} administrative capacities change. Second, there is no explanation as to why tax capacities differ across countries''. Emphases are mine.
-	}. This paper presents a macro-structural argument which traces under which conditions endogenous investments in fiscal capacities were more likely to happen in LA starting from 1900. 
+\section{Issues in the Literature}
 
+% Bureaucratization \emph{per se} does not cause state capacities
+\paragraph{Bureaucratization \emph{per se} does not cause state capacities}
 
-% The reminder of this paper proceeds as follows
-The remainder of this paper proceeds as follows. First, we present and develop our \hyperref[argument]{argument}. Taking a sectoral politics approach, we argue that the political monopoly pursued by agricultural incumbents was broken when an emerging industrial sector accepted to be income-taxed in exchange for industrial tariffs (i.e. protectionism) and political representation, leading to the 19th century political oligarchies. Second, in the \hyperref[unpacking]{historical} section, we present Chile as a shadow case to illustrate in more detail the mechanisms at work. Third, in the \hyperref[methods]{econometric} section, we test these relationships using cross-national panel data from 1900 to 2010 for a sample of Latin American countries. Finally, we conclude with a brief \hyperref[discussion]{discussion}.
+Income taxation has a formative role on state development since its administration requires bureaucracies endowed with know-how (and the necessary inter-elite political alliances to sustain and improve the bureaucratic apparatus). However, bureaucratic development is a necessary but not sufficient condition for state-development. \citet{Acemoglu:2002uh} and \citet[26]{Mahoney:2010aa} correctly suggest that ``mercantilist institutions'', \emph{which did require developed bureaucracies}, are associated with political under-development. \citet[]{Soifer:2016zr} also explains that when bureaucratization relied on the hands of ``local'' elites, weak states were created. Local lites were more likely to pursue their own personal agendas (rather than the central level's). On the contrary, when the central state sent their own agents (``deployed rule''), as they owed their jobs and source of income to the central level, they were more likely to pursue state goals. However, one important issue arises. Even when deployed bureaucrats depended on the central level (as Soifer correctly points out), what remains unclear is the mechanism under which principal-agent problems were solved in favor of the central level. It is still a possibility that, even when perceiving income from the central level, the agenda that is pursued in the periphery is the agent's and not the state's. In the context of poor infrastructure and slow center-periphery communication, what is it that makes the agent's agenda to coincide with the state's? One could argue that the agent fears to be replaced, losing his source of income. However, human capital during the formative years of the late 19th century run in short supply. That is, there was not enough capable individuals to perform complex administrative duties. In fact, \citet[208]{Taverne2014} argues how the \emph{vecinos notables} were the first skilled bureaucrats in the early stages of state building in Chile. They would usually have other important sources of income, as they were typically lawyers and businessmen. Skilled individuals were so scarce that even individuals with a lack of formal training but still capable of performing well as public servants were hard to come by. \citet[293-294]{Sagredo1997} documents how \emph{Director Supremo} Ram\'on Freire practically forced businessmen Pedro Nolasco Mena, against his will, to serve as secretary of state\footnote{Nolasco Mena argued that he was a ``comerciante pr\'actico, que sin las leyes del c\'alculo ni los principios de econom\'ia giro, como todos los del pa\'is, una casa de comercio pasivo: he ah\'i la historia de mis disposiciones: no conozco la estad\'istica, no he visto siquiera la complicada legislaci\'on de hacienda, jam\'as serv\'i una oficina de ella, no puedo, de consiguiente, aventurarme sin temeridad a la administraci\'on del ministerio''. Nonetheless, Freire forced him to serve.}. Income was not important at all to him. In fact, the day Nolasco Mena was sworn into office, he stated that he was not willing to perceive income as a way to protest against Freire\footnote{That day, Nolasco Mena stated: ``he jurado bajo la protesta siguiente: Protesto que, forzado contra m\'i conciencia a admitir el Ministerio de Hacienda, no soy responsable de derecho por falta de libertad, ni de hecho por la insuficiencia confesada del manejo; renuncio al sueldo que no puedo ganar sin desempe\~nar; que se me de testimonio de esta protesta y de mi reclamo anterior y se imprima''.}.
+
+% Inter-elite conflicts and development // KURTZ's theory
+\paragraph{Inter-elite conflicts and development} 
+In our framework, economic sectors are \emph{forced} to make political alliances. The degree to which agricultural elites were contested (here through increasing industrial output differentials), was what forced both parties to reach agreements. Given that economic power translates into better military capacities, balanced inter-sectoral economic growth prevented military escalation and laid the foundations for inter-elite cooperation. This idea is consistent with \citet[76]{Ansell:2014ty}, who  argue that when inter-sectoral inequality is high, the landed elite expropriates indirectly through ``market-distorting policies,'' harming rising elites such as the industrial elites. In the same line, \citet[]{Boix:1999tj} points out that elites allow both technological and political progress only if it benefits them. From a relatively different perspective, \citet[]{Kurtz2009} builds a theory where the oligarchic elites in Latin America, despite their substantial divisions, agree to maintain and impose the necessary tax burdens on themselves to finance a strong state. What makes these elites reach a sustained agreement is the absence of repressive labor practices\footnote{\citet[83]{Kurtz:2013aa}.}. That is, the existence of the legal right to leave the farm\footnote{\citet[39,67]{Kurtz:2013aa}.}. Structurally, our theory follows Kurtz's in the sense that we also believe that the organization of the economy causes (endogenous) changes in the institutional order, especially with respect to taxation. In fact, it complements it by offering an alternative channel, that the industrial sector is not strong enough to attract labor, for why laborers do not have any other choice than to remain in farming. Industrialists, being excluded from the political system (as they were), could not alter these repressive institutions from the inside. Hence, in our theory, incorporation of all important elites is also crucial for state-building. However, the paper departs from Kurtz's theory given that our theory sees potential conflict as the the tipping point of eventual political agreements.
+
+% Measurement / Parsimony
+\paragraph{Conceptualizing and measuring the state} Though many scholars find that income taxation is either one of the most important state-capabilities\footnote{See for example \citet[]{Besley:2011aa}, \citet[]{Kurtz:2013aa,Kurtz2009}, \citet[]{Cohen1994}, \citet[]{Gallo:1991kx}, \citet[]{Lopez-Alves:2000zl}, \citet{Thies2005a} and \citet{Soifer2008,Soifer2008a}.} or the one characteristic that explains considerable variance of state capacities\footnote{See for example, \citet[60-62]{Kurtz:2013aa}, \citet[15]{Hanson2013b} and \citet[]{Centeno:2002qf}.}, others have argued in favor of other measurements of ``stateness''. For example, some scholars have argued in favor of military conscription or censuses\footnote{For the latter, see for example, \citet{Lee2013a}.}. Multidimensional measurements are also very popular. Contrasting several existent indexes of state capacities, \citet[7]{Fukuyama:2004nr} argues that ``stateness'' is a two-dimensional concept, namely, the \emph{scope of state activities}, which refers to different state functions and the \emph{strength of state power}, or the ability of states to execute policies. In a later work, however, \citet[347]{Fukuyama2013}  suggests a  different two-dimensional framework, \emph{capacity} and \emph{autonomy}. Similarly, \citet[357]{Mann2008a} argues that ``stateness'' is a two-dimensional concept too (\emph{despotic} and \emph{infrastructural})\footnote{\citet[224]{Soifer2008} argue in favor of the infrastructural approach proposed by \citet[]{Mann1984a}.}. \citet{Soifer2012} proposes a three-dimensional measurement of state capacity (\emph{security}, \emph{administrative} and \emph{extractive}). Multidimensional conceptualizations of state capacities do improve our understanding of the complexity\footnote{\citet[112]{Mann1984a} argues that ``[t]he state is undeniably a messy concept''.} of state capacities\footnote{It is undeniable true that ``state'' is a multidimensional concept. As \citet[9]{Fukuyama:2004nr} explains, ``[a] country like Egypt, for example, has very effective internal security apparatus and yet cannot execute simple tasks like processing visa applications or licensing small businesses efficiently''. In Singerman, (1995).}. Beyond being a measurement commentary, this paper develops a theory for the origins of, what we believe, is one of the \emph{main} state capacities. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Argument\label{argument}}
 
 % strong state case
-Our argument comes in four parts. % monopoly
-First, following the inertia of post-colonial legacies, early Latin American states were governed by agricultural monopolistic elites. The incipient industrial sector, conformed by newcomers around 1900s, was politically excluded. % different industrial output speed rates
-Second, early Latin American states enjoyed from different industrial-to-agricultural output speed ratios. %expropriation vs taxation
-Third, agricultural incumbents could either \emph{tax} or \emph{expropriate}  industrial output, based on the opportunity costs of each strategy. Rapid and sustained industrial growth constituted more of a ``secure promise'' of growth for the future. In this scenario, agricultural incumbents were better off taxing that output rather than expropriating it. Though taxation delivers a relatively smaller amount of money in the short run (compared to expropriation), it does it so in a sustained way, securing resources in the long run . In other words, taxation occurs when the benefit of taxing a small sum of money ``today'' compensates the long-term losses associated of having those resources ``tomorrow''. Given that investments in human capital and technology are non-transferable between these two sectors, agriculturalists couldn't expropriate the industrial sector to run it on their own. Hence, agricultural incumbents decided to design a tax system to capture those resources, but left the modern sector unaltered, administered by the agents equipped with the know-how, i.e. the industrial class. % an income tax was implemented 
-Fourth, the type of tax had to respond to the growth rates so that faster outputs paid more taxes. Hence, an income tax was implemented. In exchange, the industrial class demanded commercial protectionism in the form of tariffs, and political representation via an institutionalized system of oligarchic political competition. Both the tax and political representation dimensions triggered a series of institutional investments such as institutions of checks-and-balances to monitor and enforce income taxation, including the development of professional bureaucracies.
+\paragraph{Strong State Cases} First, following the inertia of the colonial period, early independent Latin American states were governed by agricultural elites. Later around 1900s, an incipient industrial sector established. This sector was comprised of newcomers who were politically excluded. Second, in the strong state cases, industrial output rates were comparable (if not faster) to agriculture growth rates. Third, the agricultural sector decelerated in the late 1900s. In order to sustain the economy, political elites could play one of the next two strategies. They could either \emph{tax} or \emph{expropriate} industrial output. As industrial output was fast, the benefit of taxing a small sum of money ``today'' via taxation compensated the long-term losses associated of having those resources ``tomorrow''. Fourth, in exchange, the industrial class demanded commercial protectionism (tariffs) and political representation (early 20\emph{th}. century's oligarchies). Protectionist policies helped the industrial sector to develop further, generating an urban and educated middle class that grew under the eaves of the state. In turn, political representation broke the old political monopoly owned by the agricultural sector, introducing the seed of early political competition.
 
 % weak state case
-Agricultural incumbents that faced a slow industrial sector, faced higher costs of imposing an income tax system and opening up the political system to other economic elites. Low industrial outputs did not promise enough resources in the long run. It was also too risky to ``wait'' and tax those resources in the future. Hence, the best response for agricultural elites was to expropriate that small industrial output in the short run. As the agricultural political monopoly was not challenged, the traditional economy was not broken, the endogenous incentives to invest in institutions designed to improve bureaucracies and split political power never existed. These countries then were trapped in underdevelopment sub-optimal equilibriums.
+\paragraph{Weak State Cases} Similarly, these nations were governed by agricultural monopolistic elites. However, in these cases agricultural incumbents faced slower industrial growth. This sector did not promise enough resources to tax from in the long run. It was too risky to ``wait'' and tax those resources in the future. Potentially for subsequent periods, firms could have been declared bankrupt. Moreover, besides being risky, it was too costly to wait for such a small tax revenue in the long run. In other words, discount rates were larger than future payoffs. Hence, agricultural incumbents were better off expropriating industries and politically blocking the industrial class. In these cases, the agricultural political monopoly was never challenged, the traditional economy was not broken and the endogenous incentives to invest in institutions designed to improve bureaucracies and split political power never existed. 
 
+
+% (1) Latin American states were governed by agricultural monopolistic elites
+\subsection{Agricultural Political Monopoly}
 
 % monopoly: explaining in which sense this was a "monopoly".
-\paragraph{Agricultural Monopoly} All monopolies generate waste and negative externalities. In this case, and as the \hyperref[unpacking]{historical} section illustrates, we argue that \emph{political} monopolies, that is, a situation where political competition is artificially limited, generate  political and economic distortions. In this case, the agricultural sector would artificially impose policies convenient for their own sector, at the expenses of the non-represented segments of the society. It would also limit entrance by others agents into the political system, putting higher legal barriers to enter into the political system, and also blocking (the little) industrial investments these cases had.
+Right after independence, there existed a situation where the early political system was dominated by a compact social class invested in land. Agricultural elites controlling the economy, would also control the early post-colonial state, imposing social and economic policies favorable for them. Eventually, \emph{all} post-colonial nations saw the emergence of a small industrial sector, which grew at different rates (see \autoref{fig:incometax}). However, in countries that eventually turned into strong states, the size of the modern sector grew at faster rates\footnote{It is important to say that the argument does not require European-like degrees of industrialization. As \citet[131]{Bertola2012} confirm, most Latin American countries did \emph{not} experience a proper industrialization \emph{process}, and hence it is inaccurate to say that the industrial sector ``had become a strong engine of economic growth''. However, even though Latin America did not experience an industrial \emph{revolution}, the modern sector did develop in some countries (\autoref{fig:incometax}).}. As in these cases there \emph{was} in fact a competitor, agricultural elites tried first to block it, \emph{artificially} limiting political competition. However, for several reasons we explain later, inter-elite cooperation was incentive-compatible. On the contrary, where the size of the modern sector was small, agricultural elites were \emph{natural} monopolists. In these cases, there were not enough credible threats to move forward a compromise between the two classes, letting the landowners continue ruling without political opposition. This situation generated long-term political and economic distortions. 
 
+% example paragraph
+For example, early Nicaragua developed in a non-democratic context, just like any other country in the panel. However, its industrial sector did not grow fast enough to challenge the traditional sector (see \autoref{fig:incometax}), leaving the political system unaltered until the 1980s (see \autoref{fig:democracy:plot}). The lack of inter-elite contestation led this country to develop a fiscal system very lately (vertical line in \autoref{fig:incometax}). An opposing example is Ecuador, which passed the income tax just before the 1950s, right around when it had its first ``democratic'' experience. Using Chile as a shadow case, we \hyperref[unpacking]{illustrate} the causal mechanisms at work with further details, explaining particularly how the initial monopolistic conditions were broken in the presence of a strong industrial sector and what the inter-elite compromises were. 
 
-% different industrial output speed rates
-\paragraph{Industrial Output Speed Rates} Despite the initial monopolistic conditions of the agricultural sector in virtually the whole continent, an incipient industrial sector did manage to develop. There were many factors that explain the first industrial boom in LA. Among these, tariffs oriented to protect the agricultural markets unintentionally helped to protect the domestic industrial sector. There are other factors that led some LA countries to develop stronger industrial sectors than others. For brevity sake, we do not explore those in this paper. We left-censor our theory/data/sample starting in 1900. \autoref{fig:incometax} shows agricultural and industrial outputs (in logarithmic scales)\footnote{
-	We use the \emph{Montevideo-Oxford Latin American Economic History Data Base}  (\href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD}), specifically the \emph{agriculture value-added} and \emph{manufacturing value-added} variables. The former measures ``the output of the sector net of intermediate inputs and includes the cultivation of crops, livestock production, hunting, forestry and fishing''. The later  ``[r]eports the output of the sector net of intermediate inputs''. Both of them are expressed in local currency at 1970 constant prices. Finally, ``the depreciation of reproducible assets or depletion/degradation of natural resources were not deducted''. Details about this dataset are presented in the \hyperref[data]{Data} section.
-} from 1900 to 2010 for a sample of LA countries. Additionally, each scatter plot shows two vertical lines. The green line shows when the system was opened for contestation\footnote{
-We proxy that using Boix's data on democratization. See \citet[]{Boix2012}.
-}, while the sky blue one shows when an income tax system was imposed\footnote{
-Author's data. Based on several reports and official information.
-}. While the parametric relationship of these phenomena is going to be left for the empirical \hyperref[methods]{analyses}, this section introduces an operationalized way to observe inter-elite conflict, and particularly, how (and in which sense) the agricultural sector was ``challenged'' by an incipient industrial sector.
+% (2) industrial output rates
+\subsection{Industrial Output Speed Rates and Inter-Elite Contestation}
 
-% Inter-Elite inequality.
-Sectoral outputs measure the levels of inter-elite conflict. The degree in which industrial output catches up with agricultural output represents the degree in which the industrial sector \emph{challenges} the agricultural sector. In other words, we are interested in measuring different levels of inter-sectoral inequality. As we explain below, political monopolies were terminated when the levels of inter-sectoral equality is high. However, when inter-sectoral equality is low, political resources will be oriented to perpetuate the legacies of the colonial period, prioritizing policy goods for the agricultural sector. 
-
-The association between (the lack of) economic and political competition and (the lack of) state capacities is not new. \citet[p. 40]{Cardenas2010} in his formal and empirical models finds that ``concentration of political and economic power reduces the incentives to invest in state capacity''. However, he models inequality between \emph{elites} and \emph{citizens}. We expand on this idea by modeling the period \emph{before} full democratization existed, that is, when the two elites shared political power between them within an oligarchic context. The sectoral origins of income taxation has been approached before too. From a development perspective in Central America,  \citet[p. 55]{Best1976}, argues that ``the sectoral origin of income is an important determinant of tax potential and that the large subsistence portions of the agricultural sectors in Central America preclude effective income taxation''\footnote{
-	\citet[]{Mares2015} study how income taxation in Europe is associated to between-elites conflicts, particularly between the landed elite and the industrial elite. However, state-capacities are tangentially studied.
-	}. We elaborate this insight by tracing down the \emph{political origins} of income taxation\footnote{
-	\citet{SanchezdelaSierra2014} studies the relationship between taxation and state formation in Eastern Congo. From a regime type perspective, intra-elite inequality is developed by \citet[Ch. 9]{Acemoglu:1996rm} and  \citet[]{Ansell:2014ty}.
-	}. Finally, \citet[]{Garfias2015} finds in M\'exico the exact opposite: \emph{unequal} relative distribution of political and economical power causes state formation. The proposed mechanism is that ruling elites, taking advantage of their transitory strengthened  position, expropriate weaker elites and send bureaucrats to control local weakened bosses (his proxy for state capacities). We find that political monopolies were broken when the excluded industrial sector gained economic leverage that allowed them to bargain better political and economical conditions.
+% explain the logic of industrial/agricultural output rates
+There are many factors that explain the industrial development in Latin America, among them, tariffs oriented to protect the \emph{agricultural} market \emph{unintentionally} helped protect the industrial sector. Since the first industries processed raw agricultural materials, better conditions for the landowners helped the industrialists to make their way into the economy. Favorable international markets also boosted the demand for rudimentary processed raw products too. We provide further details in our \hyperref[unpacking]{case study}. \autoref{fig:incometax} shows output differentials (in logarithmic scales) from 1900 to 2010, for a sample of Latin American countries\footnote{We use the \emph{Montevideo-Oxford Latin American Economic History Data Base}  (\href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD}), specifically the \emph{agriculture value-added} and \emph{manufacturing value-added} variables. The former measures ``the output of the sector net of intermediate inputs and includes the cultivation of crops, livestock production, hunting, forestry and fishing''. The later  ``[r]eports the output of the sector net of intermediate inputs''. Both of them are expressed in local currency at 1970 constant prices. Finally, ``the depreciation of reproducible assets or depletion/degradation of natural resources were not deducted''. Details about this dataset are presented in the data \hyperref[data]{section}. The plot also shows a vertical line which indicates when the income tax law was passed (author's data based on several reports and official information). We elaborate on the income tax law in the next \hyperref[tax:expr:ind]{section}.}. Contrary to \citet[241]{Bulmer-Thomas2003}, we do \emph{not} find that ``[e]verywhere [...]  industrial growth exceeded agricultural growth''.
 
 
 
-<<incometax, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='Industrial and Agricultural Outputs, and Political Contestation', fig.align='center', fig.width=14, fig.height=13,dpi=300,cache = TRUE>>=
-load("/Users/hectorbahamonde/RU/Dissertation/Data/dissertation.Rdata") 
-# Load data
-library(ggplot2)
-library(gridExtra)
 
-# To force GGplots to share same legend.
-grid_arrange_shared_legend <- function(...) {
-require(ggplot2)
-  require(gridExtra)
-  plots <- list(...)
-  g <- ggplotGrob(plots[[1]] + theme(legend.position="bottom"))$grobs
-  legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
-  lheight <- sum(legend$height)
-  grid.arrange(
-    do.call(arrangeGrob, lapply(plots, function(x)
-      x + theme(legend.position="none"))),
-    legend,
-    ncol = 1,
-    heights = grid::unit.c(unit(1, "npc") - lheight, lheight))
-}
+<<incometax, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Industrial and Agricultural Outputs, and The Passage of the Income Tax Law ', fig.align='center', fig.width=13, fig.height=12,dpi=300,cache = FALSE>>=
 
-#### multiplot
-multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
-        library(grid)
-        
-        # Make a list from the ... arguments and plotlist
-        plots <- c(list(...), plotlist)
-        
-        numPlots = length(plots)
-        
-        # If layout is NULL, then use 'cols' to determine layout
-        if (is.null(layout)) {
-                # Make the panel
-                # ncol: Number of columns of plots
-                # nrow: Number of rows needed, calculated from # of cols
-                layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
-                                 ncol = cols, nrow = ceiling(numPlots/cols))
-        }
-        
-        if (numPlots==1) {
-                print(plots[[1]])
-                
-        } else {
-                # Set up the page
-                grid.newpage()
-                pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
-                
-                # Make each plot, in the correct location
-                for (i in 1:numPlots) {
-                        # Get the i,j matrix positions of the regions that contain this subplot
-                        matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
-                        
-                        print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
-                                                        layout.pos.col = matchidx$col))
-                }
-        }
-}
-
-#### plots
-chile.p = ggplot() + 
-    geom_smooth(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-    geom_smooth(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-    xlab("Year") +
-    ylab("GDP Output (ln)") +
-    labs(colour = "Legend") +
-    scale_x_continuous(limits=c(1890,2010)) + 
-    geom_vline(data=subset(dissertation, country=="Chile"), aes(xintercept = 1924, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-    geom_vline(aes(xintercept = 1909, colour= "Democracy"), linetype = "longdash") + # Democracy Boix
-    theme_bw() + 
-    theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-    labs(title="Chile")
-
-peru.p = ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Legend") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Peru"), aes(xintercept = 1934, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        geom_vline(aes(xintercept = 1956, colour= "Democracy"), linetype = "longdash") + # Democracy Boix
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-    labs(title="Peru") 
-
-colombia.p = ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Legend") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Colombia"), aes(xintercept = 1935, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        geom_vline(aes(xintercept = 1937, colour= "Democracy"), linetype = "longdash") + # Democracy Boix
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-    labs(title="Colombia") 
-
-ecuador.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Legend") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Ecuador"), aes(xintercept = 1945, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        geom_vline(aes(xintercept = 1948, colour= "Democracy"), linetype = "longdash") + # Democracy Boix
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-    labs(title="Ecuador") 
-
-
-venezuela.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Legend") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Venezuela"), aes(xintercept = 1943, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        geom_vline(aes(xintercept = 1959, colour= "Democracy"), linetype = "longdash") + # Democracy Boix
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-    labs(title="Venezuela") 
-
-nicaragua.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Legend") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Nicaragua"), aes(xintercept = 1974, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        geom_vline(aes(xintercept = 1984, colour= "Democracy"), linetype = "longdash") + # Democracy Boix
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-    labs(title="Nicaragua") 
-
-guatemala.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Income Tax (ln)") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Guatemala"), aes(xintercept = 1963, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        geom_vline(aes(xintercept = 1945, colour= "Democracy"), linetype = "longdash") + # Democracy Boix
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-    labs(title="Guatemala") 
-
-grid_arrange_shared_legend(chile.p, ecuador.p, nicaragua.p, venezuela.p, peru.p, colombia.p, guatemala.p)
 @
 
-\paragraph{Strong States: A story of economic contestation and political competition} The states that turned into ``strong'' and states that stayed ``weak'', shared the same initial monopolistic conditions. However, ``strong'' states were able (while being ``weak'' states) to break the structural advantages traditional sector.  What eventually differentiated strong from weak states was that the former had an industrial sector backed up with rapid industrial growth, which allowed them to bargain better political and economical conditions with the traditional sector.
+% first type of conflict is inter-elite economic and political competition
+This paper uses industrial development as a proxy for how the agricultural sector was contested (see \autoref{fig:incometax}). The literature is consistent in agreeing that ``more'' political competition leads to ``better'' outcomes when it comes to state-building. For example, \citet[481]{Kurtz2009} argues that where ``no faction can easily become permanently dominant,'' state capacities should be stronger. Similarly, \citet{Geddes1991} argues that competition between two rival parties of about the same size creates clearer incentives to invest in political institutions. \citet[40]{Cardenas2010} in his formal and empirical models also finds that the ``concentration of political and economic power reduces the incentives to invest in state capacity''\footnote{However, he models inequality between \emph{elites} and \emph{citizens}. We expand on this idea by modeling the period \emph{before} full democratization existed and also by modeling inter-elite conflicts.}. 
 
+% sectoral competition and dual-economy model
+Though inter-elite conflicts expressed via both political and military tensions, inter-sectoral contestation itself is deeply rooted in the economic structure. Advantaged economic conditions can relatively easily be translated into better military capacities, which makes it easier for the advantaged group to impose their political agenda in a monopolistic way\footnote{\citet{Boix:2015aa}.}. However, the \emph{origins} of this inter-sectoral (un)balance (expressed in sectoral output differentials) reflects structural economic dynamics between the two sectors that causes them to compete for limited supply of labor\footnote{As \citet[ 318]{Matsuyama1992} puts it, ``the manufacturing sector has to compete with the agriculture sector for labor. Low productivity in agriculture implies the abundant supply of ``cheap labor'' which the manufacturing can rely on''. See also \citet[160]{Gollin2002}.}. In fact, for the modern sector to develop, the traditional sector had to decay\footnote{\citet[621-622]{Matsuyama1991} argues that the process of ``[i]ndustrialization [consists of] a shift of resources from agriculture to manufacturing''.}. \citet[642-643]{Matsuyama1991} explains that ``a takeoff is possible in an economy with less productive agriculture, while an economy with productive agriculture will be trapped into the state of preindustrialization''\footnote{\citet[293]{Skott1998} points out that ``an increase in the growth rate of agricultural productivity may reduce the rate of growth of real income under free trade''.}. That is, the process of industrialization also follows the principles of the law of comparative advantages. The \hyperref[unpacking]{case study} shows that the economic-structural connotation of inter-elite political contestation was also true for Chile\footnote{But see \citet{RoblesOrtiz2009}.}. Moreover, these conditions apply to other Latin American economies too. For example, \citet[ 8]{Bash1986} explains that ``Colombia's two traditional political parties crystallized in the 1840's and reflected in many respects the dual nature of the Colombian economy''. The sectoral conflict regarding the generation of income and its potential taxation has been studied elsewhere too\footnote{See \citet[55]{Best1976}.}. For example, \citet[]{Mares2015} study how income taxation in Europe is associated with inter-elites conflicts, particularly between the landed elite and the industrial elite. Taxation and state formation with a sector/class approach  has also been studied in Africa. For example, \citet{SanchezdelaSierra2014} studies the relationship between taxation and state formation in Eastern Congo, and how the interplay between different sectors fostered (or not) state-building processes.
+
+
+
+% (3) agricultural incumbents taxed or expropriated industrial output // logic behind each strategy
+\subsection{Taxation and Expropriation\label{tax:expr:ind}}
 
 
 % Explain both strategies
-Higher levels of inter-elite equality were able to break the initial monopolistic conditions. Building upon the idea of the ``stationary bandit''\footnote{\citet[]{Olson:2000aa}.}, this paper develops two possible strategies for agricultural political incumbents. Each one is best response depending on the rate of industrial growth. The first strategy is to engage in \emph{predatory practices}, expropriating industrial output and enjoying short-term benefits associated to immediate liquidity. Given that human capital and investments are non-transferable between the two sectors\footnote{For example, machines used to build glass can't be used to grow potatoes.}, for the next term, industrial output is exhausted and its output gets closer to zero. In other words, when agricultural elites expropriate the industries, since they don't know how to administer them, they end up bankrupting them. This strategy is best response when the rate of industrial growth is slow. Here, the benefits associated to expropriating industrial output ``today'', even when if it is too small, offset the benefits of rather encouraging industrial production and tax it ``tomorrow''. In other words, the long-term benefits of having a secured, \emph{but excessively small} source of tax revenue \emph{do not} offset the short-term costs associated to just enjoy that revenue extracted through small taxation doses in the long run. The second strategy consists of \emph{institutional investments}, systematizing a mechanism that allowed agricultural incumbents to ``rob'' industrial output in small doses at a time through a direct taxation system. The system had to incorporate a proportional mechanism to allow agricultural incumbents to capture increasing industrial growth. Particularly, the new implemented taxation system had to be able to closely monitor industrial magnates and their personal incomes. In other words, an \emph{income tax} had to be implemented\footnote{
-	The idea that political elites generally are better able to impose/raise  taxes during economic booms is common in the political economy literature. \citet[p. 647]{Campbell1994} argue that ``economic development should be directly related to individual and corporate income tax rates''. Also, \citet[p. 59]{Besley:2011aa} argue that ``investing in fiscal capacity becomes more attractive [...] when wages or incomes [...] are higher''.
-	}. This strategy is best response when the rate of industrial growth is fast. The long-term benefits of having a secured source of tax revenue for the future offset the short-term costs of enjoying revenue extracted through  small taxation doses at a time. In other words, agricultural incumbents are better off having a rather small tax revenue secured for the future than having a relatively larger sum of money today, but exhausting and having nothing  in the future. In fact, it was in the agricultural incumbents' interest (the ``stationary bandit'') to protect and encourage industrial growth as that would translate into higher revenues for the treasury. As other have explained before, by imposing an income tax system, the treasury appoints itself as the investor's partner who will always share in the investor's gains and losses\footnote{\citet[p. 389]{Domar1944}.}.
+As the historical evidence suggests, decelerated international markets put heavy fiscal pressures on agricultural elites to sustain the economy. Building on the idea of the ``stationary bandit''\footnote{\citet[]{Olson:2000aa}.}, the agricultural political incumbents faced this economic downturn either by \emph{taxing} or \emph{expropriating} the industrial sector. Each strategy was best response depending on the rate of industrial growth. Fast industrial output was associated to higher levels of political contestation and the development of the fiscal system, while slow growth was associated to lack of political contestation. Crucially, industrial elites accepted to be taxed \emph{in exchange of tariffs oriented to protect the industrial sector}, producing a general economic boost which helped these countries to navigate the economic crisis. 
+ 
 
-% Concrete Examples
-\autoref{fig:incometax} shows different sector sizes. For example, Chile had a very contested political economy: both sectors had approximately the same size. In fact, the industrial sector not only caught up agricultural output but also surpassed it around 1930, which is around the time when income taxation was imposed. The total opposite happened in Nicaragua. This country never had a strong industrial sector. Agricultural elites never felt challenged, and consequently income tax was introduced very late, around the 1980s. More qualitative evidence will be provided in the \hyperref[unpacking]{historical} section.
+% Expropriation
+\emph{Expropriation} was best response when the rate of industrial growth was slow. When industries grew slowly, the long-term benefits of having a secured, \emph{but excessively small}, source of tax revenue \emph{did not} offset the benefits associated with having \emph{immediate} monetary resources due to expropriation. Expropriation brought immediate liquidity (fast access to money) in the short run, but it exhausted the industrial output in the long run. That is, when industrial growth is slow, immediate liquidity becomes more attractive, even when these resources get exhausted in the long run. Moreover, since human capital and the technology necessary to administer an industry are non-transferable to the agricultural elite\footnote{For example, machines used to make glass can't be used to grow potatoes.}, solely expelling the industrial elites and taking over the industries is not an efficient strategy, as it endangers industrial output in the long run. In other words, since landowners do not know how to run industries, they are better off  appropriating the surplus rather than taking over the industries. This is a stylized theory. In reality, elites tended to engage not only in expropriation but also in nationalization and forced loaning. The consequences of slow industrial growth were not only economic, but also political. A weak industrial sector did not generate a strong urban middle class, and hence the state did not have a source of skilled labor where to borrow from. Politically, since a strong challenger did not exist, the monopolized political system remained untransformed.
 
-% consequences of income taxation: INSTITUTIONAL INVESTMENTS
-Higher levels of inter-elite equality led to the imposition of income taxation. This new endogenous disturbance triggered a series of institutional investments. The new income tax was not important because of the extra revenue income taxation brought the treasury but because of the introduction of endogenous institutions.  First, the political monopoly was broken. As simply promising keeping income tax rates constant was not credible, industrialists agreed to be taxed on their increasing incomes in exchange for political institutions that allowed them to participate in politics. A new competitive oligarchy was born\footnote{
-	\citet[p. 8]{DiJohn2006} finds that in less developed countries, high tax collection is associated to strong political party systems.
-}. Second, institutions of property right protection were needed. Now that both sectors had access to political resources, the two elites were interested in protect each other's property from mutual expropriation. Alternative models suggest a bourgeoisie seeking protection against the expropriative policies of the king. Here, \emph{institutions protect the elite from themselves}\footnote{
-	 \citet[p. 531]{Timmons2005} finds that ``[t]he more money a state raises from progressive taxes as a percentage of GDP [...] the better it protects property rights''.  See also \citet[p. 6]{Roclrik2000} for a general overview.
-}. Given that open political systems are the most effective ones for processing and aggregating diverse interests\footnote{\citet[p. 3]{Roclrik2000}.}, both sectors could introduce institutions for macroeconomic stabilization and other regulatory institutions. Third, by encouraging optimal taxation rates, strong states were able to produce higher levels of economic growth\footnote{
-	\citet[p. 35]{Grossman1994}, in what has been called the ``protection for sale model'', argue that secured property rights shifts the incentives to invest in ``[i]nnovation [which in turns] sustains both capital accumulation and growth''.
-}. Fourth, higher levels of economic growth and accumulation of human capital, produced a larger middle class, which found its place in an incipient professional bureaucracy\footnote{
-	\citet[p. 842]{Brown2004} finds that ``[Latin American] democracies devote a higher percentage of their educational resources to primary education''.
-}.
-
-% consequences of income taxation: tariffs
-Besides institutional investments, there were also economic compromises. The most important one was the introduction of higher/newer tariffs designed to protect the industrial sector. A common misconception is that industrial protectionism started with the ISI. However, as \citet[p. 3-4]{Haber2005} explains ``governments followed policies designed to subsidize and protect industry in the decades after 1950 precisely because industrialists and industrial workers had been protected since the 1890s''. Early industrialists were able to bargain tariffs in exchange for income taxation. \citet[p. 53]{Lederman2005} shows how a protectionist cycle matches with the period for when income taxation was imposed\footnote{
-	In fact, the industrialists \emph{as a sector}, gathered around this issue in a quite organized way, reinforcing their class self-image. As \citet[p. 122]{Sokoloff2007a} argue, the expansion of the ``manufacturing production [...] helped to nurture the development of a powerful constituency for higher tariffs''.
-}. The introduction of higher/newer tariffs were key for the subsequent development of the industrial sector. As \citet[p. 15]{Haber2005} argues, ``virtually none of [the industrial development] would have existed had it not been for tariff protection''\footnote{
-	See also \citet[p. 21]{Coatsworth2002}. There is some debate on whether protectionism is associated to economic growth. \citet[p. 10]{Coatsworth2002} argue that ``protection was associated with faster growth in the European core and their English-speaking offshoots [...] but it was \emph{not} associated with fast growth in [...] Latin American periphery'' (Emphasis in the original).
-}. 
-
-\paragraph{Weak States: A story of uncontested economic elites and political monopoly} When the industrial output was not large-enough to compensate for long-term losses associated to future taxation of little revenues, incumbents engaged in predatory strategies. The agricultural political monopoly was not broken, and the endogenous incentives to invest in institutions never existed. These countries then were trapped in underdevelopment sub-optimal equilibriums. First, institutions of property right protection were weak and were designed to enhance the monopolistic rules of the agricultural incumbents. Weak fiscal policies did not generate incentives to grow an industrial sector. There was not necessary also to inject human capital into  early bureaucracies. Taxing technologies lacked the know-how and were not able to penetrate and efficiently monitor personal incomes. 
-
-{\color{red}ADD MORE ON WEAK STATES?}
+% Taxation
+\emph{Taxation} was best response when the rate of industrial growth was fast. 
+Imposing a tax allowed agricultural incumbents to ``rob'' industrial output at small ``doses'' at a time, without exhausting or precluding industrial development. From a strategic perspective, a healthy industrial sector became more attractive for what it had to offer in the future rather than the present. Hence, faster industrial growth shifted the focal point from the short to the long run. In these cases, it was in the agriculture sector's interest to protect and encourage the development of this sector to perceive even higher taxes (though most of the time keeping the same tax rate). Hence, industrial tariffs were implemented to protect this sector, playing a very important role in the subsequent industrial development. Institutionally, the new tax had to be able to closely monitor industrial magnates and their personal incomes. Hence, an \emph{income tax} had to be implemented. This idea is consistent with the notion that political elites generally are better able to impose/raise taxes during economic booms. For example, \citet[647]{Campbell1994} explain that ``economic development should be directly related to individual and corporate income tax rates'', while  \citet[59]{Besley:2011aa} argue that ``investing in fiscal capacity becomes more attractive [...] when wages or incomes [...] are higher''. 
 
 
-\section{Unpacking the Mechanisms: Illustrative Case, Chile 1850-1930\label{unpacking}}
+% (4) protectionism, representation and institutional investments
+\subsection{Income taxation and Institutional Investments}
 
+
+% Taxation Levels and State Capacities
+Income taxation was a ``state-builder'' institution because it triggered the implementation of other ``state'' institutions. This paper identifies (though not exhaustively) two critical institutions, political competition within the elite and bureaucratic consolidation\footnote{Though the public economics literature focuses predominantly on tax revenues, higher revenues do not mean higher stateness levels. For example, since American institutions were deliberately designed to limit the exercise of state power, the U.S. taxes very little (\citet[6]{Fukuyama:2004nr}). However, it is not reasonable to say that the U.S. has a ``weak state". Here the focus is on the \emph{politics} of taxation (see for an example \citet[]{Focanti2013}.).}.
+
+
+<<democracy:plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Historic Regime Type', fig.align='center', fig.width=13, fig.height=5,dpi=300,cache = FALSE>>=
+
+@
+
+
+% political competition
+The imposition of the income tax law opened the political system for inter-elite competition. Specifically, industrial elites accepted to be income taxed in exchange of being allowed to participate in politics. This gave way to early 20\emph{th}. century oligarchic party systems, the first manifestation of modern electoral political competition. Furthermore, industrial elites were interested in maintaining an active political status since the promise of the agricultural elites to keep income tax rates constant was not credible. This is in line with \citet[3]{Roclrik2000}, in that open political systems are the most effective ones for processing and aggregating diverse interests. This channel specifically links regime type with state development. The relationship between strong and democratic states has been studied before. For example, \citet[9]{Rueschemeyer:1992} argue that ``[c]onsolidation of state power was an essential \emph{prerequisite} for democratization''\footnote{Emphasis is mine.}. We relax the causal direction of this mechanism by proposing an \emph{endogenous} mechanism. And while there have been important recent contributions on the relationship between political development and inter-elite (in)equality\footnote{See for example  \citet[Ch. 9]{Acemoglu:1996rm}, \citet[]{Ansell:2014ty} and \citet{Boix:2015aa}.}, this paper specifically approaches the state-building question, incorporating regime type in the explanation. This is consistent with what several political economists find. For example, \citet[8]{DiJohn2006} points out that \emph{in less developed countries}, higher tax collection levels are associated with strong political party systems. In particular, it is argued that the introduction of the income tax (\autoref{fig:incometax}) and the first democratic waves (\autoref{fig:democracy:plot})\footnote{Data from \citet[]{Boix2012}.} were part of the same process of inter-elite conflicts and eventually inter-elite compromises. The tipping point that gave way to inter-sectoral bargaining was the unstable situation that was produced when there existed inter-elite political \emph{in}equality and sectoral/economic equality. That is, both the industrial and agriculture sectors being of about the same size (and hence, having the same military capabilities), but where only the latter has access to political power, i.e. state power. Neither sector had incentives to stay in their respective \emph{status quo}: the industrial class did not want to be just taxed without perceiving something in return, while the agricultural sector did not want to let pass a chance to capture (industrial) resources to navigate the economic downturn in better conditions. 
+
+
+
+% industrial tariffs
+The imposition of the income tax law also produced inter-sectoral \emph{economic} compromises. The most important one was the introduction of higher/newer tariffs designed to protect the industrial sector. Protectionism boosted industrial production and enhanced other structural transformations, such as the rise of an educated middle class (which systematically worked for the state) and higher levels of urbanization (which made income taxation easier). A common misconception is that industrial protectionism started with the ISI. However, the ``fact that manufacturing was alive and thriving in Latin America before the 1929 crash is now beyond question.''\footnote{\citet[129]{Bertola2012}.} ISI in fact is a continuation of older policies. \citet[3-4]{Haber2005} explains that ``governments followed policies designed to subsidize and protect industry in the decades after 1950 precisely because industrialists and industrial workers had been protected since the 1890s''. Critically, early industrialists were able to bargain tariffs in exchange of being income taxed. This insight is in line with \citet[53]{Lederman2005}, who argues that the timing of protectionist and income taxation cycles match. In fact, the industrialists \emph{as a sector}, gathered around this issue in quite an organized way, reinforcing their class self-image. As \citet[122]{Sokoloff2007a} argue, the expansion of the ``manufacturing production [...] helped to nurture the development of a powerful constituency for higher tariffs''. The introduction of higher/newer tariffs was key for the subsequent development of the industrial sector. As \citet[15]{Haber2005} argues, ``virtually none of [the industrial development] would have existed had it not been for tariff protection''\footnote{See also \citet[21]{Coatsworth2002}. There is some debate on whether protectionism is associated with economic growth, however. \citet[10]{Coatsworth2002} argue that ``protection was associated with faster growth in the European core and their English-speaking offshoots [...] but it was \emph{not} associated with fast growth in [...] Latin American periphery'' (emphasis in the original).}.
+
+
+% other institutions
+The second big transformation was bureaucratic development. Bureaucratic capacities were channeled via a structural transformation that encompassed  economic, political and social changes. Inter-sectoral economic contestation led to political agreements (political incorporation of industrial elites) that helped the industrial sector to develop (tariffs). In turn, further industrial development gave rise to the middle class composed of urban professionals, state employees, artisans and craftsmen\footnote{\citet[185]{Rueschemeyer:1992}.}. This critical mass of skilled individuals conformed the first modern bureaucrats. The positive relationship between regime type and human capital accumulation has been studied before\footnote{\citet[842]{Brown2004}.}. As \citet[394]{Collier:2002db} suggest, ``the middle classes did well under [the competitive oligarchies regimes]. The size of the middle class expanded significantly not only as a result of economic growth in general, but also as a result of growing public employment as the state expanded''\footnote{\citet[12]{Geddes:1996fr} explains that government officials are self-interested individuals, and hence ``their responses differ''. However, we assume that the political interests of bureaucrats, presidents and congresses, are in line with their respective sectoral interests. Thus, we consider that ``the state'' is itself an actor.}. Consequently, the formation of the middle-class is endogenous to the expansion of the state itself.
+
+<<survival:plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Kaplan-Meier Curves: Size of the Industrial Sector and the Accelerated Rate of the Imposition of  Income Tax Law', fig.align='center', fig.width=4, fig.height=3,dpi=300,cache = FALSE>>=
+
+@
+
+% ruling out (1) spurious duration dependence between IND and TAXATION and (2) modernization theory
+It is important to rule out the possibility that income taxation and elite contestation are not linked through a spurious time dependence relationship (i.e., ``something that would have happened anyways''). That is, the occurrence of the outcome of interest (taxation) is not directly related to time itself, but to the degree in which a contested agricultural sector (this argument's key independent variable) \emph{accelerates} the imposition of the income tax law. \autoref{fig:survival:plot} shows the failure rate of the average country in our sample of implementing the income tax law if the size of the industrial sector had increased by half. When inter-elite contestation is high, countries pass the income tax law sooner than when inter-elite contestation is low. This figure strongly suggests that institutional investments are a function of inter-elite competition rather than time itself. It is also important to rule out that both outcomes (inter-elite contestation and fiscal capacities) are not a function of what modernization theorists argue about\footnote{\citet[31]{Lipset:1981uq} for example argues that democracy is ``related to the state of the economy. The more well-to-do a nation, the greater the chances it will sustain democracy''.}. As we explain in \autoref{methods}, economic well-being indicators do \emph{not} predict fiscal capacities nor inter-elite political contestation. Statistical results in \autoref{methods} strongly suggest that the way in which industrialization is associated with state-building is not channeled through economic ``well-being'' but through inter-elite contestation.
+
+\section{Unpacking the Mechanisms: Illustrative Case, Chile 1850-1950\label{unpacking}}
 
 % Who where the agriculturalists 
-From an economic standpoint, before and during the colonial period, agriculture was the most important sector. Besides supplying European markets with raw materials, Latin American economies supplied ``a variety of tropical foods and [other] goods [such as] sugar, coffee, and tobacco [...] The demand for such items was stimulated by the rising consumption of the new and prosperous European bourgeoisie''\footnote{\citet[p. 74]{Marichal:1989bh}.}. 
+In all Latin American economies during and right after the end of the colonial period, agriculture was the most important sector, supplying a variety of foods and goods such as sugar, coffee and tobacco\footnote{\citet[74]{Marichal:1989bh}. The demand for such items was stimulated by the rising consumption of the new and prosperous European bourgeoisie.}. In parallel, the economic interests of the agricultural sector were the only ones represented in politics. Chilean agricultural elites were not the exception\footnote{\citet[45-46]{Wright1975}.}. For example, \citet[106]{Collier:2002db} argue that the ``national government was dominated by the central part of the country, with owners of large agricultural holdings playing a predominant role''. Historians still debate whether there were two \emph{different} elites, however. Some say that they were obvious antagonists. Some have argued, for example, that the landed elite consolidated very strong economic and political monopolies\footnote{\citet[15]{McBride:1971fv} argues that ``Chile's people live on the soil. Her life is agricultural to the core. \emph{Her government has always been of farm owners. Her Congress is made up chiefly of rich landlords}. Social life is dominated by families whose proudest possession is the ancestral estate''. Emphases are mine.}. Others have claimed that this antagonism is incorrect\footnote{See for example  \citet[125]{Mamalakis:1976kx}.}. The main argument against this vision is that there was a blurry division between these ``two'' classes\footnote{\citet[30, 44, 94, 108]{Bauer:2008kx}.}. For example, landowners were also invested in industry\footnote{\citet[23]{Coatsworth2002} argue that ``[t]he only landowners that mattered in 19th century Latin America politics were those for whom land represented but one asset in a much broader portfolio''. In the same line, \citet[180]{Bauer:2008kx} argues that  ``[m]iners and merchants bought haciendas but landowners in turn invested in banks, insurance companies, commercial firms and the incipient industrial sector''.}. However, there are some stylized facts that strongly suggest that in general, agricultural and industrial elites were two antagonist classes. \citet[13]{Zeitlin:1984aa} argues that ``landowners controlled both the vote and the labor power of the agrarian tenants (\emph{inquilinos}) and dependent peasants (\emph{minifundistas}), and this was the \emph{sine qua non} of their continuing political hegemony''. In Congress, and the presidency itself, landowners were the single most important group\footnote{\citet[45]{Bauer:2008kx}.}, leaving the modern sector heavily under-represented. As \citet[1748]{Baland2008} argue, ``[c]ongressional representation was heavily weighted in favor of rural districts''. For example, immediately following the independence in 1823, the secretary of the treasury, Benavente,  addressed a predominately agricultural congress to propose an agricultural income tax. The congress rejected his idea, especially due to pressures by the landowning class\footnote{\citet[306]{Sagredo1997}. It is important to stress that during this period, ``political parties'' did not follow very clear ideological divisions. Most of the secretaries/ministries were recruited due to their technocratic skills.}. In fact, fiscal pressures in favor of agricultural taxes were minimal as opposed to mining taxes\footnote{As explained below, mining was one of the first manifestations of industrial activity.}, leaving the agricultural sector systematically  and substantially undertaxed relative to other sectors\footnote{\citet[56]{Best1976}. \citet[81]{Bauer:2008kx} provides a very plausible explanation for why the agricultural sector was ``structurally'' protected against taxation. As he explains, ``[t]he availability of an easily accountable source of public revenue - bags of nitrate or bars of cooper - meant that any need for the Chilean government to intrude into the affairs of landowners was reduced [...] the state kept its political hands off the countryside until the overwhelming urban demands for more food and political support in the 1960s''. \citet[38]{Zeitlin:1984aa} also points out that ``public revenues came almost exclusively from taxes on mining and its exports''.}. Though eventually an agricultural income tax was imposed, it was weak and abolished after the civil war of 1891. This bias was consistent with any type of governmental interference. Historians explain that ``[i]n those areas where the government did interfere in the countryside, the effect was to strengthen the position of the landowning class''\footnote{\citet[118]{Bauer:2008kx}.}. For example, the few public infrastructure that existed was in favor of the agricultural sector. The state would either invest huge amounts of money or borrow resources to build infrastructure capable of mobilizing agricultural goods, starting with the gold rush in both California and Australia\footnote{\citet[]{Rippy:1971rz,Marichal:1989bh, Zeitlin:1984aa,Bauer:2008kx}.}. Presidents also engaged in the same biased practices. For example, ``the Montt regime did invest in the construction of Chile's railways but only in the Central Valley and south-central zones [b]ut there was no public investment [...] in railroads built in the Norte Chico mining provinces''\footnote{\citet[41]{Zeitlin:1984aa}.}. 
 
-% Agriculturalists were the monopolists
-Politically, agriculturalists monopolized the political realm. The historiography has contradictory references, however. Some say that they were obvious antagonists. Some have argued, for example, that the landed elite conformed very strong economic and political monopolies\footnote{
-	\citet[p. 15]{McBride:1971fv} argues that ``Chile's people live on the soil. Her life is agricultural to the core. \emph{Her government has always been of farm owners. Her Congress is made up chiefly of rich landlords}. Social life is dominated by families whose proudest possession is the ancestral estate''. Emphasis is mine.
-}. Others have claimed that this notion of antagonism is wrong\footnote{
-	See for example  \citet[p. 125]{Mamalakis:1976kx}.
-	}. The main argument against this vision is that there was a very blurry division between these ``two'' classes\footnote{
-	\citet[p. 30, 44, 94, 108]{Bauer:2008kx}.
-	}. For example, landowners were also invested in industry\footnote{
-	\citet[p. 23]{Coatsworth2002} argues that ``[t]he only landowners that mattered in 19th century Latin America politics were those for whom land represented but one asset in a much broader portfolio''. In the same line, \citet[180]{Bauer:2008kx} argues that  ``[m]iners and merchants bought haciendas but landowners in turn invested in banks, insurance companies, commercial firms and the incipient industrial sector''.
-	}. However, there are some stylized facts that strongly suggest that \emph{in general}, relative to other economic activities, agricultural elites were \emph{primus inter pares}. %To understand how concentrated the economy was, it is helpful to see the structure of loans and the stock market. Around 1865, Chilean landowners held 49\% of the shares of the joint-stock enterprises while Chilean merchants (which mostly exported agricultural goods) held only  16\% percent\footnote{\citet[p. 83]{Marichal:1989bh}. Foreign traders held the remaining 35 percent.}. 
-	First, some historiographic evidence suggests that the agricultural sector did  monopolize politics. \citet[p. 13]{Zeitlin:1984aa} argues that ``landowners controlled both the vote and the labor power of the agrarian tenants (\emph{inquilinos}) and dependent peasants (\emph{minifundistas}), and this was the \emph{sine qua non} of their continuing political hegemony''. In Congress, and the presidency itself, landowners were the single most important group\footnote{\citet[p. 45]{Bauer:2008kx}.}, leaving the modern sector heavily under-represented. As \citet[p. 1748]{Baland2008} argue, ``[c]ongressional representation was heavily weighted in favor of rural districts where the peasantry historically formed a pliable and controllable mass base for conservative and reactionary groups''. Second, and as a consequence, fiscal pressures in favor of agricultural taxes were minimal as opposed to mining taxes (the first alternative to agricultural production). As \citet[p. 56]{Best1976} explains, ``when all central government taxes are considered, agriculture is still substantially undertaxed relative to the other sectors''\footnote{
-	\citet[p. 81]{Bauer:2008kx} provides a very plausible explanation for why the agricultural sector was ``structurally'' protected against taxation. As he explains, ``[t]he availability of an easily accountable source of public revenue - bags of nitrate or bars of cooper - meant that any need for the Chilean government to intrude into the affairs of landowners was reduced [...] the state kept its political hands off the countryside until the overwhelming urban demands for more food and political support in the 1960s''.
-	}. Taxation was biased against non-agricultural production\footnote{
-	There was an agricultural income tax. However, it was weak and abolished after the civil war of 1891.
-	}. In fact, ``[i]n those areas where the government did interfere in the countryside, the effect was to strengthen the position of the landowning class''\footnote{\citet[p. 118]{Bauer:2008kx}.}. The secretary of the treasury Benavente, right after the independence in 1823, addressed a mostly agricultural congress to propose an income tax. The congress rejected his idea specially due to pressures of the landowning class\footnote{\citet[p. 306]{Sagredo1997}. It is important to stress that during this period, ``political parties'' did not follow very clear ideological divisions. Most of the secretaries/ministries were recruited due to their technocratic skills. Skilled individuals were so scarce that some of them would resign before even starting. See \citet[p. 293-294]{Sagredo1997} for an example.}. The few public infrastructure that existed, was in favor of agriculture too. The state would either invest huge amounts of money or borrow resources to build infrastructure capable to mobilize agricultural goods, starting with the gold rush in both California and Australia\footnote{\citet[]{Rippy:1971rz,Marichal:1989bh, Zeitlin:1984aa,Bauer:2008kx}.}. For instance, in Chile, a foreign investor ``was contracted to build a second state-sponsored railroad that would connect Santiago with the south-central agricultural districts''\footnote{\citet[p. 85]{Rippy:1971rz}.}. This was not an isolated issue, but a clear  pattern. Presidents also engaged in the same deliberated practices. For example, ``the Montt regime did invest in the construction of Chile's railways but only in the Central Valley and south-central zones [b]ut there was no public investment [...] in railroads built in the Norte Chico mining provinces, which in fact provided most of the state's tax revenues''\footnote{\citet[p. 41]{Zeitlin:1984aa}.}. 
+% The Industrial sector and its origins: mining 
+In contrast, the industrial sector started very small and critically its origins are much older than the ISI policies of the 1950s. ``The development of large-scale, mechanized (and even ``heavy'') industry can be dated back to the 1890s''\footnote{\citet[2]{Haber2005}. For example, \citet{Rippy1948} and \citet{Pfeiffer1952} explain how by the 1870's the carriage industry were put on a firm basis.}. For nearly 400 years, mining was the most important activity unrelated to agriculture. Minerals had to be processed near the areas where they were mined in order to keep transport costs to a minimum, leading to the construction of foundries and refineries, which became the cornerstones for the early industrialization processes\footnote{\citet[129]{Bertola2012}.}. Although mining was very important during the colonial period, ``Latin American's consumption of industrial metals continued to be very small until toward the end of the nineteenth century'', but also was very rudimentary showing little or no technological refinement\footnote{\citet[230]{Rippy:1971rz}.}. Most of the mineral-related industry (if not all) was foreign owned, with the exception of Chile\footnote{\citet[165, 176, footnote 5, 324]{Rueschemeyer:1992}.}. Mining elites made their fortunes during the 1840s-1850s during the mining boom. After the boom, the mining elite shifted their focus to what is considered the first ``true'' industrial work, which actually was born under agricultural auspices, i.e. the cotton mills\footnote{See \citet[231]{Rippy:1971rz} and \citet[271]{Bethell2008}. As \citet[271]{Bethell2008} argues, ``[t]he first power looms were brought [in Per\'u, Ecuador, and Venezuela] in the 1840s, 1850s; but in all three they were a failure, some of the early mills in Ecuador being destroyed by an earthquake. It was not until after 1890 that textile industries of these nations began to operate with reasonable success. Guatemala's first cotton mill was established in 1882, and between that date and 1910 a few mills appeared in Chile, Argentina, Uruguay, and Colombia'' (\citet[232]{Rippy:1971rz}).}. 
 
-% The Industrial sector and its origins
-The origins of the the industrial sector are much older than the ISI policies of the 1950s. ``The development of large-scale, mechanized (and even ``heavy'') industry can be dated from the 1890s in the region's larger economies''\footnote{\citet[p. 2]{Haber2005}.}. For almost 400 years, mining was the most important activity not related to agriculture. Although it was very important during the Colonial period, not only ``Latin American's consumption of industrial metals continued to be very small until toward the end of the nineteenth century'', but also it was very rudimentary showing little or no technological refinement\footnote{\citet[p. 230]{Rippy:1971rz}.}. Most mineral-related industry (if not all) was foreign owned, except for Chile\footnote{\citet[p. 165, 176, footnote 5, 324]{Rueschemeyer:1992}.}. Mining elites made their fortunes during the 1840s-1850s during the mining boom. After the boom, the mining elite shifted to the first ``true'' industrial work which actually was  born under agricultural auspices, i.e. the cotton mills\footnote{
-	See \citet[p. 231]{Rippy:1971rz} and \citet[p. 271]{Bethell2008}. As \citet[p. 271]{Bethell2008} argues, ``[t]he first power looms were brought [in Peru, Ecuador, and Venezuela] in the 1840s, 1850s; but in all three they were a failure, some of the early mills in Ecuador being destroyed by an earthquake. It was not until after 1890 that textile industries of these nations began to operate with reasonable success. Guatemala's first cotton mill was established in 1882, and between that date and 1910 a few mills appeared in Chile, Argentina, Uruguay, and Colombia'' (\citet[p. 232]{Rippy:1971rz}).
-	}. The first ``industries'' were called  \emph{obrajes}\footnote{I.e., Proto-industrial redoubts.}. Though servile and slave labor were used at the end of the colonial period, all labor was free and waged starting with the independence period. ``Large-scale \emph{obrajes} existed alongside smaller units of production - modest workshops and prosperous artisan-dominated enterprises -  in virtually all urban centres''\footnote{\citet[p. 271]{Bethell2008}. Emphasis in original.}. Beyond cotton and the textile industries, early industrialists also processed other agricultural goods\footnote{
-	For instance, they processed animal grease and tallow (for soap and candles), dried and cured meats, flour, bread, beer, wines, spirits - most of these were for domestic consumption (\citet[p. 272]{Bethell2008}). Other food industries, such as the production of chocolate, candies, biscuits, vegetable oils were also very important.
-	}.  Other industries for domestic consumption too developed around 1900\footnote{
-	Some examples are tobacco, pottery, felt hats, matches, footwear, specially in Argentina, Brazil, Chile, Uruguay and Per\'u (\citet[p. 235]{Rippy:1971rz}).
-	}. The industrial sector was boosted by the international scenario too. From an international trade perspective, \citet[p. 5]{Haber2005} argues that given a change in the  metallic standard, ``exchange rate depreciation resulted in the expansion of the tradables sectors at the expense of non-tradables''. Lower transportation costs and higher demand for processed grains in Europe also played a big role boosting early  industrial production. As \citet[p. 68]{Bauer:2008kx} argues, ``[b]ad harvests in Europe and disruptions caused by wars were other factors that enabled Chilean grain to be sold on European Markets''. Industrial work started very small\footnote{\citet[p. 68]{Marichal:1989bh}.}, progressing ``from the shop to the factory during the latter half of the nineteenth century''\footnote{\citet[p. 235]{Rippy:1971rz}.}. In Chile, almost all non-agricultural produce were personified by an incipient, yet strong group of individuals\footnote{As historian Francisco Encina described it, ``[i]t was precisely this segment of the dominant class that consummately personified the development of Chilean capitalism (mineowner and banker, railroad magnate and manufacturer, shipper and trader, \emph{hacendado} and miller were most frequently not only close associates, or drawn from the same family, but they were same individuals: Ossa, Edwards, Vicu\~{n}a Mackenna, Matta, Goyenechea, Cousi\~{n}o, Urmeneta, Gallo, Subercasaux)''.In \citet[p. 30]{Zeitlin:1984aa}. Emphasis in the original.}. From the process of going from mineowners to proto-industrialists, this incipient elite developed a strong sense of social \emph{class}. During the 1920s, industrialists started to ``form trade associations to engage in lobbying and propaganda as more coherent interest groups''\footnote{\citet[p. 107]{Weaver:1980vn}.}, such as the \emph{Sociedad de Fomento Fabril} (SOFOFA) founded in 1883 to represent the interests of the the industrial sector against the interests of the agricultural sector, represented by the \emph{Sociedad Nacional de Agricultura} (SNA), founded in 1838. 
+% The Industrial sector and its origins: obrajes
+The first (pseudo) ``industries'' were called  \emph{obrajes}\footnote{I.e., Proto-industrial redoubts.}. Though servile and slave labor were used at the end of the colonial period, all labor was free and waged starting in the independence period. ``Large-scale \emph{obrajes} existed alongside smaller units of production - modest workshops and prosperous artisan-dominated enterprises -  in virtually all urban centres''\footnote{\citet[271]{Bethell2008}. Emphasis in original.}. Beyond cotton and the textile industries, early industrialists also processed other agricultural goods\footnote{For instance, they processed animal grease and tallow (for soap and candles), dried and cured meats, flour, bread, beer, wines, spirits - most of these were for domestic consumption (\citet[272]{Bethell2008}). Other food industries, such as sugar (\citet[129]{Bertola2012}) to be used in the production of chocolate, candies, biscuits.  Vegetable oils were also very important. ``The flour mills were probably the first of the Chilean industrial plants to utilize steam power'' (\citet[300]{Rippy1948}).}. Other industries for domestic consumption also developed around 1900\footnote{Some examples are tobacco, pottery, felt hats, matches, footwear, specially in Argentina, Brazil, Chile, Uruguay and Per\'u (\citet[235]{Rippy:1971rz}).}. The industrial sector was boosted by the international arena as well. For example, ``[m]eat exports required the development of cold-storage technologies''\footnote{\citet[129]{Bertola2012}.}. From an international trade perspective, \citet[5]{Haber2005} argues that given a change in the  metallic standard, ``exchange rate depreciation resulted in the expansion of the tradables sectors at the expense of non-tradables''. Lower transportation costs and higher demand for processed grains in Europe also played a big role in boosting early industrial production. As \citet[68]{Bauer:2008kx} argues, ``[b]ad harvests in Europe and disruptions caused by wars were other factors that enabled Chilean grain to be sold on European Markets''. 
 
-% Inter-class inequality and inter-class conflicts
-\emph{Inter-elite economic equality paired with inter-elite political inequality propitiated an unstable equilibrium}. The fiscal structure was heavily biased against non-agricultural interests. As explained by others, ``public revenues came almost exclusively from taxes on mining and its exports''\footnote{\citet[p. 38]{Zeitlin:1984aa}.}. As explained before, political representation and fiscal policies were heavily biased against the modern sector. The monopoly of the political economy by agricultural incumbents led them to engage in several predatory practices. Having no initial challengers,  agricultural elites did not have a political counterpart. Agricultural incumbents, for example, engaged in several predatory practices, the first type being plain expropriation. As some historians have argued, governments before the 1920s  engaged in ``nationalization by means of naturalization, government intervention, and government participation''\footnote{\citet[p. 238]{Rippy:1971rz}.}. During the oligarchic republics, there was in fact the first ``\emph{wave} of expropriations''\footnote{See \citet[]{Chang2010}.}. Chile, Per\'u, Uruguay, among others, went to a clear process of nationalization of  the non-agricultural sector around the 1920s\footnote{\citet{Chua2010}.}. In Chile, these two sectors had enough antagonistic preferences that they confronted each other in two bloody civil wars\footnote{
-	\citet[p. 23]{Zeitlin:1984aa} argues that the civil wars confronted a ``large landed property [elite against a] productive capital [elite]''.
-	}. In Chile, industrial output compensated long-term loses associated to delayed liquidity via a tax system (as opposed to immediate liquidity but exhausting industrial resources in the long-term due to the non-transferability of technology and human capital between sectors), incumbents passed the tax law, and encouraged industrial production instead. On the one hand, industrialists are too weak (at that moment) to overthrown agricultural incumbents. Moreover, agriculturalists lack the skills to sustain and expand industrial production. Hence, was best response for the incumbents to not expropriate the modern sector but instead to tax it. Industrialists would rather pay those taxes than be expropriated. Moreover, given their relatively stronger bargaining position, they aimed to get access to the political system. Hence, industrial elites \emph{quasi-voluntary comply}\footnote{\citet{Levi:1989lq}.} keep paying taxes. Going from skilled bureaucracies able to monitor personal incomes to duopolistic/oligarchic congresses were needed. Oligarchic competition allowed keep each elite accoutable. Both elites \emph{quasi-voluntary complied} to make political institutions the ``only game in town''.
+% The Industrial sector and its origins: started very small // class (0)
+Proper industrial activities started very small too\footnote{\citet[68]{Marichal:1989bh,Rippy1948}.}, progressing ``from the shop to the factory during the latter half of the nineteenth century''\footnote{\citet[235]{Rippy:1971rz}.}. In Chile, almost all non-agricultural produce were personified by an incipient, yet a strong group of individuals. As historian Francisco Encina described it, ``[i]t was precisely this segment of the dominant class that consummately personified the development of Chilean capitalism (mineowner and banker, railroad magnate and manufacturer, shipper and trader, \emph{hacendado} and miller were [...] not only close associates, or drawn from the same family, but they were same individuals)''\footnote{ In \citet[30]{Zeitlin:1984aa}. He describes several last names which are still associated with the Chilean elite, such as Ossa, Edwards, Vicu\~{n}a Mackenna, Matta, Goyenechea, Cousi\~{n}o, Urmeneta, Gallo and Subercasaux. Emphasis in the original. Similarly, \citet[48]{Wright1975} supports the thesis that the nitrate development did lead to the development of an ``incipient industrial establishment''.}. Most critically, the early industrial class was greatly dominated by foreign investors\footnote{\citet[295]{Rippy1948}.}. \citet[139]{Pfeiffer1952} explains how Chile was one of the few Latin-American nations which managed to make substantial progress in the development of industries (other than those producing consumer goods) and how the most extensive industrial operations had been dominated by foreign firms.
+
+% The Industrial sector and its origins: started very small // class (1)
+From the process of going from mineowners to proto-industrialists, this incipient elite developed a strong sense of social \emph{class} that consistently sought political representation and influence. \citet[109]{Collier:2002db} explain that the \emph{Alianza Liberal} was ``the political expression of the new groups that began to emerge in the late 19th century with the expansion of the commerce and industry and the opening of the new mining areas [...] As these groups gained social and economic importance, they began to emerge as a political force''. In fact, during the 1920s, industrialists started to ``form trade associations to engage in lobbying and propaganda as more coherent interest groups,''\footnote{\citet[107]{Weaver:1980vn}.} such as the \emph{Sociedad de Fomento Fabril} (SOFOFA). The SOFOFA was founded in 1883 to represent the interests of the the industrial sector against the interests of the agricultural sector, represented by the \emph{Sociedad Nacional de Agricultura} (SNA), which was founded 45 years earlier in 1838. The society ``was the most powerful associational interest group in nineteenth-century Chile''\footnote{\citet[244]{Wright1973}.}, which was clearly self-conceived in class terms\footnote{\citet[51]{Wright1975}.}.
+
+% collapse of international markets, first expropriations.
+As the Chilean industrial sector developed, the tensions with agricultural incumbents increased. The first time the agriculture sector engaged in predatory practices was due to the fiscal deficit originated in the deceleration of trade taxes. The deficit put heavy fiscal pressures on rulers to draw on industrial output.  Agricultural exports in Chile, such as wheat production, had a boom between 1865-1875 until 1880\footnote{\citet[68-69-70]{Bauer:2008kx}. See also \citet[55]{Lederman2005}. Declining custom duties also happened in several other countries of Latin America. See \citet[245]{Bulmer-Thomas2003}.}. However, ``[t]he importance of trade taxes as sources of public revenues began a steady decline in 1918, which lasted until 1925. This downfall is explained by the fall of export revenues caused by the collapse in the prices of Chile's major exports during the war''\footnote{\citet[54-55]{Lederman2005}.}. Before the 1920s, both fiscal pressures and the lack of a political counterpart, made politically represented agricultural elites easier to hold several confiscatory policies. These policies had many ``faces''. As some historians have argued, incumbents engaged in ``nationalization by means of naturalization, government intervention, and government participation''\footnote{\citet[238]{Rippy:1971rz}.}. Chile, Per\'u, Uruguay, among others, went through a clear process of nationalization for non-agricultural assets around the 1920s\footnote{\citet{Chua2010}.}. For example, \citet[255, 342-343]{Bulmer-Thomas2003} explains that it was very common to nationalize non-agricultural assets such as transport companies, financial institutions, and mining industries.
 
 
+% Inter-class inequality and inter-class conflicts // Political bargains
+These two sectors had enough antagonistic preferences that they initially confronted each other in two bloody civil wars, however this strategy was not sustainable, consequently political compromises were made. \citet[23]{Zeitlin:1984aa} argues that the civil wars challenged a ``large landed property [elite against a] productive capital [elite]''. Clearly, fast industrialization brought an unstable combination: \emph{inter-sectoral balanced growth paired with inter-elite political inequality was not a sustainable equilibrium}. Being both elites about the same size, but only one of them with political representation, leaved the unrepresented group too exposed. Military confrontation occurred, but it was not sustainable in time. As both economic sectors could mobilize armies with relatively similar capabilities, war was more likely to exhaust both sides without producing any positive outcome for any sector. Consequently, Chilean agricultural and industrial elites opted for a political compromise instead. Three institutional components were incorporated: an income tax, political representation and protectionist policies for the industrial sector. In 1924 the income tax law was passed. As others have observed, ``[t]here was visible bargaining: [the non-agricultural sector] (reluctantly) accepted taxation, \emph{while demanding state services and expecting to influence how tax revenues were spent}''\footnote{Carmenza Gallo, in \citet[165]{Brautigam2008}. Emphases are mine. She refers specifically to nitrate producers.}. The SOFOFA pursued an agenda in favor of protective industrial tariffs\footnote{\citet[54]{Lederman2005} and \citet[18]{Haber2005}.}. In particular, ``by the early 1920s Chile's manufacturers were no longer just demanding (and obtaining) protective tariffs, they actively lobbied for government subsidies to establish a range of new industries''\footnote{\citet[18]{Haber2005}.}. Eventually, the Aguirre Cerda government in 1939 created the CORFO, an agency that ``undertook the responsibility for economic planning and direction by identifying certain industrial sectors to support through various sorts of credits, subsidies [and] government investments''\footnote{\citet[393]{Collier:2002db}.}. 
+
+% political concessions had the expected outcomes on the formation of fiscal capacities
+These political compromises within the elite triggered a series of other investments in state institutions. Because of these structural transformations, the early Chilean government ``was able to impose a substantial tax [...] and pay the salaries of government and military employees''\footnote{\citet[80]{Bauer:2008kx}. He refers particularly to taxes on ``nitrate exports''.}. Importantly, the income tax law was influential beyond Santiago, the capital city, but in the whole territory. \emph{Art. 104} and \emph{Art. 105}  of the income tax law\footnote{\emph{Decreto} number 1269.} empowered all municipalities in the collection of the tax. In fact, all municipalities had to send a detailed list of taxpayers twice a year, forcing the development of local bureaucracies able to count and classify population according to their incomes and sources of income. The income tax law actually specified different payments depending on whether earned income came from industrial or agricultural sources\footnote{As article 104\emph{th}. reads, ``Los municipios estar\'an obligados a enviar semestralmente a la Direccion de Impuestos Internos una copia autorizada del rol de patentes industriales, comerciales y profesionales''.}. Lastly, protectionist tariffs helped to develop an even stronger industrial sector, which in turn established the basis for the new middle class, the most important ingredient for the development of the modern bureaucracy. The aperture of the political system, while breaking the agricultural-led political monopoly, also helped the industrial class to gain influence in how the income tax was spent. Moreover, the incorporation of the modern sector into the political system played a fundamental role in furthering the industrialization process itself. That is, the industrialization process was also a \emph{political} process too. Critically, both elites channeled their sectoral demands through political institutions. As \citet[683]{Collier1977} points out, ``the real story of Chilean industrialization belongs to the Parliamentary period'', between 1891 and 1925, right after the civil war. This idea is also in line with \citet[36]{Kurtz:2013aa}, who explains that the incorporation of upper-class actors from all major factions into the national political system was crucial to enabling substantial taxation, public goods provision and essentially, state building.
+
+\section{Econometric Analyses\label{methods}}
+
+% if I receive criticism because of measurement error, \citet[]{Thies2005a} uses data on taxation and compare those data between cross sections. 
 
 
+% Operationalization
+This paper argues that the origins of fiscal capacities can be explained by the presence of an inter-sectoral compromise between the agricultural and industrial elites. These compromises were possible when the industrial sector was big enough to posit challenges to agricultural political incumbents. Sectoral competition is operationalized using sectoral industrial and agricultural growth rates of all Pacific coast countries for which we have available data, that is, Chile, Ecuador, Nicaragua, Venezuela, Per\'u, Colombia and Guatemala. In particular, the  \href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD} data are used\footnote{``These data build on the studies and statistical abstracts of the Economic Commission for Latin America, but also rely on Mitchell's International Historical Statistics, International Monetary Fund's International Financial Statistics, the World Bank's World Development Indicators and a variety of national sources''.}. The time span goes from 1900 to (potentially) 2010. According to \citet[790]{Astorga2005}, this dataset provides extended comparable sectoral value-added series in constant purchasing power parity prices. The outcome variable is when this panel of countries impose the income tax law. \autoref{fig:incometax} shows both sectoral outputs and the year when the income tax law was passed.
 
-{\color{red}Include in this paragraph below specific quotes from legislative discussion}
+%Observations are left-censored before the timespan and right-censored once they impose the tax income for the Cox models and when \emph{both} democracy and the income tax occur (for the ``multiple failure'' models\footnote{``Taxation-Democracy'', ``Democracy-Taxation'', ``Spatial Dependence'' and ``Modernization Theory'' models.}).
 
+% COX and GEE
+Following \citet{Aidt2009a}, we model the conditional hazard ratio that a country which has not yet adopted the income tax adopts it in a given year as a function of the relative size of the agricultural and industrial sectors. We compute these hazard ratios using several functional forms. First, we assume a Cox proportional hazard parametrization to compute the hazard rate of a country at a given year to ``fail'' (i.e., implement the income tax law) conditional on baseline covariates\footnote{\citet{Box-Steffensmeier2004}.}. Countries drop out of the sample when they adopt the income tax\footnote{That is why the time span goes from 1900 to \emph{potentially} 2010.}. We also assumed a generalized estimating equation (GEE) functional form. Generalized estimating equations were introduced by \citet{Liang1986} to fit clustered, repeated/correlated and panel data\footnote{\citet[322]{Zorn2006}.}. This method is especially well suited when the data are binary\footnote{\citet{Hanley2003a}.}. GEE methods require analysts to parameterize the working correlation matrix. Though \citet[ 139]{Hedeker2006} explain that ``the GEE is robust to misspecification of the correlation structure''\footnote{\citet[ 402]{Carlin2001}, argue that ``[r]elatively minor differences in estimates may arise depending on how the estimating equations are weighted, in particular within the generalized estimating equation (GEE) framework''. \citet{Westgate2016} and \citet[ 227]{Gardiner2009} make the same point.}, \citet[338]{Zorn2006} explains that whereas the choice of estimator makes little or no difference, the unit on which the data are grouped introduces a great deal of differences. Hence, following the advice of \citet[ 166]{Hardin2013}, who point out that when ``the observations are clustered (not collected over time) [...] the exchangeable correlation structure'' should be used, we assume an ``independence'' working covariance structure, that is, there are ``no within-unit correlation''\footnote{\citet[ 332]{Zorn2006}.}. From a substantive standpoint, GEE models provide an estimated marginal mean, that is, the \emph{weighted average} of  all cluster-specific effects (or conditional means). 
 
+% FIXED EFFECTS
+We also employ a conditional logit form (``fixed effects'' model). One important advantage of this strategy is to be able to account for country-specific effects. For example, fiscal capacities could be a function of prior state-building capacities\footnote{I thank Matthias vom Hau for this suggestion.}. A number of scholars rightly argue that post-colonial state capacities are in part a function of pre-colonial state-capacities\footnote{\citet[10]{Wimmer2015a}, \citet{Mahoney:2010aa} and \citet[1426]{Lange2006}.}. Fixed-effects should be able to account for this and other unobserved or/and hard-to-measure covariates, which if left unaccounted for would introduce omitted variable biases\footnote{\citet{Angrist:2008fk}.}. 
 
-
-
-
-% Political bargains were in the best interests of both sectors
-Political and economic concessions were in the best interests of the two elites. As others have observed, ``[t]here was visible bargaining: [the non-agricultural sector] (reluctantly) accepted taxation, while demanding state services and expecting to influence how tax revenues were spent''\footnote{
-	Carmenza Gallo, in \citet[p. 165]{Brautigam2008}. She refers specifically to nitrate producers. As I have explained above, miners and industrialists shared the same historical origins.
-}. The industrial sector heavily campaigned for policies favorable to them, particularly, economic protection. For example, the SOFOFA, as an organized lobbying group, pursued an agenda in favor of  protective industrial  tariffs\footnote{\citet[p. 54]{Lederman2005} and \citet[p. 18]{Haber2005}.}. Consistent with the economic literature on lobby\footnote{\citet{Grossman1994a}.}, ``protection pattern[s] [differ] between politically organized and non-organized sectors''\footnote{\citet[p. 1136]{Goldberg1999}.}. The SOFOFA was able to set the agenda regarding tariffs: ``by the early 1920s Chile's manufacturers were no longer just demanding (and obtaining) protective tariffs, they actively lobbied for government subsidies to establish a range of new industries''\footnote{\citet[p. 18]{Haber2005}.}. An intervening variable in this bargaining process was the fiscal deficit originated in the deceleration of trade taxes. Agricultural exports in Chile, such as wheat production, had a boom between 1865-1875 until 1880\footnote{\citet[p. 68-69-70]{Bauer:2008kx}. See also \citet[p. 55]{Lederman2005}.}. However, ``[t]he importance of trade taxes as sources of public revenues began a steady decline in 1918, which lasted until 1925. This downfall is explained by the fall of export revenues caused by the collapse in the prices of Chile's major exports during the war''\footnote{\citet[p. 54-55]{Lederman2005}.}. {\bf Besides the unstable equilibrium \emph{propitiated} by inter-elite economic equality \emph{paired} with inter-elite political inequality, plus the fiscal pressures, the process culminated with the income tax law of 1924}. After income taxes were imposed, ``the revenue motivation for imposing trade taxes declined''\footnote{\citet[p. 55]{Lederman2005}.}. 
-
-Economic and political concessions had the expected outcomes on the formation of fiscal capacities, and ultimately, on state capacities. New fiscal resources were targeted to improve key functions of the state, such as public administration and the army. As other have observed, Chile ``was able to impose a substantial tax [...] and pay the salaries of government and military employees''\footnote{\citet[p. 80]{Bauer:2008kx}. He refers particularly to ``nitrate exports'', another non-agricultural source of growth.
-}. Eventually, as the relative size of the industrial sector increased, industrial elites were able to gain ground in politics, managing to impose other important institutions such as the secret ballot. ``The introduction of the secret ballot had an immediate impact on the balance of political power in Chile [as] landowners could no longer effectively control the votes of rural labor''\footnote{\citet[p. 1749]{Baland2008}.}, largely benefiting urban interests. 
-
-% HERE
+% TIME DEPENDENCY
+In order to account for time dependency, we included different time-transformed variables, in the form of a lagged dependent variable to account for partial adjustment of behavior\footnote{\citet{Wawro2002}.} and also time-transformed functions\footnote{\citet{Carter2010}.} ``through the use of the natural log transformation [and] polynomials [to capture] different forms (or ``shapes'') of the baseline hazard''\footnote{\citet[75]{Box-Steffensmeier2004}.}.
 
 
-\section{Econometric Analysis\label{methods}}
+% AG // Tax-Dem AND Dem-Tax models
+Additionally, in order to test that income taxation initiated a \emph{path} of institutional investments, particularly opening the political system for oligarchic competition, Andersen-Gill (AG) models\footnote{\citet{Andersen1982}.}, a generalization of the Cox models\footnote{\citet[185]{Therneau2000}. \citet[2]{Box-Steffensmeier2014} explain that AG models are ``Cox model[s] with robust standard errors''.}, were incorporated. Using a slightly different data structure\footnote{This data structure is different in the sense that countries drop out of the sample once \emph{both} income taxation \emph{and} democracy occur.} and within a multiple failure-time framework, the \emph{jointly} occurrence of income taxation \emph{and} democracy was estimated. One drawback of AG models is that both events are assumed to be the same and independent\footnote{\citet[240]{Box-Steffensmeier2006a}.}. Though this paper proposed an endogenous relationship between both outcomes, here we adopt a strategy that tries to break this possible endogeneity ``problem''\footnote{I thank Christopher Zorn for this suggestion.}. We fit two Cox models, having taxation on the RHS and political competition on the LHS for the first model, and then we invert these two covariates for the second model. 
 
-This paper presents a macro-structural theory of the origins of fiscal capacities. The model which we have elaborated here proposes that inter-elite economic equality posits challenges to agricultural political incumbents. From both a theoretical and historical standpoints, income taxation plays a fundamental role in the development of other subsequent state capacities. Budget is \emph{the} primary state capacity that allows the introduction of other state capacities. We have also argued about inter-sectoral bargains, and how income taxation imposed on a promising strong industrial sector was exchanged for protectionists policies and political representation.
+% Spatial Dependence.
+Another model was included to account for spatial dependence\footnote{I thank both Christopher Zorn and David Darmofal for this suggestion.}. Given that the set of countries we are modeling are all contiguous neighbors, it is reasonable to expect a ``domino'' effect. Theoretically, being the first country to implement the income tax cannot have the same effect than being the last one. There are clearly diminishing returns which should be accounted for. First-implementers have no prior experience and hence, it should be harder for them to pass the law in the first place. Similarly, it should be easier for last-implementers. To account for spatial dependence, a cumulative count of countries which have implemented the law at time $t$ was included\footnote{Given the small number of events (no event, democracy or taxation, and taxation and democracy) and the small panel (just seven countries, where some of them experience taxation/democratization rather early, shortening the panel length), the variable could not be introduced on the RHS due to a perfect classification problem. Rather than that, we opted for clustering the results at the counting variable level. The intuition is that countries are exposed to a cluster number that increases with time.}.
 
-This section empirically tests these relationships. Following \citet{Aidt2009a}, we model the conditional probability that a country which has not yet adopted the income tax adopts it in a given year as a function of the relative sizes of the agricultural and industrial sectors, plus a control variable. We compute these probabilities using several functional forms. First, we assume a Cox Proportional Hazard parametrization to compute the hazard rate of a  country at a given year to ``fail'' (i.e., implement the income tax law) conditional on baseline covariates\footnote{\citet{Box-Steffensmeier2004}.}. Countries drop out of the sample when they adopt the income tax. Second, we assume a generalized estimating equation (GEE) functional form  which are usually used to analyze longitudinal and other correlated data especially when they are binary\footnote{\citet{Hanley2003}.}. Similarly, this model estimates the conditional probability of implementing the income tax conditional on a set of covariates. Finally, we assume a conditional logit form (``fixed effects'' model) to control for country-specific effects. In order to correct time dependency, we included different time-transformed variables, in the form of a lagged dependent variable to accounts for partial adjustment of behavior over time\footnote{\citet{Wawro2002}.} and also using time-transformed functions. Panel-corrected standard errors\footnote{I.e., ``robust variance''.} were also included. Additionally, in order to test that income taxation initiated a path of institutional investments, particularly the incorporation of a oligarchic  system, we incorporated a generalization of the Cox models, and estimated an Andersen-Gill model\footnote{\citet[185-]{Therneau2000}.}. Using a slightly different data structure, we estimate the jointly occurrence of income taxation \emph{and} democracy, within a multiple failure-time framework\footnote{This data structure is different in the sense that countries drop out of the sample once \emph{both} income taxation and democracy occur.}. All these models strongly suggest that faster industrial output is strongly correlated to the imposition of the income tax law, but also to the jointly realization of the income tax and democracy.
+% Modernization theory
+Finally, to rule out modernization-like theory outcomes, a last model including annual per capita GDP was included. Modernization theory argues that higher levels of education, income and urbanization make democratization more likely. Annual per capita GDP is a good proxy of aggregate well-being.
 
-\subsection{Data and Sample\label{data}}
+% All models are good.
+All these models strongly suggest that larger industrial sectoral outputs accelerate the passage of the income tax law and the implementation of the first democratic waves.
 
-We estimate all models using the \href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD} dataset\footnote{``These data build on the studies and statistical abstracts of the Economic Commission for Latin America, but also rely on Mitchell's International Historical Statistics, International Monetary Fund's International Financial Statistics, the World Bank's World Development Indicators and a variety of national sources''.}. Our sample is given by all Pacific coast countries for which we have available data, that is, Chile, Ecuador, Nicaragua, Venezuela, Peru, Colombia and Guatemala (see \autoref{fig:incometax}). The time span goes from 1900 to (potentially) 2010. Observations are left-censored before the timespan, and right-censored after the timespan. However, as stated before, countries dropout of the sample once they impose the tax income for the Cox models, and when both democracy and the income tax happen (for the Andersen-Gill model). Both phenomenon are depicted in \autoref{fig:incometax}.
 
 \subsection{Results}
 
-<<results:1, echo=FALSE, comment=NA, warning=FALSE, message=F,results='asis', cache=T>>=
-# Start Fresh
-cat("\014")
-rm(list=ls())
-setwd("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption")
 
-# Load Datasets
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/incometax_data.RData") # Load data
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # Cox
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/L_cox.RData") # Lagged Data for Cox
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/logitgee.RData") # Logit GEE
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/ag_data.RData") # For Multiple Non Competing Hazard Ratios
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/l_clogit.RData") # Lagged CONSTANT AGR MANUFACT for clogit  (fixed effects)
+<<texreg-extractor-geeglm, echo=FALSE, comment=NA, warning=FALSE, message=F,results='hide', cache=FALSE>>=
 
-# Loading/Installing Library
-# install.packages("survival") 
-library(survival) # Cox Models
-
-# DO NOT TOUCH
-# Model with time-transformed variables
-cox1.tt = coxph(Surv(year, incometax.s) ~ tt(constmanufact) + tt(constagricult) + cluster(country), 
-                data=cox, x=T
-)
-
-# DO NOT TOUCH
-# WORKING MODEL
-cox2 = coxph(Surv(year, incometax.s) ~ log(constmanufact) + log(constagricult) + log(totpop) + cluster(country), 
-             data=cox
-)
-
-# DO NOT TOUCH
-# LAGGED MODEL
-cox.L = coxph(Surv(year, incometax.s) ~ log(constmanufact.L) + log(constagricult.L) + log(totpop) + cluster(country), 
-              data=L.cox)
-
-
-library(geepack) # install.packages("geepack")
-## logit GEE
-logitgee.1 = geeglm(incometax.d ~ log(constmanufact) + log(constagricult) + log(totpop), 
-                   family = binomial, 
-                   id = country, 
-                   corstr = "exchangeable",
-                   data = logitgee)
-
-## ---- texreg-extractor-geeglm ----
-extract.geepack <- function(model) {
-        s <- summary(model)
-        names <- rownames(s$coef)
-        co <- s$coef[, 1]
-        se <- s$coef[, 2]
-        pval <- s$coef[, 4]
-        
-        n <- nrow(model.frame(model))
-        nclust <- length(s$geese$clusz)
-        
-        gof = c(n, nclust)
-        gof.names = c("Num. obs.", "Num. clust.")
-        
-        tr <- createTexreg(
-                coef.names = names,
-                coef = co,
-                se = se,
-                pvalues = pval,
-                gof.names = gof.names,
-                gof = gof,
-                gof.decimal = rep(FALSE, length(gof))
-        )
-        return(tr)
-}
-
-logitgee.1.d = extract.geepack(logitgee.1)
-
-# DONT TOUCH
-# Recurrent Events: Income Tax AND Democracy
-# WORKING MODEL
-cox2.ag = coxph(Surv(year, dem.tax) ~ log(constmanufact) + log(constagricult) + log(urbpop) + cluster(country), 
-                data=ag.data
-)
-
-
-# DO NOT TOUCH
-# WORKING MODEL for clogit
-clogit.1 = clogit(incometax.d ~  log(constmanufact) + log(constagricult) +strata(country), method= "efron", data = data)
-
-
-
-#### table
-library(texreg) # install.packages("texreg")
-texreg(
-        list(cox1.tt, cox2, cox.L, clogit.1, cox2.ag, logitgee.1.d),
-        caption = "Structural Origins of Income Taxation",
-        custom.coef.names = c(
-                "Manufacture Output$_{tt}$",
-                "Agricultural Output$_{tt}$",
-                "Manufacture Output  (ln)",
-                "Agricultural Output (ln)",
-                "Total Population  (ln)",
-                "Manufacture Output$_{t-1}$  (ln)",
-                "Agricultural Output$_{t-1}$  (ln)",
-                "Urban Population  (ln)",
-                "(intercept)"
-                ),
-        custom.model.names = c(
-                "Cox-PH",
-                "Cox-PH",
-                "Cox-PH: Lagged",
-                "Conditional Logit",
-                "Cox-PH: Andersen-Gill",
-                "Logit GEE"),
-        label = "results:1",
-        custom.note = "%stars. Robust Standard Errors in All Models",
-        fontsize = "scriptsize",
-        float.pos = "h"
-        )
 @
 
 
+<<results:1, echo=FALSE, comment=NA, warning=FALSE, message=F, results='asis', cache=FALSE>>=
 
-% comments on the Results Table
-\autoref{results:1} shows six models\footnote{All tables were produced using the  \texttt{texreg}  package (\citet[]{Leifeld:2013qy}). All Cox models were computed using \texttt{survival R}  package (\citet{Therneau:2015zr}). The  GEE logistic regression was computed using the \texttt{geepack} package (\citet[]{Hojsgaard:2016}). This paper was written in \LaTeX \; using the dynamic report \texttt{R} package \texttt{knitr} (\citet[]{Xie:2016hl}), for fully replicable research.}. The first three are Cox models, under different time-transformations. The fourth model is a conditional logistic regression (``fixed effects'' model). The fifth model is an Andersen-Gill model which predicts the jointly realization of both the income tax and democratization. Finally, the sixth model shows a GEE logistic regression model. All these results strongly suggest that higher levels of industrial output are associated to the imposition of the income tax\footnote{``Because the coefficients are parameterized in terms of the hazard rate, a positive coefficient indicates that the hazard is increasing as a function of the covariate (and hence, the survival time is decreasing) and a negative sign indicates the hazard is decreasing as a function of the covariate'' (\citet[p. 50]{Box-Steffensmeier2004}).}. In substantive terms, as the size of the politically excluded sector catches up with the size of the agricultural incumbents, the political monopoly of the latter is broken, giving way to a series of political and economic bargains. Here we have theorized (and demonstrated in our \hyperref[unpacking]{historical} case study) that in exchange for the income tax, industrial tariffs were implemented along with more open conditions for inter-elite political competition. Some times, we control for different measures of population density. Population has been associated to the probability in which elites expanded the franchise. Denser populations also expand the tax base. The scarcity of people meant that local and state governments were extremely concerned with attracting migrants. Because population inflows would lower the cost of labor, and boost land values and tax revenues, these societies were induced to adopt institutions attractive to immigrants. Among these, were cheap land and political participation\footnote{\citet[p. 892-893]{Engerman2005}.}.
-
-
-{\color{red}PUT HERE A MORE SUBSTINATIVE PREDICTION USE survfit() FUNCTION}
-
-
-
-<<simulation, echo=FALSE, comment=NA, warning=FALSE, message=F,results='asis', cache=T>>=
-# devtools::install_github('christophergandrud/simPH')
-library(simPH)
-
-# I use this one for simulation (since it seems that the sim function doesn't take well natural logs)
-cox3 = coxph(Surv(year, incometax.s) ~ constmanufact + constagricult + totpop + cluster(country), 
-             data=cox
-)
-
-set.seed(602)
-sim3.m <- coxsimLinear(cox3, 
-                       b = "constmanufact", 
-                       qi = "Relative Hazard",
-                       nsim = 2000,
-                       spin = T,
-                       Xj = seq(min(cox$constmanufact), max(cox$constmanufact), by=250)
-)
-
-set.seed(602)
-sim3.a <- coxsimLinear(cox3, 
-                       b = "constagricult", 
-                       qi = "Relative Hazard",
-                       nsim = 2000,
-                       spin = T,
-                       Xj = seq(min(cox$constagricult), max(cox$constagricult), by=150)
-)
-
-
-# It says "All Xl set to 0" b/c it sets the reference category to 0.
-# Hazard ratios are COMPARISONS, so the coefficients mean the effects of the Betas, relative to 0.
-@
-<<simulation:1, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='Relative Hazards of Implementing The Income Tax: Industrial Output', fig.align='center', fig.width=4, fig.height=3,dpi=300,cache = TRUE>>=
-# Plot
-## IMPORTANT! A relative hazard for a unit at zero is always one, as it is a ratio of the hazards with itself. Gandrud2015 p. 10
-simGG(sim3.m, xlab = "Industrial Output")
 @
 
-<<simulation:2, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='Relative Hazards of Implementing The Income Tax: Agricultural Output', fig.align='center', fig.width=4, fig.height=3,dpi=300,cache = TRUE>>=
-# Plot
-## IMPORTANT! A relative hazard for a unit at zero is always one, as it is a ratio of the hazards with itself. Gandrud2015 p. 10
-simGG(sim3.a, xlab = "Agricultural Output")
+% present the models
+\autoref{results:1} shows six models\footnote{All tables were produced using the  \texttt{texreg} package (\citet[]{Leifeld:2013qr}). All Cox models were computed using the \texttt{survival R}  package (\citet{Therneau:2015zr}). The  GEE logistic regression was computed using the \texttt{geepack} package (\citet[]{Hojsgaard:2016}). This paper was written in \LaTeX \; using the dynamic report \texttt{R} package \texttt{knitr} (\citet[]{Xie:2016hl}), for fully replicable research.}. The first three are Cox models, under different time-transformations (splines, logged and log-lagged). The fourth model is a conditional logistic regression (``fixed effects'' model). The fifth model is an Andersen-Gill model which predicts the jointly realization of both the income tax and democratization. The sixth model shows a GEE logistic regression model. The seventh and eight models show results for standard Cox models, where the outcome (whether taxation or democracy) is switched. The ninth model controls for spatial dependence while the tenth model controls for a per capita GDP. For the Cox, Andersen-Gill models, taxation-democracy, democracy-taxation, spatial dependence and modernization theory models, the coefficients are expressed in hazard ratios. That means that ``a positive coefficient indicates that the hazard is increasing as a function of the covariate (and hence, the survival time is decreasing)''\footnote{\citet[50]{Box-Steffensmeier2004}.}. In this application, the hazard is either implementing the income tax law or switching to a democratic state, or both (depending on the model). For the conditional logit and GEE models, the coefficients are in logit scales.
+
+% discuss the results
+These results strongly suggest that as the industrial sector developed, it challenged the agricultural political monopolists, making the passage of the income tax more likely. Once unobserved sources of heterogeneity are accounted for (in the ``fixed effects'' model), past stateness levels do not alter the mechanisms presented in this paper. The AG model suggests that once we assume taxation and early oligarchic electoral competition are the same process, the sizes, signs and statistical significances do not change either. However, once we assume them to be different and try to break the endogeneity ``problem'', we see that oligarchic competition ``causes''\footnote{We use the term loosely, without claiming any causal inference.} income taxation, but not the other way around (model 7 and model 8, respectively). Once we cluster by early and late-implementers, results remain substantively identical. Finally, once per capita GDP is included, the model crashes, neither this measure of well-being nor more industrialization levels predict oligarchic competition/democracy nor fiscal development. The GEE model includes a measurement of population density. Population has been associated with the probability in which elites expanded the franchise. Denser populations also expand the tax base. The scarcity of people meant that local and state governments were extremely concerned with attracting migrants. Because population inflows would lower the cost of labor, and boost land values and tax revenues, these societies were induced to adopt institutions attractive to immigrants. Among these, were cheap land and political participation\footnote{\citet[892-893]{Engerman2005}.}.
+
+
+<<simulation, echo=FALSE, comment=NA, warning=FALSE, message=F,results='asis', cache=FALSE>>=
+
 @
 
 
-% comments on the simulation
-Following \citet{Gandrud2015} and \citet{King2000}, \autoref{fig:simulation:1} and \autoref{fig:simulation:2} show 2,000 simulations from a variant of the main model (model 2 in \autoref{results:1}, from where both sectors are included in the same equation) and show their individual predictions in two separate plots\footnote{
-	The \texttt{simPH} package does not handle natural logs well. Hence, we estimated an alternative model that considers the same sample and specification than the main model (model 2), but without taking the natural log on the variables considered. In the appendix section, \autoref{results:2} shows the results. The numbers differ from the main results in \autoref{results:1} because the scales are different, local currencies vs. the natural log of local currencies.
-	}. These plots strongly suggest that higher industrial output substantively boosted the introduction of the income tax, while higher agricultural output systematically the diminished the probability of the introduction of the income tax. Altogether these results strongly argue in favor of the theory presented here, namely, income taxation was possible once the status quo which was favorable to the agricultural sector was  broken in order to give way to a path of institutional investments.
+<<simulation:plots, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='First Differences of Industrial Output, Agricultural Output and Democratic Experience ', fig.align='center', fig.width=7, fig.height=3,dpi=300,cache = FALSE>>=
+
+@
 
 
+% substantiative interpretation // comments on the simulation
+Following \citet{Gandrud2015} and \citet{King2000}, \autoref{fig:simulation:plots} shows in three panels, different variable of interests simulated 2,000 times. Using a variant of model 2 in \autoref{results:1}\footnote{The \texttt{simPH} package does not handle natural logs well. The only difference was the inclusion of the unlogged variable. It is important to stress that \emph{both} sectors were included in the model, and hence, one sector acts as the control variable of the other sector. In the appendix section, \autoref{altmodel} shows the results of the model employed to generate the 2,000 simulations. The numbers differ from the main results in \autoref{results:1} because the scales are different.}, panel {\bf a} and {\bf b} simulate the average effect of industrial and agricultural outputs on the hazard of passing the income tax law. Using the estimations of the seventh model in \autoref{results:1}, panel {\bf c} simulates the effect of the cumulative democratic experience on the passage of the income tax law. These plots strongly suggest that higher industrial output substantively boosted the hazards of introducing the income tax, while higher agricultural output did not play a role in the modernization of the fiscal system. We argued in favor of an endogenous process between oligarchic electoral competition and the development of a fiscal system. However, model 7 in \autoref{results:1} suggests that once we include oligarchic electoral competition on the right-hand-side, we find statistically significant results. Panel {\bf c} in \autoref{fig:simulation:plots} simulates those effects. However, income tax adoption does not fit oligarchic electoral competition (model 8). We leave this question open for future research.
 
-\section{Discussion\label{discussion}}
 
-{\color{red}{PENDING}}
+\section{Discussion: Slow Industrial Growth and Lack of Contestation\label{discussion}}
+
+
+The paper argued that in order to understand state capacities, it is necessary to understand the origins of the main ``state-builder'' institution, i.e. income taxation. Direct taxation, and especially, income taxation (being a much more complicated tax to collect), requires the development of better bureaucracies, a fundamental part of the modern state. Its introduction was not important because of the new resources the treasury acquired, but because it triggered a series of inter-elite compromises and other institutional investments too. Our theory claims that the countries that made the big jump sustained fast industrial growth rates. These rates challenged the traditional sector, forcing them to make political concessions with the modern sector. One of the most important ones was the aperture of the closed post-colonial political system, granting access to industrial organized groups. Specifically, the industrial class accepted to be income taxed in exchange for the ability to participate in politics. In terms of economic compromises, the industrial elite managed to articulate its demands as a coherent class, including in the bargain industrial tariffs to protect their sector. In this sense, the analytical device that allowed the rupture of the old political monopoly was similar sectoral output levels between elites. It is inter-elite \emph{equality} that causes state formation and cooperation, not inter-elite inequality as other scholars have claimed\footnote{\citet[73]{Boix:2015aa} argues that states only exist to counteract a potential situation of conflict between agents with \emph{different} economic interests and military capacities.}. A situation of balanced growth potentially allowed each sector to acquire the same level of military power, deterring sustained conflict and  forcing both political and economic compromises. Importantly, it is in this way that industrialization is important (as a contestation device), not in the way modernization theorists have argued.
+
 
 
 \newpage
 
-\section{Appendix}
+\section{Appendix\label{appendix}}
 
-\subsection{Additional Graphical Representations}
-
-\autoref{fig:simpleplots} shows two simple plots of the conditional hazard rates. These two pieces of information strongly suggest conditional on both covariates, industrial output increases the probability of imposing an income tax law.
-
-<<simpleplots, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='Graphical Plots of the Estimates', fig.align='center', fig.width=4, fig.height=6,dpi=300,cache = TRUE>>=
-par(mfrow=c(2,1)) 
-termplot(cox2, term=1, se=TRUE)
-termplot(cox2, term=2, se=TRUE)
-@
-
-\subsection{Testing Proportionality Assumption}
-
-Cox \emph{proportional} rest on the assumption that hazard rates are proportional to time dynamics\footnote{\citet{Box-Steffensmeier2004}.}. Non-proportional hazard model are becoming an increasing problem across all subfields in political science\footnote{\citet{Licht2011}.}. In this section, we test whether this assumption holds. Non-significant p-values indicate that the proportionality assumption holds. Also, \autoref{fig:coxassump} shows how the spline fitted lines (i.e., the regression coefficients of the main model) are almost constant across time, confirming that the hazard rates are, in fact, \emph{proportional}.
-
-<<coxassump, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='Graphical Plots of the Estimates against Time', fig.align='center', fig.width=5, fig.height=6,dpi=300,cache = TRUE>>=
-test.assumption = cox.zph(cox2, transform = 'log')
-print(test.assumption)
-par(mfrow=c(3,1)) 
-plot(test.assumption[1]) # covariate 1
-plot(test.assumption[2]) # covariate 2
-plot(test.assumption[3]) # covariate 3
-@
 
 \subsection{Model used for Simulation Plot}
 
-\autoref{results:2} shows the estimates used to compute the 2,000 simulations in the \autoref{fig:simulation:1} and \autoref{fig:simulation:2} figures.
+\autoref{altmodel} shows the estimates used to compute the 2,000 simulations in the \autoref{fig:simulation:plots} (panels {\bf a} and {\bf b}).
 
-<<altmodel, echo=FALSE, comment=NA, warning=FALSE, message=F,results='asis', cache=T>>=
-library(texreg) # install.packages("texreg")
-texreg(cox3,
-        caption = "Structural Origins of Income Taxation: Model Used to Compute Simulations",
-        custom.coef.names = c(
-                "Manufacture Output",
-                "Agricultural Output",
-                "Total Population"),
-        custom.model.names = "Cox-PH",
-        label = "results:2",
-        custom.note = "%stars. Robust Standard Errors in All Models",
-        fontsize = "scriptsize",
-        float.pos = "h"
-        )
+<<altmodel, echo=FALSE, comment=NA, warning=FALSE, message=F,results='asis', cache=FALSE>>=
+
 @
+
+
+\subsection{Robustness Checks}
+
+Cox \emph{proportional} models rest on the assumption that hazard rates are \emph{proportional} to time dynamics\footnote{\citet{Box-Steffensmeier2004}.}. Non-proportional hazard model are becoming an increasing problem across all subfields in political science\footnote{\citet{Licht2011}.}. In this section, we test whether this assumption holds. Non-significant p-values indicate that the proportionality assumption holds. Also, \autoref{fig:coxassump} shows how the spline fitted lines are constant across time. Each of the seven dots represents the regression coefficients of our seven countries\footnote{This is for our main model, column 2 in \autoref{results:1}.}. All in all, steady splines confirm that the hazard rates are, in fact, \emph{proportional}.
+
+
+<<coxassump, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='Plots of the Coefficient Estimates against Time', fig.align='center', fig.width=4, fig.height=2,dpi=300,cache = FALSE>>=
+
+@
+
 
 
 \newpage
@@ -830,7 +489,106 @@ texreg(cox3,
 \end{document}
 
 
-% Make sure to include
-higher idnustrial growth suggests a situation with a stronger bargaining position of the industrial sector when facing powerful agricultural elites
+ Bob: 
+ 
+  - I'd also like to see a bit more flesh on the bones when you talk about fiscal capacity -- perhaps in the Chilean case, if not more generally.  Presumably, you mean not only an income tax, but also an expansion of the bureaucracy that is supposed to monitor and collect it.    
+  - Did they reform the Finance Ministry, for example, or add to the tax agency budget? 
+
+  - you should lay out more clearly the interests of both the commercial/manufacturing sector and the dominant landowning class.  You do this, but it is presented in a scattered way, with almost all of the initial emphasis on the calculus of the landowners.  I think it will read much more clearly if you present this in a more symmetrical fashion. More generally, it is difficult to follow the logical flow and sequence of your theoretical presentation.
+
+  - There are also some issues with the causal flow of the story.  You say that the passing of the income tax creates an incentive for increasing administrative capacity, but then later you say that manufacturers accept a tax because of quasi-voluntary compliance (ie. that the state can credibly commit to collect the tax fairly from others.  So, are the tax and administrative reforms concurrent -- or does one follow or precede the other?  You need to clarify your assumptions here.
+
+  - Relatedly, I am confused by your observation that mercantilism and protectionism also requires state capacity -- just the wrong kind?  Somehow, you need to clarify what you are getting at here.
+
+  -  The challenge they pose for you is that they situate the "critical juncture" in their stories at the end of the colonial period before the class compromises that you identify, and (in Kurtz's case) during the incorporation of the middle-sector (after the class compromises you describe).  So, you need to figure out what to say about this.  One possibility is to argue that critical juncture/path dependence approaches are inadequate unless they also capture important causal influences(ie., class compromises)  that occur subsequent to the critical juncture and alter or sustain the path. In this respect, your claims about the role of class compromise might be presented as a an important complement to their approaches.  Or, you might either use the Chilean case or try to build in controls in your statistical analysis to show that the Kurtz/Soiffer emphasis on early post-colonial critical junctures do not fully explain the trajectories of state development.  In any case, you need to confront these theories in a more systematic and coherent way.
 
 
+ Me: 
+
+  - Put more meat/meaning to the Cox prediction/simulation plot. For ex., how much longer does it take for a country with ``low'' industrial development? Make sure I put concrete numbers in the Discussion section. CALCULATE THE FISCAL DEVELOOPMENT DELAY
+  - Include DISTANCE measurement instead of separate covariates per each sector.
+  - (from Steave Levitsky's talk @ LASA 2016) Lack of state capacities UNDERMINES democracy: Channels are that democracy (1) reduce inequality, reduce gov't performance (NOT NECCESARILY I THINK), less programmatic parties.
+  - SUBNATIONAL: (from Raul Madrid and Juan Pablo's talk): idea that there are ``parallel universes''/``out-of-sync'' clusters of underdevelopment. MExico has more state capacities than before, but more disappearances too. MADRID: State capacities for WHOM. Also, DEMOCRACY is NECC but NOF SUFF for STATE CAPACITIES.
+  - From Jose Pablo Silva: (1) the state was competing for the “monopoly” of the capable/educated people (i.e. bureaucrats). I’ve read somewhere that the early Chilean state had a really hard time finding capable people, usually from the business sector, to be part of the gabinetes presidenciales. They would usually resign before accept the position. (2)  guys that were checking whether bureaucrats were actually working might work as a proxy for the impact of income tax on the formation of state, particularly, on the reformation of bureaucracies. (3) ``Intimate Ironies: Modernity and the Making of Middle-Class Lives in Brazil'' book, check for the case where Chilean/Brazilian bureaucrats checked other bureaucrats.
+  - Factor Analyses / PCA to measure the two dimensionality of the congress in terms of industyr and agriculture.
+
+  - CHECK: 
+  	- MANUSEVICH, I. (1925), “Historia de los Impuestos Fiscales en Chile”, Memoria de Prueba (1925)
+  	- MARTNER, D. Estudio de Política Comercial Chilena (1923),
+  	- Henry W. Kirsch: Industrial Development in a Traditional Society: The Conflict of Entrepreneurship and Modernization in Chile (Latin American Monographs ; 2d Ser)
+
+
+Matthias vom Hau:
+
+  - My paper is ``against'' factor endowments.
+  - where does industrialization come from: is it endogenous to prior state capacities? 
+      ---- Include Lange2006 1426 (16) variable on prior levels of pre-colonial development. It has 3 categories. Put it as factor as control variable.
+  
+  - Check on Andreas Wimmer: he controls for ``prior'' state capacities. DOI: 10.1177/0010414015592645
+    ------  see above comment
+    ------ CONSIDER HERE RATHER THAN USING THIS VARIABLE OF PRIOR STATE CAPACITIES, I CAN USE FIXED EFFECTS AND CLAIM THAT I AM CONTROLLING FOR PRIOR STATE CAPACITIES AND OTHER UNOBSERVED FACTORS.
+
+  - What's the distinction between POLITICAL and ECONOMIC power?: Be more explicit regarding this. 
+  - Engage with this literature that says that POWERFUL ELITES cause STATE CAPACITIES.
+  - 
+
+
+Include Soifer2013a in the democracy/redistribution/tax capacity section: Makes an important point to the distribution and regime type literature. Argument is that distribution requires state capacities. 
+``the relationship between inequality and democracy is conditional on the strength of the state: where the state is strong, inequality shapes the emergence and stability of democratic and authoritarian regimes in ways consonant with our theories. But where the state is weak, inequality has no effect on regime type. This shows that in weak state contexts, the origins of democ- racy and dictatorship are not fundamentally economic''
+
+
+include \citet[57]{Kurtz:2013aa}, and how he contests the notion that regime type and state-building processes run through different channels. He criticizes, for ex., the measurement of state capacity using ``property rights protection''.
+
+% on the importance of taxation as "the" way to measure state capacities. 
+\citet[60-61]{Kurtz:2013aa}: ``the best measures would be [one] that all (or nearly all) states consider to be of primary importance = for these can be assumed to be pursued vigorously across contexts, and variations in success will depend principally on variation in the effectiveness of institutions, not on opportunity costs or political will'' I both agree and disagree with this definition. (1) I agree in that taxation is the best measurement of state capacities. However, one caveat applies (and this is how my theory/measurement is better) - not ALL taxes play a generative role - income taxation does. FInally, (3) I disagree in that income taxation is product of an ``opportunity cost'' and it is derived of ``political will'' - income taxation is a political product that gets sticked through institutional path dependency.
+
+
+% say that I am in line with Kurtz:2013aa in that 
+in order strong states to exist, some necessary conditions should meet. ``First, there must be a compelling collective elite interest in strengthening the central state, and second, doing so must be reasonably understood as nonthreatening to the fundamental material interests of nearly all politically relevant fragments of the upper class. If, by contrast, the central state is seen as the tool of one particular faction [...] then efforts at political centralization will likely detonate [social unrest] '' (\citet[86-87]{Kurtz:2013aa}). HOWEVER SPECIFY IN WHICH WAY MY THEORY IS SLIGHTLY DIFFERENT (DONT FORGET TO TALK ABOUT THE ISSUE OF ``CONFLICT/DISBALANCE OF POWER'' AS A WAY TO PROIDUCE STATE BUILDING.)
+
+
+% Hence we focus our theory of the origins of fiscal capacities after the colonial period\footnote{\citet[43]{Kurtz:2013aa} considers this period of time the ``first critical juncture''.}.
+
+% These \emph{indirect} sources of revenue do not lead to the development of strong fiscal capacities since the state needs little organizational and political effort to collect those taxes. \emph{Direct} taxation, however, does generate domestic incentives to make institutional investments, such as professional bureaucracies. %Without a strong bureaucracy able to collect and administer tax money is very difficult to conceive any theory of the state. That is why taxation and bureaucratization are correlated. Since direct taxation was product of an inter-elite political bargain, it also played a formative role in that it seeded the basis for a competitive oligarchic political system. 
+
+% faced higher costs of imposing an income tax system and opening up the political system to other economic elites. Low 
+
+% rapid and sustained industrial growth constituted more of a ``secure promise'' of growth for the future. 
+
+%Definition of democracy: \citet[27]{Lipset:1981uq}: ``Democracy in a complex society may be defined as a political system which supplies regular constitutional opportunities for changing the governing officials, and a social mechanism which permits the largest possible part of the population to influence major decisions by choosing among contenders for political office''.
+
+
+
+%- INCLUDE Przeworski1997: “Modernization consists of a gradual differentiation and specialization of social structures that culminates in a separation of political structures from other structures and make democracy pos- sible”
+
+%- O’Donnell [1973] critics that “bureaucratic-authoritarian governments”8 appear when the country experiences economic devel- opment.
+
+
+%- According to modernization theory, there is a threshold (per capita income of 6k, Przeworski and Limongi [1997, 159]). Lipset [1959, 75] proposed the already classic hypothesis that high levels of economic development are associated with stable democracies (“the more well-to-do a nation, the great the chances that it will sustain democracy”). Basically, the mechanism is that higher levels of industrialization, will cause more levels of urbanization, education, which in turns lead to higher levels of democracy. In reverse, Lipset [1994, 1] argues that “new democracies have low levels of legitimacy [in consequence,] [t]o attain legitimacy, what new democracies need above all is efficacy, particularly in the economic arena, but also in the polity. If they can take the high road to economic development, they can keep their political houses in order”.
+
+%- Boix et al. [2012, 1545] find that “a standard set of economic modernization variables sharply declined in their predictive accuracy since the early 20th century, falling to the point that fixed geographic variables are now better predictors of democracy”.
+
+%- Przeworski and Limongi [1997, 177] Supports agency theory, like in O’Donnell and Schmitter [1986], “The emergence of democracy is not a by- product of economic development. Democracy is or is not established by political actors pursuing their goals, and it can be initiated at any level of development. Only once it is established do economic constrains play a role: the chances for the survival of democracy are greater when the country is richer”. 
+
+%- Przeworski et al. [2000, 137] argues that “wealthy countries tend to be democratic not because democracies emerge as a consequence of economic development under dictatorships but because, however they emerge, democracies are much more likely to survive in affluent societies [in consequence, there is no] thresholds of development that would make the emergence of democracy predictable”
+
+%- VER PAGINA 55 DE ODONELL 1973
+
+%- \citet[33]{Lipset:1981uq}: ``the average wealth, degree of industrialization and urbanization, and level of education is much higher for the more democratic countries''.
+
+%- However Kaufman and others (see Collier [1979]) found little support for O’Donnell [1973]′s hypotheses (distilled from Mahoney and Rueschemeyer [2003]).
+
+% tax evasion
+% \citet[158]{Tani1966}: "How the degree of compliance changes in the same country when the conditions change can be seen by the example of Chile where evasion had been very until 1964; also nobody had ever gone to jail for tax evasion [and about 3.5\%] paid in the income tax in 1964". However, this author says that countries " do not need to tax everybody. A concentration on the top 5 or 10 per cent of the income receivers would go a long way in bringing in a share of personal income high enough to be almost in line with the share of personal income which is taxed in the U.S. and in the other industrial countries" (161).
+
+%Now, if the growth rate is too slow, as it is the case in the weak state cases,  discount rates simply outweigh the benefits of the little resources obtained when taxing industrialists. 
+
+%\citet[311]{Bulmer-Thomas2003}: ``The expropriation, with or without compensation, of nonland assets provided an alternative, if even more radical, route to changing the distribution of income. Although nationalizations have not been uncommon in Latin America, they have mainly affected foreign companies''
+
+% In fact, after income taxes were imposed, ``the revenue motivation for imposing trade taxes declined''\footnote{\citet[55]{Lederman2005}.}. 
+
+
+%  \citet[55]{Best1976}, argues that ``the sectoral origin of income is an important determinant of tax potential [...] the agricultural sectors in Central America preclude[d] effective income taxation''
+
+% AG:
+%- DO NOT use Andersen-Gill: events are assumed to be INDEPENDENT. I argue the exact opposite: TAXATION and DemOCRACY are linked/correlated. See slides DAY 6 Zorn and ``Elapsed'' / ``Gap'' time models. (Events have different baseline hazards). Consider ``Marginal (WLW)'' model: you're at risk for semi simultaneous time - events start to pop up, they happen sequentially, but the risk happens more or simultaneously (i think this is the ``best'' model -- cancer example.
