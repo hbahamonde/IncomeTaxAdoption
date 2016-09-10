@@ -20,7 +20,6 @@
 *.fls
 *.RData
 *.Rhistory
-*.pdf
 *.tex
 *.rdb
 *.rdx
@@ -36,8 +35,46 @@ back_up
 report
 cache
 figure
+
+.Rhistory
+
+*.rdx
+
+*.rdb
+
+*.rdx
+
+*.tex
+
+cache/__packages
+
+*.md
+
+Bahamonde_IncomeTaxAdoption.tex
+
+*.rdb
+
+
+*.md
+
+*.rdx
+
+*.tex
+
+cache/__packages
+
 Presentation
 
+<<<<<<< HEAD
 resources/Ethnographic Atlas Crosstabulations.webloc
 
 resources/r - ggplot2- plotting non-contiguous time durations as a bar chart - Stack Overflow.webloc
+=======
+*.gz(busy)
+
+*.snm
+
+*.webloc
+
+resources/DTO-122.pdf
+>>>>>>> origin/master
