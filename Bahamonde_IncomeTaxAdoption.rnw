@@ -191,7 +191,7 @@ There is a very strong consensus on the positive role of fiscal capacities on st
 
 {\bf\vspace{10mm}\hspace{50mm} 11,161 words, total} \\
 
-\hspace*{1.3cm}{\bf Please consider downloading the last version of the paper} \href{https://github.com/hbahamonde/IncomeTaxAdoption/raw/Summer_2016/Bahamonde_IncomeTaxAdoption.pdf}{\texttt{here}.}
+\hspace*{1.3cm}{\bf Please consider downloading the last version of the paper} \href{https://github.com/hbahamonde/IncomeTaxAdoption/raw/Summer_2016/Bahamonde_IncomeTaxAdoption.pdf}{here.}
 
 
 
