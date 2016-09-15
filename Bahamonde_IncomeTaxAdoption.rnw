@@ -189,7 +189,7 @@ There is a very strong consensus on the positive role fiscal capacities play on 
 
 \end{abstract}
 
-{\bf\vspace{10mm}\hspace{50mm} 11,161 words, total} \\
+{\bf\vspace{10mm}\hspace{50mm} 11,339 words, total} \\
 
 \hspace*{1.3cm}{\bf Please consider downloading the last version of the paper} \href{https://github.com/hbahamonde/IncomeTaxAdoption/raw/master/Bahamonde_IncomeTaxAdoption.pdf}{here}.
 
