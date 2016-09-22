@@ -314,7 +314,7 @@ Though inter-elite conflicts can be expressed politically and militarily, inter-
 
 
 % Explain both strategies
-The historical evidence suggests that decelerated international markets put heavy fiscal pressures on Latin American agricultural elites to sustain the economy. Building on the idea of the ``stationary bandit''\footnote{\citet[]{Olson:2000aa}.} I argue that the agricultural political incumbents faced this economic downturn either by \emph{taxing} or \emph{expropriating} the industrial sector. Each strategy represented a best response depending on the rate of industrial growth in a country. Crucially, industrial elites accepted to taxation \emph{in exchange for tariffs oriented to protect the industrial sector}, producing a general economic boost which helped these countries navigate the economic crisis. 
+The historical evidence suggests that decelerated international markets put heavy fiscal pressures on Latin American agricultural elites to sustain the economy. As \citet[148]{Gallo:1991kx} explains, ``the economic crisis of the 1930s forced forced most Latin American states to shift their sources of revenue from export-based to domestic economic activities''. Building on the idea of the ``stationary bandit''\footnote{\citet[]{Olson:2000aa}.} I argue that the agricultural political incumbents faced this economic downturn either by \emph{taxing} or \emph{expropriating} the industrial sector. Each strategy represented a best response depending on the rate of industrial growth in a country. Crucially, industrial elites accepted to taxation \emph{in exchange for tariffs oriented to protect the industrial sector}, producing a general economic boost which helped these countries navigate the economic crisis. 
  
 
 % Expropriation
