@@ -189,7 +189,7 @@ There is a very strong consensus on the positive role fiscal capacities play on 
 
 \end{abstract}
 
-{\bf\vspace{10mm}\hspace{50mm} 10,990 words, total} \\
+{\bf\vspace{10mm}\hspace{50mm} 11,020 words, total} \\
 
 \hspace*{1.3cm}{\bf Please consider downloading the last version of the paper} \href{https://github.com/hbahamonde/IncomeTaxAdoption/raw/master/Bahamonde_IncomeTaxAdoption.pdf}{here}.
 
@@ -312,7 +312,7 @@ The historical evidence suggests that decelerated international markets put heav
  
 
 % Expropriation
-\emph{Expropriation} was the best response when the rate of industrial growth was slow. When industries grew slowly, the long-term benefits of having a secured, \emph{but excessively small}, source of tax revenue \emph{did not} offset the benefits associated with having \emph{immediate} monetary resources that came with expropriation. Expropriation brought immediate liquidity (fast access to money) in the short run, but it exhausted the industrial output in the long run. That is, when industrial growth was slow, immediate liquidity became more attractive, even when these resources got exhausted in the long run. Moreover, since human capital and the technology necessary to administer an industry were non-transferable to the agricultural elite,\footnote{For example, machines used to make glass can't be used to grow potatoes.} simply expelling the industrial elites and taking over the industries was not an efficient strategy, as it endangered industrial output in the long run. In other words, since landowners did not know how to run industries, they were better off  appropriating the surplus rather than taking over the industries. This is a stylized theory. In reality, elites tended to engage not only in expropriation but also in nationalization and forced loaning. 
+\emph{Expropriation} was the best response when the rate of industrial growth was slow. When industries grew slowly, the long-term benefits of having a secured, \emph{but excessively small}, source of tax revenue \emph{did not} offset the benefits associated with having \emph{immediate} monetary resources that came with expropriation. Expropriation brought immediate liquidity (fast access to money) in the short run, but it exhausted the industrial output in the long run. That is, when industrial growth was slow, immediate liquidity became more attractive, even when these resources got exhausted in the long run. Moreover, since industrial human capital and agricultural human capital are not equivalent,\footnote{For example, \emph{knowledge} to produce machines used to make glass can't be used to develop new agricultural \emph{techniques} to grow potatoes.} simply expelling the industrial elites and taking over the industries was not an efficient strategy, as it endangered industrial output in the long run. In other words, since landowners did not know how to run industries, they were better off  appropriating the surplus rather than taking over the industries\footnote{Presumably, there could be in the \emph{long run} technology diffusion between the two elites. I assume this strategy to be costly relative to expropriation in the \emph{short run}.}. This is a stylized theory. In reality, elites tended to engage not only in expropriation but also in nationalization and forced loaning. 
 
 % Taxation
 \emph{Taxation} was the best response when the rate of industrial growth was fast. 
