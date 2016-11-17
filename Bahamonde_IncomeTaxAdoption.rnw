@@ -49,7 +49,7 @@
 \pagestyle{fancy} % All pages have headers and footers
 \fancyhead{} % Blank out the default header
 \fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Job Market Paper} % Custom header text
+\fancyhead[C]{Job Market Paper $\bullet$ Status of the Paper: Under Review} % Custom header text
 \fancyfoot[RO,LE]{\thepage} % Custom footer text
 
 %----------------------------------------------------------------------------------------
