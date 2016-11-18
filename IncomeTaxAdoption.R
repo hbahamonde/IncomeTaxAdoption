@@ -82,6 +82,9 @@ data$spatial.cum = spatial.cum
 ## Saving Data
 save(data, file = "/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/incometax_data.RData") # in paper's folder
 
+## save data in STATA format for Paper 2, where I use STATA
+library(foreign)
+write.dta(data, "/Users/hectorbahamonde/RU/Dissertation/Papers/NegativeLink/data.dta")
 
 ##################################################
 ##              DATA PREP
