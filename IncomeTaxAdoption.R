@@ -682,18 +682,15 @@ ggsurv(survfit(surv.object~Contestation, cox, conf.type="none")) +
         theme_bw() + 
         xlab("Year") +
         guides(fill = guide_legend(title = "LEFT")) + 
-        theme(
-                axis.text.y = element_text(size=9), 
-                axis.text.x = element_text(size=9), 
-                axis.title.y = element_text(size=9), 
-                axis.title.x = element_text(size=9), 
-                legend.text=element_text(size=9), 
-                legend.title=element_text(size=9),
-                legend.position = "bottom",
-                legend.key = element_rect(colour = NA, fill = NA, size = 0.5),
-                panel.margin = unit(0, "lines"),
-                axis.title.x = element_text(colour = "black")
-                )
+        theme(axis.text.y = element_text(size=9), 
+              axis.text.x = element_text(size=9), 
+              axis.title.y = element_text(size=9), 
+              axis.title.x = element_text(size=9), 
+              legend.text=element_text(size=9),
+              legend.title=element_text(size=9),
+              legend.position = "bottom",
+              legend.key = element_rect(colour = NA, fill = NA, size = 0.5)
+              )
 ## ----
 
 

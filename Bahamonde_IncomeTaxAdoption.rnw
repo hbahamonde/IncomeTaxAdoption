@@ -49,7 +49,7 @@
 \pagestyle{fancy} % All pages have headers and footers
 \fancyhead{} % Blank out the default header
 \fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Job Market Paper $\bullet$ Status of the Paper: Under Review} % Custom header text
+\fancyhead[C]{Job Market Paper} % Custom header text
 \fancyfoot[RO,LE]{\thepage} % Custom footer text
 
 %----------------------------------------------------------------------------------------
@@ -213,6 +213,7 @@ There is a very strong consensus on the positive role fiscal capacities play on 
 
 <<echo=FALSE, cache= F>>=
 knitr::read_chunk('/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/IncomeTaxAdoption.R')
+
 @
 
 
@@ -341,13 +342,12 @@ The political compromise led also to an \emph{economic} compromise, introducing 
 
 
 % bureaucratic
-The second state institution was the the development of a modern bureaucratic body. Bureaucratic capacities emerged from a structural transformation that encompassed  economic, political and social changes. As argued before, inter-sectoral economic contestation led to political agreements, such as the political incorporation of industrial elites. Once the industrial elites were incorporated, they managed to secure protectionist tariffs that helped the industrial sector to develop. In turn, further industrial development gave rise to a middle class composed of urban professionals, state employees, artisans and craftsmen.\footnote{\citet[185]{Rueschemeyer:1992}.} This critical mass of skilled individuals became the first modern bureaucrats.\footnote{\citet[20]{Keller1931}.} The positive relationship between regime type and human capital accumulation has been studied before.\footnote{\citet[842]{Brown2004}.} \citet[394]{Collier:2002db} in their landmark work on the origins of the Latin American party system suggest that ``the middle classes did well under [the competitive oligarchies regimes]. The size of the middle class expanded significantly not only as a result of economic growth in general, but also as a result of growing public employment as the state expanded.''\footnote{\citet[12]{Geddes:1996fr} explains that government officials are self-interested individuals, and hence ``their responses differ.'' However, we assume that the political interests of bureaucrats, presidents and congresses, are in line with their respective sectoral interests. Thus, we consider that ``the state'' is itself an actor.}Consequently, the formation of the middle-class is endogenous to the expansion of the state itself.
+The second state institution was the the development of a modern bureaucratic body. Bureaucratic capacities emerged from a structural transformation that encompassed  economic, political and social changes. As argued before, inter-sectoral economic contestation led to political agreements, such as the political incorporation of industrial elites. Once the industrial elites were incorporated, they managed to secure protectionist tariffs that helped the industrial sector to develop. In turn, further industrial development gave rise to a middle class composed of urban professionals, state employees, artisans and craftsmen.\footnote{\citet[185]{Rueschemeyer:1992}.} This critical mass of skilled individuals became the first modern bureaucrats.\footnote{\citet[20]{Keller1931}.} The positive relationship between regime type and human capital accumulation has been studied before.\footnote{\citet[842]{Brown2004}.} \citet[394]{Collier:2002db} in their landmark work on the origins of the Latin American party system suggest that ``the middle classes did well under [the competitive oligarchies regimes]. The size of the middle class expanded significantly not only as a result of economic growth in general, but also as a result of growing public employment as the state expanded.''\footnote{\citet[12]{Geddes:1996fr} explains that government officials are self-interested individuals, and hence ``their responses differ.'' However, we assume that the political interests of bureaucrats, presidents and congresses, are in line with their respective sectoral interests. Thus, we consider that ``the state'' is itself an actor.} Consequently, the formation of the middle-class is endogenous to the expansion of the state itself.
 
 
-<<survival:plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Kaplan-Meier Curves: Size of the Industrial Sector and the Accelerated Rate of the Imposition of  Income Tax Law', fig.align='center', fig.width=4, fig.height=3,dpi=300,cache = FALSE>>=
+<<survival:plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Kaplan-Meier Curves: Size of the Industrial Sector and the Accelerated Rate of the Imposition of Income Tax Law', fig.align='center', fig.width=4, fig.height=3,dpi=300,cache = FALSE>>=
 
 @
-
 
 % ruling out (1) spurious duration dependence between IND and TAXATION and (2) modernization theory
 Finally, it is important to rule out the possibility that income taxation and elite contestation are not linked through a spurious, time-dependent relationship. That is, we need to be sure that the occurrence of the outcome of interest (taxation) is not directly related to time itself, but rather to the degree in which a contested agricultural sector (this argument's key independent variable) \emph{accelerates} the imposition of the income tax law. Simply put, the theory has to pass the test that income taxation is not something that, as time went on, it would have happened anyway. Within the framework of survival analyses, \autoref{fig:survival:plot} shows the failure rate of the average country in the sample of implementing an income tax if the size of the industrial sector had increased by half.\footnote{``Failure'' in this case means ``implementing'' the income tax law.} When inter-elite contestation is high, countries pass the income tax law sooner than when inter-elite contestation is low. This figure strongly suggests that institutional investments are a function of inter-elite competition rather than time itself. It is also important to rule out the possibility that both outcomes (inter-elite contestation and fiscal capacities) are not a function of economic development, which is what modernization theorists argue about.\footnote{\citet[31]{Lipset:1981uq} for example argues that democracy is ``related to the state of the economy. The more well-to-do a nation, the greater the chances it will sustain democracy.''} As I explain in \autoref{methods}, economic well-being indicators do \emph{not} predict fiscal capacities or inter-elite political contestation. Next section illustrates in more detail the causal path of my argument. 
@@ -508,8 +508,8 @@ Cox \emph{proportional} models rest on the assumption that hazard rates are \emp
   - Factor Analyses / PCA to measure the two dimensionality of the congress in terms of industyr and agriculture.
 
   - CHECK: 
-  	- MANUSEVICH, I. (1925), “Historia de los Impuestos Fiscales en Chile”, Memoria de Prueba (1925)
-  	- MARTNER, D. Estudio de Política Comercial Chilena (1923),
+    - MANUSEVICH, I. (1925), “Historia de los Impuestos Fiscales en Chile”, Memoria de Prueba (1925)
+    - MARTNER, D. Estudio de Política Comercial Chilena (1923),
 
 
 
