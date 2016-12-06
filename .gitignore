@@ -24,8 +24,7 @@
 *.rdb
 *.rdx
 *.md
-LICENSE
-README
+
 
 # don't ignore the .gitignore file
 !.gitignore
@@ -35,6 +34,9 @@ back_up
 report
 cache
 figure
+cache/__packages
+Comments
+Presentation
 
 .Rhistory
 
@@ -61,10 +63,6 @@ Bahamonde_IncomeTaxAdoption.tex
 
 *.tex
 
-cache/__packages
-
-Presentation
-
 resources/Ethnographic Atlas Crosstabulations.webloc
 
 *.gz(busy)
@@ -72,5 +70,3 @@ resources/Ethnographic Atlas Crosstabulations.webloc
 *.snm
 
 *.webloc
-
-Comments
