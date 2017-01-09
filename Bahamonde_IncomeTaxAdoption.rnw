@@ -189,7 +189,6 @@ There is a very strong consensus on the positive role fiscal capacities play on 
 
 \end{abstract}
 
-{\bf\vspace{10mm}\hspace{50mm} $~$ 11,092 words, total} \\
 
 \hspace*{1.3cm}{\bf Please consider downloading the last version of the paper} \href{https://github.com/hbahamonde/IncomeTaxAdoption/raw/master/Bahamonde_IncomeTaxAdoption.pdf}{here}.
 
@@ -298,11 +297,11 @@ For example, early Nicaragua developed in a non-democratic context, just like ev
 There are many factors that explain industrial development in Latin America. Among them, tariffs oriented to protect the \emph{agricultural} market \emph{unintentionally} helped protect the industrial sector. Since the first industries processed raw agricultural materials, better conditions for the landowners helped the industrialists to make their way into the economy. Favorable international markets also boosted the demand for rudimentary processed raw products. I provide further details in my \hyperref[unpacking]{case study}. \autoref{fig:incometax} shows output differentials (in logarithmic scales) from 1900 to 2010, for a sample of Latin American countries.\footnote{I use the \emph{Montevideo-Oxford Latin American Economic History Data Base}  (\href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD}), specifically the \emph{agriculture value-added} and \emph{manufacturing value-added} variables. The former measures ``the output of the sector net of intermediate inputs and includes the cultivation of crops, livestock production, hunting, forestry and fishing.'' The later  ``[r]eports the output of the sector net of intermediate inputs.'' Both of them are expressed in local currency at 1970 constant prices. Finally, ``the depreciation of reproducible assets or depletion/degradation of natural resources were not deducted.'' Details about this dataset are presented in the data \hyperref[data]{section}. The plot also shows a vertical line which indicates when the income tax law was passed (author's data based on several reports and official information). I elaborate on the income tax law in the next \hyperref[tax:expr:ind]{section}.} Contrary to \citet[241]{Bulmer-Thomas2003}, I do \emph{not} find that ``[e]verywhere [...]  industrial growth exceeded agricultural growth.'' The extent to which the agricultural sector was contested is proxied by these sectoral outputs. Economic contestation implied both political and military contestation. Superior economic conditions can relatively easily be translated into better military capacities, which makes it easier for the advantaged group to impose its political agenda in a monopolistic way.\footnote{\citet{Boix:2015aa}.} The literature is consistent in agreeing that more political contestation leads to better conditions of state-building. For example, \citet[481]{Kurtz2009} argues that where ``no faction can easily become permanently dominant,'' state capacities should be stronger. Similarly, \citet{Geddes1991} argues that competition between two rival parties of about the same size creates clearer incentives to invest in political institutions. \citet[40]{Cardenas2010}, in his formal and empirical models, also finds that the ``concentration of political and economic power reduces the incentives to invest in state capacity.''\footnote{However, he models inequality between \emph{elites} and \emph{citizens}. I expand on this idea by modeling the period \emph{before} full democratization existed and also by modeling inter-elite conflicts.} 
 
 
-
-<<incometax, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Industrial and Agricultural Outputs, and The Passage of the Income Tax Law ', fig.align='center', fig.width=13, fig.height=12,dpi=300,cache = FALSE>>=
+\afterpage{
+<<incometax, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Industrial and Agricultural Outputs, and The Passage of the Income Tax Law', fig.align='center', fig.width=13, fig.height=12,dpi=300,cache = FALSE>>=
 
 @
-
+}
 
 % (3) agricultural incumbents taxed or expropriated industrial output // logic behind each strategy
 \subsection{Taxation and Expropriation\label{tax:expr:ind}}
@@ -327,10 +326,11 @@ Imposing a tax allowed agricultural incumbents to ``rob'' industrial output smal
 % Taxation Levels and State Capacities
 Income taxation was a state-building institution because it triggered the implementation of other state institutions. This paper identifies two such critical institutions, political competition within the elite and bureaucratic consolidation. Both were product of an inter-elite bargaining.\footnote{Though the public economics literature focuses predominantly on tax revenues, higher revenues do not mean higher stateness levels. For example, since American institutions were deliberately designed to limit the exercise of state power, the U.S. taxes very little (\citet[6]{Fukuyama:2004nr}). However, it is not reasonable to say that the U.S. has a ``weak state." Here the focus is on the \emph{politics} of taxation (see for an example \citet[]{Focanti2013}).} The tipping point that gave way to these inter-sectoral agreements was the unstable situation that was produced when there existed inter-elite political \emph{in}equality and economic \emph{equality}. That is, when both the industrial and agricultural sectors were about the same size (and hence, had the same military capabilities), but when only the latter had access to political power, i.e. \emph{state} power. Under these circumstances, neither sector had incentives to stay in its respective \emph{status quo}: the industrial class did not want to be taxed without receiving something in return, while the agricultural sector did not want to let pass a chance to capture industrial resources which would allow it to navigate the economic downturn in better conditions. Given the relative similar economic sizes and military capabilities, inter-sectoral war was not an optimal solution, motivating instead a political agreement.
 
-
 <<democracy:plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Historic Regime Type', fig.align='center', fig.width=13, fig.height=5,dpi=300,cache = FALSE>>=
 
 @
+
+
 
 % political competition
 The first state institution was a system that allowed the two elites to compete in politics. Specifically, industrial elites accepted having their incomes taxed in exchange for being allowed to participate in politics. This gave way to early 20\emph{th} century oligarchic party systems, the first manifestation of modern electoral political competition. Furthermore, industrial elites were interested in maintaining an active political presence since the promise of the agricultural elites to keep income tax rates constant was not credible. This channel specifically links regime type with state development. The relationship between strong and democratic states has been studied before. For example, \citet[9]{Rueschemeyer:1992} argue that ``[c]onsolidation of state power was an essential \emph{prerequisite} for democratization.''\footnote{Emphasis is mine. See also \citet{Levi:1989lq}, \citet{North:1990vl} and \citet{Acemoglu:2014fj}. However, see \citet{Mares2016} who argue that in Imperial Germany, the early income tax was not a democratic achievement.} Others have argued the reverse. \citet{Slater2008} argues that electoral competition, in the presence of mass participation, causes territorial extension of state institutions via citizen registration and via bottom-up pressures for public goods provision. My theory, however, relaxes the causal direction of this mechanism by proposing an \emph{endogenous} mechanism between inter-elite contestation and political development. And while there have been important recent contributions on these two,\footnote{See for example  \citet[Ch. 9]{Acemoglu:1996rm}, \citet[]{Ansell:2014ty} and \citet{Boix:2015aa}.} this paper specifically approaches the state-building question, incorporating regime type in the explanation. This is consistent with the work of several political economists. For example, \citet[8]{DiJohn2006} points out that in less developed countries, countries with relatively historically high tax collection are characterized by strong political party systems. In particular, here it is argued that the introduction of the income tax (\autoref{fig:incometax}) and the first democratic waves (\autoref{fig:democracy:plot})\footnote{Data from \citet[]{Boix2012}.} were part of the same process of inter-elite conflicts and, eventually, inter-elite compromises. 
@@ -344,11 +344,12 @@ The political compromise led also to an \emph{economic} compromise, introducing 
 % bureaucratic
 The second state institution was the the development of a modern bureaucratic body. Bureaucratic capacities emerged from a structural transformation that encompassed  economic, political and social changes. As argued before, inter-sectoral economic contestation led to political agreements, such as the political incorporation of industrial elites. Once the industrial elites were incorporated, they managed to secure protectionist tariffs that helped the industrial sector to develop. In turn, further industrial development gave rise to a middle class composed of urban professionals, state employees, artisans and craftsmen.\footnote{\citet[185]{Rueschemeyer:1992}.} This critical mass of skilled individuals became the first modern bureaucrats.\footnote{\citet[20]{Keller1931}.} The positive relationship between regime type and human capital accumulation has been studied before.\footnote{\citet[842]{Brown2004}.} \citet[394]{Collier:2002db} in their landmark work on the origins of the Latin American party system suggest that ``the middle classes did well under [the competitive oligarchies regimes]. The size of the middle class expanded significantly not only as a result of economic growth in general, but also as a result of growing public employment as the state expanded.''\footnote{\citet[12]{Geddes:1996fr} explains that government officials are self-interested individuals, and hence ``their responses differ.'' However, we assume that the political interests of bureaucrats, presidents and congresses, are in line with their respective sectoral interests. Thus, we consider that ``the state'' is itself an actor.} Consequently, the formation of the middle-class is endogenous to the expansion of the state itself.
 
+\afterpage{
 
 <<survival:plot, echo = FALSE, fig.pos='h', warning = FALSE, message = F, fig.cap='Kaplan-Meier Curves: Size of the Industrial Sector and the Accelerated Rate of the Imposition of Income Tax Law', fig.align='center', fig.width=4, fig.height=3,dpi=300,cache = FALSE>>=
 
 @
-
+}
 
 % ruling out (1) spurious duration dependence between IND and TAXATION and (2) modernization theory
 Finally, it is important to rule out the possibility that income taxation and elite contestation are not linked through a spurious, time-dependent relationship. That is, we need to be sure that the occurrence of the outcome of interest (taxation) is not directly related to time itself, but rather to the degree in which a contested agricultural sector (this argument's key independent variable) \emph{accelerates} the imposition of the income tax law. Simply put, the theory has to pass the test that income taxation is not something that, as time went on, it would have happened anyway. Within the framework of survival analyses, \autoref{fig:survival:plot} shows the failure rate of the average country in the sample of implementing an income tax if the size of the industrial sector had increased by half.\footnote{``Failure'' in this case means ``implementing'' the income tax law.} When inter-elite contestation is high, countries pass the income tax law sooner than when inter-elite contestation is low. This figure strongly suggests that institutional investments are a function of inter-elite competition rather than time itself. It is also important to rule out the possibility that both outcomes (inter-elite contestation and fiscal capacities) are not a function of economic development, which is what modernization theorists argue about.\footnote{\citet[31]{Lipset:1981uq} for example argues that democracy is ``related to the state of the economy. The more well-to-do a nation, the greater the chances it will sustain democracy.''} As I explain in \autoref{methods}, economic well-being indicators do \emph{not} predict fiscal capacities or inter-elite political contestation. Next section illustrates in more detail the causal path of my argument. 
@@ -420,10 +421,12 @@ All these models strongly suggest that larger industrial sectoral outputs accele
 
 @
 
+\afterpage{
 
 <<results:1, echo=FALSE, comment=NA, warning=FALSE, message=F, results='asis', cache=FALSE>>=
 
 @
+}
 
 % present the models
 \autoref{results:1} shows ten models.\footnote{All tables were produced using the  \texttt{texreg} package (\citet[]{Leifeld:2013qr}). All Cox models were computed using the \texttt{survival R}  package (\citet{Therneau:2015zr}). The  GEE logistic regression was computed using the \texttt{geepack} package (\citet[]{Hojsgaard:2016}). This paper was written in \LaTeX \; using the dynamic report \texttt{R} package \texttt{knitr} (\citet[]{Xie:2016hl}), for fully replicable research.} The first three are Cox models, under different time-transformations (splines, logged and log-lagged). The fourth model is a conditional logistic regression (``fixed effects'' model). The fifth model is an Andersen-Gill model which predicts the joint realization of both the income tax and democratization. The sixth model shows a GEE logistic regression model. The seventh and eighth models show the results for standard Cox models, where the outcome (whether taxation or democracy) is switched. The ninth model controls for spatial dependence while the tenth model controls for per capita GDP. For the Cox, Andersen-Gill, taxation-democracy, democracy-taxation, spatial dependence and modernization theory models, the coefficients are expressed in hazard ratios. That means that ``a positive coefficient indicates that the hazard is increasing as a function of the covariate (and hence, the survival time is decreasing).''\footnote{\citet[50]{Box-Steffensmeier2004}.} In this application, the hazard is either implementing the income tax or democratizing, or both (depending on the model). For the conditional logit and GEE models, the coefficients are in logit scales.
@@ -432,11 +435,12 @@ All these models strongly suggest that larger industrial sectoral outputs accele
 
 @
 
+\afterpage{
 
 <<simulation:plots, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='First Differences of Industrial Output, Agricultural Output and Democratic Experience ', fig.align='center', fig.width=7, fig.height=3,dpi=300,cache = FALSE>>=
 
 @
-
+}
 
 % discuss the results
 These results strongly suggest that as the industrial sector developed, it challenged the agricultural political monopolists, making the passage of the income tax more likely. Once unobserved sources of heterogeneity are accounted for (in the ``fixed effects'' model), past stateness levels do not alter the mechanisms presented in this paper. The AG model suggests that once we assume taxation and early oligarchic electoral competition are the same process, the sizes, signs and statistical significance do not change either. However, when we assume them to be different and try to break the endogeneity ``problem,'' we see that oligarchic competition ``causes'' income taxation, but not the other way around (model 7 and model 8, respectively).\footnote{I use the term loosely, without claiming any causal inference.} When I cluster by early and late-implementers, results remain substantively identical. Finally, when per capita GDP is included, the model crashes and neither this measure of well-being nor higher levels of industrialization predict oligarchic competition/democratization or fiscal development. The GEE model includes a measure of population density. Population has been associated with the probability that elites expanded the franchise.\footnote{\citet[892-893]{Engerman2005}.} Denser populations also expand the tax base. The scarcity of people meant that local and state governments were extremely concerned with attracting migrants. Because population inflows would lower the cost of labor, and boost land values and tax revenues, these societies were induced to adopt institutions attractive to immigrants. Among these, were cheap land and political participation.
@@ -479,6 +483,41 @@ Cox \emph{proportional} models rest on the assumption that hazard rates are \emp
 
 
 \newpage
+
+
+<<wordcount, echo=FALSE, cache=FALSE>>=
+library(knitr)
+
+comma <- function (x, ...) {
+  format(x, ..., big.mark = ",", scientific = FALSE, trim = TRUE)
+} 
+
+# To dynamically extract name of the current file, use code below 
+nameoffile <- current_input() # get name of file
+nof2 <-  strsplit(nameoffile,"\\.")[[1]][1] # extract name, drop extension
+noftex <- paste(nof2, ".tex", sep="") # add .tex extension
+systemcall <- paste("system('texcount -inc -incbib -total -sum ", noftex, "', intern=TRUE)", sep="") # paste together texcount system command  
+texcount.out <- eval(parse(text=systemcall)) # run texcount on current last compiled .tex file
+
+sum.row <- grep("Sum count", texcount.out, value=TRUE) # extract row
+pattern <- "(\\d)+" # regex pattern for digits
+
+count <- regmatches(sum.row, regexpr(pattern, sum.row) ) 
+# extract digits
+
+count <- comma(as.numeric(count)) # add comma
+@
+
+
+\begin{center}
+\vspace*{\stretch{1}}
+\dotfill
+\dotfill {\huge {\bf Word count}: \Sexpr{count}} \dotfill
+\dotfill
+\vspace*{\stretch{1}}
+\end{center}
+
+\clearpage 
 
 \bibliography{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/library,/Users/hectorbahamonde/RU/Bibliografia_PoliSci/Bahamonde_BibTex2013}
 \bibliographystyle{plainnat}
