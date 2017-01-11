@@ -2,7 +2,7 @@
 # Data Prep
 #######################################################
 
-# pre journal submission version
+# post journal submission version
 
 
 ####### GENERAL PREP
@@ -16,7 +16,7 @@ setwd("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption")
 load("/Users/hectorbahamonde/RU/Dissertation/Data/dissertation.Rdata") # Load data
 
 ## Keep sample countries and variables
-data = subset(dissertation, country == "Chile" | country ==  "Colombia" | country ==  "Ecuador" | country ==  "Guatemala" | country ==  "Nicaragua" | country ==  "Peru" | country ==  "Venezuela")
+data = subset(dissertation, country == "Chile" | country ==  "Colombia" | country ==  "Ecuador" | country ==  "Guatemala" | country ==  "Nicaragua" | country ==  "Peru" | country ==  "Venezuela" | country == "Mexico" | country == "Argentina")
 data = subset(data, select = c(country, year, democ, autoc, polity, polity2, urbpop, totpop, constmanufact, constagricult, exports, ppp, propagrmanu, realgdp, incometax, madisongdp, madisonpop, boix_democracy, madisonpercapgdp, customtax))
 data = subset(data, constmanufact != "NA" & constagricult != "NA")
 
@@ -28,9 +28,15 @@ incometax.d.guatemala  = data.frame(ifelse(data$year>=1963 & data$country == "Gu
 incometax.d.nicaragua  = data.frame(ifelse(data$year>=1974 & data$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 incometax.d.peru  = data.frame(ifelse(data$year>=1934 & data$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 incometax.d.venezuela  = data.frame(ifelse(data$year>=1943 & data$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
+incometax.d.mexico  = data.frame(ifelse(data$year>=1965 & data$country == "Mexico",1,0)) # Mexico, \citet[130-133]{DiazGonzalez2013}
+incometax.d.argentina  = data.frame(ifelse(data$year>=1933 & data$country == "Argentina",1,0)) # Argentina, http://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=185729
+
+
+
+
 
 ## Sum across all the rows.
-incometax.d = incometax.d.chile +  incometax.d.colombia +  incometax.d.ecuador +  incometax.d.guatemala +  incometax.d.nicaragua +  incometax.d.peru +  incometax.d.venezuela
+incometax.d = incometax.d.chile +  incometax.d.colombia +  incometax.d.ecuador +  incometax.d.guatemala +  incometax.d.nicaragua +  incometax.d.peru +  incometax.d.venezuela + incometax.d.mexico + incometax.d.argentina
 colnames(incometax.d) = "incometax"
 
 
@@ -50,9 +56,24 @@ democracy.d.guatemala  = data.frame(ifelse(data$year>= 1945 & data$country == "G
 democracy.d.nicaragua  = data.frame(ifelse(data$year>= 1984 & data$country == "Nicaragua",1,0)) 
 democracy.d.peru  = data.frame(ifelse(data$year>= 1956 & data$country == "Peru",1,0)) 
 democracy.d.venezuela  = data.frame(ifelse(data$year>= 1959 & data$country == "Venezuela",1,0))
+democracy.d.mexico  = data.frame(ifelse(data$year>= 2000 & data$country == "Mexico",1,0))
+democracy.d.argentina  = data.frame(ifelse(data$year>= 1912 & data$country == "Argentina",1,0))
+
+
+### use this molde para ver cuando empezo la democracia
+# data.frame(
+#         test = as.numeric(data$boix_democracy[data$country=="Argentina"]), 
+#         test2 = as.numeric(data$year[data$country=="Argentina"])
+#         )
+
+
+
 
 ## Sum across all the rows.
-democracy.d = democracy.d.chile +  democracy.d.colombia +  democracy.d.ecuador +  democracy.d.guatemala +  democracy.d.nicaragua +  democracy.d.peru +  democracy.d.venezuela
+democracy.d = 
+        democracy.d.chile +  democracy.d.colombia +  democracy.d.ecuador +  
+        democracy.d.guatemala +  democracy.d.nicaragua +  democracy.d.peru +  
+        democracy.d.venezuela + democracy.d.mexico + democracy.d.argentina
 colnames(democracy.d) = "democracy"
 
 
@@ -75,8 +96,10 @@ spatial.cum = c(
                 ifelse(data$year>=1945,1,0) + # Ecuador Aguilera2013 p. 135                
                 ifelse(data$year>=1963,1,0) + # Guatemala: Decreto 1559, De2007 p 165                
                 ifelse(data$year>=1974,1,0) + # Nicaragua: Ley No. 662 de 5 de Noviembre de 1974 
-                ifelse(data$year>=1934,1,0) + # Peru, Ley 7904 de 1934       
-                ifelse(data$year>=1943,1,0) # Venezuela, Ley de Impuesto sobre la Renta        
+                ifelse(data$year>=1934,1,0) + # Peru, Ley 7904 de 1934   
+                ifelse(data$year>=1965,1,0) + # Mexico
+                ifelse(data$year>=1933,1,0) + # Arg
+                ifelse(data$year>=1943,1,0) # Venezuela, Ley de Impuesto sobre la Renta 
         )
 
 
@@ -182,9 +205,16 @@ L.incometax.s.guatemala  = data.frame(ifelse(cox.L$year==1963 & cox.L$country ==
 L.incometax.s.nicaragua  = data.frame(ifelse(cox.L$year==1974 & cox.L$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 L.incometax.s.peru  = data.frame(ifelse(cox.L$year==1934 & cox.L$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 L.incometax.s.venezuela  = data.frame(ifelse(cox.L$year==1943 & cox.L$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
+L.incometax.s.mexico  = data.frame(ifelse(cox.L$year==1965 & cox.L$country == "Mexico",1,0)) # 
+L.incometax.s.argentina  = data.frame(ifelse(cox.L$year==1933 & cox.L$country == "Argentina",1,0)) 
+
+
 
 ## Summed across all the rows.
-L.incometax.s = L.incometax.s.chile +  L.incometax.s.colombia +  L.incometax.s.ecuador +  L.incometax.s.guatemala +  L.incometax.s.nicaragua +  L.incometax.s.peru +  L.incometax.s.venezuela
+L.incometax.s = L.incometax.s.chile +  L.incometax.s.colombia +  
+        L.incometax.s.ecuador +  L.incometax.s.guatemala +  
+        L.incometax.s.nicaragua +  L.incometax.s.peru +  
+        L.incometax.s.venezuela  + L.incometax.s.mexico + L.incometax.s.argentina
 colnames(L.incometax.s) = "incometax"
 
 
@@ -197,15 +227,9 @@ L.cox = merge(L.incometax.s, cox.L, by=c("country", "year"))
 colnames(L.cox)[3] = "incometax.s"
 
 
-## Below is a test that the lagged dataset worked
-### IT DOES
-# test=data.frame(cox$country, cox.L$country, cox$year, cox.L$year, 
-#cox$constmanufact, cox.L$constmanufact.L,
-#cox$constagricult, cox.L$constagricult.L
-#)
-
 # Transforming data
 a= log(L.cox$constmanufact.L)
+## ??
 
 
 
@@ -293,9 +317,15 @@ ag.data.guatemala  = data.frame(ifelse(ag.data$year== 1945 & ag.data$country == 
 ag.data.nicaragua  = data.frame(ifelse(ag.data$year== 1984 & ag.data$country == "Nicaragua",1,0)) 
 ag.data.peru  = data.frame(ifelse(ag.data$year== 1956 & ag.data$country == "Peru",1,0)) 
 ag.data.venezuela  = data.frame(ifelse(ag.data$year== 1959 & ag.data$country == "Venezuela",1,0))
+ag.data.mexico  = data.frame(ifelse(ag.data$year>= 2000 & ag.data$country == "Mexico",1,0))
+ag.data.argentina  = data.frame(ifelse(ag.data$year>= 1912 & ag.data$country == "Argentina",1,0))
+
+
 
 ## Sum across all the rows.
-ag.data.d = ag.data.chile +  ag.data.colombia +  ag.data.ecuador +  ag.data.guatemala +  ag.data.nicaragua +  ag.data.peru +  ag.data.venezuela
+ag.data.d = ag.data.chile +  ag.data.colombia +  ag.data.ecuador +  
+        ag.data.guatemala +  ag.data.nicaragua +  ag.data.peru +  
+        ag.data.venezuela + ag.data.mexico + ag.data.argentina
 colnames(ag.data.d) = "democracy"
 
 ## generate the dataset
@@ -314,9 +344,17 @@ incometax.s.guatemala  = data.frame(ifelse(ag.data$year==1963 & ag.data$country 
 incometax.s.nicaragua  = data.frame(ifelse(ag.data$year==1974 & ag.data$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 incometax.s.peru  = data.frame(ifelse(ag.data$year==1934 & ag.data$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 incometax.s.venezuela  = data.frame(ifelse(ag.data$year==1943 & ag.data$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
+incometax.s.mexico  = data.frame(ifelse(ag.data$year==1965 & ag.data$country == "Mexico",1,0)) # 
+incometax.s.argentina  = data.frame(ifelse(ag.data$year==1933 & ag.data$country == "Argentina",1,0)) 
+
+
+
 
 ## Sum across all the rows.
-incometax.s = incometax.s.chile +  incometax.s.colombia +  incometax.s.ecuador +  incometax.s.guatemala +  incometax.s.nicaragua +  incometax.s.peru +  incometax.s.venezuela
+incometax.s = incometax.s.chile +  incometax.s.colombia +  
+        incometax.s.ecuador +  incometax.s.guatemala +  
+        incometax.s.nicaragua +  incometax.s.peru +  
+        incometax.s.venezuela + incometax.s.mexico + incometax.s.argentina
 colnames(incometax.s) = "incometax"
 
 
@@ -378,9 +416,15 @@ tax.dem.long.guatemala  = data.frame(ifelse(tax.dem.long$year== 1945 & tax.dem.l
 tax.dem.long.nicaragua  = data.frame(ifelse(tax.dem.long$year== 1984 & tax.dem.long$country == "Nicaragua",1,0)) 
 tax.dem.long.peru  = data.frame(ifelse(tax.dem.long$year== 1956 & tax.dem.long$country == "Peru",1,0)) 
 tax.dem.long.venezuela  = data.frame(ifelse(tax.dem.long$year== 1959 & tax.dem.long$country == "Venezuela",1,0))
+tax.dem.long.mexico  = data.frame(ifelse(tax.dem.long$year==2000 & tax.dem.long$country == "Mexico",1,0)) 
+tax.dem.long.argentina  = data.frame(ifelse(tax.dem.long$year== 1912 & tax.dem.long$country == "Argentina",1,0))
+
 
 ## Sum across all the rows.
-tax.dem.long.d = tax.dem.long.chile +  tax.dem.long.colombia +  tax.dem.long.ecuador +  tax.dem.long.guatemala +  tax.dem.long.nicaragua +  tax.dem.long.peru +  tax.dem.long.venezuela
+tax.dem.long.d = tax.dem.long.chile +  tax.dem.long.colombia +  
+        tax.dem.long.ecuador +  tax.dem.long.guatemala +  
+        tax.dem.long.nicaragua +  tax.dem.long.peru +  
+        tax.dem.long.venezuela + tax.dem.long.mexico + tax.dem.long.argentina
 colnames(tax.dem.long.d) = "democracy"
 
 ## generate the dataset
@@ -399,9 +443,14 @@ incometax.s.guatemala  = data.frame(ifelse(tax.dem.long$year==1963 & tax.dem.lon
 incometax.s.nicaragua  = data.frame(ifelse(tax.dem.long$year==1974 & tax.dem.long$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 incometax.s.peru  = data.frame(ifelse(tax.dem.long$year==1934 & tax.dem.long$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 incometax.s.venezuela  = data.frame(ifelse(tax.dem.long$year==1943 & tax.dem.long$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
+incometax.s.mexico  = data.frame(ifelse(tax.dem.long$year==1965 & tax.dem.long$country == "Mexico",1,0)) 
+incometax.s.argentina  = data.frame(ifelse(tax.dem.long$year==1933 & tax.dem.long$country == "Argentina",1,0)) 
 
 ## Sum across all the rows.
-incometax.s = incometax.s.chile +  incometax.s.colombia +  incometax.s.ecuador +  incometax.s.guatemala +  incometax.s.nicaragua +  incometax.s.peru +  incometax.s.venezuela
+incometax.s = incometax.s.chile +  incometax.s.colombia +  
+        incometax.s.ecuador +  incometax.s.guatemala +  
+        incometax.s.nicaragua +  incometax.s.peru +  
+        incometax.s.venezuela + incometax.s.mexico + incometax.s.argentina
 colnames(incometax.s) = "incometax"
 
 
@@ -509,9 +558,14 @@ L.incometax.d.guatemala  = data.frame(ifelse(L.clogit$year>=1963 & L.clogit$coun
 L.incometax.d.nicaragua  = data.frame(ifelse(L.clogit$year>=1974 & L.clogit$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 L.incometax.d.peru  = data.frame(ifelse(L.clogit$year>=1934 & L.clogit$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 L.incometax.d.venezuela  = data.frame(ifelse(L.clogit$year>=1943 & L.clogit$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
+L.incometax.d.mexico  = data.frame(ifelse(L.clogit$year>=1965 & L.clogit$country == "Mexico",1,0)) 
+L.incometax.d.argentina  = data.frame(ifelse(L.clogit$year>=1933 & L.clogit$country == "Argentina",1,0)) 
 
 ## Summed across all the rows.
-L.incometax.d = L.incometax.d.chile +  L.incometax.d.colombia +  L.incometax.d.ecuador +  L.incometax.d.guatemala +  L.incometax.d.nicaragua +  L.incometax.d.peru +  L.incometax.d.venezuela
+L.incometax.d = L.incometax.d.chile +  L.incometax.d.colombia +  
+        L.incometax.d.ecuador +  L.incometax.d.guatemala +  
+        L.incometax.d.nicaragua +  L.incometax.d.peru +  
+        L.incometax.d.venezuela + L.incometax.d.mexico + L.incometax.d.argentina
 colnames(L.incometax.d) = "incometax.d"
 
 # attach "L.incometax.d" to the "L.clogit" dataset
@@ -781,7 +835,7 @@ cox1.tt = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
 # base model
 library(survival) # install.packages("survival") 
 cox2 = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
- ~ log(constmanufact) + log(constagricult) + cluster(country), data=cox)
+ ~log(constmanufact) + log(constagricult) + cluster(country), data=cox)
 
 # LAGGED MODEL
 library(survival) # install.packages("survival") 
@@ -1008,12 +1062,12 @@ termplot(cox1.splines, term=2, se=TRUE)
 library(survival)
 # I use this one for simulation (since it seems that the sim function doesn't take well natural logs)
 cox3 = coxph(
-  Surv(cox$year, cox$year2, cox$incometax.s, origin=1900) ~ 
-    constmanufact + 
-    constagricult + 
-    cluster(country), 
-  data=cox
-  )
+        Surv(cox$year, cox$year2, cox$incometax.s, origin=1900) ~ 
+                constmanufact + 
+                constagricult + 
+                cluster(country), 
+        data=cox
+        )
 
 # install.packages("devtools")
 # library(devtools)
@@ -1026,7 +1080,7 @@ sim3.m <- coxsimLinear(cox3,
                        b = "constmanufact", 
                        qi = "First Difference",
                        nsim = 2000,
-                       spin = T,
+                       #spin = T,
                        Xj = seq(min(cox$constmanufact), max(cox$constmanufact), by=250)
 )
 
