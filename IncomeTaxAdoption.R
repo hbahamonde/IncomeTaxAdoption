@@ -837,6 +837,212 @@ library(survival) # install.packages("survival")
 cox2 = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
  ~log(constmanufact) + log(constagricult) + cluster(country), data=cox)
 
+
+#########################################################################################                
+
+### test area: begin
+# Time-varying Effects
+
+
+load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # Cox
+
+library(simPH)
+# Create time interactions
+cox.tvc <- tvc(cox, b = c('constmanufact', 'constagricult'), tvar = 'year2', tfun = 'log')
+
+
+# Run Cox PH Model // time transformed log-time.
+library(survival) # install.packages("survival") 
+cox2 <- coxph(Surv(year, year2, incometax.s) ~ 
+                      constmanufact +
+                      constagricult +
+                      constmanufact_log +
+                      constagricult_log +
+                      cluster(country),
+            data = cox.tvc)
+
+# constagricult simulation plot
+set.seed(602)
+sim3.a = coxsimtvc(obj = cox2, 
+                   b = "constagricult", 
+                   btvc = "constagricult_log",
+                   qi = "First Difference",
+                   tfun = "log", 
+                   from = min(cox.tvc$constagricult), 
+                   to = max(cox.tvc$constagricult),
+                   spin = F,
+                   #Xl = 1,
+                   Xj = 1, 
+                   by = 250, ci = 0.95, nsim = 2000)
+
+
+library(simPH)
+library(ggplot2)
+sim.1 = simGG(sim3.m, type = 'lines',# type = 'points' // 'lines'
+              #xlab = "Industrial\nOutput", 
+              ylab = "", 
+              ribbons = T, alpha = 0.2) + 
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=8), 
+              axis.text.x = element_text(size=8), 
+              axis.title.y = element_text(size=8), 
+              axis.title.x = element_text(size=8)
+        )
+
+
+sim.2 = simGG(sim3.a, 
+              xlab = "Agricultural\nOutput", 
+              ylab = "", 
+              ribbons = T, alpha = 0.5) + 
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=8), 
+              axis.text.x = element_text(size=8), 
+              axis.title.y = element_text(size=8), 
+              axis.title.x = element_text(size=8)
+        )
+
+
+# type = 'points'
+# type = 'lines'
+
+library(cowplot) # install.packages("cowplot")
+plot_grid(sim.1, sim.2, ncol = 2, labels = "auto", label_size = 7)
+
+
+
+########################  
+load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # Cox
+#cox<-cox[!(cox$country=="Peru" | cox$country=="Venezuela"),]
+
+
+# normal cox model.
+cox$L_constmanufact = log(cox$constmanufact)
+cox$L_constagricult = log(cox$constagricult)
+cox$L_totpop = log(cox$totpop)
+
+library(survival) # install.packages("survival") 
+cox2 <- coxph(Surv(year, year2, incometax.s) ~ 
+                      L_constmanufact +
+                      L_constagricult +
+                      totpop +
+                      cluster(country),
+              data = cox)
+
+## industrial sector
+# simulate qi's
+set.seed(602)
+sim.m.ind <- coxsimLinear(cox2, 
+                       b = "L_constmanufact", 
+                     qi = "Hazard Rate", 
+                     ci = 0.9,
+                     #spin = T,
+                     extremesDrop = T,
+                     nsim = 1000,
+                     Xj = c(min(cox$L_constmanufact), max(cox$L_constmanufact))
+                     )
+
+# Plot
+library(simPH)
+library(ggplot2)
+options(scipen=10000)
+sim.p.ind = simGG(sim.m.ind, type = 'lines',# type = 'points' // 'lines'
+              xlab = "Year", 
+              ylab = "Hazard Rate", 
+              ribbons = F, alpha = 0.25) + 
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=8), 
+              axis.text.x = element_text(size=8), 
+              axis.title.y = element_text(size=8), 
+              axis.title.x = element_text(size=8),
+              title = element_text(size=9)
+              ) +
+        labs(title = "Industrial Output") +
+        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
+        guides(color=guide_legend("Sectoral Output"))
+
+
+
+
+### agricultural sector
+# simulate qi's
+set.seed(602)
+sim.m.agr <- coxsimLinear(cox2, 
+                          b = "L_constagricult", 
+                          qi = "Hazard Rate", 
+                          ci = 0.9,
+                          #spin = T,
+                          extremesDrop = T,
+                          nsim = 1000,
+                          Xj = c(min(cox$L_constagricult), max(cox$L_constagricult))
+                          )
+
+# Plot
+library(simPH)
+library(ggplot2)
+options(scipen=10000)
+sim.p.agr = simGG(sim.m.agr, type = 'lines',# type = 'points' // 'lines'
+                  xlab = "Year", 
+                  ylab = "Hazard Rate", 
+                  ribbons = F, alpha = 0.25) + 
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=8), 
+              axis.text.x = element_text(size=8), 
+              axis.title.y = element_text(size=8), 
+              axis.title.x = element_text(size=8),
+              title = element_text(size=9)
+              ) +
+        labs(title = "Agriculture Output") +
+        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
+        guides(color=guide_legend("Sectoral Output"))
+ 
+## combine the two plots
+library(ggplot2)
+library(gridExtra)
+library(grid)
+
+
+grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c("bottom", "right")) {
+        
+        plots <- list(...)
+        position <- match.arg(position)
+        g <- ggplotGrob(plots[[1]] + theme(legend.position = position))$grobs
+        legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
+        lheight <- sum(legend$height)
+        lwidth <- sum(legend$width)
+        gl <- lapply(plots, function(x) x + theme(legend.position="none"))
+        gl <- c(gl, ncol = ncol, nrow = nrow)
+        
+        combined <- switch(position,
+                           "bottom" = arrangeGrob(do.call(arrangeGrob, gl),
+                                                  legend,
+                                                  ncol = 1,
+                                                  heights = unit.c(unit(1, "npc") - lheight, lheight)),
+                           "right" = arrangeGrob(do.call(arrangeGrob, gl),
+                                                 legend,
+                                                 ncol = 2,
+                                                 widths = unit.c(unit(1, "npc") - lwidth, lwidth)))
+        grid.newpage()
+        grid.draw(combined)
+        
+}
+
+
+grid_arrange_shared_legend(sim.p.ind, sim.p.agr, ncol = 2, nrow = 1)
+
+
+
+### test area: end
+#########################################################################################                
+
+
+
+
+
+
+
+
+
+
 # LAGGED MODEL
 library(survival) # install.packages("survival") 
 cox.L = coxph(Surv(L.cox$year, L.cox$year2, L.cox$incometax.s, origin=1901)
