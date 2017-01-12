@@ -828,9 +828,9 @@ load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/tax_dem_lo
 
 
 # Model with time-transformed variables
-library(survival) # install.packages("survival") 
-cox1.tt = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
- ~ tt(constmanufact) + tt(constagricult) + cluster(country), data=cox)
+#library(survival) # install.packages("survival") 
+#cox1.tt = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
+# ~ tt(constmanufact) + tt(constagricult) + cluster(country), data=cox)
 
 # base model
 # normal cox model // take the log of these covariates
@@ -849,8 +849,11 @@ cox2 <- coxph(Surv(year, year2, incometax.s) ~
 
 # LAGGED MODEL
 library(survival) # install.packages("survival") 
-cox.L = coxph(Surv(L.cox$year, L.cox$year2, L.cox$incometax.s, origin=1901)
- ~ log(constmanufact.L) + log(constagricult.L) + cluster(country), data=L.cox)
+cox.L = coxph(Surv(L.cox$year, L.cox$year2, L.cox$incometax.s, origin=1901) ~ 
+                      log(constmanufact.L) + 
+                      log(constagricult.L) + 
+                      log(totpop) +
+                      cluster(country), data=L.cox)
 
 
 ## logit GEE
@@ -864,101 +867,95 @@ logitgee.1 = extract(logitgee.1)
 
 
 # Recurrent Events: Income Tax AND Democracy
-library(survival) # install.packages("survival") 
-cox2.ag = coxph(Surv(ag.data$year, ag.data$year2, ag.data$dem.tax, origin=1900) ~ log(constmanufact) + log(constagricult) + cluster(country), data=ag.data)
+# library(survival) # install.packages("survival") 
+# cox2.ag = coxph(Surv(ag.data$year, ag.data$year2, ag.data$dem.tax, origin=1900) ~ log(constmanufact) + log(constagricult) + cluster(country), data=ag.data)
 
 
 # conditional logit
 library(survival) # install.packages("survival")
-clogit.1 = clogit(incometax.d ~  log(constmanufact) + log(constagricult) +strata(country), method= "efron", data = data)
+clogit.1 = clogit(
+        incometax.d ~  
+                log(constmanufact) + 
+                log(constagricult) + 
+                log(totpop) +
+                strata(country), 
+        method= "efron", data = data)
 
 ## model tax <- dem
-library(survival) # install.packages("survival") 
-options(scipen = 999) # bias against scientific notation
-tax.dem.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$tax.trans, origin=1900) ~ 
-                          constmanufact + 
-                          #constmanufact.sq + 
-                          constagricult + 
-                          #constagricult.sq + 
-                          #democracy.d.cumsum + 
-                          democracy.d.cumsum.sq + 
-                          cluster(country), 
-                  data=tax.dem.long)
+# library(survival) # install.packages("survival") 
+# options(scipen = 999) # bias against scientific notation
+# tax.dem.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$tax.trans, origin=1900) ~ 
+#                           constmanufact + 
+#                           #constmanufact.sq + 
+#                           constagricult + 
+#                           #constagricult.sq + 
+#                           #democracy.d.cumsum + 
+#                           democracy.d.cumsum.sq + 
+#                           cluster(country), 
+#                   data=tax.dem.long)
 
 
 ## model dem <- tax 
-library(survival) # install.packages("survival") 
-options(scipen = 999) # bias against scientific notation
-dem.tax.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$dem.trans, origin=1900) ~ 
-                          constmanufact + 
-                          #constmanufact.sq + 
-                          constagricult + 
-                          #constagricult.sq + 
-                          #incometax.d.cumsum + 
-                          incometax.d.cumsum.sq + 
-                          cluster(country), data=tax.dem.long)
+# library(survival) # install.packages("survival") 
+# options(scipen = 999) # bias against scientific notation
+# dem.tax.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$dem.trans, origin=1900) ~ 
+#                           constmanufact + 
+#                           #constmanufact.sq + 
+#                           constagricult + 
+#                           #constagricult.sq + 
+#                           #incometax.d.cumsum + 
+#                           incometax.d.cumsum.sq + 
+#                           cluster(country), data=tax.dem.long)
 
 
 # spatial dependence model
 library(survival) # install.packages("survival") 
-spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
+spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900) 
                   ~ log(constmanufact) + 
                           log(constagricult) + 
+                          log(totpop) +
                           cluster(spatial.cum), 
                   data=cox)
 
 
 # modernization theory model
-library(survival) # install.packages("survival") 
-modernization.m = coxph(Surv(
-        tax.dem.long$year, 
-        tax.dem.long$year2, 
-        tax.dem.long$dem.trans, origin=1900) ~ 
-                constmanufact + 
-                constagricult + 
-                madisonpercapgdp +
-                cluster(country), 
-        data=tax.dem.long)
+# library(survival) # install.packages("survival") 
+# modernization.m = coxph(Surv(
+#         tax.dem.long$year, 
+#         tax.dem.long$year2, 
+#         tax.dem.long$dem.trans, origin=1900) ~ 
+#                 constmanufact + 
+#                 constagricult + 
+#                 madisonpercapgdp +
+#                 cluster(country), 
+#         data=tax.dem.long)
 
 
 
 # screenreg / texreg
-texreg(
-        list(cox1.tt, cox2, cox.L, clogit.1, cox2.ag, logitgee.1, tax.dem.m, dem.tax.m, spatial.m, modernization.m),
+screenreg(
+        list(cox2, clogit.1, logitgee.1, cox.L, spatial.m), # it needs to be texreg for knitr
         caption = "Structural Origins of Income Taxation: Income Tax Law and Democratic Development",
         custom.coef.names = c(
-                "Manufacture Output$_{tt}$",
-                "Agricultural Output$_{tt}$",
+                "Manufacture Output$_{t-1}$",
+                "Agricultural Output$_{t-1}$",
+                "Total Population$_{t-1}$",
                 #
-                "Manufacture Output  (ln)",
+                "Manufacture Output (ln)",
                 "Agricultural Output (ln)",
-                #
-                "Manufacture Output$_{t-1}$  (ln)",
-                "Agricultural Output$_{t-1}$  (ln)",
+                "Total Population (ln)",
                 #
                 "intercept",
                 #
-                "Total Population  (ln)",
-                #
-                "Manufacture Output",
-                "Agricultural Output",
-                #
-                "Democracy (cum. sum)$^2$",
-                "Income Tax (cum. sum)$^2$",
-                #
-                "Per Capita GDP"
-        ),
+                "Manufacture Output$_{t-1}$ (ln)",
+                "Agricultural Output$_{t-1}$ (ln)"),
         custom.model.names = c(
-                "(1) Cox",# Time Transformed
-                "(2) Cox", # Logged
-                "(3) Cox", # Lagged
-                "(4) Cond. Logit", # FE
-                "(5) And.-Gill",
-                "(6) GEE",
-                "(7) Tax.-Dem.",
-                "(8) Dem.-Tax.",
-                "(9) Spat. Dep.",
-                "(10) Modern. Th."),
+                "(1) Cox",# Base Model
+                "(2) Conditional Logit (FE)", # Fixed Effects model
+                "(3) Logit GEE", # GEE
+                "(4) Cox (1 lag)", # Lagged Cox Model 
+                "(4) Spatial Dependence" # Spatial Dependence
+                ),
         label = "results:1",
         custom.note = "%stars. Robust Standard Errors in All Models",
         fontsize = "tiny",
