@@ -814,23 +814,15 @@ setMethod("extract", signature = className("geeglm", "geepack"),
 
 
 
-
 ## ---- results:1 ----
 # Load Datasets
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/incometax_data.RData") # Load data
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # Cox
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/L_cox.RData") # Lagged Data for Cox
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/logitgee.RData") # Logit GEE
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/ag_data.RData") # For Multiple Non Competing Hazard Ratios
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/l_clogit.RData") # Lagged CONSTANT AGR MANUFACT for clogit  (fixed effects)
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/tax_dem_long.RData") # For Simultaneous Events.
 
 
-
-# Model with time-transformed variables
-#library(survival) # install.packages("survival") 
-#cox1.tt = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
-# ~ tt(constmanufact) + tt(constagricult) + cluster(country), data=cox)
 
 # base model
 # normal cox model // take the log of these covariates
@@ -866,11 +858,6 @@ logitgee.1 = geeglm(incometax.d ~ log(constmanufact) + log(constagricult) + log(
 logitgee.1 = extract(logitgee.1)
 
 
-# Recurrent Events: Income Tax AND Democracy
-# library(survival) # install.packages("survival") 
-# cox2.ag = coxph(Surv(ag.data$year, ag.data$year2, ag.data$dem.tax, origin=1900) ~ log(constmanufact) + log(constagricult) + cluster(country), data=ag.data)
-
-
 # conditional logit
 library(survival) # install.packages("survival")
 clogit.1 = clogit(
@@ -880,32 +867,6 @@ clogit.1 = clogit(
                 log(totpop) +
                 strata(country), 
         method= "efron", data = data)
-
-## model tax <- dem
-# library(survival) # install.packages("survival") 
-# options(scipen = 999) # bias against scientific notation
-# tax.dem.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$tax.trans, origin=1900) ~ 
-#                           constmanufact + 
-#                           #constmanufact.sq + 
-#                           constagricult + 
-#                           #constagricult.sq + 
-#                           #democracy.d.cumsum + 
-#                           democracy.d.cumsum.sq + 
-#                           cluster(country), 
-#                   data=tax.dem.long)
-
-
-## model dem <- tax 
-# library(survival) # install.packages("survival") 
-# options(scipen = 999) # bias against scientific notation
-# dem.tax.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$dem.trans, origin=1900) ~ 
-#                           constmanufact + 
-#                           #constmanufact.sq + 
-#                           constagricult + 
-#                           #constagricult.sq + 
-#                           #incometax.d.cumsum + 
-#                           incometax.d.cumsum.sq + 
-#                           cluster(country), data=tax.dem.long)
 
 
 # spatial dependence model
@@ -918,22 +879,9 @@ spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
                   data=cox)
 
 
-# modernization theory model
-# library(survival) # install.packages("survival") 
-# modernization.m = coxph(Surv(
-#         tax.dem.long$year, 
-#         tax.dem.long$year2, 
-#         tax.dem.long$dem.trans, origin=1900) ~ 
-#                 constmanufact + 
-#                 constagricult + 
-#                 madisonpercapgdp +
-#                 cluster(country), 
-#         data=tax.dem.long)
-
-
 
 # screenreg / texreg
-screenreg(
+texreg(
         list(cox2, clogit.1, logitgee.1, cox.L, spatial.m), # it needs to be texreg for knitr
         caption = "Structural Origins of Income Taxation: Income Tax Law and Democratic Development",
         custom.coef.names = c(
@@ -1069,37 +1017,18 @@ termplot(cox1.splines, term=2, se=TRUE)
 
 ## industrial sector
 # simulate qi's
+library(simPH) # install.packages("simPH")
+
 set.seed(602)
 sim.m.ind <- coxsimLinear(cox2, 
                           b = "L_constmanufact", 
                           qi = "Hazard Rate", 
-                          ci = 0.9,
+                          ci = 0.95,
                           #spin = T,
                           extremesDrop = T,
                           nsim = 1000,
                           Xj = c(min(cox$L_constmanufact), max(cox$L_constmanufact))
 )
-
-# Plot
-library(simPH)
-library(ggplot2)
-options(scipen=10000)
-sim.p.ind = simGG(sim.m.ind, type = 'lines',# type = 'points' // 'lines'
-                  xlab = "Year", 
-                  ylab = "Hazard Rate", 
-                  ribbons = F, alpha = 0.25) + 
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=8), 
-              axis.text.x = element_text(size=8), 
-              axis.title.y = element_text(size=8), 
-              axis.title.x = element_text(size=8),
-              title = element_text(size=9)
-        ) +
-        labs(title = "Industrial Output") +
-        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
-        guides(color=guide_legend("Sectoral Output"))
-
-
 
 
 ### agricultural sector
@@ -1108,33 +1037,14 @@ set.seed(602)
 sim.m.agr <- coxsimLinear(cox2, 
                           b = "L_constagricult", 
                           qi = "Hazard Rate", 
-                          ci = 0.9,
+                          ci = 0.95,
                           #spin = T,
                           extremesDrop = T,
                           nsim = 1000,
                           Xj = c(min(cox$L_constagricult), max(cox$L_constagricult))
 )
 
-# Plot
-library(simPH)
-library(ggplot2)
-options(scipen=10000)
-sim.p.agr = simGG(sim.m.agr, type = 'lines',# type = 'points' // 'lines'
-                  xlab = "Year", 
-                  ylab = "Hazard Rate", 
-                  ribbons = F, alpha = 0.25) + 
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=8), 
-              axis.text.x = element_text(size=8), 
-              axis.title.y = element_text(size=8), 
-              axis.title.x = element_text(size=8),
-              title = element_text(size=9)
-        ) +
-        labs(title = "Agriculture Output") +
-        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
-        guides(color=guide_legend("Sectoral Output"))
-
-## combine the two plots
+## function to combine the two plots
 library(ggplot2)
 library(gridExtra)
 library(grid)
@@ -1164,10 +1074,6 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
         grid.draw(combined)
         
 }
-
-
-grid_arrange_shared_legend(sim.p.ind, sim.p.agr, ncol = 2, nrow = 1)
-
 ## ----
 
 
@@ -1183,63 +1089,47 @@ grid_arrange_shared_legend(sim.p.ind, sim.p.agr, ncol = 2, nrow = 1)
 # library(devtools)
 # devtools::install_github('christophergandrud/simPH')
 library(simPH)
+library(ggplot2) # install.packages("ggplot2")
 
-# Plot
 ## IMPORTANT! A relative hazard for a unit at zero is always one, as it is a ratio of the hazards with itself. Gandrud2015 p. 10
 
-sim.1 = simGG(sim3.m, xlab = "Industrial\nOutput", ylab = "") + 
+# Plot
+options(scipen=10000)
+sim.p.ind = simGG(sim.m.ind, type = 'lines',# type = 'points' // 'lines'
+                  xlab = "Year", 
+                  ylab = "Hazard Rate", 
+                  ribbons = F, alpha = 0.25) + 
         theme_bw() + 
         theme(axis.text.y = element_text(size=8), 
               axis.text.x = element_text(size=8), 
               axis.title.y = element_text(size=8), 
-              axis.title.x = element_text(size=8)
-              )
+              axis.title.x = element_text(size=8),
+              title = element_text(size=9)
+        ) +
+        labs(title = "Industrial Output") +
+        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
+        guides(color=guide_legend("Sectoral Output"))
 
 
-sim.2 = simGG(sim3.a, xlab = "Agricultural\nOutput", ylab = "") + 
+# Plot
+options(scipen=10000)
+sim.p.agr = simGG(sim.m.agr, type = 'lines',# type = 'points' // 'lines'
+                  xlab = "Year", 
+                  ylab = "Hazard Rate", 
+                  ribbons = F, alpha = 0.25) + 
         theme_bw() + 
         theme(axis.text.y = element_text(size=8), 
               axis.text.x = element_text(size=8), 
               axis.title.y = element_text(size=8), 
-              axis.title.x = element_text(size=8)
-              )
+              axis.title.x = element_text(size=8),
+              title = element_text(size=9)
+        ) +
+        labs(title = "Agriculture Output") +
+        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
+        guides(color=guide_legend("Sectoral Output"))
 
-sim.3 = simGG(tax.dem.m.3, xlab = "Cumulative\nDemocratic Experience", ylab = "") +
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=8), 
-              axis.text.x = element_text(size=8), 
-              axis.title.y = element_text(size=8), 
-              axis.title.x = element_text(size=8)
-              )
-
-library(cowplot) # install.packages("cowplot")
-plot_grid(sim.1, sim.2, sim.3, ncol = 3, labels = "auto", label_size = 7)
+grid_arrange_shared_legend(sim.p.ind, sim.p.agr, ncol = 2, nrow = 1)
 ## ----
-
-
-
-
-
-
-
-
-
-## ---- altmodel ----
-library(texreg) # install.packages("texreg")
-texreg(cox3,
-        caption = "Structural Origins of Income Taxation: Model Used to Compute Simulations",
-        custom.coef.names = c(
-                "Manufacture Output",
-                "Agricultural Output"),
-        custom.model.names = "Cox-PH",
-        label = "altmodel",
-        custom.note = "%stars. Robust Standard Errors in All Models",
-        fontsize = "scriptsize",
-        float.pos = "h"
-        )
-## ----
-
-
 
 
 
@@ -1546,9 +1436,42 @@ guatemala.p= ggplot() +
   theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
   labs(title="Guatemala") 
 
-grid_arrange_shared_legend(chile.p, ecuador.p, nicaragua.p, venezuela.p, peru.p, colombia.p, guatemala.p)
-# ----
+argentina.p= ggplot() + 
+        geom_smooth(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Argentina"), aes(xintercept = 1933, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Argentina") 
 
+mexico.p= ggplot() + 
+        geom_smooth(data=subset(dissertation, country=="Mexico"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Mexico"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Mexico"), aes(xintercept = 1965, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Mexico") 
+
+grid_arrange_shared_legend(
+        chile.p, 
+        ecuador.p, 
+        nicaragua.p, 
+        venezuela.p, 
+        peru.p, 
+        colombia.p, 
+        guatemala.p, 
+        argentina.p, 
+        mexico.p,
+        ncol = 3, nrow = 3)
+# ----
 
 
 

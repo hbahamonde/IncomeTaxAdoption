@@ -1,161 +1,17 @@
-%----------------------------------------------------------------------------------------
-% PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
 \documentclass[onesided]{article}
-%\usepackage{lipsum} % Package to generate dummy text throughout this template
-
-% \usepackage[default]{lato} % Use the LATO font
-%\usepackage{pxfonts}
-\usepackage[T1]{fontenc}
-\linespread{1.4} % Line spacing - Palatino needs more space between lines
-\usepackage{microtype} % Slightly tweak font spacing for aesthetics
-
-\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
-%\usepackage{multicol} % Used for the two-column layout of the document
-\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
-\usepackage{booktabs} % Horizontal rules in tables
-\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
-
-\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
-\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
-
-\usepackage{abstract} % Allows abstract customization
-\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
-%\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
-
-\usepackage{titlesec} % Allows customization of titles
-\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
-\renewcommand\thesubsection{\Roman{subsection}} % Roman numerals for subsections
-\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
-\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
-
-\usepackage{fancybox, fancyvrb, calc}
-\usepackage[svgnames]{xcolor}
-\usepackage{epigraph}
-
-\usepackage{longtable}
-\usepackage{geometry}
-\usepackage{pdflscape}
+\usepackage{import}
+\subimport{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/}{LaTeX_Paper_Packages_And_Style}
 
 
 
+% DOCUMENT ID
+\fancyhead[C]{Draft, please don't share without permission} % Custom header text
 
 
-%----------------------------------------------------------------------------------------
-% DOCUMENT ID (Department, Professor, Course, etc.) 
-%----------------------------------------------------------------------------------------
 
-\usepackage{fancyhdr} % Headers and footers
-\pagestyle{fancy} % All pages have headers and footers
-\fancyhead{} % Blank out the default header
-\fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Job Market Paper} % Custom header text
-\fancyfoot[RO,LE]{\thepage} % Custom footer text
-
-%----------------------------------------------------------------------------------------
-% MY PACKAGES 
-%----------------------------------------------------------------------------------------
-
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{rotating}
-\usepackage{paracol}
-\usepackage{textcomp}
-\usepackage{caption}
-\usepackage[export]{adjustbox}
-\usepackage{afterpage}
-\usepackage{filecontents}
-\usepackage{color}
-\usepackage{latexsym}
-\usepackage{lscape}       %\begin{landscape} and \end{landscape}
-%\usepackage{mathabx}
-\usepackage{wasysym}
-\usepackage{dashrule}
-%\usepackage{txfonts}
-%\usepackage{pgfkeys}
-\usepackage{framed}
-\usepackage{tree-dvips}
-\usepackage{caption}
-\usepackage{fancyvrb}
-\usepackage{pgffor}
-\usepackage{xcolor}
-%\usepackage{pxfonts}
-\usepackage{authblk}
-\usepackage{paracol}
-\usepackage{setspace}
-\usepackage{qtree}
-\usepackage{tree-dvips}
-%\usepackage{sgame}        % shouldn't have neither array nor tabularx packages
-\usepackage{array}
-%\usepackage{tikz}
-\usepackage[latin1]{inputenc}
-%\label{tab:1}    %\autoref{tab:1}  %ocupar para citar.
-% \hyperlik{table1} \hypertarget{table1} 
-% \textquoteright     %apostrofe
-\usepackage{hyperref}     %desactivar para link rojos
-\usepackage{natbib} % style
-\usepackage{graphicx}
-\usepackage{dcolumn} % for R tables
-\usepackage{csquotes} % For long quotes
-\usepackage{multirow} % For multirow in tables
-
-%----------------------------------------------------------------------------------------
-% Other ADDS-ON
-%----------------------------------------------------------------------------------------
-
-% independence symbol \independent
-\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
-\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
-
-%\setlength{\intextsep}{-5ex} % remove extra space above and below in-line float
-
-% VERBATIM WITH BACKGROUND COLOR
-\newenvironment{colframe}{%
-  \begin{Sbox}
-    \begin{minipage}
-      {\columnwidth%-\leftmargin-\rightmargin-6pt
-      }
-    }{%
-    \end{minipage}
-  \end{Sbox}
-  \begin{center}
-    \colorbox{LightSteelBlue}{\TheSbox}
-  \end{center}
-}
-
-
-\hypersetup{
-    bookmarks=true,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-    pdftoolbar=true,        % show Acrobat’s toolbar?
-    pdfmenubar=true,        % show Acrobat’s menu?
-    pdffitwindow=false,     % window fit to page when opened
-    pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={My title},    % title
-    pdfauthor={Author},     % author
-    pdfsubject={Subject},   % subject of the document
-    pdfcreator={Creator},   % creator of the document
-    pdfproducer={Producer}, % producer of the document
-    pdfkeywords={keyword1} {key2} {key3}, % list of keywords
-    pdfnewwindow=true,      % links in new window
-    colorlinks=true,       % false: boxed links; true: colored links
-    linkcolor=ForestGreen,          % color of internal links (change box color with linkbordercolor)
-    citecolor=ForestGreen,        % color of links to bibliography
-    filecolor=ForestGreen,      % color of file links
-    urlcolor=ForestGreen           % color of external links
-}
-
-\usepackage[nodayofweek,level]{datetime} % to have date within text
-
-\newcommand{\LETT}[3][]{\lettrine[lines=4,loversize=.2,#1]{\smash{#2}}{#3}} % letrine customization
-
-
-%----------------------------------------------------------------------------------------
 % TITLE SECTION
-%----------------------------------------------------------------------------------------
 
-\title{\vspace{-10mm}\fontsize{18pt}{15pt}\selectfont\textbf{Structural Transformations and The Political Roots of Fiscal Capacities in Latin America, 1900-2010}} % Article title
+\title{\vspace{-10mm}\fontsize{18pt}{15pt}\selectfont\textbf{Structural Transformations and The Political Roots of Fiscal Capacities in Latin America: The Case of Chile, 1900-2010}} % Article title
 
 
 \author[1]{
@@ -182,11 +38,7 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-There is a very strong consensus on the positive role fiscal capacities play on state formation. Unfortunately, current theories focused on Latin America do not sufficiently explain the origins of fiscal capacities in the region. Taking a sectoral politics approach, this paper argues that the political monopoly held by agricultural economic elites in Latin America was broken contingent on the emergence of a strong industrial sector. This major structural transformation triggered a series of institutional investments, as well as economic, political and social changes, which allowed for states with high capacities. When agricultural monopolists were not challenged by the emergence of a strong industrial sector, these institutional investments never existed or were weak. The paper tests this theory using cross-national panel data from a sample of Latin American countries from 1900 to 2010. The Chilean example is offered as a shadow case to illustrate the mechanisms at work, confirming the assumptions made in the econometric models.
-
-
-
-
+There is a very strong consensus on the positive role fiscal capacities play on state formation. In this paper, I provide quantitative evidence for the origins of fiscal capacities, a subject generally overlooked by scholars of political development. Taking a sectoral politics approach, this paper argues that strong states saw the emergence of a strong industrial sector that interrupted the political monopoly held by the landed elite. Leveraged strong industrial sectors managed to demand economic and political policies in exchange of being income-taxed. Building on the fiscal sociology paradigm, I argue that the introduction of the income tax, as a state-building institution, was a major structural transformation that triggered a series of institutional investments. I tests this theory using cross-national panel data from a sample of Latin American countries from 1900 to 2010. As a first step, the Chilean example is offered as an illustrative case, in the hope of eventually generalizing this framework to other countries.
 \end{abstract}
 
 
@@ -217,18 +69,31 @@ knitr::read_chunk('/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdopti
 
 
 % Hook
-According  to most political economists, fiscal sociologists, development economist and economic historians, fiscal capacities are a prerequisite for strong states. Much effort has been devoted to understanding the relationship between the politics of taxation and state capacities in a number of European cases. However, there is still much work that needs to be done in order to understand the development of post-colonial Latin American fiscal capacities. For example, the political and economic \emph{origins} of fiscal capacities in Latin America remain unclear. Specially, since wars in Latin America have been rare, it is difficult to extend models based on external threats originally developed to understand the medieval European case. Moreover, elite structures were very different in Latin America, challenging the standard assumptions and incentives of these European models. \emph{What factors led post-colonial Latin American countries to self-impose a system for directly taxing individuals? What is the relationship between fiscal capacities and state-building in the Latin American context?} These questions are key to understanding the development of the modern state in Latin America, and in this paper I shed some light on them.
-
+According to most political economists, fiscal sociologists, development economist and economic historians, fiscal capacities are a prerequisite for strong states. Much effort has been devoted to understanding the relationship between the politics of taxation and state capacities in a number of European cases. Moreover, research on Latin America has mostly focused on tax reforms, but the origins of the fiscal Latin American state remain relatively unclear. Since wars in Latin America have been rare, it is difficult to extend models based on external threats originally developed to understand the medieval European case. Furthermore, existent models for the Latin American case have traditionally focused on a limited number of cases, compromising their generalizability. Building on the fiscal sociology paradigm, in this paper I present quantitative evidence of the origins of the fiscal Latin American state from a sectoral perspective. 
 
 
 % Why care paragraph // How this paper situates in the literature
-Though much effort has been devoted to the study of \emph{tax reforms}, we know little about the \emph{origins of taxation} in Latin America.\footnote{An important exception is \citet[7-8]{Gallo:1991kx}, who studies the Bolivian case and the origins of the fiscal apparatus from a class perspective too. She argues that the absence of class conflicts thwarted the consolidation of centralized states. However the argument focuses on the alliances between the export sector with other economic sectors, while taxation is important as a source of revenue, not as a ``state-building'' institution.} \citet[]{Fairfield2013} studies different strategies policymakers pursue to tax elites starting in 1990. \citet[]{Mahon2004} and \citet{Focanti2013} study the causes of tax reform in Latin America starting in the 1980s and 1990, respectively. Similarly, \citet[]{Ross2004} studies the relationship between taxation and representation between 1971 and 1997, whereas \citet{Sokoloff2007a} study the evolution of tax institutions comparing the U.S. with Latin America. However, I share \citet[5]{DiJohn2006}'s diagnosis that there has been no attempt in the literature to explain \emph{why} and \emph{how} state and fiscal capacities emerged. This paper contributes to the literature on state and fiscal capacities by presenting a comparative macro-structural argument that outlines the conditions under which  endogenous investments in fiscal capacities were most likely to happen in Latin America starting in 1900. 
+Much effort has been devoted to the study of \emph{tax reforms}. \citet[]{Fairfield2013} studies different strategies policymakers pursue to tax elites starting in 1990. \citet[]{Mahon2004} and \citet{Focanti2013} study the causes of tax reform in Latin America starting in the 1980s and 1990, respectively. Similarly, \citet[]{Ross2004} studies the relationship between taxation and representation between 1971 and 1997, whereas \citet{Sokoloff2007a} study the evolution of tax institutions comparing the U.S. with Latin America. This paper contributes to the literature on state and fiscal capacities by presenting a historical comparative macro-structural argument centered on inter-elite conflicts. The argument outlines the conditions under which endogenous investments in fiscal capacities were most likely to happen in Latin America starting in 1900. An elite divided on an \emph{economic} cleavage is at the same time divided on their \emph{political} preferences, particularly regarding their attitude towards state centralization.\footnote{See for example \citet{Llavador2005}.} Consequently, an elite split along economic interests will use state power to influence certain policies and hence, growth and state building. The connection between state-building / institutional development, fiscal capacities and sectoral conflicts is hardly new. \citet[7-8]{Gallo:1991kx} studies the Bolivian case and the origins of the fiscal apparatus from a sectoral perspective. \citet[3]{Waldner:1999aa} points out that ``levels of elite conflict determine whether state transformation occurred simultaneously with or before popular incorporation,'' while \citet[8]{Saylor:2014aa} looks at the ``coalitional basis of state building.'' Building on this literature, the contribution of the paper is twofolds: to provide quantitative evidence in support of the idea that the income tax was an important additional building block in the state-building process, and that the sectoral divide between the agricultural and industrial sectors captures the tension between the institutions that helped perpetuating the predominance of the landowning elites since colonial times and the institutions proper of a modern state.
+
+%I share \citet[5]{DiJohn2006}'s diagnosis that there has been no attempt in the literature to explain \emph{why} and \emph{how} state and fiscal capacities emerged. 
+
 
 % argument 1
-This paper argues that the implementation of a modern fiscal system was the product of an inter-sectoral conflict that took place around in early 1900's between the agricultural elite and an emerging and politically excluded industrial sector. The early passage of the income tax law was the tipping point that transformed weak states into strong states, not because of the new revenue collected, but because the administration of the income tax law and the inter-elite bargaining process associated with the passage of the law triggered a series of other institutional investments. When agricultural elites were challenged by a strong industrial sector, the income tax law was imposed early in history, tying the countries to an institutional development path. However, when agricultural elites were not challenged, they systematically expropriated the industrial sector. The later implementation of the tax in these countries, then, did not reflect this early sectoral conflict but other mechanisms which were not necessarily conducive to state development. 
+I argue that the implementation of a modern fiscal system was the product of an inter-sectoral conflict that took place around in early 1900's between the agricultural elite and an emerging and politically excluded industrial sector. While the process of state-building had started earlier immediately after independence, the income tax was an important additional building block in that process. The tax was not important because of the new revenue collected, but because its implementation required a series of inter-elite bargaining, while its administration triggered a series of other institutional investments. When agricultural elites were challenged by a strong industrial sector, the income tax law was imposed early in history, tying the countries to an institutional development path. However, when agricultural elites were not challenged, landowners were never challenged and there were less pressures to centralize the state, making less likely further institutional investments. 
+
 
 % argument 2
-The sectoral conflict was economic and military in nature, but the outcome was a political one. When the rate of industrial output was fast enough to compensate for long-term losses relative to delayed access to liquidity, agricultural elites did not expropriate industrial wealth but rather imposed an income tax. That is, when industrial growth was promising in the long-run, agricultural incumbents were better off encouraging (via protectionist tariffs) and taxing it (via an income tax), rather than expropriating it (and having immediate access to those resources). In exchange for taxation, the industrial class demanded political representation in the form of a competitive oligarchic system and also protectionist tariffs. Both this taxation and political representation dimensions gave rise to a series of institutional investments such as checks-and-balances to monitor tax spending and channel inter-elite conflict, and skilled bureaucracies with enough know-how to collect and administer the tax. In turn, protectionist tariffs helped the industrial sector to expand further, generating a strong urban middle class which supplied the state with a critical mass of educated individuals.\footnote{This paper proposes a roughly simultaneous process. However, \citet[43]{Rota2011a} suggests a different timing. He explains that ``[t]he modernization of bureaucracy \emph{preceded} the process of democratization.'' Emphasis is mine.} When industrial output was slow, agricultural elites - who were political monopolists - faced higher opportunity costs, so rather than ``wait and tax'' industrial output ``tomorrow,'' they shifted to expropriation-type strategies ``today.'' In these cases, the agricultural political monopoly was not broken, and the endogenous incentives to invest in institutions to share political power and improve the bureaucracy never existed. These countries were then trapped in an underdeveloped sub-optimal equilibrium. To test these propositions, I employ hazard models, and econometric method for analyzing panel data, and I offer the Chilean example as a shadow case to illustrate the mechanisms at work, confirming the assumptions in the econometric models.
+Before the income tax law was implemented, political institutions and social norms, largely inherited from the colonial period, were designed to promote biased agricultural development, benefiting the landowning class only. However, the emergence of a new industrial sector rose a new political elite who demanded new political and economic reforms beneficial for them. In this paper, two such demands are identified: the opening of the political system, marking the beginning of the 19th century \emph{oligarchic} republics in Latin America, and the first manifestations of protectionist organized groups which were fundamental during the ISI time. When the industrial sector had enough economic leverage, they accepted being income-taxed in exchange for gaining access to state power and protectionist tariffs. Both the taxation and the oligarchic political competition dimensions gave rise to a series of other institutional investments such as the implementation of checks-and-balances mechanisms (to monitor tax spending) and the development of skilled bureaucracies with enough know-how to collect and administer the revenues of the tax. Protectionist tariffs helped the industrial sector to expand further. One important positive externality was the development of a strong urban middle class which supplied the state with a critical mass of educated individuals. Importantly, industrialization then altered the political and economic status quo not by rising incomes (\emph{\'a la} modernization theory) but by nurturing a political challenger. Hence, what caused political development was not industrialization \emph{per se}, but the development of a political competitor. However, when industrial output was slow, agricultural elites faced higher opportunity costs, and industrial demands were not considered, keeping the small and weak industrial class excluded from politics. 
+
+
+
+ \footnote{This paper proposes a roughly simultaneous process. However, \citet[43]{Rota2011a} suggests a different timing. He explains that ``[t]he modernization of bureaucracy \emph{preceded} the process of democratization.'' Emphasis is mine.}
+
+
+
+Respond here to these criticisms here:
+	- put the critical juncture too early? 
+	- the two elites are not divided in agr/ind sector
 
 
 % How Taxation Relates to State Building: Fiscal Sociology
@@ -447,7 +312,7 @@ These results strongly suggest that as the industrial sector developed, it chall
 
 
 % substantiative interpretation // comments on the simulation
-Following \citet{Gandrud2015} and \citet{King2000}, the three panels in \autoref{fig:simulation:plots} show different variables of interest each simulated 2,000 times. Using a variant of model 2 in \autoref{results:1}, panel {\bf a} and {\bf b} simulate the average effect of industrial and agricultural outputs on the hazard of passing the income tax law.\footnote{The \texttt{simPH} package does not handle natural logs well. The only difference was the inclusion of the unlogged variable. It is important to stress that \emph{both} sectors were included in the model, hence one sector acts as the control variable for the other. In the appendix section, \autoref{altmodel} shows the results of the model employed to generate the 2,000 simulations. The numbers differ from the main results in \autoref{results:1} because the scales are different.} Using the estimations of the seventh model in \autoref{results:1}, panel {\bf c} simulates the effect of the cumulative democratic experience on the passage of the income tax law. These plots strongly suggest that higher industrial output substantively boosted the hazards of introducing the income tax, while higher agricultural output did not play a role in the modernization of the fiscal system. I argued in favor of an endogenous process involving oligarchic electoral competition and the development of a fiscal system. However, model 7 in \autoref{results:1} suggests that once we include oligarchic electoral competition on the right-hand-side, we find statistically significant results. Panel {\bf c} in \autoref{fig:simulation:plots} simulates those effects. However, income tax adoption does not fit oligarchic electoral competition (model 8). I leave this question open for future research.
+Following \citet{Gandrud2015} and \citet{King2000}, the three panels in \autoref{fig:simulation:plots} show different variables of interest each simulated 2,000 times. Using a variant of model 2 in \autoref{results:1}, panel {\bf a} and {\bf b} simulate the average effect of industrial and agricultural outputs on the hazard of passing the income tax law.\footnote{The \texttt{simPH} package does not handle natural logs well. The only difference was the inclusion of the unlogged variable. It is important to stress that \emph{both} sectors were included in the model, hence one sector acts as the control variable for the other. {\color{red}In the appendix section, \autoref{altmodel} shows the results of the model employed to generate the 2,000 simulations. }The numbers differ from the main results in \autoref{results:1} because the scales are different.} Using the estimations of the seventh model in \autoref{results:1}, panel {\bf c} simulates the effect of the cumulative democratic experience on the passage of the income tax law. These plots strongly suggest that higher industrial output substantively boosted the hazards of introducing the income tax, while higher agricultural output did not play a role in the modernization of the fiscal system. I argued in favor of an endogenous process involving oligarchic electoral competition and the development of a fiscal system. However, model 7 in \autoref{results:1} suggests that once we include oligarchic electoral competition on the right-hand-side, we find statistically significant results. Panel {\bf c} in \autoref{fig:simulation:plots} simulates those effects. However, income tax adoption does not fit oligarchic electoral competition (model 8). I leave this question open for future research.
 
 
 \section{Discussion: Slow Industrial Growth and Lack of Contestation\label{discussion}}
@@ -460,6 +325,9 @@ This paper argued that in order to understand state capacities, it is necessary 
 \newpage
 
 \section{Appendix\label{appendix}}
+
+% reset counter for appendix
+\subimport{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/}{LaTeX_Reset_Counter_For_Appendix}
 
 
 \subsection{Model used for Simulation Plot}
