@@ -887,7 +887,7 @@ texreg(
         custom.coef.names = c(
                 "Manufacture Output$_{t-1}$",
                 "Agricultural Output$_{t-1}$",
-                "Total Population$_{t-1}$",
+                "Total Population",
                 #
                 "Manufacture Output (ln)",
                 "Agricultural Output (ln)",
@@ -898,10 +898,10 @@ texreg(
                 "Manufacture Output$_{t-1}$ (ln)",
                 "Agricultural Output$_{t-1}$ (ln)"),
         custom.model.names = c(
-                "(1) Cox",# Base Model
-                "(2) Conditional Logit (FE)", # Fixed Effects model
+                "(1) Cox (1 lag)",# Base Model
+                "(2) Cox (ln)", # Lagged Cox Model 
                 "(3) Logit GEE", # GEE
-                "(4) Cox (1 lag)", # Lagged Cox Model 
+                "(4) Conditional Logit (FE)", # Fixed Effects model
                 "(5) Spatial Dependence" # Spatial Dependence
                 ),
         label = "results:1",
@@ -1019,6 +1019,8 @@ termplot(cox1.splines, term=2, se=TRUE)
 # simulate qi's
 library(simPH) # install.packages("simPH")
 
+nsim = 1000
+
 set.seed(602)
 sim.m.ind <- coxsimLinear(cox2, 
                           b = "L_constmanufact", 
@@ -1026,7 +1028,7 @@ sim.m.ind <- coxsimLinear(cox2,
                           ci = 0.95,
                           #spin = T,
                           extremesDrop = T,
-                          nsim = 1000,
+                          nsim = nsim,
                           Xj = c(min(cox$L_constmanufact), max(cox$L_constmanufact))
 )
 
@@ -1040,7 +1042,7 @@ sim.m.agr <- coxsimLinear(cox2,
                           ci = 0.95,
                           #spin = T,
                           extremesDrop = T,
-                          nsim = 1000,
+                          nsim = nsim,
                           Xj = c(min(cox$L_constagricult), max(cox$L_constagricult))
 )
 
