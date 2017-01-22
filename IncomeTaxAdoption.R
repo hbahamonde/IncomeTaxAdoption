@@ -882,21 +882,21 @@ spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
 
 # screenreg / texreg
 texreg(
-        list(cox2, clogit.1, logitgee.1, cox.L, spatial.m), # it needs to be texreg for knitr
+        list(cox2, cox.L, logitgee.1, clogit.1, spatial.m), # it needs to be texreg for knitr
         caption = "Structural Origins of Income Taxation: Income Tax Law and Democratic Development",
         custom.coef.names = c(
                 "Manufacture Output$_{t-1}$",
                 "Agricultural Output$_{t-1}$",
                 "Total Population",
                 #
-                "Manufacture Output (ln)",
-                "Agricultural Output (ln)",
+                "Manufacture Output$_{t-1}$ (ln)",
+                "Agricultural Output$_{t-1}$ (ln)",
                 "Total Population (ln)",
                 #
                 "intercept",
                 #
-                "Manufacture Output$_{t-1}$ (ln)",
-                "Agricultural Output$_{t-1}$ (ln)"),
+                "Manufacture Output (ln)",
+                "Agricultural Output (ln)"),
         custom.model.names = c(
                 "(1) Cox (1 lag)",# Base Model
                 "(2) Cox (ln)", # Lagged Cox Model 
@@ -915,10 +915,11 @@ texreg(
         #longtable = TRUE,
         digits = 3,
         table = TRUE,
+        stars = c(0.001, 0.01, 0.05, 0.1),
         sideways = TRUE,
         no.margin = TRUE#, 
         #float.pos = "h"
-)
+        )
 ## ---- 
 
 
