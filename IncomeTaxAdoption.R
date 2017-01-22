@@ -902,7 +902,7 @@ texreg(
                 "(2) Conditional Logit (FE)", # Fixed Effects model
                 "(3) Logit GEE", # GEE
                 "(4) Cox (1 lag)", # Lagged Cox Model 
-                "(4) Spatial Dependence" # Spatial Dependence
+                "(5) Spatial Dependence" # Spatial Dependence
                 ),
         label = "results:1",
         custom.note = "%stars. Robust Standard Errors in All Models",
