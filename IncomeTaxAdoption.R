@@ -905,7 +905,7 @@ texreg(
                 "(5) Spatial Dependence" # Spatial Dependence
                 ),
         label = "results:1",
-        custom.note = "%stars. Robust Standard Errors in All Models",
+        custom.note = "%stars. Robust standard errors in all models",
         fontsize = "tiny",
         center = TRUE,
         use.packages = FALSE,
@@ -1020,11 +1020,12 @@ termplot(cox1.splines, term=2, se=TRUE)
 library(simPH) # install.packages("simPH")
 
 nsim = 1000
+qi = "Hazard Rate"
 
 set.seed(602)
 sim.m.ind <- coxsimLinear(cox2, 
                           b = "L_constmanufact", 
-                          qi = "Hazard Rate", 
+                          qi = qi, 
                           ci = 0.95,
                           #spin = T,
                           extremesDrop = T,
@@ -1038,7 +1039,7 @@ sim.m.ind <- coxsimLinear(cox2,
 set.seed(602)
 sim.m.agr <- coxsimLinear(cox2, 
                           b = "L_constagricult", 
-                          qi = "Hazard Rate", 
+                          qi = qi, 
                           ci = 0.95,
                           #spin = T,
                           extremesDrop = T,
