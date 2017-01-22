@@ -600,7 +600,7 @@ load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData"
 cox$Proximity <- as.numeric(cox$constmanufact + (cox$constmanufact*.5) >= cox$constagricult)
 
 library(plyr) # install.packages("plyr")
-cox$Contestation <- mapvalues(cox$Proximity, from = c("0", "1"), to = c("Low", "High"))
+cox$Industrialization <- mapvalues(cox$Proximity, from = c("0", "1"), to = c("Slow", "Rapid"))
 
 
 # plot ggsurv function
@@ -735,7 +735,7 @@ library(survival) # install.packages("survival")
 surv.object = Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
 
 # plot
-ggsurv(survfit(surv.object~Contestation, cox, conf.type="none")) + 
+ggsurv(survfit(surv.object~Industrialization, cox, conf.type="none")) + 
         theme_bw() + 
         xlab("Year") +
         guides(fill = guide_legend(title = "LEFT")) + 
