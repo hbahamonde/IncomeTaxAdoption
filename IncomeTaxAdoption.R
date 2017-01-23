@@ -854,6 +854,7 @@ logitgee.1 = geeglm(incometax.d ~ log(constmanufact) + log(constagricult) + log(
                     family = binomial, 
                     id = country, 
                     corstr = "independence",
+                    std.err = "san.se",
                     data = logitgee)
 logitgee.1 = extract(logitgee.1)
 
@@ -883,7 +884,7 @@ spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
 # screenreg / texreg
 texreg(
         list(cox2, cox.L, logitgee.1, clogit.1, spatial.m), # it needs to be texreg for knitr
-        caption = "Structural Origins of Income Taxation: Income Tax Law and Democratic Development",
+        caption = "Sectoral Origins of Income Taxation: Income Tax Law and Industrial Development",
         custom.coef.names = c(
                 "Manufacture Output$_{t-1}$",
                 "Agricultural Output$_{t-1}$",
@@ -899,7 +900,7 @@ texreg(
                 "Agricultural Output (ln)"),
         custom.model.names = c(
                 "(1) Cox (1 lag)",# Base Model
-                "(2) Cox (ln)", # Lagged Cox Model 
+                "(2) Cox (1 lag, ln)", # Lagged Cox Model 
                 "(3) Logit GEE", # GEE
                 "(4) Conditional Logit (FE)", # Fixed Effects model
                 "(5) Spatial Dependence" # Spatial Dependence
@@ -917,8 +918,8 @@ texreg(
         table = TRUE,
         stars = c(0.001, 0.01, 0.05, 0.1),
         sideways = TRUE,
-        no.margin = TRUE#, 
-        #float.pos = "h"
+        no.margin = TRUE, 
+        float.pos = "ph!"
         )
 ## ---- 
 
@@ -1020,14 +1021,17 @@ termplot(cox1.splines, term=2, se=TRUE)
 # simulate qi's
 library(simPH) # install.packages("simPH")
 
+# quantities
 nsim = 1000
 qi = "Hazard Rate"
+ci = 0.9
+
 
 set.seed(602)
 sim.m.ind <- coxsimLinear(cox2, 
                           b = "L_constmanufact", 
                           qi = qi, 
-                          ci = 0.95,
+                          ci = ci,
                           #spin = T,
                           extremesDrop = T,
                           nsim = nsim,
@@ -1041,7 +1045,7 @@ set.seed(602)
 sim.m.agr <- coxsimLinear(cox2, 
                           b = "L_constagricult", 
                           qi = qi, 
-                          ci = 0.95,
+                          ci = ci,
                           #spin = T,
                           extremesDrop = T,
                           nsim = nsim,
