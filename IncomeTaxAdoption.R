@@ -823,6 +823,13 @@ load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/logitgee.R
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/l_clogit.RData") # Lagged CONSTANT AGR MANUFACT for clogit  (fixed effects)
 
 
+<<<<<<< HEAD
+=======
+# Model with time-transformed variables
+#library(survival) # install.packages("survival") 
+#cox1.tt = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
+# ~ tt(constmanufact) + tt(constagricult) + cluster(country), data=cox)
+>>>>>>> master
 
 # base model
 # normal cox model // take the log of these covariates
@@ -859,6 +866,14 @@ logitgee.1 = geeglm(incometax.d ~ log(constmanufact) + log(constagricult) + log(
 logitgee.1 = extract(logitgee.1)
 
 
+<<<<<<< HEAD
+=======
+# Recurrent Events: Income Tax AND Democracy
+# library(survival) # install.packages("survival") 
+# cox2.ag = coxph(Surv(ag.data$year, ag.data$year2, ag.data$dem.tax, origin=1900) ~ log(constmanufact) + log(constagricult) + cluster(country), data=ag.data)
+
+
+>>>>>>> master
 # conditional logit
 library(survival) # install.packages("survival")
 clogit.1 = clogit(
@@ -868,6 +883,35 @@ clogit.1 = clogit(
                 log(totpop) +
                 strata(country), 
         method= "efron", data = data)
+<<<<<<< HEAD
+=======
+
+## model tax <- dem
+# library(survival) # install.packages("survival") 
+# options(scipen = 999) # bias against scientific notation
+# tax.dem.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$tax.trans, origin=1900) ~ 
+#                           constmanufact + 
+#                           #constmanufact.sq + 
+#                           constagricult + 
+#                           #constagricult.sq + 
+#                           #democracy.d.cumsum + 
+#                           democracy.d.cumsum.sq + 
+#                           cluster(country), 
+#                   data=tax.dem.long)
+
+
+## model dem <- tax 
+# library(survival) # install.packages("survival") 
+# options(scipen = 999) # bias against scientific notation
+# dem.tax.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$dem.trans, origin=1900) ~ 
+#                           constmanufact + 
+#                           #constmanufact.sq + 
+#                           constagricult + 
+#                           #constagricult.sq + 
+#                           #incometax.d.cumsum + 
+#                           incometax.d.cumsum.sq + 
+#                           cluster(country), data=tax.dem.long)
+>>>>>>> master
 
 
 # spatial dependence model
@@ -880,6 +924,7 @@ spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
                   data=cox)
 
 
+<<<<<<< HEAD
 
 # screenreg / texreg
 texreg(
@@ -892,10 +937,38 @@ texreg(
                 #
                 "Manufacture Output$_{t-1}$ (ln)",
                 "Agricultural Output$_{t-1}$ (ln)",
+=======
+# modernization theory model
+# library(survival) # install.packages("survival") 
+# modernization.m = coxph(Surv(
+#         tax.dem.long$year, 
+#         tax.dem.long$year2, 
+#         tax.dem.long$dem.trans, origin=1900) ~ 
+#                 constmanufact + 
+#                 constagricult + 
+#                 madisonpercapgdp +
+#                 cluster(country), 
+#         data=tax.dem.long)
+
+
+
+# screenreg / texreg
+screenreg(
+        list(cox2, clogit.1, logitgee.1, cox.L, spatial.m), # it needs to be texreg for knitr
+        caption = "Structural Origins of Income Taxation: Income Tax Law and Democratic Development",
+        custom.coef.names = c(
+                "Manufacture Output$_{t-1}$",
+                "Agricultural Output$_{t-1}$",
+                "Total Population$_{t-1}$",
+                #
+                "Manufacture Output (ln)",
+                "Agricultural Output (ln)",
+>>>>>>> master
                 "Total Population (ln)",
                 #
                 "intercept",
                 #
+<<<<<<< HEAD
                 "Manufacture Output (ln)",
                 "Agricultural Output (ln)"),
         custom.model.names = c(
@@ -904,6 +977,16 @@ texreg(
                 "(3) Logit GEE", # GEE
                 "(4) Conditional Logit (FE)", # Fixed Effects model
                 "(5) Spatial Dependence" # Spatial Dependence
+=======
+                "Manufacture Output$_{t-1}$ (ln)",
+                "Agricultural Output$_{t-1}$ (ln)"),
+        custom.model.names = c(
+                "(1) Cox",# Base Model
+                "(2) Conditional Logit (FE)", # Fixed Effects model
+                "(3) Logit GEE", # GEE
+                "(4) Cox (1 lag)", # Lagged Cox Model 
+                "(4) Spatial Dependence" # Spatial Dependence
+>>>>>>> master
                 ),
         label = "results:1",
         custom.note = "%stars. Robust standard errors in all models",
