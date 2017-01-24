@@ -100,7 +100,7 @@ spatial.cum = c(
                 ifelse(data$year>=1965,1,0) + # Mexico
                 ifelse(data$year>=1933,1,0) + # Arg
                 ifelse(data$year>=1943,1,0) # Venezuela, Ley de Impuesto sobre la Renta 
-        )
+)
 
 
 data$spatial.cum = spatial.cum
@@ -608,126 +608,126 @@ ggsurv <- function(s, CI = 'def', plot.cens = T, surv.col = 'gg.def',
                    cens.col = 'red', lty.est = 1, lty.ci = 2,
                    cens.shape = 3, back.white = F, xlab = 'Time',
                    ylab = 'Survival', main = ''){
-  
-  library(ggplot2)
-  strata <- ifelse(is.null(s$strata) ==T, 1, length(s$strata))
-  stopifnot(length(surv.col) == 1 | length(surv.col) == strata)
-  stopifnot(length(lty.est) == 1 | length(lty.est) == strata)
-  
-  ggsurv.s <- function(s, CI = 'def', plot.cens = T, surv.col = 'gg.def',
-                       cens.col = 'red', lty.est = 1, lty.ci = 2,
-                       cens.shape = 3, back.white = F, xlab = 'Time',
-                       ylab = 'Survival', main = ''){
-    
-    dat <- data.frame(time = c(0, s$time),
-                      surv = c(1, s$surv),
-                      up = c(1, s$upper),
-                      low = c(1, s$lower),
-                      cens = c(0, s$n.censor))
-    dat.cens <- subset(dat, cens != 0)
-    
-    col <- ifelse(surv.col == 'gg.def', 'black', surv.col)
-    
-    pl <- ggplot(dat, aes(x = time, y = surv)) +
-      xlab(xlab) + ylab(ylab) + ggtitle(main) +
-      geom_step(col = col, lty = lty.est)
-    
-    pl <- if(CI == T | CI == 'def') {
-      pl + geom_step(aes(y = up), color = col, lty = lty.ci) +
-        geom_step(aes(y = low), color = col, lty = lty.ci)
-    } else (pl)
-    
-    pl <- if(plot.cens == T & length(dat.cens) > 0){
-      pl + geom_point(data = dat.cens, aes(y = surv), shape = cens.shape,
-                      col = cens.col)
-    } else if (plot.cens == T & length(dat.cens) == 0){
-      stop ('There are no censored observations')
-    } else(pl)
-    
-    pl <- if(back.white == T) {pl + theme_bw()
-    } else (pl)
-    pl
-  }
-  
-  ggsurv.m <- function(s, CI = 'def', plot.cens = T, surv.col = 'gg.def',
-                       cens.col = 'red', lty.est = 1, lty.ci = 2,
-                       cens.shape = 3, back.white = F, xlab = 'Time',
-                       ylab = 'Survival', main = '') {
-    n <- s$strata
-    
-    groups <- factor(unlist(strsplit(names
-                                     (s$strata), '='))[seq(2, 2*strata, by = 2)])
-    gr.name <-  unlist(strsplit(names(s$strata), '='))[1]
-    gr.df <- vector('list', strata)
-    ind <- vector('list', strata)
-    n.ind <- c(0,n); n.ind <- cumsum(n.ind)
-    for(i in 1:strata) ind[[i]] <- (n.ind[i]+1):n.ind[i+1]
-    
-    for(i in 1:strata){
-      gr.df[[i]] <- data.frame(
-        time = c(0, s$time[ ind[[i]] ]),
-        surv = c(1, s$surv[ ind[[i]] ]),
-        up = c(1, s$upper[ ind[[i]] ]),
-        low = c(1, s$lower[ ind[[i]] ]),
-        cens = c(0, s$n.censor[ ind[[i]] ]),
-        group = rep(groups[i], n[i] + 1))
-    }
-    
-    dat <- do.call(rbind, gr.df)
-    dat.cens <- subset(dat, cens != 0)
-    
-    pl <- ggplot(dat, aes(x = time, y = surv, group = group)) +
-      xlab(xlab) + ylab(ylab) + ggtitle(main) +
-      geom_step(aes(col = group, lty = group))
-    
-    col <- if(length(surv.col == 1)){
-      scale_colour_manual(name = gr.name, values = rep(surv.col, strata))
-    } else{
-      scale_colour_manual(name = gr.name, values = surv.col)
-    }
-    
-    pl <- if(surv.col[1] != 'gg.def'){
-      pl + col
-    } else {pl + scale_colour_discrete(name = gr.name)}
-    
-    line <- if(length(lty.est) == 1){
-      scale_linetype_manual(name = gr.name, values = rep(lty.est, strata))
-    } else {scale_linetype_manual(name = gr.name, values = lty.est)}
-    
-    pl <- pl + line
-    
-    pl <- if(CI == T) {
-      if(length(surv.col) > 1 && length(lty.est) > 1){
-        stop('Either surv.col or lty.est should be of length 1 in order
-             to plot 95% CI with multiple strata')
-      }else if((length(surv.col) > 1 | surv.col == 'gg.def')[1]){
-        pl + geom_step(aes(y = up, color = group), lty = lty.ci) +
-          geom_step(aes(y = low, color = group), lty = lty.ci)
-      } else{pl +  geom_step(aes(y = up, lty = group), col = surv.col) +
-          geom_step(aes(y = low,lty = group), col = surv.col)}
-    } else {pl}
-    
-    
-    pl <- if(plot.cens == T & length(dat.cens) > 0){
-      pl + geom_point(data = dat.cens, aes(y = surv), shape = cens.shape,
-                      col = cens.col)
-    } else if (plot.cens == T & length(dat.cens) == 0){
-      stop ('There are no censored observations')
-    } else(pl)
-    
-    pl <- if(back.white == T) {pl + theme_bw()
-    } else (pl)
-    pl
-  }
-  pl <- if(strata == 1) {ggsurv.s(s, CI , plot.cens, surv.col ,
-                                  cens.col, lty.est, lty.ci,
-                                  cens.shape, back.white, xlab,
-                                  ylab, main)
-  } else {ggsurv.m(s, CI, plot.cens, surv.col ,
-                   cens.col, lty.est, lty.ci,
-                   cens.shape, back.white, xlab,
-                   ylab, main)}
-  pl
+        
+        library(ggplot2)
+        strata <- ifelse(is.null(s$strata) ==T, 1, length(s$strata))
+        stopifnot(length(surv.col) == 1 | length(surv.col) == strata)
+        stopifnot(length(lty.est) == 1 | length(lty.est) == strata)
+        
+        ggsurv.s <- function(s, CI = 'def', plot.cens = T, surv.col = 'gg.def',
+                             cens.col = 'red', lty.est = 1, lty.ci = 2,
+                             cens.shape = 3, back.white = F, xlab = 'Time',
+                             ylab = 'Survival', main = ''){
+                
+                dat <- data.frame(time = c(0, s$time),
+                                  surv = c(1, s$surv),
+                                  up = c(1, s$upper),
+                                  low = c(1, s$lower),
+                                  cens = c(0, s$n.censor))
+                dat.cens <- subset(dat, cens != 0)
+                
+                col <- ifelse(surv.col == 'gg.def', 'black', surv.col)
+                
+                pl <- ggplot(dat, aes(x = time, y = surv)) +
+                        xlab(xlab) + ylab(ylab) + ggtitle(main) +
+                        geom_step(col = col, lty = lty.est)
+                
+                pl <- if(CI == T | CI == 'def') {
+                        pl + geom_step(aes(y = up), color = col, lty = lty.ci) +
+                                geom_step(aes(y = low), color = col, lty = lty.ci)
+                } else (pl)
+                
+                pl <- if(plot.cens == T & length(dat.cens) > 0){
+                        pl + geom_point(data = dat.cens, aes(y = surv), shape = cens.shape,
+                                        col = cens.col)
+                } else if (plot.cens == T & length(dat.cens) == 0){
+                        stop ('There are no censored observations')
+                } else(pl)
+                
+                pl <- if(back.white == T) {pl + theme_bw()
+                } else (pl)
+                pl
+        }
+        
+        ggsurv.m <- function(s, CI = 'def', plot.cens = T, surv.col = 'gg.def',
+                             cens.col = 'red', lty.est = 1, lty.ci = 2,
+                             cens.shape = 3, back.white = F, xlab = 'Time',
+                             ylab = 'Survival', main = '') {
+                n <- s$strata
+                
+                groups <- factor(unlist(strsplit(names
+                                                 (s$strata), '='))[seq(2, 2*strata, by = 2)])
+                gr.name <-  unlist(strsplit(names(s$strata), '='))[1]
+                gr.df <- vector('list', strata)
+                ind <- vector('list', strata)
+                n.ind <- c(0,n); n.ind <- cumsum(n.ind)
+                for(i in 1:strata) ind[[i]] <- (n.ind[i]+1):n.ind[i+1]
+                
+                for(i in 1:strata){
+                        gr.df[[i]] <- data.frame(
+                                time = c(0, s$time[ ind[[i]] ]),
+                                surv = c(1, s$surv[ ind[[i]] ]),
+                                up = c(1, s$upper[ ind[[i]] ]),
+                                low = c(1, s$lower[ ind[[i]] ]),
+                                cens = c(0, s$n.censor[ ind[[i]] ]),
+                                group = rep(groups[i], n[i] + 1))
+                }
+                
+                dat <- do.call(rbind, gr.df)
+                dat.cens <- subset(dat, cens != 0)
+                
+                pl <- ggplot(dat, aes(x = time, y = surv, group = group)) +
+                        xlab(xlab) + ylab(ylab) + ggtitle(main) +
+                        geom_step(aes(col = group, lty = group))
+                
+                col <- if(length(surv.col == 1)){
+                        scale_colour_manual(name = gr.name, values = rep(surv.col, strata))
+                } else{
+                        scale_colour_manual(name = gr.name, values = surv.col)
+                }
+                
+                pl <- if(surv.col[1] != 'gg.def'){
+                        pl + col
+                } else {pl + scale_colour_discrete(name = gr.name)}
+                
+                line <- if(length(lty.est) == 1){
+                        scale_linetype_manual(name = gr.name, values = rep(lty.est, strata))
+                } else {scale_linetype_manual(name = gr.name, values = lty.est)}
+                
+                pl <- pl + line
+                
+                pl <- if(CI == T) {
+                        if(length(surv.col) > 1 && length(lty.est) > 1){
+                                stop('Either surv.col or lty.est should be of length 1 in order
+                                     to plot 95% CI with multiple strata')
+                        }else if((length(surv.col) > 1 | surv.col == 'gg.def')[1]){
+                                pl + geom_step(aes(y = up, color = group), lty = lty.ci) +
+                                        geom_step(aes(y = low, color = group), lty = lty.ci)
+                        } else{pl +  geom_step(aes(y = up, lty = group), col = surv.col) +
+                                        geom_step(aes(y = low,lty = group), col = surv.col)}
+                } else {pl}
+                
+                
+                pl <- if(plot.cens == T & length(dat.cens) > 0){
+                        pl + geom_point(data = dat.cens, aes(y = surv), shape = cens.shape,
+                                        col = cens.col)
+                } else if (plot.cens == T & length(dat.cens) == 0){
+                        stop ('There are no censored observations')
+                } else(pl)
+                
+                pl <- if(back.white == T) {pl + theme_bw()
+                } else (pl)
+                pl
+        }
+        pl <- if(strata == 1) {ggsurv.s(s, CI , plot.cens, surv.col ,
+                                        cens.col, lty.est, lty.ci,
+                                        cens.shape, back.white, xlab,
+                                        ylab, main)
+        } else {ggsurv.m(s, CI, plot.cens, surv.col ,
+                         cens.col, lty.est, lty.ci,
+                         cens.shape, back.white, xlab,
+                         ylab, main)}
+        pl
 }
 
 # generate survival object
@@ -747,7 +747,7 @@ ggsurv(survfit(surv.object~Industrialization, cox, conf.type="none")) +
               legend.title=element_text(size=9),
               legend.position = "bottom",
               legend.key = element_rect(colour = NA, fill = NA, size = 0.5)
-              )
+        )
 ## ----
 
 
@@ -823,19 +823,12 @@ load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/logitgee.R
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/l_clogit.RData") # Lagged CONSTANT AGR MANUFACT for clogit  (fixed effects)
 
 
-<<<<<<< HEAD
-=======
-# Model with time-transformed variables
-#library(survival) # install.packages("survival") 
-#cox1.tt = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
-# ~ tt(constmanufact) + tt(constagricult) + cluster(country), data=cox)
->>>>>>> master
 
 # base model
 # normal cox model // take the log of these covariates
-        cox$L_constmanufact = log(cox$constmanufact)
-        cox$L_constagricult = log(cox$constagricult)
-        cox$L_totpop = log(cox$totpop)
+cox$L_constmanufact = log(cox$constmanufact)
+cox$L_constagricult = log(cox$constagricult)
+cox$L_totpop = log(cox$totpop)
 
 library(survival) # install.packages("survival") 
 # this is the model I use for simulation
@@ -866,14 +859,6 @@ logitgee.1 = geeglm(incometax.d ~ log(constmanufact) + log(constagricult) + log(
 logitgee.1 = extract(logitgee.1)
 
 
-<<<<<<< HEAD
-=======
-# Recurrent Events: Income Tax AND Democracy
-# library(survival) # install.packages("survival") 
-# cox2.ag = coxph(Surv(ag.data$year, ag.data$year2, ag.data$dem.tax, origin=1900) ~ log(constmanufact) + log(constagricult) + cluster(country), data=ag.data)
-
-
->>>>>>> master
 # conditional logit
 library(survival) # install.packages("survival")
 clogit.1 = clogit(
@@ -883,35 +868,6 @@ clogit.1 = clogit(
                 log(totpop) +
                 strata(country), 
         method= "efron", data = data)
-<<<<<<< HEAD
-=======
-
-## model tax <- dem
-# library(survival) # install.packages("survival") 
-# options(scipen = 999) # bias against scientific notation
-# tax.dem.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$tax.trans, origin=1900) ~ 
-#                           constmanufact + 
-#                           #constmanufact.sq + 
-#                           constagricult + 
-#                           #constagricult.sq + 
-#                           #democracy.d.cumsum + 
-#                           democracy.d.cumsum.sq + 
-#                           cluster(country), 
-#                   data=tax.dem.long)
-
-
-## model dem <- tax 
-# library(survival) # install.packages("survival") 
-# options(scipen = 999) # bias against scientific notation
-# dem.tax.m = coxph(Surv(tax.dem.long$year, tax.dem.long$year2, tax.dem.long$dem.trans, origin=1900) ~ 
-#                           constmanufact + 
-#                           #constmanufact.sq + 
-#                           constagricult + 
-#                           #constagricult.sq + 
-#                           #incometax.d.cumsum + 
-#                           incometax.d.cumsum.sq + 
-#                           cluster(country), data=tax.dem.long)
->>>>>>> master
 
 
 # spatial dependence model
@@ -924,7 +880,6 @@ spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
                   data=cox)
 
 
-<<<<<<< HEAD
 
 # screenreg / texreg
 texreg(
@@ -937,38 +892,10 @@ texreg(
                 #
                 "Manufacture Output$_{t-1}$ (ln)",
                 "Agricultural Output$_{t-1}$ (ln)",
-=======
-# modernization theory model
-# library(survival) # install.packages("survival") 
-# modernization.m = coxph(Surv(
-#         tax.dem.long$year, 
-#         tax.dem.long$year2, 
-#         tax.dem.long$dem.trans, origin=1900) ~ 
-#                 constmanufact + 
-#                 constagricult + 
-#                 madisonpercapgdp +
-#                 cluster(country), 
-#         data=tax.dem.long)
-
-
-
-# screenreg / texreg
-screenreg(
-        list(cox2, clogit.1, logitgee.1, cox.L, spatial.m), # it needs to be texreg for knitr
-        caption = "Structural Origins of Income Taxation: Income Tax Law and Democratic Development",
-        custom.coef.names = c(
-                "Manufacture Output$_{t-1}$",
-                "Agricultural Output$_{t-1}$",
-                "Total Population$_{t-1}$",
-                #
-                "Manufacture Output (ln)",
-                "Agricultural Output (ln)",
->>>>>>> master
                 "Total Population (ln)",
                 #
                 "intercept",
                 #
-<<<<<<< HEAD
                 "Manufacture Output (ln)",
                 "Agricultural Output (ln)"),
         custom.model.names = c(
@@ -977,17 +904,7 @@ screenreg(
                 "(3) Logit GEE", # GEE
                 "(4) Conditional Logit (FE)", # Fixed Effects model
                 "(5) Spatial Dependence" # Spatial Dependence
-=======
-                "Manufacture Output$_{t-1}$ (ln)",
-                "Agricultural Output$_{t-1}$ (ln)"),
-        custom.model.names = c(
-                "(1) Cox",# Base Model
-                "(2) Conditional Logit (FE)", # Fixed Effects model
-                "(3) Logit GEE", # GEE
-                "(4) Cox (1 lag)", # Lagged Cox Model 
-                "(4) Spatial Dependence" # Spatial Dependence
->>>>>>> master
-                ),
+        ),
         label = "results:1",
         custom.note = "%stars. Robust standard errors in all models",
         fontsize = "tiny",
@@ -1003,7 +920,7 @@ screenreg(
         sideways = TRUE,
         no.margin = TRUE, 
         float.pos = "ph!"
-        )
+)
 ## ---- 
 
 
@@ -1238,8 +1155,8 @@ grid_arrange_shared_legend(sim.p.ind, sim.p.agr, ncol = 2, nrow = 1)
 
 # main model
 cox3.p = coxph(Surv(year, incometax.s) ~ constmanufact + constagricult + totpop, 
-             data=cox
-             )
+               data=cox
+)
 
 # predictions with std. errors
 cox3.p.d= data.frame(predict(cox3.p, type="expected", se.fit=TRUE))
@@ -1390,142 +1307,142 @@ library(gridExtra)  # install.packages("gridExtra")
 
 # To force GGplots to share same legend.
 grid_arrange_shared_legend <- function(...) {
-  require(ggplot2)
-  require(gridExtra)
-  plots <- list(...)
-  g <- ggplotGrob(plots[[1]] + theme(legend.position="bottom"))$grobs
-  legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
-  lheight <- sum(legend$height)
-  grid.arrange(
-    do.call(arrangeGrob, lapply(plots, function(x)
-      x + theme(legend.position="none"))),
-    legend,
-    ncol = 1,
-    heights = grid::unit.c(unit(1, "npc") - lheight, lheight))
+        require(ggplot2)
+        require(gridExtra)
+        plots <- list(...)
+        g <- ggplotGrob(plots[[1]] + theme(legend.position="bottom"))$grobs
+        legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
+        lheight <- sum(legend$height)
+        grid.arrange(
+                do.call(arrangeGrob, lapply(plots, function(x)
+                        x + theme(legend.position="none"))),
+                legend,
+                ncol = 1,
+                heights = grid::unit.c(unit(1, "npc") - lheight, lheight))
 }
 
 #### multiplot
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
-  library(grid)
-  
-  # Make a list from the ... arguments and plotlist
-  plots <- c(list(...), plotlist)
-  
-  numPlots = length(plots)
-  
-  # If layout is NULL, then use 'cols' to determine layout
-  if (is.null(layout)) {
-    # Make the panel
-    # ncol: Number of columns of plots
-    # nrow: Number of rows needed, calculated from # of cols
-    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
-                     ncol = cols, nrow = ceiling(numPlots/cols))
-  }
-  
-  if (numPlots==1) {
-    print(plots[[1]])
-    
-  } else {
-    # Set up the page
-    grid.newpage()
-    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
-    
-    # Make each plot, in the correct location
-    for (i in 1:numPlots) {
-      # Get the i,j matrix positions of the regions that contain this subplot
-      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
-      
-      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
-                                      layout.pos.col = matchidx$col))
-    }
-  }
+        library(grid)
+        
+        # Make a list from the ... arguments and plotlist
+        plots <- c(list(...), plotlist)
+        
+        numPlots = length(plots)
+        
+        # If layout is NULL, then use 'cols' to determine layout
+        if (is.null(layout)) {
+                # Make the panel
+                # ncol: Number of columns of plots
+                # nrow: Number of rows needed, calculated from # of cols
+                layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                                 ncol = cols, nrow = ceiling(numPlots/cols))
+        }
+        
+        if (numPlots==1) {
+                print(plots[[1]])
+                
+        } else {
+                # Set up the page
+                grid.newpage()
+                pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+                
+                # Make each plot, in the correct location
+                for (i in 1:numPlots) {
+                        # Get the i,j matrix positions of the regions that contain this subplot
+                        matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+                        
+                        print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                                        layout.pos.col = matchidx$col))
+                }
+        }
 }
 
 #### plots
 chile.p = ggplot() + 
-  geom_smooth(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-  geom_smooth(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-  xlab("Year") +
-  ylab("GDP Output (ln)") +
-  labs(colour = "Legend") +
-  scale_x_continuous(limits=c(1890,2010)) + 
-  geom_vline(data=subset(dissertation, country=="Chile"), aes(xintercept = 1924, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law  
-  theme_bw() + 
-  theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-  labs(title="Chile")
+        geom_smooth(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Legend") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Chile"), aes(xintercept = 1924, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law  
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Chile")
 
 peru.p = ggplot() + 
-  geom_smooth(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-  geom_smooth(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-  xlab("Year") +
-  ylab("GDP Output (ln)") +
-  labs(colour = "Legend") +
-  scale_x_continuous(limits=c(1890,2010)) + 
-  geom_vline(data=subset(dissertation, country=="Peru"), aes(xintercept = 1934, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-  theme_bw() + 
-  theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-  labs(title="Peru") 
+        geom_smooth(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Legend") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Peru"), aes(xintercept = 1934, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Peru") 
 
 colombia.p = ggplot() + 
-  geom_smooth(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-  geom_smooth(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-  xlab("Year") +
-  ylab("GDP Output (ln)") +
-  labs(colour = "Legend") +
-  scale_x_continuous(limits=c(1890,2010)) + 
-  geom_vline(data=subset(dissertation, country=="Colombia"), aes(xintercept = 1935, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-  theme_bw() + 
-  theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-  labs(title="Colombia") 
+        geom_smooth(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Legend") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Colombia"), aes(xintercept = 1935, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Colombia") 
 
 ecuador.p= ggplot() + 
-  geom_smooth(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-  geom_smooth(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-  xlab("Year") +
-  ylab("GDP Output (ln)") +
-  labs(colour = "Legend") +
-  scale_x_continuous(limits=c(1890,2010)) + 
-  geom_vline(data=subset(dissertation, country=="Ecuador"), aes(xintercept = 1945, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-  theme_bw() + 
-  theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-  labs(title="Ecuador") 
+        geom_smooth(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Legend") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Ecuador"), aes(xintercept = 1945, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Ecuador") 
 
 
 venezuela.p= ggplot() + 
-  geom_smooth(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-  geom_smooth(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-  xlab("Year") +
-  ylab("GDP Output (ln)") +
-  labs(colour = "Legend") +
-  scale_x_continuous(limits=c(1890,2010)) + 
-  geom_vline(data=subset(dissertation, country=="Venezuela"), aes(xintercept = 1943, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-  theme_bw() + 
-  theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-  labs(title="Venezuela") 
+        geom_smooth(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Legend") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Venezuela"), aes(xintercept = 1943, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Venezuela") 
 
 nicaragua.p= ggplot() + 
-  geom_smooth(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-  geom_smooth(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-  xlab("Year") +
-  ylab("GDP Output (ln)") +
-  labs(colour = "Legend") +
-  scale_x_continuous(limits=c(1890,2010)) + 
-  geom_vline(data=subset(dissertation, country=="Nicaragua"), aes(xintercept = 1974, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-  theme_bw() + 
-  theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-  labs(title="Nicaragua") 
+        geom_smooth(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Legend") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Nicaragua"), aes(xintercept = 1974, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Nicaragua") 
 
 guatemala.p= ggplot() + 
-  geom_smooth(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-  geom_smooth(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-  xlab("Year") +
-  ylab("GDP Output (ln)") +
-  labs(colour = "Income Tax (ln)") +
-  scale_x_continuous(limits=c(1890,2010)) + 
-  geom_vline(data=subset(dissertation, country=="Guatemala"), aes(xintercept = 1963, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-  theme_bw() + 
-  theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-  labs(title="Guatemala") 
+        geom_smooth(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_smooth(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Guatemala"), aes(xintercept = 1963, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
+        labs(title="Guatemala") 
 
 argentina.p= ggplot() + 
         geom_smooth(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
@@ -1753,6 +1670,5 @@ sim.2 = simGG(sim3.a, type = 'points',# type = 'points' // 'lines'
 
 library(cowplot) # install.packages("cowplot")
 plot_grid(sim.1, sim.2, ncol = 2, labels = "auto", label_size = 7)
-
 
 
