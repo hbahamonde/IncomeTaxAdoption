@@ -109,7 +109,9 @@ data$spatial.cum = spatial.cum
 save(data, file = "/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/incometax_data.RData") # in paper's folder
 
 ## save data in STATA format for Paper 2, where I use STATA
-library(foreign)
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(foreign)
+
 write.dta(data, "/Users/hectorbahamonde/RU/Dissertation/Papers/NegativeLink/data.dta")
 
 ##################################################
@@ -172,9 +174,8 @@ setwd("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption")
 # Load Data
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # Load data
 
-# install.packages("DataCombine")
-library(data.table)
-library(DataCombine)
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(data.table, DataCombine)
 
 cox.L <- setorder(cox, country, year)
 cox.L <- subset(cox.L, select = - incometax.s)
@@ -487,13 +488,17 @@ tax.dem.long<-tax.dem.long[!(tax.dem.long$dem.cumsum==1 & tax.dem.long$tax.cumsu
 tax.dem.long = tax.dem.long[!is.na(tax.dem.long$boix_democracy),]
 
 ## gen dem.trans
-library(data.table) # install.packages("data.table")
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(data.table)
+
 tax.dem.long.dt = data.table(tax.dem.long)
 tax.dem.long.dt = tax.dem.long.dt[, dem.trans := ifelse(duplicated(boix_democracy) & boix_democracy == 1, NA_integer_, boix_democracy), by = rleid(boix_democracy)][]
 tax.dem.long = data.frame(tax.dem.long.dt)
 
 ## gen tax.trans
-library(data.table) # install.packages("data.table")
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(data.table)
+
 tax.dem.long.dt = data.table(tax.dem.long)
 tax.dem.long.dt = tax.dem.long.dt[, tax.trans := ifelse(duplicated(incometax.d) & incometax.d == 1, NA_integer_, incometax.d), by = rleid(incometax.d)][]
 tax.dem.long = data.frame(tax.dem.long.dt)
@@ -529,9 +534,8 @@ load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/incometax_
 
 L.clogit = data
 
-# install.packages("DataCombine")
-library(data.table)
-library(DataCombine)
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(data.table, DataCombine)
 
 L.clogit <- setorder(L.clogit, country, year)
 L.clogit <- subset(L.clogit, select = - incometax.d)
@@ -599,16 +603,22 @@ load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData"
 # generate Contestation var.
 cox$Proximity <- as.numeric(cox$constmanufact + (cox$constmanufact*.5) >= cox$constagricult)
 
-library(plyr) # install.packages("plyr")
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(plyr)
+
 cox$Industrialization <- mapvalues(cox$Proximity, from = c("0", "1"), to = c("Slow", "Rapid"))
 
 
 # plot ggsurv function
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(ggplot2)
+
+
 ggsurv <- function(s, CI = 'def', plot.cens = T, surv.col = 'gg.def',
                    cens.col = 'red', lty.est = 1, lty.ci = 2,
                    cens.shape = 3, back.white = F, xlab = 'Time',
                    ylab = 'Survival', main = ''){
-        
         library(ggplot2)
         strata <- ifelse(is.null(s$strata) ==T, 1, length(s$strata))
         stopifnot(length(surv.col) == 1 | length(surv.col) == strata)
@@ -731,7 +741,10 @@ ggsurv <- function(s, CI = 'def', plot.cens = T, surv.col = 'gg.def',
 }
 
 # generate survival object
-library(survival) # install.packages("survival")
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(survival)
+
 surv.object = Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
 
 # plot
@@ -773,8 +786,9 @@ cat("\014")
 
 
 ## ---- texreg-extractor-geeglm ----
-library(texreg) # install.packages("texreg")
-library(methods)
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(texreg, methods)
 
 extract.geepack <- function(model) {
         s <- summary(model)
@@ -830,7 +844,11 @@ cox$L_constmanufact = log(cox$constmanufact)
 cox$L_constagricult = log(cox$constagricult)
 cox$L_totpop = log(cox$totpop)
 
-library(survival) # install.packages("survival") 
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(survival)
+
+
 # this is the model I use for simulation
 cox2 <- coxph(Surv(year, year2, incometax.s) ~ 
                       L_constmanufact +
@@ -840,7 +858,9 @@ cox2 <- coxph(Surv(year, year2, incometax.s) ~
               data = cox)
 
 # LAGGED MODEL
-library(survival) # install.packages("survival") 
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(survival)
+
 cox.L = coxph(Surv(L.cox$year, L.cox$year2, L.cox$incometax.s, origin=1901) ~ 
                       log(constmanufact.L) + 
                       log(constagricult.L) + 
@@ -849,7 +869,9 @@ cox.L = coxph(Surv(L.cox$year, L.cox$year2, L.cox$incometax.s, origin=1901) ~
 
 
 ## logit GEE
-library(geepack) # install.packages("geepack")
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(geepack)
+
 logitgee.1 = geeglm(incometax.d ~ log(constmanufact) + log(constagricult) + log(totpop), 
                     family = binomial, 
                     id = country, 
@@ -860,7 +882,9 @@ logitgee.1 = extract(logitgee.1)
 
 
 # conditional logit
-library(survival) # install.packages("survival")
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(survival)
+
 clogit.1 = clogit(
         incometax.d ~  
                 log(constmanufact) + 
@@ -871,7 +895,9 @@ clogit.1 = clogit(
 
 
 # spatial dependence model
-library(survival) # install.packages("survival") 
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(survival)
+
 spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900) 
                   ~ log(constmanufact) + 
                           log(constagricult) + 
@@ -1019,7 +1045,9 @@ termplot(cox1.splines, term=2, se=TRUE)
 
 ## industrial sector
 # simulate qi's
-library(simPH) # install.packages("simPH")
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(simPH)
 
 # quantities
 nsim = 1000
@@ -1053,10 +1081,10 @@ sim.m.agr <- coxsimLinear(cox2,
 )
 
 ## function to combine the two plots
-library(ggplot2)
-library(gridExtra)
-library(grid)
 
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(ggplot2,gridExtra,grid)
 
 grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c("bottom", "right")) {
         
@@ -1096,8 +1124,11 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
 # install.packages("devtools")
 # library(devtools)
 # devtools::install_github('christophergandrud/simPH')
-library(simPH)
-library(ggplot2) # install.packages("ggplot2")
+# library(simPH)
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(ggplot2,simPH)
+
 
 ## IMPORTANT! A relative hazard for a unit at zero is always one, as it is a ratio of the hazards with itself. Gandrud2015 p. 10
 
@@ -1178,7 +1209,8 @@ summary(survfit(cox3.p), time=20)$surv
 #### Simulation: Logit GEE
 ########################################################
 
-library(Zelig)
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(Zelig)
 
 # It's working but it's not a too informative simulation
 x.out <- setx(logitgee.1)
@@ -1240,7 +1272,9 @@ levels = c(levels(tax.dem.long$country)[4],
 )
 
 ### recode country labels - the plot cant plot cat vars.
-library(car) # install.packages("car") 
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(car)
+
 tax.dem.long$country = recode(as.numeric(tax.dem.long$country), 
                               "4 = 2 ; 
                               5 = 4 ;
@@ -1261,7 +1295,9 @@ tax.dem.long$boix_democracy <- ordered(tax.dem.long$boix_democracy,
                                        labels = c("Non-Democracy", "Democracy"))
 
 ### plot
-library(ggplot2) # install.packages("ggplot2")
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(ggplot)
+
 ggplot(tax.dem.long, 
        aes(xmin = year, 
            xmax = year + 1, 
@@ -1300,10 +1336,15 @@ ggplot(tax.dem.long,
 
 
 # ---- incometax ----
-load("/Users/hectorbahamonde/RU/Dissertation/Data/dissertation.Rdata") 
+
 # Load data
-library(ggplot2) # install.packages("ggplot2")
-library(gridExtra)  # install.packages("gridExtra")
+load("/Users/hectorbahamonde/RU/Dissertation/Data/dissertation.Rdata") 
+
+# load libraries
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(ggplot2,gridExtra)
+
+
 
 # To force GGplots to share same legend.
 grid_arrange_shared_legend <- function(...) {
@@ -1480,7 +1521,6 @@ grid_arrange_shared_legend(
         mexico.p,
         ncol = 3, nrow = 3)
 # ----
-
 
 
 
