@@ -65,7 +65,7 @@ Building on the fiscal sociology paradigm, and the importance of the income tax 
 
 <<echo=FALSE, cache= F, warning = FALSE, message = F>>=
 if (!require("pacman")) install.packages("pacman", verbose = F, repos = "http://cran.us.r-project.org"); library(pacman)
-pacman::p_load(knitr)
+p_load(knitr)
 read_chunk('/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/IncomeTaxAdoption.R')
 
 @
