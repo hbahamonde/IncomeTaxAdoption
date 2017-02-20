@@ -63,10 +63,14 @@ Building on the fiscal sociology paradigm, and the importance of the income tax 
 \epigraph{\emph{The budget is the skeleton of the state stripped of all misleading ideologies}}{Schumpeter, 1991}
 
 
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+
+@
+
+
 <<echo=FALSE, cache= F, warning = FALSE, message = F>>=
-if (!require("pacman")) install.packages("pacman"); library(pacman)
-pacman::p_load(knitr)
-knitr::read_chunk('/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/IncomeTaxAdoption.R')
+read_chunk('/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/IncomeTaxAdoption.R')
 
 @
 
@@ -233,7 +237,7 @@ Before start estimating models, it is important to rule out the possibility that
 
 @
 \afterpage{
-<<simulation:plots, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='First Differences of Industrial Output, Agricultural Output and Democratic Experience ', fig.align='center', fig.width=7, fig.height=3,dpi=10000,cache = FALSE>>=
+<<simulation:plots, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='First Differences of Industrial Output, Agricultural Output and Democratic Experience', fig.align='center', fig.width=7, fig.height=3,dpi=10000,cache = FALSE>>=
 
 @
 }
