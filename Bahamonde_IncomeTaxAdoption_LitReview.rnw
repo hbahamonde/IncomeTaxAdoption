@@ -1,0 +1,50 @@
+
+% system of production and state-building // sectoral/class competition
+
+	\citet[1083]{Hechter1980a}: ``the development of strong states is aided by the existence of political divisions within a society and hindered by the absence of them.''
+
+	\citet[1083]{Hechter1980a}: ``the landed classes dominated the polity. Therefore, while a balance between urban and rural classes had been struck in the feudal territories, the other zones had an entirely different distribution of political power.''
+
+	\citet[1083-1084]{Hechter1980a}: ``What was the nature of the political division in feudal areas? It was basically a class conflict between a well-established landowning nobility and a rising and autonomous urban bourgeoisie. In general, the two classes tended to have competing productive imperatives, material interests, and ideological principles. The bourgeoisie was committed to production for exchange; it thus had an interest in attracting labor from the countryside and in securing the widest possible markets for its products and services.''
+
+	\citet[1085]{Hechter1980a}: ``state formation will be more likely to the degree that powerful individual actors form two groups on the basis of divergent economic and political interests. The reason is that, in politically divided societies, actors in the more powerful group always have an incentive to band together and create an organization -a state apparatus- to tax, repress, or otherwise expropriate the members of the weaker group. This incentive is magnified if, as in the case of late feudalism, the weaker group seems capable of mounting a challenge to the system of property rights under which the stronger group prospers.''
+
+	\citet[1085]{Hechter1980a}: ``why state formation did not begin in earnest until the 15th and 16th centuries: previous to this time the bourgeoisie cannot have been regarded as a credible challenging group by the bulk of the lords.''
+
+	\citet[1086]{Hechter1980a}: ``Hence a system made up of relatively similar kinds of actors -be they individual actors, like feudal lords or tribal chiefs, or corporate ones, like city-states-will tend toward a balance of power composed of more or less stable coalitions.''
+
+	\citet[1087]{Hechter1980a}: ``the existence of political competition between the bourgeoisie and the landowning aristocracy of these regions alone provided a setting in which leading aristocrats found it expedient to surrender their individual power and create a strong, centralized state.''
+
+		% Wheeler's paper 
+		\citet[22]{Wheeler2011}: ``modern states were formed through cooperation among elites who held certain types of power and resources necessary for expanding the capacity of the state.'' 
+
+		\citet[25]{Wheeler2011}: ``disagreement and competition among ruling nobles over the shape, size, and scope of the state profoundly influenced the process of expanding state authority.''
+		% Criticize this view: Cooperation, even in the presence of elite disagreement, is possible. Many times elites have been forced to cooperate with each other because they have had the incentives to. // SO MANY TIMES actors with different preferences/motives are BETTER OFF cooperating with eachother. DIFFERENCES on their own (the author doesn't even explain what kind of 'differences' are these) are not ENOUGH to explain an outcome.
+
+
+% indirect taxes did have an effect on state building 
+
+\citet[]{Brewer1990}: The English state made extensive use of its navy to prevent smuggling and enforce the excise, an indirect tax. ``The excise was an indirect commodity tax on domestically produced goods, levied either at their point of production or distribution.'' (p. 56) The tax employed an important number of state agents and helped developing skilled state bureaucracies. Importantly, it helped to develop a complex and efficient fiscal system.
+
+% ``Balmaceda y la contrarrevolución de 1891'', 	Ramírez Necochea, Hernán (library, requested)
+%% sectoral interpretation of the civil war of 1891.
+%% ``an incipient in bourgeoisie which had begun to emerge in the second half nineteenth century and whose growth was given added by Chile's victory in the War of the Pacific, a midd composed of state bureaucrats and white-collar banking, m and commercial employees, and a mining and industria tariat (1958: 202'', in Bowman1982 p. 426.
+
+%  income tax, the most important transformation
+	\citet[451-452]{Bowman1982}: ``In the last decade of the parliamentary period, customs revenues declined in importance from two-thirds of the total in 1913 to one-third by 1924. The contribution of nitrate duties also fell by one-half in this period, from 40\% to 20\% of the total. In 1924 extraordinary revenues supplied one-the state's revenues. But the most important of the changes was the state's revenues. But the most important of the changes was the introduction in 1924 of a national income tax, that by 1930 would become second only to import duties in size (Humud, 1969:154).'' % USE THIS TO CLAIM THAT WHILE HAVING A LAW DOESN'T IMPLY ACTUALY ENFORCEMENT OF THE LAW, IN THIS CASE IT DID. 
+
+	\citet[452]{Bowman1982}: ``Only after the collapse of the nitrate exports, the severe economic crisis of 1919-1923, and the demise of the parliamentary regime in 1924 was the system of revenue collection fundamentally changed.''
+
+	\citet[468, footnote # 8]{Bowman1982}: ``The inheritance tax, established in 1878, and the income tax, established in 1879, never contributed more than 3\% of total ordinary revenues (Spottiswoode and Co., 1915: 27-28). These early progressive taxes were far less significant sources of revenue than the income tax that was established in 1924. In 1925, the new income tax already contributed 10\% of ordinary revenues, or 7\% of total revenues. By 1930, the income tax was second only to import duties as a source of revenues, contributing 19\% of ordinary revenues, or 13\% of the total (Humud 1969:232).''
+
+% indirect taxes are easier to levy.
+
+	\citet[]{Schrank2009}: ``Trade taxes are relatively easy to collect because imports and exports are channeled through centralized port facilities’, explains Stephen Krasner. ‘Even with smuggling and corruption (often very serious problems) tariffs and export taxes are easier to obtain than direct taxes, which require high levels of bureaucratic skill and voluntary compliance’ (1985, p. 46).'' % Incorporate this citation (search for word 'ports', line 109. // In: Krasner, S. (1985). Structural conflict: The third world against global liberalism. Berkeley, CA: University of California Press
+
+% indirect taxation, however, is more efficient under certain conditions.
+	
+	\citet[304]{Kiser1994}: ``Tax farming was used for taxes that had the most variability over time (indirect taxes),'' and in fact direct taxation can actually have negative effects, specially when overtaxation is a possibility (p. 291). 
+
+% why tax levels not always indicate state capacities.
+
+	\citet[301]{Kiser1992}: ``the high taxes on peasants that are often taken as evidence of of the despotic nature of the Chinese state were the result of rulers' lack of power. Chinese rulers consistently attempted to limit official's excessive extractions from the masses, but were unable to do so.''
