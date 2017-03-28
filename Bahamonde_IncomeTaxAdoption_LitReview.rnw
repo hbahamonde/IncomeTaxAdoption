@@ -16,9 +16,9 @@
 	\citet[1087]{Hechter1980a}: ``the existence of political competition between the bourgeoisie and the landowning aristocracy of these regions alone provided a setting in which leading aristocrats found it expedient to surrender their individual power and create a strong, centralized state.''
 
 		% Wheeler's paper 
-		\citet[22]{Wheeler2011}: ``modern states were formed through cooperation among elites who held certain types of power and resources necessary for expanding the capacity of the state.'' 
+		%\citet[22]{Wheeler2011}: ``modern states were formed through cooperation among elites who held certain types of power and resources necessary for expanding the capacity of the state.'' 
 
-		\citet[25]{Wheeler2011}: ``disagreement and competition among ruling nobles over the shape, size, and scope of the state profoundly influenced the process of expanding state authority.''
+		%\citet[25]{Wheeler2011}: ``disagreement and competition among ruling nobles over the shape, size, and scope of the state profoundly influenced the process of expanding state authority.''
 		% Criticize this view: Cooperation, even in the presence of elite disagreement, is possible. Many times elites have been forced to cooperate with each other because they have had the incentives to. // SO MANY TIMES actors with different preferences/motives are BETTER OFF cooperating with eachother. DIFFERENCES on their own (the author doesn't even explain what kind of 'differences' are these) are not ENOUGH to explain an outcome.
 
 
