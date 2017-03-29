@@ -37,6 +37,11 @@
 
 	\citet[468, footnote # 8]{Bowman1982}: ``The inheritance tax, established in 1878, and the income tax, established in 1879, never contributed more than 3\% of total ordinary revenues (Spottiswoode and Co., 1915: 27-28). These early progressive taxes were far less significant sources of revenue than the income tax that was established in 1924. In 1925, the new income tax already contributed 10\% of ordinary revenues, or 7\% of total revenues. By 1930, the income tax was second only to import duties as a source of revenues, contributing 19\% of ordinary revenues, or 13\% of the total (Humud 1969:232).''
 
+	% taxation: cause and consequence.
+		- See Martin2009a
+
+		\citet[35]{Schneider:2012rr}: ``Public finances are causal and symptomatic. Revenues are necessary to build states; the act of gathering revenues structures societies; productive societies and capable states generate revenues.''
+
 % indirect taxes are easier to levy.
 
 	\citet[]{Schrank2009}: ``Trade taxes are relatively easy to collect because imports and exports are channeled through centralized port facilities’, explains Stephen Krasner. ‘Even with smuggling and corruption (often very serious problems) tariffs and export taxes are easier to obtain than direct taxes, which require high levels of bureaucratic skill and voluntary compliance’ (1985, p. 46).'' % Incorporate this citation (search for word 'ports', line 109. // In: Krasner, S. (1985). Structural conflict: The third world against global liberalism. Berkeley, CA: University of California Press
@@ -49,6 +54,17 @@
 
 	\citet[301]{Kiser1992}: ``the high taxes on peasants that are often taken as evidence of of the despotic nature of the Chinese state were the result of rulers' lack of power. Chinese rulers consistently attempted to limit official's excessive extractions from the masses, but were unable to do so.''
 
-% the fiscal sociology/history literature has most of the times focused on Europe, exclusively.
 
-	\citet[3]{Monson2015}: ``The New Fiscal History has furnished a valuable set of concepts and questions but so far its scope has been limited to post-classical Europe.''\footnote{Except for \citet{Yun-Casalilla:2015zm} who have a section Asia and \citet{Monson2015} who study the Aztecs and Mayans and other premodern states.} % put this in the motivation of the paper.
+
+%% Motivation
+	
+	% the fiscal sociology/history literature has most of the times focused on Europe, exclusively.
+
+		%\citet[3]{Monson2015}: ``The New Fiscal History has furnished a valuable set of concepts and questions but so far its scope has been limited to post-classical Europe.''\footnote{Except for \citet{Yun-Casalilla:2015zm} who have a section Asia and \citet{Monson2015} who study the Aztecs and Mayans and other premodern states.} % put this in the motivation of the paper.
+
+
+		%\citet[2]{Schneider:2012rr}: ``There has been significant attention given to the role of revenues in building early Western European states, and even some attention given to formative moments of state-building in developing countries. However, we have limited insight into what happens when economies change significantly, with new leading sectors, new patterns of social organization, and new requirements of state authorities.'' % use this to argue in favor of taking a look at the sectoral nature of my argument.
+
+		\citet[3]{Schneider:2012rr}: ``However, we have limited insight into what happens when economies change significantly, with new leading sectors, new patterns of social organization, and new requirements of state authorities.''
+
+		\citet[40]{Schneider:2012rr}: ``However, the fiscal sociology of state-building requires updating if it is to deal with the impact of state-building on tax under contemporary evolutions of capitalism. As new sectors emerge in Central America, they struggle to construct new social coalitions and linkages to policy making, establishing a state-building project to advance their interests.''
