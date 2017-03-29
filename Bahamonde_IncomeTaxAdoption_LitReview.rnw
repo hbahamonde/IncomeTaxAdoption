@@ -48,3 +48,7 @@
 % why tax levels not always indicate state capacities.
 
 	\citet[301]{Kiser1992}: ``the high taxes on peasants that are often taken as evidence of of the despotic nature of the Chinese state were the result of rulers' lack of power. Chinese rulers consistently attempted to limit official's excessive extractions from the masses, but were unable to do so.''
+
+% the fiscal sociology/history literature has most of the times focused on Europe, exclusively.
+
+	\citet[3]{Monson2015}: ``The New Fiscal History has furnished a valuable set of concepts and questions but so far its scope has been limited to post-classical Europe.''\footnote{Except for \citet{Yun-Casalilla:2015zm} who have a section Asia and \citet{Monson2015} who study the Aztecs and Mayans and other premodern states.} % put this in the motivation of the paper.
