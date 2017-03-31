@@ -1,13 +1,29 @@
+% definition of fiscal (new) sociology
+	
+[Authors of Martin2009a are: Martin, Mehrotra and Prasad]
+
+
+	%\citet[2]{Martin2009a}: ``Schumpeter called for students of public finance to take a comparative and historical approach to their subject, and to treat tax policy as both a `symptom' and a `cause' of large-scale changes in the economy and society.''
+
+	% sees taxation as a transformational device
+	%\citet[2]{Martin2009a}: ``the role of taxation as a cause or engine of change.'' % they say (same page) taxation is an ``index of social change.'' 
+
+	% why taxation as a "social spring" // this is mine, use it.
+		\citet[3]{Martin2009a}: ``Taxation consists of the obligation to contribute money or goods to the state in exchange for nothing in particular,'' though ``taxation carries the implicit promise that the resources will be spent on public goods.''
+
+		%\citet[3]{Martin2009a}: ``Nevertheless, a tax is not a fee paid in direct exchange for a service, but rather an obligation to contribute that the state imposes on its citizens and, if necessary, enforces.''
+
+		%\citet[3]{Martin2009a}: ``First, taxation establishes one of the most widely and persistently experienced relationships that individuals have with their government and – through their government – with their society as a whole. Despite the fragmentation of modern societies into myriads of subcultures, roles, and status groups, paying taxes is one thing that everyone has to do, whether they are consumers, homeowners, wage earners, or investors.This generality makes taxation a crucial element in the development of the `imagined community' (Anderson 1983) of the modern nation-state. When we comply with our tax obligations, we do not know who in particular shares in our contributions; when we make use of roads, schools, and other public goods and services, we do not know from whose tax payments in particular we are benefiting.Taxation enmeshes us in the web of generalized reciprocity that constitutes modern society.''
 
 % system of production and state-building // sectoral/class competition
 
-	\citet[1083]{Hechter1980a}: ``the development of strong states is aided by the existence of political divisions within a society and hindered by the absence of them.''
+	%\citet[1083]{Hechter1980a}: ``the development of strong states is aided by the existence of political divisions within a society and hindered by the absence of them.''
 
 	\citet[1083]{Hechter1980a}: ``the landed classes dominated the polity. Therefore, while a balance between urban and rural classes had been struck in the feudal territories, the other zones had an entirely different distribution of political power.''
 
 	\citet[1083-1084]{Hechter1980a}: ``What was the nature of the political division in feudal areas? It was basically a class conflict between a well-established landowning nobility and a rising and autonomous urban bourgeoisie. In general, the two classes tended to have competing productive imperatives, material interests, and ideological principles. The bourgeoisie was committed to production for exchange; it thus had an interest in attracting labor from the countryside and in securing the widest possible markets for its products and services.''
 
-	\citet[1085]{Hechter1980a}: ``state formation will be more likely to the degree that powerful individual actors form two groups on the basis of divergent economic and political interests. The reason is that, in politically divided societies, actors in the more powerful group always have an incentive to band together and create an organization -a state apparatus- to tax, repress, or otherwise expropriate the members of the weaker group. This incentive is magnified if, as in the case of late feudalism, the weaker group seems capable of mounting a challenge to the system of property rights under which the stronger group prospers.''
+	%\citet[1085]{Hechter1980a}: ``state formation will be more likely to the degree that powerful individual actors form two groups on the basis of divergent economic and political interests. The reason is that, in politically divided societies, actors in the more powerful group always have an incentive to band together and create an organization -a state apparatus- to tax, repress, or otherwise expropriate the members of the weaker group. This incentive is magnified if, as in the case of late feudalism, the weaker group seems capable of mounting a challenge to the system of property rights under which the stronger group prospers.''
 
 	\citet[1085]{Hechter1980a}: ``why state formation did not begin in earnest until the 15th and 16th centuries: previous to this time the bourgeoisie cannot have been regarded as a credible challenging group by the bulk of the lords.''
 
@@ -24,31 +40,49 @@
 
 % indirect taxes did have an effect on state building 
 
-\citet[]{Brewer1990}: The English state made extensive use of its navy to prevent smuggling and enforce the excise, an indirect tax. ``The excise was an indirect commodity tax on domestically produced goods, levied either at their point of production or distribution.'' (p. 56) The tax employed an important number of state agents and helped developing skilled state bureaucracies. Importantly, it helped to develop a complex and efficient fiscal system.
+%\citet[]{Brewer1990}: The English state made extensive use of its navy to prevent smuggling and enforce the excise, an indirect tax. ``The excise was an indirect commodity tax on domestically produced goods, levied either at their point of production or distribution.'' (p. 56) The tax employed an important number of state agents and helped developing skilled state bureaucracies. Importantly, it helped to develop a complex and efficient fiscal system.
 
 % ``Balmaceda y la contrarrevolución de 1891'', 	Ramírez Necochea, Hernán (library, requested)
 %% sectoral interpretation of the civil war of 1891.
-%% ``an incipient in bourgeoisie which had begun to emerge in the second half nineteenth century and whose growth was given added by Chile's victory in the War of the Pacific, a midd composed of state bureaucrats and white-collar banking, m and commercial employees, and a mining and industria tariat (1958: 202'', in Bowman1982 p. 426.
+``an incipient in bourgeoisie which had begun to emerge in the second half nineteenth century and whose growth was given added by Chile's victory in the War of the Pacific, a midd composed of state bureaucrats and white-collar banking, m and commercial employees, and a mining and industria tariat (1958: 202'', in Bowman1982 p. 426.
 
-%  income tax, the most important transformation
+%  income tax, the most important transformation in CHile.
 	\citet[451-452]{Bowman1982}: ``In the last decade of the parliamentary period, customs revenues declined in importance from two-thirds of the total in 1913 to one-third by 1924. The contribution of nitrate duties also fell by one-half in this period, from 40\% to 20\% of the total. In 1924 extraordinary revenues supplied one-the state's revenues. But the most important of the changes was the state's revenues. But the most important of the changes was the introduction in 1924 of a national income tax, that by 1930 would become second only to import duties in size (Humud, 1969:154).'' % USE THIS TO CLAIM THAT WHILE HAVING A LAW DOESN'T IMPLY ACTUALY ENFORCEMENT OF THE LAW, IN THIS CASE IT DID. 
 
 	\citet[452]{Bowman1982}: ``Only after the collapse of the nitrate exports, the severe economic crisis of 1919-1923, and the demise of the parliamentary regime in 1924 was the system of revenue collection fundamentally changed.''
 
 	\citet[468, footnote # 8]{Bowman1982}: ``The inheritance tax, established in 1878, and the income tax, established in 1879, never contributed more than 3\% of total ordinary revenues (Spottiswoode and Co., 1915: 27-28). These early progressive taxes were far less significant sources of revenue than the income tax that was established in 1924. In 1925, the new income tax already contributed 10\% of ordinary revenues, or 7\% of total revenues. By 1930, the income tax was second only to import duties as a source of revenues, contributing 19\% of ordinary revenues, or 13\% of the total (Humud 1969:232).''
 
+	% taxation: cause and consequence.
+		%- See Martin2009a
+
+		%\citet[35]{Schneider:2012rr}: ``Public finances are causal and symptomatic. Revenues are necessary to build states; the act of gathering revenues structures societies; productive societies and capable states generate revenues.''
+
 % indirect taxes are easier to levy.
 
-	\citet[]{Schrank2009}: ``Trade taxes are relatively easy to collect because imports and exports are channeled through centralized port facilities’, explains Stephen Krasner. ‘Even with smuggling and corruption (often very serious problems) tariffs and export taxes are easier to obtain than direct taxes, which require high levels of bureaucratic skill and voluntary compliance’ (1985, p. 46).'' % Incorporate this citation (search for word 'ports', line 109. // In: Krasner, S. (1985). Structural conflict: The third world against global liberalism. Berkeley, CA: University of California Press
+	%\citet[]{Schrank2009}: ``Trade taxes are relatively easy to collect because imports and exports are channeled through centralized port facilities’, explains Stephen Krasner. ‘Even with smuggling and corruption (often very serious problems) tariffs and export taxes are easier to obtain than direct taxes, which require high levels of bureaucratic skill and voluntary compliance’ (1985, p. 46).'' % Incorporate this citation (search for word 'ports', line 109. // In: Krasner, S. (1985). Structural conflict: The third world against global liberalism. Berkeley, CA: University of California Press
 
 % indirect taxation, however, is more efficient under certain conditions.
 	
-	\citet[304]{Kiser1994}: ``Tax farming was used for taxes that had the most variability over time (indirect taxes),'' and in fact direct taxation can actually have negative effects, specially when overtaxation is a possibility (p. 291). 
+	%\citet[304]{Kiser1994}: ``Tax farming was used for taxes that had the most variability over time (indirect taxes),'' and in fact direct taxation can actually have negative effects, specially when overtaxation is a possibility (p. 291). 
 
 % why tax levels not always indicate state capacities.
 
-	\citet[301]{Kiser1992}: ``the high taxes on peasants that are often taken as evidence of of the despotic nature of the Chinese state were the result of rulers' lack of power. Chinese rulers consistently attempted to limit official's excessive extractions from the masses, but were unable to do so.''
+	%\citet[301]{Kiser1992}: ``the high taxes on peasants that are often taken as evidence of of the despotic nature of the Chinese state were the result of rulers' lack of power. Chinese rulers consistently attempted to limit official's excessive extractions from the masses, but were unable to do so.''
 
-% the fiscal sociology/history literature has most of the times focused on Europe, exclusively.
 
-	\citet[3]{Monson2015}: ``The New Fiscal History has furnished a valuable set of concepts and questions but so far its scope has been limited to post-classical Europe.''\footnote{Except for \citet{Yun-Casalilla:2015zm} who have a section Asia and \citet{Monson2015} who study the Aztecs and Mayans and other premodern states.} % put this in the motivation of the paper.
+
+%% Motivation
+	
+	% the fiscal sociology/history literature has most of the times focused on Europe, exclusively.
+
+		%\citet[3]{Monson2015}: ``The New Fiscal History has furnished a valuable set of concepts and questions but so far its scope has been limited to post-classical Europe.''\footnote{Except for \citet{Yun-Casalilla:2015zm} who have a section Asia and \citet{Monson2015} who study the Aztecs and Mayans and other premodern states.} % put this in the motivation of the paper.
+
+
+		%\citet[2]{Schneider:2012rr}: ``There has been significant attention given to the role of revenues in building early Western European states, and even some attention given to formative moments of state-building in developing countries. However, we have limited insight into what happens when economies change significantly, with new leading sectors, new patterns of social organization, and new requirements of state authorities.'' % use this to argue in favor of taking a look at the sectoral nature of my argument.
+
+		\citet[3]{Schneider:2012rr}: ``However, we have limited insight into what happens when economies change significantly, with new leading sectors, new patterns of social organization, and new requirements of state authorities.''
+
+		\citet[40]{Schneider:2012rr}: ``However, the fiscal sociology of state-building requires updating if it is to deal with the impact of state-building on tax under contemporary evolutions of capitalism. As new sectors emerge in Central America, they struggle to construct new social coalitions and linkages to policy making, establishing a state-building project to advance their interests.''
+
+		%\citet[7]{Martin2009a}: Seligman said ``Fiscal conditions are always an outcome of economic relations.'' % [Authors of Martin2009a are: Martin, Mehrotra and Prasad]
