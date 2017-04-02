@@ -11,13 +11,13 @@
 
 % TITLE SECTION
 
-\title{\vspace{-10mm}\fontsize{18pt}{15pt}\selectfont\textbf{Sectoral Origins of Income Taxation: Industrial Development and The Case of Chile (1900-2010)}} % Article title
+\title{\vspace{-10mm}\fontsize{18pt}{15pt}\selectfont\textbf{\input{/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/title.txt}\unskip}} % Article title
 
 
 \author[1]{
 \large
 \textsc{H\'ector Bahamonde}\\ 
-\thanks{I thank Bob Kaufman, Dan Kelemen, Doug Blair, Christopher Zorn, Paul Poast, Matthias vom Hau, D\'idac Queralt, Florian Hollenbach, William Young, Jose Pablo Silva and participants of the 50th LASA Congress for all the useful comments. I also thank the School of Arts and Sciences at Rutgers for a pre-doctoral research grant and the Department of Political Science at Rutgers University for conference travel funds. All errors are my own.}
+\thanks{I thank Robert Kaufman, Daniel Kelemen, Douglas Blair, Christopher Zorn, Paul Poast, Matthias vom Hau, D\'idac Queralt, Florian Hollenbach, William Young, Jose Pablo Silva and participants of the 50th LASA Congress for all the useful comments. I also thank the School of Arts and Sciences at Rutgers for a pre-doctoral research grant and the Department of Political Science at Rutgers University for conference travel funds. All errors are my own.}
 \normalsize PhD Candidate $\bullet$ Political Science Dpt. $\bullet$ Rutgers University \\
 \normalsize \texttt{e:}\href{mailto:hector.bahamonde@rutgers.edu}{\texttt{hector.bahamonde@rutgers.edu}}\\
 \normalsize \texttt{w:}\href{http://www.hectorbahamonde.com}{\texttt{www.hectorbahamonde.com}}
