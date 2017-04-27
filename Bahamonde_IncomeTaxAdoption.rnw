@@ -140,7 +140,7 @@ Both economic sectors were \emph{similarly developed} but only agriculturalists 
 
 @
 }
-TESTA
+
 
 \section{Econometric Analyses\label{methods}}
 
