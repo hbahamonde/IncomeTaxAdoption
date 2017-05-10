@@ -84,8 +84,8 @@ I argue that the early implementation of the income tax in Latin America was pro
 
 
 \begin{figure}[h]
-\includegraphics[scale=.8, center]{causal_path.pdf}\label{causal:mechanism:fig}
-\caption{Causal Mechanism}\centering
+\includegraphics[scale=.8, center]{causal_path.pdf}
+\caption{Causal Mechanism\label{causal:mechanism:fig}}\centering
 \end{figure}
 
 
