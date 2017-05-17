@@ -1401,8 +1401,8 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 #### plots
 chile.p = ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Legend") +
@@ -1413,8 +1413,8 @@ chile.p = ggplot() +
         labs(title="Chile")
 
 peru.p = ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Legend") +
@@ -1425,8 +1425,8 @@ peru.p = ggplot() +
         labs(title="Peru") 
 
 colombia.p = ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Legend") +
@@ -1437,8 +1437,8 @@ colombia.p = ggplot() +
         labs(title="Colombia") 
 
 ecuador.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Legend") +
@@ -1450,8 +1450,8 @@ ecuador.p= ggplot() +
 
 
 venezuela.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Legend") +
@@ -1462,8 +1462,8 @@ venezuela.p= ggplot() +
         labs(title="Venezuela") 
 
 nicaragua.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Legend") +
@@ -1474,8 +1474,8 @@ nicaragua.p= ggplot() +
         labs(title="Nicaragua") 
 
 guatemala.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Income Tax (ln)") +
@@ -1486,8 +1486,8 @@ guatemala.p= ggplot() +
         labs(title="Guatemala") 
 
 argentina.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Income Tax (ln)") +
@@ -1498,8 +1498,8 @@ argentina.p= ggplot() +
         labs(title="Argentina") 
 
 mexico.p= ggplot() + 
-        geom_smooth(data=subset(dissertation, country=="Mexico"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_smooth(data=subset(dissertation, country=="Mexico"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        geom_line(data=subset(dissertation, country=="Mexico"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Mexico"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
         labs(colour = "Income Tax (ln)") +
