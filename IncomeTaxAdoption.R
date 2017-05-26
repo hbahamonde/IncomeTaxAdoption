@@ -1400,6 +1400,8 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 }
 
 #### plots
+
+##### Chile
 chile.p = ggplot() + 
         geom_line(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Chile"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1409,9 +1411,12 @@ chile.p = ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Chile"), aes(xintercept = 1924, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law  
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Chile")
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Chile") +
+        ggsave("Chile_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
+
+##### Peru
 peru.p = ggplot() + 
         geom_line(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1421,9 +1426,11 @@ peru.p = ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Peru"), aes(xintercept = 1934, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Peru") 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Peru") +
+        ggsave("Peru_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
+##### Colombia
 colombia.p = ggplot() + 
         geom_line(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1433,9 +1440,12 @@ colombia.p = ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Colombia"), aes(xintercept = 1935, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Colombia") 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Colombia") +
+        ggsave("Colombia_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
+
+##### Ecuador
 ecuador.p= ggplot() + 
         geom_line(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1445,10 +1455,12 @@ ecuador.p= ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Ecuador"), aes(xintercept = 1945, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Ecuador") 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Ecuador") +
+        ggsave("Ecuador_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
 
+##### Venezuela
 venezuela.p= ggplot() + 
         geom_line(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1458,9 +1470,11 @@ venezuela.p= ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Venezuela"), aes(xintercept = 1943, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Venezuela") 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Venezuela") +
+        ggsave("Venezuela_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
+##### Nicaragua
 nicaragua.p= ggplot() + 
         geom_line(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1470,9 +1484,11 @@ nicaragua.p= ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Nicaragua"), aes(xintercept = 1974, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Nicaragua") 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Nicaragua")  +
+        ggsave("Nicaragua_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
+##### Guatemala
 guatemala.p= ggplot() + 
         geom_line(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Guatemala"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1482,9 +1498,11 @@ guatemala.p= ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Guatemala"), aes(xintercept = 1963, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Guatemala") 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Guatemala")  +
+        ggsave("Guatemala_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
+##### Argentina
 argentina.p= ggplot() + 
         geom_line(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1494,9 +1512,12 @@ argentina.p= ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Argentina"), aes(xintercept = 1933, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Argentina") 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Argentina") +
+        ggsave("Argentina_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
+
+##### Mexico
 mexico.p= ggplot() + 
         geom_line(data=subset(dissertation, country=="Mexico"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
         geom_line(data=subset(dissertation, country=="Mexico"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
@@ -1506,9 +1527,11 @@ mexico.p= ggplot() +
         scale_x_continuous(limits=c(1890,2010)) + 
         geom_vline(data=subset(dissertation, country=="Mexico"), aes(xintercept = 1965, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0))  + 
-        labs(title="Mexico") 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Mexico") +
+        ggsave("Mexico_Income_Tax.pdf", width = 40, height = 20, units = "cm")
 
+##### All
 grid_arrange_shared_legend(
         chile.p, 
         ecuador.p, 
