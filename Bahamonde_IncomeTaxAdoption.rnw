@@ -19,7 +19,7 @@
 \textsc{H\'ector Bahamonde, PhD}\\ 
 \thanks{I thank Robert Kaufman, Daniel Kelemen, Douglas Blair, Christopher Zorn, Paul Poast, Matthias vom Hau, D\'idac Queralt, Florian Hollenbach, William Young, Mart Trasberg, Jose Pablo Silva and participants of the 50th LASA Congress for all the useful comments. I also thank the School of Arts and Sciences at Rutgers for a pre-doctoral research grant and the Department of Political Science at Rutgers University for conference travel funds. All errors are my own.}
 \normalsize Postdoctoral Fellow $\bullet$ Center For Inter-American Policy \& Research $\bullet$ Tulane University\\
-\normalsize \texttt{e:}\href{mailto:bahamondeh@gmail.com}{\texttt{bahamondeh@gmail.com}}\\
+\normalsize \texttt{e:}\href{mailto:\filetext}{\texttt{\filetext}}\\
 \normalsize \texttt{w:}\href{http://www.hectorbahamonde.com}{\texttt{www.hectorbahamonde.com}}
 \vspace{-5mm}
 }
