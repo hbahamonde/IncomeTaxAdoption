@@ -1,6 +1,16 @@
+%
+Finally, income taxation not only triggered other state capacities. Via a process of assimilation, it also helped constructing the figure of the \emph{citizen} centered around the concept of the \emph{taxpayer}. Regardless of an individual's race, religion, culture or any other kind of status, the state classifies its subjects according to their incomes and oblige them to pay, punishing whoever refuses to do so. From a sociological standpoint, this ``generality makes taxation a crucial element in the development of the `imagined community'\footnote{\citet[]{Anderson2006a}.} of the modern nation-state [...] Taxation enmeshes us in the web of generalized reciprocity that constitutes modern society.''\footnote{Martin et al. (in \citet[3]{Martin2009a}).}
+
+Similarly, Seligman in 1895 argued that ``[f]iscal conditions are always an outcome of economic relations,''\footnote{In \citet[7]{Martin2009a}.} while Goldscheid in 1925 famously argued that ``tax struggles are among the oldest forms of class struggle.''\footnote{In \citet[168]{Campbell1993}.} 
+
+% As others have pointed out,  ``administrative constraints are identified as the main constraint to the ability of states to collect [the] income tax.''\footnote{\citet[5]{DiJohn2006}.} Political alliances should exist to overcome these logistic, institutional and political domestic challenges. 
+
 % definition of fiscal (new) sociology
 	
 Tilly defines state capacity as ``the extent to which interventions of state agents in existing non-state resources [such as wages] alter existing distributions of those resources.''\footnote{In \citet[173]{Martin2009a}.} It is this `meddling' what cause a state to develop.
+
+
+For example, \citet[2]{Schneider:2012rr} argues that even when ``[t]here has been significant attention given to the role of revenues in building early Western European states, and even some attention given to formative moments of state-building in developing countries [but] we have limited insight into what happens when economies change significantly, with new leading sectors, new patterns of social organization, and new requirements of state authorities.''
 
 
 Importantly, this institutional investment is product of elites with different preferences, but that nonetheless agree in implementing the tax. And such, the mechanism stresses the domestic dynamics of fiscal expansion and state-making, studying the role of inter-elite \emph{equality}.\footnote{\citet[73]{Boix:2015aa} argues that states only exist to counteract potential conflict between agents with \emph{different} economic interests and military capacities. See also for a similar view \citet{Madsen2017}.} 
