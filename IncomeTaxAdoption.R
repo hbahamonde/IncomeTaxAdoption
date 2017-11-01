@@ -2,8 +2,6 @@
 # Data Prep
 #######################################################
 
-# post journal submission version
-
 
 ####### GENERAL PREP
 
@@ -28,7 +26,7 @@ incometax.d.guatemala  = data.frame(ifelse(data$year>=1963 & data$country == "Gu
 incometax.d.nicaragua  = data.frame(ifelse(data$year>=1974 & data$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 incometax.d.peru  = data.frame(ifelse(data$year>=1934 & data$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 incometax.d.venezuela  = data.frame(ifelse(data$year>=1943 & data$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
-incometax.d.mexico  = data.frame(ifelse(data$year>=1965 & data$country == "Mexico",1,0)) # Mexico, \citet[130-133]{DiazGonzalez2013}
+incometax.d.mexico  = data.frame(ifelse(data$year>=1925 & data$country == "Mexico",1,0)) # Mexico, \citet[8]{UndaGutierrez2017}
 incometax.d.argentina  = data.frame(ifelse(data$year>=1933 & data$country == "Argentina",1,0)) # Argentina, http://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=185729
 
 
@@ -97,7 +95,7 @@ spatial.cum = c(
                 ifelse(data$year>=1963,1,0) + # Guatemala: Decreto 1559, De2007 p 165                
                 ifelse(data$year>=1974,1,0) + # Nicaragua: Ley No. 662 de 5 de Noviembre de 1974 
                 ifelse(data$year>=1934,1,0) + # Peru, Ley 7904 de 1934   
-                ifelse(data$year>=1965,1,0) + # Mexico
+                ifelse(data$year>=1925,1,0) + # Mexico
                 ifelse(data$year>=1933,1,0) + # Arg
                 ifelse(data$year>=1943,1,0) # Venezuela, Ley de Impuesto sobre la Renta 
 )
@@ -206,7 +204,7 @@ L.incometax.s.guatemala  = data.frame(ifelse(cox.L$year==1963 & cox.L$country ==
 L.incometax.s.nicaragua  = data.frame(ifelse(cox.L$year==1974 & cox.L$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 L.incometax.s.peru  = data.frame(ifelse(cox.L$year==1934 & cox.L$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 L.incometax.s.venezuela  = data.frame(ifelse(cox.L$year==1943 & cox.L$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
-L.incometax.s.mexico  = data.frame(ifelse(cox.L$year==1965 & cox.L$country == "Mexico",1,0)) # 
+L.incometax.s.mexico  = data.frame(ifelse(cox.L$year==1925 & cox.L$country == "Mexico",1,0)) # 
 L.incometax.s.argentina  = data.frame(ifelse(cox.L$year==1933 & cox.L$country == "Argentina",1,0)) 
 
 
@@ -345,7 +343,7 @@ incometax.s.guatemala  = data.frame(ifelse(ag.data$year==1963 & ag.data$country 
 incometax.s.nicaragua  = data.frame(ifelse(ag.data$year==1974 & ag.data$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 incometax.s.peru  = data.frame(ifelse(ag.data$year==1934 & ag.data$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 incometax.s.venezuela  = data.frame(ifelse(ag.data$year==1943 & ag.data$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
-incometax.s.mexico  = data.frame(ifelse(ag.data$year==1965 & ag.data$country == "Mexico",1,0)) # 
+incometax.s.mexico  = data.frame(ifelse(ag.data$year==1925 & ag.data$country == "Mexico",1,0)) # 
 incometax.s.argentina  = data.frame(ifelse(ag.data$year==1933 & ag.data$country == "Argentina",1,0)) 
 
 
@@ -444,7 +442,7 @@ incometax.s.guatemala  = data.frame(ifelse(tax.dem.long$year==1963 & tax.dem.lon
 incometax.s.nicaragua  = data.frame(ifelse(tax.dem.long$year==1974 & tax.dem.long$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 incometax.s.peru  = data.frame(ifelse(tax.dem.long$year==1934 & tax.dem.long$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 incometax.s.venezuela  = data.frame(ifelse(tax.dem.long$year==1943 & tax.dem.long$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
-incometax.s.mexico  = data.frame(ifelse(tax.dem.long$year==1965 & tax.dem.long$country == "Mexico",1,0)) 
+incometax.s.mexico  = data.frame(ifelse(tax.dem.long$year==1925 & tax.dem.long$country == "Mexico",1,0)) 
 incometax.s.argentina  = data.frame(ifelse(tax.dem.long$year==1933 & tax.dem.long$country == "Argentina",1,0)) 
 
 ## Sum across all the rows.
@@ -562,7 +560,7 @@ L.incometax.d.guatemala  = data.frame(ifelse(L.clogit$year>=1963 & L.clogit$coun
 L.incometax.d.nicaragua  = data.frame(ifelse(L.clogit$year>=1974 & L.clogit$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 L.incometax.d.peru  = data.frame(ifelse(L.clogit$year>=1934 & L.clogit$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 L.incometax.d.venezuela  = data.frame(ifelse(L.clogit$year>=1943 & L.clogit$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
-L.incometax.d.mexico  = data.frame(ifelse(L.clogit$year>=1965 & L.clogit$country == "Mexico",1,0)) 
+L.incometax.d.mexico  = data.frame(ifelse(L.clogit$year>=1925 & L.clogit$country == "Mexico",1,0)) 
 L.incometax.d.argentina  = data.frame(ifelse(L.clogit$year>=1933 & L.clogit$country == "Argentina",1,0)) 
 
 ## Summed across all the rows.
@@ -1050,8 +1048,8 @@ if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load(simPH)
 
 # quantities
-nsim = 1000
-qi = "Hazard Rate"
+nsim = 5000 # original: 1000
+qi = "Hazard Rate" # original: Hazard Rate
 ci = 0.9
 
 
@@ -1124,7 +1122,7 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
 # install.packages("devtools")
 # library(devtools)
 # devtools::install_github('christophergandrud/simPH')
-# library(simPH)
+# library(simPH)
 
 if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load(ggplot2,simPH)
@@ -1146,7 +1144,7 @@ sim.p.ind = simGG(sim.m.ind, type = 'lines',# type = 'points' // 'lines'
               title = element_text(size=9)
         ) +
         labs(title = "Industrial Output") +
-        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
+        scale_color_manual(labels = c("Slow", "Rapid"), values = c("red", "blue")) +
         guides(color=guide_legend("Sectoral Output"))
 
 
@@ -1164,7 +1162,7 @@ sim.p.agr = simGG(sim.m.agr, type = 'lines',# type = 'points' // 'lines'
               title = element_text(size=9)
         ) +
         labs(title = "Agriculture Output") +
-        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
+        scale_color_manual(labels = c("Slow", "Rapid"), values = c("red", "blue")) +
         guides(color=guide_legend("Sectoral Output"))
 
 grid_arrange_shared_legend(sim.p.ind, sim.p.agr, ncol = 2, nrow = 1)
@@ -1525,7 +1523,7 @@ mexico.p= ggplot() +
         ylab("GDP Output (ln)") +
         labs(colour = "Income Tax (ln)") +
         scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Mexico"), aes(xintercept = 1965, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        geom_vline(data=subset(dissertation, country=="Mexico"), aes(xintercept = 1925, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
         theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
         labs(title="Mexico") +
