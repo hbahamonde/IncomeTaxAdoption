@@ -39,7 +39,8 @@ incometax.d.argentina  = data.frame(ifelse(data$year>=1933 & data$country == "Ar
 ## El Salvador
 ## Costa Rica
 ## Brasil
-## Bolivia
+## Bolivia 
+##
 
 
 
