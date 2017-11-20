@@ -83,7 +83,7 @@ There seems to be a strong agreement on that fiscal capacities are a prerequisit
 
 \begin{figure}[h]
 \includegraphics[scale=.8, center]{/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/causal_path.pdf}
-\caption{Causal Mechanism\label{causal:mechanism:fig}}\centering
+\caption{Causal Argument\label{causal:mechanism:fig}}\centering
 \end{figure}
 
 % argument 1
