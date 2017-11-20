@@ -29,6 +29,18 @@ incometax.d.venezuela  = data.frame(ifelse(data$year>=1943 & data$country == "Ve
 incometax.d.mexico  = data.frame(ifelse(data$year>=1925 & data$country == "Mexico",1,0)) # Mexico, \citet[8]{UndaGutierrez2017}
 incometax.d.argentina  = data.frame(ifelse(data$year>=1933 & data$country == "Argentina",1,0)) # Argentina, http://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=185729
 
+# Other countries
+## Uruguay: 1959 (https://www.colibri.udelar.edu.uy/bitstream/123456789/4155/5/dt-05-06.pdf, p )
+## Rep Dom
+## Paraguay
+## Panama
+## Honduras
+## Haiti
+## El Salvador
+## Costa Rica
+## Brasil
+## Bolivia
+
 
 
 
