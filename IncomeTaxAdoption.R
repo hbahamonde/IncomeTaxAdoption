@@ -32,12 +32,12 @@ incometax.d.argentina  = data.frame(ifelse(data$year>=1933 & data$country == "Ar
 # Other countries
 ## Uruguay: 1959 (https://www.colibri.udelar.edu.uy/bitstream/123456789/4155/5/dt-05-06.pdf, p )
 ## Rep Dom
-## Paraguay
-## Panama
-## Honduras
+## Paraguay: 2012 (http://www.ultimahora.com/sepa-mas-el-impuesto-la-renta-personal-n548616.html)
+## Panama : 1956? (https://panama.eregulations.org/media/codigo%20fiscal.pdf)
+## Honduras: 1963 DECRETO LEY NO. 25 http://www.fideseguros.com/wp-content/uploads/2015/06/Anexo-Honduras-ley-impuesto-sobre-la-renta_15408_.pdf //  http://bufeterosa.com/biblioteca/leyimpuestorenta.pdf // http://www.poderjudicial.gob.hn/CEDIJ/Documents/Ley%20Impuesto%20sobre%20la%20Renta%20actualizada%20a%20febrero%20de%202012.pdf
 ## Haiti
-## El Salvador
-## Costa Rica
+## El Salvador: 1915 (BADIO2013), but modernized in 1991.
+## Costa Rica: http://slideplayer.es/slide/142777/
 ## Brasil
 ## Bolivia 
 ##
