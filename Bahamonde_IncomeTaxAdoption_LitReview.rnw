@@ -1,3 +1,10 @@
+In \citet[111]{Mamalakis1971}'s words, in Latin America, economic equality reduced political inequality.
+
+\footnote{While emphasizing a different channel, \citet{Baskaran2013} find that fiscal capacities improved levels of governance in 31 sub-Saharan African countries between 1990 and 2005. See also \citet{Altunbas2011}.} 
+
+
+As explained in \autoref{unpacking}, the Chilean case met these two conditions. Analytically, the \emph{effectiveness} of income taxation on fiscal capacities increased due to the nature of the implementation of the income tax. \citet[566]{Aghion2004} explain how optimal institutional choices result from political settings where all involved actors ``had a voice in the choice of institutions,'' essentially contributing to an equilibrium of quasi-voluntary compliance.\footnote{\citet{Levi:1989lq}.}
+
 
 this form of taxation demands the endogenous development of both stronger state institutions and efficient monitoring and enforcement technologies.\footnote{\citet[99]{Lieberman2002a}.} 
 
