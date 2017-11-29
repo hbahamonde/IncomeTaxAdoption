@@ -54,8 +54,6 @@ Bahamonde_IncomeTaxAdoption.tex
 *.rdb
 
 
-*.md
-
 *.rdx
 
 resources/Ethnographic Atlas Crosstabulations.webloc
@@ -71,22 +69,20 @@ Submissions/
 
 Bahamonde_IncomeTaxAdoption.txt
 
-Bahamonde_IncomeTaxAdoption_LitReview\.rnw
+Chile_Income_Tax.pdf
 
-Chile_Income_Tax\.pdf
+Colombia_Income_Tax.pdf
 
-Colombia_Income_Tax\.pdf
+Ecuador_Income_Tax.pdf
 
-Ecuador_Income_Tax\.pdf
+Guatemala_Income_Tax.pdf
 
-Guatemala_Income_Tax\.pdf
+Mexico_Income_Tax.pdf
 
-Mexico_Income_Tax\.pdf
+Nicaragua_Income_Tax.pdf
 
-Nicaragua_Income_Tax\.pdf
+Peru_Income_Tax.pdf
 
-Peru_Income_Tax\.pdf
+Venezuela_Income_Tax.pdf
 
-Venezuela_Income_Tax\.pdf
-
-Argentina_Income_Tax\.pdf
+Argentina_Income_Tax.pdf
