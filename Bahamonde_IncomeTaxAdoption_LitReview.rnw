@@ -5,6 +5,8 @@ In \citet[111]{Mamalakis1971}'s words, in Latin America, economic equality reduc
 
 As explained in \autoref{unpacking}, the Chilean case met these two conditions. Analytically, the \emph{effectiveness} of income taxation on fiscal capacities increased due to the nature of the implementation of the income tax. \citet[566]{Aghion2004} explain how optimal institutional choices result from political settings where all involved actors ``had a voice in the choice of institutions,'' essentially contributing to an equilibrium of quasi-voluntary compliance.\footnote{\citet{Levi:1989lq}.}
 
+This is in line with  \citet[59]{Besley:2011aa} who argue that ``investing in fiscal capacity becomes more attractive [...] when wages or incomes [...] are higher.''\footnote{Similarly, see \citet[647]{Campbell1994} who explain that ``economic development should be directly related to individual and corporate income tax rates.''} \citet{Beramendi2016} also find that investments in fiscal capacities are conditional on the expansion of the industrial sector.
+
 
 this form of taxation demands the endogenous development of both stronger state institutions and efficient monitoring and enforcement technologies.\footnote{\citet[99]{Lieberman2002a}.} 
 
