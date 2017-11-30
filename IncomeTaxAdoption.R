@@ -166,6 +166,12 @@ cox$ln.constmanufact = log(cox$constmanufact)
 cox$ln.constagricult = log(cox$constagricult)
 cox$ln.totpop = log(cox$totpop)
 
+# base model
+# normal cox model // take the log of these covariates
+cox$L_constmanufact = log(cox$constmanufact)
+cox$L_constagricult = log(cox$constagricult)
+cox$L_totpop = log(cox$totpop)
+
 ## Saving Data
 save(cox, file = "/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # in paper's folder
 
@@ -843,17 +849,9 @@ setMethod("extract", signature = className("geeglm", "geepack"),
 # Load Datasets
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/incometax_data.RData") # Load data
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # Cox
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/L_cox.RData") # Lagged Data for Cox
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/logitgee.RData") # Logit GEE
-load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/l_clogit.RData") # Lagged CONSTANT AGR MANUFACT for clogit  (fixed effects)
+#load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/l_clogit.RData") # Lagged CONSTANT AGR MANUFACT for clogit  (fixed effects)
 
-
-
-# base model
-# normal cox model // take the log of these covariates
-cox$L_constmanufact = log(cox$constmanufact)
-cox$L_constagricult = log(cox$constagricult)
-cox$L_totpop = log(cox$totpop)
 
 
 if (!require("pacman")) install.packages("pacman"); library(pacman)
@@ -867,17 +865,6 @@ cox2 <- coxph(Surv(year, year2, incometax.s) ~
                       totpop +
                       cluster(country),
               data = cox)
-
-# LAGGED MODEL
-if (!require("pacman")) install.packages("pacman"); library(pacman)
-p_load(survival)
-
-cox.L = coxph(Surv(L.cox$year, L.cox$year2, L.cox$incometax.s, origin=1901) ~ 
-                      log(constmanufact.L) + 
-                      log(constagricult.L) + 
-                      log(totpop) +
-                      cluster(country), data=L.cox)
-
 
 ## logit GEE
 if (!require("pacman")) install.packages("pacman"); library(pacman)
@@ -905,6 +892,63 @@ clogit.1 = clogit(
         method= "efron", data = data)
 
 
+
+# screenreg / texreg
+texreg(
+        list(cox2, logitgee.1, clogit.1), # it needs to be texreg for knitr
+        caption = "Sectoral Origins of Income Taxation: Income Tax Law and Industrial Development",
+        custom.coef.names = c(
+                "Manufacture Output$_{t-1}$",
+                "Agricultural Output$_{t-1}$",
+                "Total Population",
+        #
+                "intercept",
+        #
+                "Manufacture Output (ln)",
+                "Agricultural Output (ln)",        
+                "Total Population (ln)"),
+        custom.model.names = c(
+                "(1) Cox (1 lag)",# Base Model
+                "(2) Logit GEE", # GEE
+                "(3) Conditional Logit (FE)" # Fixed Effects model
+                ),
+        label = "results:1",
+        custom.note = "%stars. Robust standard errors in all models",
+        fontsize = "small",
+        center = TRUE,
+        use.packages = FALSE,
+        dcolumn = TRUE,
+        booktabs = TRUE,
+        omit.coef = "intercept",
+        #longtable = TRUE,
+        digits = 3,
+        table = TRUE,
+        stars = c(0.001, 0.01, 0.05, 0.1),
+        #sideways = TRUE,
+        no.margin = TRUE, 
+        float.pos = "ph!"
+)
+## ---- 
+
+
+## Appendix
+## ---- results:2 ----
+
+# Load Datasets
+load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/L_cox.RData") # Lagged Data 
+load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # Cox
+
+
+# LAGGED MODEL
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(survival)
+cox.L = coxph(Surv(L.cox$year, L.cox$year2, L.cox$incometax.s, origin=1901) ~ 
+                      log(constmanufact.L) + 
+                      log(constagricult.L) + 
+                      log(totpop) +
+                      cluster(country), data=L.cox)
+
+
 # spatial dependence model
 if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load(survival)
@@ -918,33 +962,27 @@ spatial.m = coxph(Surv(cox$year, cox$year2, cox$incometax.s, origin=1900)
 
 
 
+
+
 # screenreg / texreg
 texreg(
-        list(cox2, cox.L, logitgee.1, clogit.1, spatial.m), # it needs to be texreg for knitr
-        caption = "Sectoral Origins of Income Taxation: Income Tax Law and Industrial Development",
+        list(cox.L,spatial.m), # it needs to be texreg for knitr
+        caption = "Sectoral Origins of Income Taxation: Alternative Explanations",
         custom.coef.names = c(
-                "Manufacture Output$_{t-1}$",
-                "Agricultural Output$_{t-1}$",
-                "Total Population",
-                #
                 "Manufacture Output$_{t-1}$ (ln)",
                 "Agricultural Output$_{t-1}$ (ln)",
+        #        
                 "Total Population (ln)",
-                #
-                "intercept",
-                #
+        #
                 "Manufacture Output (ln)",
                 "Agricultural Output (ln)"),
         custom.model.names = c(
-                "(1) Cox (1 lag)",# Base Model
-                "(2) Cox (1 lag, ln)", # Lagged Cox Model 
-                "(3) Logit GEE", # GEE
-                "(4) Conditional Logit (FE)", # Fixed Effects model
-                "(5) Spatial Dependence" # Spatial Dependence
+                "(1) Cox (1 lag, ln)", # Lagged Cox Model 
+                "(2) Spatial Dependence"
         ),
-        label = "results:1",
+        label = "results:2",
         custom.note = "%stars. Robust standard errors in all models",
-        fontsize = "tiny",
+        fontsize = "small",
         center = TRUE,
         use.packages = FALSE,
         dcolumn = TRUE,
@@ -954,14 +992,11 @@ texreg(
         digits = 3,
         table = TRUE,
         stars = c(0.001, 0.01, 0.05, 0.1),
-        sideways = TRUE,
+        #sideways = TRUE,
         no.margin = TRUE, 
         float.pos = "ph!"
 )
 ## ---- 
-
-
-
 
 
 
@@ -1063,7 +1098,7 @@ p_load(simPH)
 # quantities
 nsim = 5000 # original: 1000
 qi = "Hazard Rate" # original: Hazard Rate
-ci = 0.9
+ci = 0.95
 
 
 set.seed(602)
@@ -1121,9 +1156,15 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
         grid.draw(combined)
         
 }
+
+simtitle <- paste(
+        paste0(qi, " of Implementing the Income Tax Law."),
+        "\\\\\\hspace{\\textwidth}", 
+        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1}, figure shows", nsim, "simulations with different sectoral growth speeds. Slow is the minimum value, while rapid is the maximum value for each sectoral output."), 
+        paste("The figure also shows the", ci*100, "\\% confidence intervals."), 
+        "\n")
+
 ## ----
-
-
 
 
 
@@ -1554,6 +1595,14 @@ grid_arrange_shared_legend(
         argentina.p, 
         mexico.p,
         ncol = 3, nrow = 3)
+
+outputstitle <- paste(
+        "Industrial and Agricultural Outputs, and The Passage of the Income Tax Law",
+        "\\\\\\hspace{\\textwidth}", 
+        "{\\bf Note}: Figure shows historical sectoral outputs, and year of the passage of the income tax law. Following convention, the figure shows logged values.",
+        "\\\\\\hspace{\\textwidth}", 
+        paste("{\\bf Source}: \\href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD} and other souces compiled by the author (see \\autoref{sample:data:income:tax:tab})."),
+        "\n")
 # ----
 
 
