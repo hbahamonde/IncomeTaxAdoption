@@ -16,7 +16,7 @@
 
 \author[1]{
 \large
-\textsc{H\'ector Bahamonde, PhD}\\ 
+\textsc{H\'ector Bahamonde}\\ 
 \thanks{I thank Robert Kaufman, Daniel Kelemen, Matthias vom Hau, D\'idac Queralt, James Mahon, Florian Hollenbach, Douglas Blair, Christopher Zorn, Paul Poast, William Young, Mart Trasberg, Jose Pablo Silva, and the participants of the 50th LASA Congress for all the useful comments. I also thank the School of Arts and Sciences at Rutgers for a pre-doctoral research grant and the Department of Political Science at Rutgers University for conference travel funds. All errors are my own.}
 \normalsize Postdoctoral Fellow $\bullet$ Center For Inter-American Policy \& Research $\bullet$ Tulane University\\
 \normalsize \texttt{e:}\href{mailto:\filetext}{\texttt{\filetext}}\\
