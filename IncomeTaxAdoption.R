@@ -805,7 +805,7 @@ cat("\014")
 ## ---- texreg-extractor-geeglm ----
 
 if (!require("pacman")) install.packages("pacman"); library(pacman)
-p_load(texreg, methods)
+p_load(texreg,methods)
 
 extract.geepack <- function(model) {
         s <- summary(model)
@@ -894,6 +894,9 @@ clogit.1 = clogit(
 
 
 # screenreg / texreg
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(texreg)
+
 texreg(
         list(cox2, logitgee.1, clogit.1), # it needs to be texreg for knitr
         caption = "Sectoral Origins of Income Taxation: Income Tax Law and Industrial Development",
@@ -902,7 +905,7 @@ texreg(
                 "Agricultural Output$_{t-1}$",
                 "Total Population",
         #
-                "intercept",
+        #        "intercept",
         #
                 "Manufacture Output (ln)",
                 "Agricultural Output (ln)",        
@@ -913,21 +916,21 @@ texreg(
                 "(3) Conditional Logit (FE)" # Fixed Effects model
                 ),
         label = "results:1",
-        custom.note = "%stars. Robust standard errors in all models",
+        custom.note = "%stars. Robust standard errors, models 1 and 2. Country fixed effects in 3. Intercept omitted.",
         fontsize = "small",
         center = TRUE,
         use.packages = FALSE,
         dcolumn = TRUE,
         booktabs = TRUE,
-        omit.coef = "intercept",
+        omit.coef = "(Intercept)",
         #longtable = TRUE,
         digits = 3,
         table = TRUE,
-        stars = c(0.001, 0.01, 0.05, 0.1),
+        stars = c(0.01, 0.05, 0.1),
         #sideways = TRUE,
         no.margin = TRUE, 
         float.pos = "ph!"
-)
+        )
 ## ---- 
 
 
@@ -1158,15 +1161,13 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
 }
 
 simtitle <- paste(
-        paste0(qi, " of Implementing the Income Tax Law."),
+        paste0("{\\bf ",qi, " of Implementing the Income Tax Law", "}", "."),
         "\\\\\\hspace{\\textwidth}", 
-        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1}, figure shows", nsim, "simulations with different sectoral growth speeds. Slow is the minimum value, while rapid is the maximum value for each sectoral output."), 
-        paste("The figure also shows the", ci*100, "\\% confidence intervals."), 
+        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1}, figure shows", format(nsim,big.mark=",",scientific=FALSE), "simulations with different sectoral growth speeds. `Slow' is the minimum value, while `rapid' is the maximum value for each sectoral output."), 
+        paste("The figure also shows the", paste(ci*100, "\\% confidence intervals.", sep = "")), 
         "\n")
 
 ## ----
-
-
 
 
 
@@ -1597,11 +1598,11 @@ grid_arrange_shared_legend(
         ncol = 3, nrow = 3)
 
 outputstitle <- paste(
-        "Industrial and Agricultural Outputs, and The Passage of the Income Tax Law",
+        "{\\bf Industrial and Agricultural Outputs, and The Passage of the Income Tax Law}.",
         "\\\\\\hspace{\\textwidth}", 
         "{\\bf Note}: Figure shows historical sectoral outputs, and year of the passage of the income tax law. Following convention, the figure shows logged values.",
         "\\\\\\hspace{\\textwidth}", 
-        paste("{\\bf Source}: \\href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD} and other souces compiled by the author (see \\autoref{sample:data:income:tax:tab})."),
+        paste("{\\bf Source}: \\href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD}, and other souces compiled by the author (see \\autoref{sample:data:income:tax:tab})."),
         "\n")
 # ----
 
