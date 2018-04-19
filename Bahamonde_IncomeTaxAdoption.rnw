@@ -85,19 +85,22 @@ read_chunk('/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/Inco
 
 
 % Hook
-There seems to be strong agreement that fiscal capacities are a prerequisite for state-building. For instance, \citet[1]{Levi:1989lq} explains for the continental cases that, ``the history of state revenue production is the history of of the evolution of the state.'' Unfortunately, however, most efforts have been devoted to understanding the relationship between the politics of taxation and state development only in a limited number of European cases,\footnote{\citet[2]{Schneider:2012rr} explains that even when we have gained considerable knowledge of fiscal expansion in the European cases, the study of developing countries is lacking especially in the presence of ``new leading sectors.''} overlooking the origins of fiscal and state expansion in the developing world, and particularly, in Latin America.\footnote{\citet[5]{DiJohn2006}.} In fact, in a recently edited volume, \citet[3]{Monson2015} explain that the ``New Fiscal History has furnished a valuable set of concepts and questions but so far its scope has been limited to post-classical Europe.''\footnote{Some important exceptions are \citet{Yun-Casalilla:2015zm} and \citet[]{Monson2015} who study a number of premodern Latin American states.} Moreover, the bulk of the research done on Latin America has mostly focused on \emph{recent} tax reforms.\footnote{Flores-Mac\'ias, in \citet{Flores-Macias2017}.} For instance, \citet[]{Fairfield2013} studies different strategies policymakers pursue to tax elites starting in 1990, \citet[3]{Mahon2014}, \citet[]{Mahon2004} and \citet{Focanti2013} have studied the causes of tax reform in Latin America starting in the 1960s, 1980s, and 1990, respectively. Similarly, \citet[]{Ross2004} studies the relationship between taxation and representation between 1971 and 1997, whereas \citet{Sokoloff2007a} study the evolution of tax institutions, comparing the U.S. with Latin America.\footnote{See also \citet{Sanchez2011} and \citet[]{Bergman2003}.} However, comparative time series studies focusing on the structural \emph{origins} of income taxation in Latin America seem scarce. By providing a set of broader consequences for state consolidation, this paper is an effort to fill this gap in the literature.
+There seems to be strong agreement that fiscal capacities are a prerequisite for state-building. For instance, \citet[1]{Levi:1989lq} explains for the continental cases that, ``the history of state revenue production is the history of of the evolution of the state.'' Unfortunately, however, most efforts have been devoted to understanding the relationship between the politics of taxation and state development only in a limited number of European cases,\footnote{\citet[2]{Schneider:2012rr} explains that even when we have gained considerable knowledge of fiscal expansion in the European cases, the study of developing countries is lacking especially in the presence of ``new leading sectors.''} overlooking the origins of fiscal, and state expansion in the developing world, and particularly, in Latin America.\footnote{\citet[5]{DiJohn2006}.} In fact, in a recently edited volume, \citet[3]{Monson2015} explain that the ``New Fiscal History has furnished a valuable set of concepts and questions but so far its scope has been limited to post-classical Europe.''\footnote{Some important exceptions are \citet{Yun-Casalilla:2015zm} and \citet[]{Monson2015} who study a number of premodern Latin American states.} Moreover, the bulk of the research done on Latin America has mostly focused on \emph{recent} tax reforms.\footnote{Flores-Mac\'ias, in \citet{Flores-Macias2017}.} For instance, \citet[]{Fairfield2013} studies different strategies policymakers pursue to tax elites starting in 1990, \citet[3]{Mahon2014}, \citet[]{Mahon2004} and \citet{Focanti2013} have studied the causes of tax reform in Latin America starting in the 1960s, 1980s, and 1990, respectively. Similarly, \citet[]{Ross2004} studies the relationship between taxation and representation between 1971 and 1997, whereas \citet{Sokoloff2007a} study the evolution of tax institutions, comparing the U.S. with Latin America.\footnote{See also \citet{Sanchez2011} and \citet[]{Bergman2003}.} However, comparative time series studies focusing on the structural \emph{origins} of income taxation in Latin America seem scarce. By providing a set of broader consequences for state consolidation, this paper is an effort to fill this gap in the literature.
 
 % summary
 Building on the fiscal sociology approach, I develop an argument centered on the development of the modern fiscal apparatus in Latin America, explaining that it was product of sectoral conflicts and compromises, between the industrial and agricultural elites. The paper presents several panel-data analyses covering almost 100 years of data for a number of Latin American countries. It also presents the Chilean case to illustrate the causal mechanisms at work. I find that the emergence of the industrial sector \emph{accelerated} the implementation of the income tax, while the expansion of the agricultural sector \emph{retarded}, or even \emph{precluded} fiscal development. These findings go in line with \citet{Beramendi2016}, particularly, in that as long as agriculture is the leading economic sector, the fiscal apparatus is less likely to emerge.\footnote{See for similar results \citet[78]{Pessino2010}.}
 
 % argument 1
-I argue that the early implementation of the income tax in Latin America was product of an inter-sectoral conflict that took place around in the early 1900's between the agricultural and industrial sectors. Initially, Latin American political institutions and social norms---largely inherited from the colonial period---were designed to serve the interests of the landowning elites.\footnote{\citet[90,109]{Mamalakis1971}.} However, the economic structural transformation characterized by ``a secular decline of agriculture and substantial expansion of manufacturing,''\footnote{\citet[567]{Johnston1961}.} imposed tight constraints on the way politics was run by the incumbent agricultural political elites. Given the initial advantage of the landed elites, the emergence of the industrial sector lead to the reduction of inter-sectoral inequality. It also lead to the rise of bargaining power of the industrial class, positioning them as challenger elites.\footnote{\citet[112]{Mamalakis1971} explains that in ``Latin America, agriculture-linked parties lost power between 1900-1960, while those parties linked with mining, industrial, and service sectors gained power.''} In other words, the political monopoly of agricultural elites was disturbed with the rising of a new and strong political elite backed by favorable material conditions rooted in industrial expansion. Industrial emergence, in turn, posed credible political, economic and military threats, to agricultural incumbents, increasing the opportunity costs of conflict, generating pressures for inter-elite compromises, particularly, the implementation of the income tax. The paper explains why industrial elites actually preferred to impose the income tax, and link this to state consolidation.
+I argue that the early implementation of the income tax in Latin America was product of an inter-sectoral conflict that took place around in the early 1900's between the agricultural and industrial sectors. 
 
 
-Some scholars situate the relevant state-building critical juncture either before the colonial period,\footnote{\citet{Mahoney:2010aa}.} or at the end of it.\footnote{\citet{Kurtz2009,Kurtz:2013aa} explains that the first critical juncture corresponded to the post independence political economy, stressing whether local rural elites recruited their workers through servile means. In turn, \citet[6]{Soifer2015a} argues that the critical tipping point was whether  ``local administrators were outsiders in the communities in which they served.''} While the literature situates these critical moments before the class compromises I identify in this paper, the paper identifies the income tax as an important \emph{additional building block} in that process. Hence, here the focus is on state \emph{consolidation}, rather than strictly state \emph{formation}. 
+Initially, Latin American political institutions and social norms---largely inherited from the colonial period---were designed to serve the interests of the landowning elites.\footnote{\citet[90,109]{Mamalakis1971}.} However, the economic structural transformation, characterized by ``a secular decline of agriculture and substantial expansion of manufacturing,''\footnote{\citet[567]{Johnston1961}.} imposed tight constraints on the way politics was run by the incumbent agricultural political elites. Given the initial advantage of the landed elites, the emergence of the industrial sector lead to the reduction of inter-sectoral inequality. It also lead to the rise of bargaining power of the industrial class, positioning them as challenger elites.\footnote{\citet[112]{Mamalakis1971} explains that in ``Latin America, agriculture-linked parties lost power between 1900-1960, while those parties linked with mining, industrial, and service sectors gained power.''} In other words, the political monopoly of agricultural elites was disturbed with the rising of a new, and strong political elite backed by favorable material conditions rooted in industrial expansion. Industrial emergence, in turn, posed credible political, economic and military threats to agricultural incumbents, increasing the opportunity costs of conflict, generating pressures for inter-elite compromises, particularly, the implementation of the income tax. The paper also explains why industrial elites actually preferred to impose the income tax, and links this to state consolidation.
 
 
-The paper is organized as follows. The argument is explained in two different sections. \hyperlink{fiscalsociology}{The first section} explains the nature and mechanics of the sectoral conflicts that lead to income taxation, paying especial attention to the role of taxation on state consolidation in Latin America. The \hyperlink{when}{following section} explains that the timing of implementing the income tax acted as a critical juncture, setting countries in a path of development/underdevelopment. To contextualize the theoretical argument, \hyperlink{unpacking}{the following section} presents the case of Chile between 1900 and 1950, focusing particularly on the cross-class economic and political dynamics that led to the implementation of the income tax. In an effort to generalize this historical evidence, the \hyperlink{methods}{quantitative section} presents several panel-data analyses covering almost 100 years of data for a number of Latin American countries. Lastly, the paper provides some \hyperlink{discussion}{concluding remarks}, and discusses some pending issues.
+Some scholars situate the relevant state-building critical juncture either before the colonial period,\footnote{\citet{Mahoney:2010aa}.} or at the end of it.\footnote{\citet{Kurtz2009,Kurtz:2013aa} explains that the first critical juncture corresponded to the post independence political economy, stressing whether local rural elites recruited their workers through servile means. In turn, \citet[6]{Soifer2015a} argues that the critical tipping point was whether  ``local administrators were outsiders in the communities in which they served.''} While the literature situates these critical moments before the class compromises identified in this paper, the argument identifies the income tax as an important \emph{additional building block} in that process. Hence, here the focus is on state \emph{consolidation}, rather than on state \emph{formation}. 
+
+
+The paper is organized as follows. The argument is explained in two different sections. \hyperlink{fiscalsociology}{The first section} explains the nature, and mechanics of the sectoral conflicts that lead to income taxation, paying especial attention to the role of taxation on state consolidation in Latin America. The \hyperlink{when}{following section} explains that the timing of implementing the income tax acted as a critical juncture, setting countries in a development/underdevelopment path. To contextualize the theoretical argument, \hyperlink{unpacking}{the following section} presents the case of Chile between 1900 and 1950, focusing particularly on the cross-class economic, and political dynamics, that led to the implementation of the income tax. In an effort to generalize this historical evidence, the \hyperlink{methods}{quantitative section} presents several panel-data analyses (duration models and Cox regressions) covering almost 100 years of data, for a number of Latin American countries. Lastly, the paper provides some \hyperlink{discussion}{concluding remarks}, and discusses some pending issues.
 
 
 
@@ -340,55 +343,19 @@ Moreover, by simulating a quantity of interest in \autoref{fig:simulation:plots}
 
 
 
-\section{Discussion: Slow Industrial Growth and Lack of Contestation\label{discussion}}
+\section{Discussion\label{discussion}}
 
-\hypertarget{discussion}{Historically, agriculturalists were a hegemonic group protected by practices inherited from institutions originated in colonial times}. These norms survived due to institutional inertia, perpetuating their advantaged position. However, the emergence of a strong industrial elite altered the inter-sectoral balance of political power, making unsustainable the political monopoly run by the landed elites. Given the initial advantage of the landed elites, the emergence of the industrial sector reduced the levels of inter-sectoral inequality, in turn generating political, economic and military threats to agricultural incumbents. Moreover, low inequality also increased the opportunity costs of conflict, putting pressures for inter-elite compromises. 
+\hypertarget{discussion}{Historically, agriculturalists had been an hegemonic group, protected by an institutional order inherited during colonial times}. In cases where a strong challenger class had failed to emerge, post-colonial norms survived due to institutional inertia, crystallizing a backwards political economy. However, in cases where the emergence of an industrial elite was backed by favorable material conditions (rapid industrial growth), their leverage to challenge incumbent landowners was higher. As the challenger elite expanded its economic power, it was easier for their corresponding political elites to implement favorable fiscal policies for them earlier in history. The paper paid special attention to the case of the implementation of the income tax.
 
-The data analyses suggested that faster industrial growth accelerated the hazard of implementing the income tax. I interpreted the Chilean case through the lenses of the fiscal sociology paradigm. Leveraging historical evidence, I find that industrial elites accepted to be income taxed by agriculturalist incumbents in exchange of having access to state politics. Importantly, all these elite compromises took place during the formative years of the Chilean state, and during a period of structural indetermination, where no elite had a clear economic/military/political advantage, fostering the incorporation of all major economic elites into the same national project. When the income tax was implemented under politically contested circumstances, this institution expanded the overall state-capacities by crystallizing a series of reforms, dismantling the old institutional order inherited since colonial times. Given the initial advantage of the landed elites, the emergence of a strong industrial sector increased levels of sectoral contestation. Countries with low levels of state-capacities did eventually implement the tax. However, later implementation had to do more with exogenous forces, leaving unaltered the backwards institutional order inherited since colonial times.
-
-Both the argument, and the empirical findings, are situated within the broader literature on political and economic development, particularly within the fiscal sociology paradigm, emphasizing how fiscal development fosters state-making. Concretely, this paradigm proportionates a theory of state-building as it links the mechanics between the state-led effort of taxing incomes, and the expansion of other state services. Future research should explore more avenues of fiscal expansion, emphasizing domestic channels of political development, particularly considering different types of bargaining dynamics between the agricultural and industrial elites. To the best of my knowledge, \citet{Beramendi2016} and this paper, are among the few of such accounts.\footnote{In p. 19, they argue that their ``paper is among the first to systematically establish that fiscal development may take place even in the absence of interstate military competition and warfare.''}
+The fiscal sociology framework was also discussed. Given the initial advantage of the landed elites, the emergence of a strong industrial sector meant higher levels of sectoral contestation. The nature of the conflict, as argued, was rooted into different sectoral preferences towards taxation. However, and at the same time, since taxation fosters state consolidation, the sectoral cleavage around fiscal policies, was ultimately, a conflict about state centralization, and state consolidation. The paper argues, and finds, that the emergence of a strong capitalist class, accelerated the implementation of the income tax, and this was an important critical juncture, fundamental in explaining state consolidation in Latin America. The Chilean case strongly suggest that (1) the income tax increased levels of state consolidation via positive spillovers, and that (2) industrialists accepted to be income taxed, in exchange of having fair access to the state. Importantly, these elite compromises took place during the formative years of the Chilean state. The quantitative models presented in this paper are an effort to generalize this argument.
 
 
-
-\newpage
-\section{Appendix}
-
-%% reset tables and figures counter
-\setcounter{table}{0}
-\renewcommand{\thetable}{A\arabic{table}}
-\setcounter{figure}{0}
-\renewcommand{\thefigure}{A\arabic{figure}}
+An important issue addressed in the paper, both from a methodological, and substantive perspectives, was the timing of implementing the tax. While the theory broadly connects sectoral contestation, income taxation, and state consolidation, the duration and spatial models presented in the paper, only connect the first two components. However, the motivation for studying only these two first elements of the causal chain, should be understood as an effort to trace the structural and domestic origins of state consolidation. And hence, the broader argument is that sectoral contestation is a channel that leads to state consolidation. Somewhere else, I provide quantitative overtime evidence in relationship with income taxation, and state consolidation itself.\footnote{\citet{Bahamonde:2017ac}.}
 
 
+Future research should explore more avenues of fiscal expansion, emphasizing domestic channels of political development, particularly considering different types of bargaining dynamics between the agricultural, and industrial elites. To the best of my knowledge, \citet{Beramendi2016} and this paper, are among the few of such accounts.\footnote{In p. 19, they argue that their ``paper is among the first to systematically establish that fiscal development may take place even in the absence of interstate military competition and warfare.''}
 
 
-
-
-
-% Kaplan-Meier curves plot
-\subsection{Kaplan-Meier Curves: Ruling out Spurious Time Dependency}
-
-
-% time dependence
-It is important to rule out the possibility that income taxation and sectoral development, are not linked through a spurious, time-dependent relationship. In other words, the occurrence of the outcome of interest (income taxation), should not be directly related to time itself, but to the rise of the industrial elite. Within the framework of survival analyses, \autoref{fig:survival:plot} shows the failure rate of the sample average country of implementing the income tax, if industrial development had increased/decreased by half (rapid/slow).\footnote{``Failure'' in this case means ``implementing'' the income tax law.} The figure clearly shows that the implementation of the income tax law is largely accelerated when the size of the industrial sector increases, and that this relationship does not depend directly on time. It is important to note that this figure shows the unparameterized behavior of the failure rate, e.g., the empirical distribution of failures that comes directly out of the data, before any model is actually estimated.
-
-% time dependence plot
-<<survival:plot, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='Kaplan-Meier Curves: Size of the Industrial Sector and the Accelerated Rate of the Imposition of Income Tax Law', fig.align='center', fig.width=4, fig.height=3,dpi=1000,cache = FALSE>>=
-
-@
-
-
-
-% Alternative Models
-\newpage
-\subsection{Alternative Models: Lagged-logged Independent Variables and Spatial Dependency}
-
-Model 1 is a Cox regression, but with lagged logged variables. By including time-transformed variables, in the form of a lagged dependent variable (to account for partial adjustment of behavior)\footnote{\citet{Wawro2002}.} or ``the use of the natural log transformation [to capture] different forms (or ``shapes'') of the baseline hazard,''\footnote{\citet[75]{Box-Steffensmeier2004}.} Model 2 accounts for possible spatial-temporal dependence.\footnote{I thank both Christopher Zorn and David Darmofal for this suggestion.} Given that most countries in the sample are contiguous neighbors, it is reasonable to expect a ``domino'' effect.\footnote{For a more detailed spatial take on fiscal expansion, see \citet{Thies2016}.} Theoretically, being the first country in implementing the income tax, might not require the same level of domestic ``effort'' than being the last one. Early-implementers might not have prior experience, being harder for them to pass the law. To account for this possible spatial-temporal dependence, a cumulative count of countries which have implemented the law at time $t$ was included.\footnote{I clustered the standard errors at the counting variable level. Clustering by the counting variable allows me to cluster by early or late implementers.} 
-
-
-<<results:2, echo=FALSE, comment=NA, warning=FALSE, message=F, results='asis', cache=FALSE>>=
-
-@
 
 
 
@@ -432,6 +399,48 @@ count <- comma(as.numeric(count)) # add comma
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % WORD COUNT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newpage
+\section{Online Appendix\label{appendix}}
+
+%% reset tables and figures counter
+\setcounter{table}{0}
+\renewcommand{\thetable}{OA\arabic{table}}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{OA\arabic{figure}}
+
+
+
+
+
+% Kaplan-Meier curves plot
+\subsection{Kaplan-Meier Curves: Ruling out Spurious Time Dependency}
+
+
+% time dependence
+It is important to rule out the possibility that income taxation and sectoral development, are not linked through a spurious, time-dependent relationship. In other words, the occurrence of the outcome of interest (income taxation), should not be directly related to time itself, but to the rise of the industrial elite. Within the framework of survival analyses, \autoref{fig:survival:plot} shows the failure rate of the sample average country of implementing the income tax, if industrial development had increased/decreased by half (``rapid''/``slow'').\footnote{``Failure'' in this case means ``implementing'' the income tax law.} The figure clearly shows that the implementation of the income tax law is largely accelerated when the size of the industrial sector increases, and that this relationship does not depend directly on time. It is important to note that this figure shows the unparameterized behavior of the failure rate, e.g., the \emph{empirical} distribution of failures that comes directly out of the data, before any model is actually estimated. In other words, this is the dependent variable estimated in the Cox models.
+
+% time dependence plot
+<<survival:plot, echo = FALSE, fig.pos='H', warning = FALSE, message = F, fig.cap='Kaplan-Meier Curves: Size of the Industrial Sector and the Accelerated Rate of the Imposition of Income Tax Law', fig.align='center', fig.width=4, fig.height=3,dpi=1000,cache = FALSE>>=
+
+@
+
+
+
+% Alternative Models
+\newpage
+\subsection{Alternative Models: Lagged-logged Independent Variables and Spatial Dependency}
+
+Model 1 is a Cox regression, but with lagged logged variables. By including time-transformed variables, in the form of a lagged independent variable (to account for partial adjustment of behavior),\footnote{\citet{Wawro2002}.} it is possible ``the use of the natural log transformation [to capture] different forms (or ``shapes'') of the baseline hazard,''\footnote{\citet[75]{Box-Steffensmeier2004}.} Model 2 accounts for possible spatial-temporal dependence.\footnote{I thank both Christopher Zorn and David Darmofal for this suggestion.} Given that most countries in the sample are contiguous neighbors, it is reasonable to expect a ``domino'' effect.\footnote{For a more detailed spatial take on fiscal expansion, see \citet{Thies2016}.} Theoretically, being the first country in implementing the income tax, might not require the same level of domestic ``effort'' than being the last one. Early-implementers might not have prior experience, being harder for them to pass the law. To account for this possible spatial-temporal dependence, a cumulative count of countries which have implemented the law at time $t$ was included.\footnote{I clustered the standard errors at the counting variable level. Clustering by the counting variable allows me to cluster by early or late implementers.} 
+
+
+<<results:2, echo=FALSE, comment=NA, warning=FALSE, message=F, results='asis', cache=FALSE>>=
+
+@
+
+
 
 
 
