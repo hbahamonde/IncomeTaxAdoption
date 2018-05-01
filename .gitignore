@@ -80,3 +80,7 @@ Bahamonde_IncomeTaxAdoption.txt
 # Argentina_Income_Tax.pdf
 
 *.ent
+
+Bahamonde_IncomeTaxAdoption\.bcf
+
+Bahamonde_IncomeTaxAdoption\.run\.xml
