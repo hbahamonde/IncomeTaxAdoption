@@ -117,6 +117,16 @@ As historian Francisco Encina explains, ``[i]t was precisely this segment of the
 
 	\citet[468, footnote # 8]{Bowman1982}: ``The inheritance tax, established in 1878, and the income tax, established in 1879, never contributed more than 3\% of total ordinary revenues (Spottiswoode and Co., 1915: 27-28). These early progressive taxes were far less significant sources of revenue than the income tax that was established in 1924. In 1925, the new income tax already contributed 10\% of ordinary revenues, or 7\% of total revenues. By 1930, the income tax was second only to import duties as a source of revenues, contributing 19\% of ordinary revenues, or 13\% of the total (Humud 1969:232).''
 
+
+\textcite[9]{UndaGutierrez2017} explains that in Mexico the lack of credit had previously been one of the industrial sector's main obstacles. In fact, industrial elites started to comply with the income tax in exchange for having credit policies more adequate to the industrial sector.
+
+\textcite[11]{Mamalakis1969} develops a theory of sectoral clashes. The leading sector becomes dominant thanks to the interplay between the government, the dominant sector, and the central bank.
+
+As \textcite[1748]{Baland2008} argue, ``[c]ongressional representation was heavily weighted in favor of rural districts.''
+
+
+Similarly, \textcite[15]{McBride:1971fv} explains that ``Chile's people live on the soil. Her life is agricultural to the core. \emph{Her government has always been of farm owners. Her Congress is made up chiefly of rich landlords}. Social life is dominated by families whose proudest possession is the ancestral estate.'' Emphases are mine.
+
 	% taxation: cause and consequence.
 		%- See Martin2009a
 

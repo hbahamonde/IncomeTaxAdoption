@@ -906,9 +906,9 @@ texreg(
                 "Manufacture Output$_{t-1}$",
                 "Agricultural Output$_{t-1}$",
                 "Total Population",
-        #
-               "intercept",
-        #
+        
+               #"(Intercept)",
+        
                 "Manufacture Output (ln)",
                 "Agricultural Output (ln)",        
                 "Total Population (ln)"),
@@ -924,14 +924,14 @@ texreg(
         use.packages = FALSE,
         dcolumn = TRUE,
         booktabs = TRUE,
-        omit.coef = "intercept",
+        omit.coef = "(Intercept)",
         #longtable = TRUE,
         digits = 3,
         table = TRUE,
         stars = c(0.01, 0.05, 0.1),
         #sideways = TRUE,
         no.margin = TRUE, 
-        float.pos = "ph!"
+        float.pos = "!htbp"
         )
 ## ---- 
 
@@ -1001,7 +1001,7 @@ texreg(
         stars = c(0.01, 0.05, 0.1),
         #sideways = TRUE,
         no.margin = TRUE, 
-        float.pos = "ph!"
+        float.pos = "!htbp"
         )
 ## ---- 
 
@@ -1165,7 +1165,7 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
 }
 
 simtitle <- paste(
-        paste0("{\\bf ",tolower(qi), " of Implementing the Income Tax Law", "}", "."),
+        paste0("{\\bf ",qi, " of Implementing the Income Tax Law", "}", "."),
         "\\\\\\hspace{\\textwidth}", 
         paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1} (\\autoref{cox:eq}), figure shows", format(nsim,big.mark=",",scientific=FALSE), "simulations with different sectoral growth speeds. `Slow' is the minimum value, while `rapid' is the maximum value for each sectoral output."), 
         paste("The figure also shows the", paste(ci*100, "\\% confidence intervals.", sep = "")), 
