@@ -10,7 +10,6 @@
 
 
 % DOCUMENT ID
-\fancyhead[C]{Draft, please don't share without permission} % Custom header text
 
 
 
@@ -36,7 +35,6 @@
 
 \maketitle % Insert title
 
-\thispagestyle{fancy} % All pages have headers and footers
 
 %----------------------------------------------------------------------------------------
 % ABSTRACT
