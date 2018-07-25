@@ -1167,7 +1167,7 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
 simtitle <- paste(
         paste0("{\\bf ",qi, " of Implementing the Income Tax Law", "}", "."),
         "\\\\\\hspace{\\textwidth}", 
-        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1} (\\autoref{cox:eq}), figure shows", format(nsim,big.mark=",",scientific=FALSE), "simulations with different sectoral growth speeds. `Slow' is the minimum value, while `rapid' is the maximum value for each sectoral output."), 
+        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1} (\\autoref{results:2}), figure shows", format(nsim,big.mark=",",scientific=FALSE), "simulations with different sectoral growth speeds. `Slow' is the minimum value, while `rapid' is the maximum value for each sectoral output."), 
         paste("The figure also shows the", paste(ci*100, "\\% confidence intervals.", sep = "")), 
         "\n")
 
