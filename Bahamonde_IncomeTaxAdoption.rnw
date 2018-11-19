@@ -323,7 +323,7 @@ Using secondary information, \autoref{sample:data:income:tax:tab} states when th
 % models
 \autoref{results:1} shows 3 models.\footnote{All tables were produced using the  \texttt{texreg} package \autocite[]{Leifeld:2013qr}. All Cox models were computed using the \texttt{survival R}  package (\cite{Therneau:2015zr}). The GEE logistic regression was computed using the \texttt{geepack} package \autocite[]{Hojsgaard:2016}. The simulations were performed using the \texttt{simPH R} package (\cite{Gandrud2015}).} Following \textcite{Aidt2009a}, Model 1 computes the lagged conditional hazard ratio of a country which has not yet adopted the income tax, adopts it in a given year, as a function of industrial and agricultural outputs.\footnote{Following \textcite[49]{Box-Steffensmeier2004}, the next equation was fitted: 
 \begin{equation}\label{cox:eq}
-h_{i}(t) = exp(\beta_{1}\text{Industrial Growth}_{i,t} + \beta_{2}\text{Agricultural Growth}_{i,t} + \beta_{3}\text{Total Population}_{i,t})h_{0}(t)
+h_{i}(t) = exp(\beta_{1}\text{Industrial Growth}_{i,t-1} + \beta_{2}\text{Agricultural Growth}_{i,t-1} + \beta_{3}\text{Total Population}_{i,t-1})h_{0}(t)
 \end{equation}
 for all countries $i$ and years $t$.} Countries drop out of the sample when they adopt the income tax. Lagging the independent variables should account for non-contemporaneous factors that might conflate the contribution of sectoral growths, such as prior state capacities, among others. Model 2 shows the estimated coefficients of a generalized estimating equation (GEE).\footnote{Following \textcite[331]{Zorn2006}, the next equation was fitted:
 \begin{equation}\label{gee:eq}
