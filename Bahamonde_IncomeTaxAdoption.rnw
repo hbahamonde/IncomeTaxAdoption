@@ -4,8 +4,8 @@
 
 
 % endnotes begin
-% \usepackage{endnotes}
-% \let\footnote=\endnote
+\usepackage{endnotes}
+\let\footnote=\endnote
 % endnotes end
 
 
@@ -64,9 +64,9 @@
 
 %\section{Introduction}
 
-%\epigraph{\emph{The only important coercion which is crucial to development is taxation}}{Arthur Lewis, 1965}
+\epigraph{\emph{The only important coercion which is crucial to development is taxation}}{Arthur Lewis, 1965}
 
-%\epigraph{\emph{The budget is the skeleton of the state stripped of all misleading ideologies}}{Schumpeter, 1991}
+\epigraph{\emph{The budget is the skeleton of the state stripped of all misleading ideologies}}{Schumpeter, 1991}
 
 
 <<setup, include=FALSE, cache=FALSE>>=
@@ -378,8 +378,8 @@ Future research should explore more avenues of fiscal expansion, emphasizing dom
 
 
 % end notes
-%\newpage
-%\theendnotes
+\newpage
+\theendnotes
 
 
 \newpage
