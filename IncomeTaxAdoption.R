@@ -126,6 +126,95 @@ p_load(foreign)
 write.dta(data, "/Users/hectorbahamonde/RU/Dissertation/Papers/NegativeLink/data.dta")
 
 ##################################################
+##             CENSUS DATA
+##################################################
+
+
+
+# HERE
+
+rm(list=ls())
+cat("\014")
+
+# Census Data
+
+# Load the census data
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(foreign)
+
+## Load Census data 
+census.d <- read.dta("/Users/hectorbahamonde/RU/research/Inequality_State_Capacities/Data/Census_Data_Hanson/Census_data_until_2015.dta")
+
+
+## replaces NAs with 0s
+census.d$census_full[is.na(census.d$census_full)] <- 0
+
+## generate cumulative census variable by country
+census.d = census.d[with(census.d, order(country, year)),]
+census.d$cum.census <- as.numeric(ave(census.d$census_full, census.d$country, FUN=cumsum))
+
+## keep just important variables
+census.d <- census.d[, c("country", "year", "census_full", "cum.census")]
+
+
+
+
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(data.table) 
+census.d = merge(data.frame(setDT(census.d[ which(census.d$cum.census > 0),])[, .(country_num_of_census = uniqueN(cum.census)), by = country]),
+                 census.d,
+                 by=c("country"),
+                 all.x=T
+)
+### generate variable with number of years by country
+census.d = merge(
+        data.frame(setDT(census.d)[, .(country_tot_years = uniqueN(year)), by = country]),
+        census.d,
+        by=c("country"),
+        all.x=T
+)
+
+# average census per year
+census.d$ave_census = census.d$country_num_of_census/census.d$country_tot_years
+
+
+
+# subset
+census.d = subset(census.d, country == "Chile" | country ==  "Colombia" | country ==  "Ecuador" | country ==  "Guatemala" | country ==  "Nicaragua" | country ==  "Peru" | country ==  "Venezuela" | country == "Mexico" | country == "Argentina")
+
+
+census.d = data.frame(
+        Country = census.d$country,
+        Year = census.d$year,
+        Census = census.d$cum.census
+)
+
+View(data.frame(aggregate(census.d$Census, by = list(census.d$Country), max)))
+
+
+
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(ggplot2)
+ggplot(na.omit(census.d), aes(Year, Census, colour = Country)) + #facet_wrap(~Variable,  ncol = 3, scales = "free") +
+        geom_line() + 
+        xlab("Year") +
+        ylab("Cumulative State Capacities") +
+        theme_bw() +
+        labs(title="") +
+        theme(
+                axis.text.y = element_text(size=7), 
+                axis.text.x = element_text(size=7), 
+                axis.title.y = element_text(size=7), 
+                axis.title.x = element_text(size=7), 
+                legend.text=element_text(size=7), 
+                legend.title=element_text(size=7),
+                plot.title = element_text(size=7),
+                legend.position="bottom")
+
+
+##################################################
 ##              DATA PREP
 # Cox Porportional Hazard Models
 ##################################################
