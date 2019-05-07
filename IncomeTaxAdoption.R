@@ -14,8 +14,31 @@ setwd("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption")
 load("/Users/hectorbahamonde/RU/Dissertation/Data/dissertation.Rdata") # Load data
 
 ## Keep sample countries and variables
-data = subset(dissertation, country == "Chile" | country ==  "Colombia" | country ==  "Ecuador" | country ==  "Guatemala" | country ==  "Nicaragua" | country ==  "Peru" | country ==  "Venezuela" | country == "Mexico" | country == "Argentina")
+data = subset(dissertation, 
+              country == "Chile" | 
+                      country ==  "Colombia" | 
+                      country ==  "Ecuador" | 
+                      country ==  "Guatemala" | 
+                      country ==  "Nicaragua" | 
+                      country ==  "Peru" | 
+                      country ==  "Venezuela" | 
+                      country == "Mexico" | 
+                      country == "Argentina" |
+                      country == "Brazil" | # New Contries: from here, to below.
+                      country == "Bolivia" |
+                      country == "Costa Rica" |
+                      country == "Cuba" |
+                      country == "El Salvador" |
+                      country == "Haiti" |
+                      country == "Honduras" |
+                      country == "Panama" |
+                      country == "Paraguay" |
+                      country == "Dominican Republic" |
+                      country == "Uruguay"
+              )
+
 data = subset(data, select = c(country, year, democ, autoc, polity, polity2, urbpop, totpop, constmanufact, constagricult, exports, ppp, propagrmanu, realgdp, incometax, madisongdp, madisonpop, boix_democracy, madisonpercapgdp, customtax))
+
 data = subset(data, constmanufact != "NA" & constagricult != "NA")
 
 ## Construct a the outcome variable (0,1) for when the income tax was imposed.
@@ -28,6 +51,18 @@ incometax.d.peru  = data.frame(ifelse(data$year>=1934 & data$country == "Peru",1
 incometax.d.venezuela  = data.frame(ifelse(data$year>=1943 & data$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
 incometax.d.mexico  = data.frame(ifelse(data$year>=1925 & data$country == "Mexico",1,0)) # Mexico, \citet[8]{UndaGutierrez2017}
 incometax.d.argentina  = data.frame(ifelse(data$year>=1933 & data$country == "Argentina",1,0)) # Argentina, http://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=185729
+incometax.d.brazil  = data.frame(ifelse(data$year>=1922 & data$country == "Brazil",1,0)) # Brazil: http://www.planalto.gov.br/ccivil_03/LEIS/1901-1929/L4625.htm http://idg.receita.fazenda.gov.br/sobre/institucional/memoria/imposto-de-renda/legislacao/legislacao-do-imposto-de-renda-pessoa-fisica-de-1843-a-2013
+incometax.d.bolivia  = data.frame(ifelse(data$year>=1969 & data$country == "Bolivia",1,0)) # Bolivia: https://www.lexivox.org/norms/BO-L-19280503-3.xhtml ## 08 de Enero de 1969, Decreto Supremo Nº 08619. Fuente: http://www.gacetaoficialdebolivia.gob.bo/index.php/normas/descargar/3152
+incometax.d.costa.rica  = data.frame(ifelse(data$year>=1946 & data$country == "Costa Rica",1,0)) # Costa Rica: https://cijulenlinea.ucr.ac.cr/portal/descargar.php?q=MTA2Mw== http://www.pgrweb.go.cr/scij/Busqueda/Normativa/Normas/nrm_norma.aspx?param1=NRM&nValor1=1&nValor2=3218&nValor3=3403&strTipM=FN
+incometax.d.cuba  = data.frame(ifelse(data$year>=1941 & data$country == "Cuba",1,0)) # Cuba:  http://www.lchlegal.com/publicaciones/el-sistema-tributario-cubano.pdf (página 25)
+incometax.d.el.salvador  = data.frame(ifelse(data$year>=1915 & data$country == "El Salvador",1,0)) # El Salvador: http://ri.ues.edu.sv/id/eprint/6526/1/DISTINTAS%20FUENTES%20DEL%20IMPUESTO%20SOBRE%20LA%20RENTA%20Y%20SU%20RELACION%20CON%20EL%20PRINCIPIO%20DE%20IGUALDAD%20Y%20OTROS%20PRINCIPIOS%20CONSTITUCIONALES.pdf (página 6)
+incometax.d.haiti  = data.frame(ifelse(data$year>=1942 & data$country == "Haiti",1,0)) # Haiti: http://ufdc.ufl.edu/AA00000790/00001/9j
+incometax.d.honduras  = data.frame(ifelse(data$year>=1963 & data$country == "Honduras",1,0)) # Honduras:  http://www.fideseguros.com/wp-content/uploads/2015/06/Anexo-Honduras-ley-impuesto-sobre-la-renta_15408_.pdf // http://www.poderjudicial.gob.hn/CEDIJ/Documents/Ley%20Impuesto%20sobre%20la%20Renta%20actualizada%20a%20febrero%20de%202012.pdf
+incometax.d.panama  = data.frame(ifelse(data$year>=1938 & data$country == "Panama",1,0)) # Panama: https://docs.panama.justia.com/federales/leyes/62-de-1938-jan-25-1939.pdf
+incometax.d.paraguay  = data.frame(ifelse(data$year>=1991 & data$country == "Paraguay",1,0)) # Paraguay: 1971, Ley N° 248. Fuente: https://www.pressreader.com/paraguay/abc-color/20170108/281685434527623 http://www.abc.com.py/edicion-impresa/economia/el-impuesto-a-la-renta-personal-734790.html 1991, Ley N° 125 http://www.hacienda.gov.py/normativa/Ley%20125-1991%20Que%20establece%20el%20Nuevo%20R%C3%A9gimen%20Tributario.pdf
+incometax.d.dominican.republic  = data.frame(ifelse(data$year>=1949 & data$country == "Dominican Republic",1,0)) # Dominican Republic: https://dgii.gov.do/dgii/acercaSite/Paginas/default.aspx
+incometax.d.uruguay  = data.frame(ifelse(data$year>=1960 & data$country == "Uruguay",1,0)) # Uruguay: 1971, Ley N° 248. Fuente: https://www.pressreader.com/paraguay/abc-color/20170108/281685434527623 http://www.abc.com.py/edicion-impresa/economia/el-impuesto-a-la-renta-personal-734790.html 1991, Ley N° 125 http://www.hacienda.gov.py/normativa/Ley%20125-1991%20Que%20establece%20el%20Nuevo%20R%C3%A9gimen%20Tributario.pdf
+
 
 # Other countries
 ## Uruguay: 1959 (https://www.colibri.udelar.edu.uy/bitstream/123456789/4155/5/dt-05-06.pdf, p )
@@ -47,7 +82,7 @@ incometax.d.argentina  = data.frame(ifelse(data$year>=1933 & data$country == "Ar
 
 
 ## Sum across all the rows.
-incometax.d = incometax.d.chile +  incometax.d.colombia +  incometax.d.ecuador +  incometax.d.guatemala +  incometax.d.nicaragua +  incometax.d.peru +  incometax.d.venezuela + incometax.d.mexico + incometax.d.argentina
+incometax.d = incometax.d.chile +  incometax.d.colombia +  incometax.d.ecuador +  incometax.d.guatemala +  incometax.d.nicaragua +  incometax.d.peru +  incometax.d.venezuela + incometax.d.mexico + incometax.d.argentina + incometax.d.brazil + incometax.d.bolivia + incometax.d.costa.rica + incometax.d.cuba + incometax.d.el.salvador + incometax.d.haiti + incometax.d.honduras + incometax.d.panama + incometax.d.paraguay + incometax.d.dominican.republic + incometax.d.uruguay
 colnames(incometax.d) = "incometax"
 
 
@@ -69,12 +104,23 @@ democracy.d.peru  = data.frame(ifelse(data$year>= 1956 & data$country == "Peru",
 democracy.d.venezuela  = data.frame(ifelse(data$year>= 1959 & data$country == "Venezuela",1,0))
 democracy.d.mexico  = data.frame(ifelse(data$year>= 2000 & data$country == "Mexico",1,0))
 democracy.d.argentina  = data.frame(ifelse(data$year>= 1912 & data$country == "Argentina",1,0))
+democracy.d.brazil  = data.frame(ifelse(data$year>= 1946 & data$country == "Brazil",1,0))
+democracy.d.bolivia  = data.frame(ifelse(data$year>= 1982 & data$country == "Bolivia",1,0))
+democracy.d.costa.rica  = data.frame(ifelse(data$year>= 1948 & data$country == "Costa Rica",1,0))
+democracy.d.cuba  = data.frame(ifelse(data$year>= 3000 & data$country == "Cuba",1,0)) # never a democracy
+democracy.d.el.salvador  = data.frame(ifelse(data$year>= 1984 & data$country == "El Salvador",1,0))
+democracy.d.haiti  = data.frame(ifelse(data$year>= 3000 & data$country == "Haiti",1,0)) # never a democracy
+democracy.d.honduras  = data.frame(ifelse(data$year>= 1982 & data$country == "Honduras",1,0))
+democracy.d.panama  = data.frame(ifelse(data$year>= 1952 & data$country == "Panama",1,0))
+democracy.d.paraguay  = data.frame(ifelse(data$year>= 2003 & data$country == "Paraguay",1,0))
+democracy.d.dominican.republic = data.frame(ifelse(data$year>= 3000 & data$country == "Dominican Republic",NA,NA))
+democracy.d.uruguay  = data.frame(ifelse(data$year>= 1942 & data$country == "Uruguay",1,0))
 
 
 ### use this molde para ver cuando empezo la democracia
 # data.frame(
-#         test = as.numeric(data$boix_democracy[data$country=="Argentina"]), 
-#         test2 = as.numeric(data$year[data$country=="Argentina"])
+#         test = as.numeric(data$boix_democracy[data$country=="Uruguay"]), 
+#         test2 = as.numeric(data$year[data$country=="Uruguay"])
 #         )
 
 
@@ -84,7 +130,10 @@ democracy.d.argentina  = data.frame(ifelse(data$year>= 1912 & data$country == "A
 democracy.d = 
         democracy.d.chile +  democracy.d.colombia +  democracy.d.ecuador +  
         democracy.d.guatemala +  democracy.d.nicaragua +  democracy.d.peru +  
-        democracy.d.venezuela + democracy.d.mexico + democracy.d.argentina
+        democracy.d.venezuela + democracy.d.mexico + democracy.d.argentina + democracy.d.brazil + 
+        democracy.d.bolivia + democracy.d.costa.rica + democracy.d.cuba + democracy.d.el.salvador + democracy.d.haiti + 
+        democracy.d.honduras + democracy.d.panama + democracy.d.paraguay + democracy.d.dominican.republic + democracy.d.uruguay
+        
 colnames(democracy.d) = "democracy"
 
 
@@ -98,6 +147,8 @@ colnames(data)[3] = "democracy.d"
 
 ## generate year2 variable, which is the "end" time.
 data$year2 = data$year+1
+
+# HERE
 
 
 ### Cumulative effects of spatial dependence
@@ -128,10 +179,6 @@ write.dta(data, "/Users/hectorbahamonde/RU/Dissertation/Papers/NegativeLink/data
 ##################################################
 ##             CENSUS DATA
 ##################################################
-
-
-
-# HERE
 
 rm(list=ls())
 cat("\014")
