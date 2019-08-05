@@ -128,11 +128,26 @@ democracy.d.uruguay  = data.frame(ifelse(data$year>= 1942 & data$country == "Uru
 
 ## Sum across all the rows.
 democracy.d = 
-        democracy.d.chile +  democracy.d.colombia +  democracy.d.ecuador +  
-        democracy.d.guatemala +  democracy.d.nicaragua +  democracy.d.peru +  
-        democracy.d.venezuela + democracy.d.mexico + democracy.d.argentina + democracy.d.brazil + 
-        democracy.d.bolivia + democracy.d.costa.rica + democracy.d.cuba + democracy.d.el.salvador + democracy.d.haiti + 
-        democracy.d.honduras + democracy.d.panama + democracy.d.paraguay + democracy.d.dominican.republic + democracy.d.uruguay
+        democracy.d.chile +  #
+        democracy.d.colombia + #  
+        democracy.d.ecuador +  #
+        democracy.d.guatemala +  #
+        democracy.d.nicaragua +  #
+        democracy.d.peru +  #
+        democracy.d.venezuela + #
+        democracy.d.mexico + #
+        democracy.d.argentina + #
+        democracy.d.brazil + 
+        democracy.d.bolivia + 
+        democracy.d.costa.rica + 
+        democracy.d.cuba + 
+        democracy.d.el.salvador + 
+        democracy.d.haiti + 
+        democracy.d.honduras + 
+        democracy.d.panama + 
+        democracy.d.paraguay + 
+        democracy.d.dominican.republic + 
+        democracy.d.uruguay
         
 colnames(democracy.d) = "democracy"
 
@@ -148,7 +163,6 @@ colnames(data)[3] = "democracy.d"
 ## generate year2 variable, which is the "end" time.
 data$year2 = data$year+1
 
-# HERE
 
 
 ### Cumulative effects of spatial dependence
@@ -159,11 +173,21 @@ spatial.cum = c(
                 ifelse(data$year>=1963,1,0) + # Guatemala: Decreto 1559, De2007 p 165                
                 ifelse(data$year>=1974,1,0) + # Nicaragua: Ley No. 662 de 5 de Noviembre de 1974 
                 ifelse(data$year>=1934,1,0) + # Peru, Ley 7904 de 1934   
+                ifelse(data$year>=1943,1,0) + # Venezuela, Ley de Impuesto sobre la Renta 
                 ifelse(data$year>=1925,1,0) + # Mexico
                 ifelse(data$year>=1933,1,0) + # Arg
-                ifelse(data$year>=1943,1,0) # Venezuela, Ley de Impuesto sobre la Renta 
-)
-
+                ifelse(data$year>=1946,1,0) + # Brazil 
+                ifelse(data$year>=1982,1,0) + # Bolivia
+                ifelse(data$year>=1948,1,0) + # Costa Rica
+                ifelse(data$year>=3000,1,0) + # Cuba 
+                ifelse(data$year>=1984,1,0) + # El Salvador
+                ifelse(data$year>=3000,1,0) + # Haiti
+                ifelse(data$year>=1982,1,0) + # Honduras 
+                ifelse(data$year>=1952,1,0) + # Panama
+                ifelse(data$year>=2003,1,0) + # Paraguay
+                ifelse(data$year>=3000,1,0) + # Dominican Republic
+                ifelse(data$year>=1942,1,0)  # Uruguay
+        )
 
 data$spatial.cum = spatial.cum
 
@@ -228,7 +252,28 @@ census.d$ave_census = census.d$country_num_of_census/census.d$country_tot_years
 
 
 # subset
-census.d = subset(census.d, country == "Chile" | country ==  "Colombia" | country ==  "Ecuador" | country ==  "Guatemala" | country ==  "Nicaragua" | country ==  "Peru" | country ==  "Venezuela" | country == "Mexico" | country == "Argentina")
+census.d = subset(census.d, country == "Chile" 
+                  | country ==  "Colombia" 
+                  | country ==  "Ecuador" 
+                  | country ==  "Guatemala" 
+                  | country ==  "Nicaragua" 
+                  | country ==  "Peru" 
+                  | country ==  "Venezuela" 
+                  | country == "Mexico" 
+                  | country == "Argentina"
+                  | country == "Brazil"
+                  | country == "Bolivia"
+                  | country == "Costa Rica"
+                  | country == "Cuba"
+                  | country == "El Salvador"
+                  | country == "Haiti"
+                  | country == "Honduras"
+                  | country == "Panama"
+                  | country == "Paraguay"
+                  | country == "Dominican Republic"
+                  | country == "Uruguay"
+                  )
+
 
 
 census.d = data.frame(
@@ -352,23 +397,31 @@ cox.L$year2 = cox.L$year2+1
 
 
 # Then I constructed the l.incometax.s.COUNTRY var again...
-L.incometax.s.chile = data.frame(ifelse(cox.L$year==1924 & cox.L$country == "Chile",1,0)) # Chile,  1924 (Mamalakis [1976, p. 20] # Ley 3996 (from Ley Chile)
+L.incometax.s.chile = data.frame(ifelse(cox.L$year==1924 & cox.L$country == "Chile",1,0)) # Chile,  1924 (Mamalakis [1976, p. 20]
 L.incometax.s.colombia  = data.frame(ifelse(cox.L$year==1935 & cox.L$country == "Colombia",1,0)) # Colombia, Ley 78 Figueroa2008a, p. 9.
 L.incometax.s.ecuador  = data.frame(ifelse(cox.L$year==1945 & cox.L$country == "Ecuador",1,0)) # Ecuador Aguilera2013 p. 135
 L.incometax.s.guatemala  = data.frame(ifelse(cox.L$year==1963 & cox.L$country == "Guatemala",1,0)) # Guatemala: Decreto 1559, De2007 p 165
 L.incometax.s.nicaragua  = data.frame(ifelse(cox.L$year==1974 & cox.L$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
 L.incometax.s.peru  = data.frame(ifelse(cox.L$year==1934 & cox.L$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
 L.incometax.s.venezuela  = data.frame(ifelse(cox.L$year==1943 & cox.L$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
-L.incometax.s.mexico  = data.frame(ifelse(cox.L$year==1925 & cox.L$country == "Mexico",1,0)) # 
-L.incometax.s.argentina  = data.frame(ifelse(cox.L$year==1933 & cox.L$country == "Argentina",1,0)) 
+L.incometax.s.mexico  = data.frame(ifelse(cox.L$year==1925 & cox.L$country == "Mexico",1,0)) # Mexico, \citet[8]{UndaGutierrez2017}
+L.incometax.s.argentina  = data.frame(ifelse(cox.L$year==1933 & cox.L$country == "Argentina",1,0)) # Argentina, http://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=185729
+L.incometax.s.brazil  = data.frame(ifelse(cox.L$year==1922 & cox.L$country == "Brazil",1,0)) # Brazil: http://www.planalto.gov.br/ccivil_03/LEIS/1901-1929/L4625.htm http://idg.receita.fazenda.gov.br/sobre/institucional/memoria/imposto-de-renda/legislacao/legislacao-do-imposto-de-renda-pessoa-fisica-de-1843-a-2013
+L.incometax.s.bolivia  = data.frame(ifelse(cox.L$year==1969 & cox.L$country == "Bolivia",1,0)) # Bolivia: https://www.lexivox.org/norms/BO-L-19280503-3.xhtml ## 08 de Enero de 1969, Decreto Supremo Nº 08619. Fuente: http://www.gacetaoficialdebolivia.gob.bo/index.php/normas/descargar/3152
+L.incometax.s.costa.rica  = data.frame(ifelse(cox.L$year==1946 & cox.L$country == "Costa Rica",1,0)) # Costa Rica: https://cijulenlinea.ucr.ac.cr/portal/descargar.php?q=MTA2Mw== http://www.pgrweb.go.cr/scij/Busqueda/Normativa/Normas/nrm_norma.aspx?param1=NRM&nValor1=1&nValor2=3218&nValor3=3403&strTipM=FN
+L.incometax.s.cuba  = data.frame(ifelse(cox.L$year==1941 & cox.L$country == "Cuba",1,0)) # Cuba:  http://www.lchlegal.com/publicaciones/el-sistema-tributario-cubano.pdf (página 25)
+L.incometax.s.el.salvador  = data.frame(ifelse(cox.L$year==1915 & cox.L$country == "El Salvador",1,0)) # El Salvador: http://ri.ues.edu.sv/id/eprint/6526/1/DISTINTAS%20FUENTES%20DEL%20IMPUESTO%20SOBRE%20LA%20RENTA%20Y%20SU%20RELACION%20CON%20EL%20PRINCIPIO%20DE%20IGUALDAD%20Y%20OTROS%20PRINCIPIOS%20CONSTITUCIONALES.pdf (página 6)
+L.incometax.s.haiti  = data.frame(ifelse(cox.L$year==1942 & cox.L$country == "Haiti",1,0)) # Haiti: http://ufdc.ufl.edu/AA00000790/00001/9j
+L.incometax.s.honduras  = data.frame(ifelse(cox.L$year==1963 & cox.L$country == "Honduras",1,0)) # Honduras:  http://www.fideseguros.com/wp-content/uploads/2015/06/Anexo-Honduras-ley-impuesto-sobre-la-renta_15408_.pdf // http://www.poderjudicial.gob.hn/CEDIJ/Documents/Ley%20Impuesto%20sobre%20la%20Renta%20actualizada%20a%20febrero%20de%202012.pdf
+L.incometax.s.panama  = data.frame(ifelse(cox.L$year==1938 & cox.L$country == "Panama",1,0)) # Panama: https://docs.panama.justia.com/federales/leyes/62-de-1938-jan-25-1939.pdf
+L.incometax.s.paraguay  = data.frame(ifelse(cox.L$year==1991 & cox.L$country == "Paraguay",1,0)) # Paraguay: 1971, Ley N° 248. Fuente: https://www.pressreader.com/paraguay/abc-color/20170108/281685434527623 http://www.abc.com.py/edicion-impresa/economia/el-impuesto-a-la-renta-personal-734790.html 1991, Ley N° 125 http://www.hacienda.gov.py/normativa/Ley%20125-1991%20Que%20establece%20el%20Nuevo%20R%C3%A9gimen%20Tributario.pdf
+L.incometax.s.dominican.republic  = data.frame(ifelse(cox.L$year==1949 & cox.L$country == "Dominican Republic",1,0)) # Dominican Republic: https://dgii.gov.do/dgii/acercaSite/Paginas/default.aspx
+L.incometax.s.uruguay  = data.frame(ifelse(cox.L$year==1960 & cox.L$country == "Uruguay",1,0)) # Uruguay: 1971, Ley N° 248. Fuente: https://www.pressreader.com/paraguay/abc-color/20170108/281685434527623 http://www.abc.com.py/edicion-impresa/economia/el-impuesto-a-la-renta-personal-734790.html 1991, Ley N° 125 http://www.hacienda.gov.py/normativa/Ley%20125-1991%20Que%20establece%20el%20Nuevo%20R%C3%A9gimen%20Tributario.pdf
 
 
 
 ## Summed across all the rows.
-L.incometax.s = L.incometax.s.chile +  L.incometax.s.colombia +  
-        L.incometax.s.ecuador +  L.incometax.s.guatemala +  
-        L.incometax.s.nicaragua +  L.incometax.s.peru +  
-        L.incometax.s.venezuela  + L.incometax.s.mexico + L.incometax.s.argentina
+L.incometax.s = L.incometax.s.chile + L.incometax.s.colombia + L.incometax.s.ecuador + L.incometax.s.guatemala + L.incometax.s.nicaragua + L.incometax.s.peru + L.incometax.s.venezuela + L.incometax.s.mexico + L.incometax.s.argentina + L.incometax.s.brazil + L.incometax.s.bolivia + L.incometax.s.costa.rica + L.incometax.s.cuba + L.incometax.s.el.salvador + L.incometax.s.haiti + L.incometax.s.honduras + L.incometax.s.panama + L.incometax.s.paraguay + L.incometax.s.dominican.republic + L.incometax.s.uruguay
 colnames(L.incometax.s) = "incometax"
 
 
@@ -464,15 +517,9 @@ ag.data$ln.constagricult = log(ag.data$constagricult)
 ag.data$ln.totpop = log(ag.data$totpop)
 
 # Create a starting point variable for DEMOCRACY.
-ag.data.chile = data.frame(ifelse(ag.data$year== 1909 & ag.data$country == "Chile",1,0)) 
-ag.data.colombia  = data.frame(ifelse(ag.data$year== 1937 & ag.data$country == "Colombia",1,0)) 
-ag.data.ecuador  = data.frame(ifelse(ag.data$year== 1948 & ag.data$country == "Ecuador",1,0)) 
-ag.data.guatemala  = data.frame(ifelse(ag.data$year== 1945 & ag.data$country == "Guatemala",1,0)) 
-ag.data.nicaragua  = data.frame(ifelse(ag.data$year== 1984 & ag.data$country == "Nicaragua",1,0)) 
-ag.data.peru  = data.frame(ifelse(ag.data$year== 1956 & ag.data$country == "Peru",1,0)) 
-ag.data.venezuela  = data.frame(ifelse(ag.data$year== 1959 & ag.data$country == "Venezuela",1,0))
-ag.data.mexico  = data.frame(ifelse(ag.data$year>= 2000 & ag.data$country == "Mexico",1,0))
-ag.data.argentina  = data.frame(ifelse(ag.data$year>= 1912 & ag.data$country == "Argentina",1,0))
+ag.data.chile = data.frame(ifelse(ag.data$year==1090 & ag.data$country == "Chile",1,0)) # Chile
+ag.data.colombia  = data.frame(ifelse(ag.data$year==1937 & ag.data$country == "Colombia",1,0)) # Colombia
+# pending
 
 
 
@@ -708,15 +755,27 @@ L.clogit = L.clogit[!is.na(L.clogit$constagricult.L),]
 L.clogit$year = L.clogit$year+1
 
 # Then I constructed the l.incometax.d.COUNTRY var again...
-L.incometax.d.chile = data.frame(ifelse(L.clogit$year>=1924 & L.clogit$country == "Chile",1,0)) # Chile,  1924 (Mamalakis [1976, p. 20]
-L.incometax.d.colombia  = data.frame(ifelse(L.clogit$year>=1935 & L.clogit$country == "Colombia",1,0)) # Colombia, Ley 78 Figueroa2008a, p. 9.
-L.incometax.d.ecuador  = data.frame(ifelse(L.clogit$year>=1945 & L.clogit$country == "Ecuador",1,0)) # Ecuador Aguilera2013 p. 135
-L.incometax.d.guatemala  = data.frame(ifelse(L.clogit$year>=1963 & L.clogit$country == "Guatemala",1,0)) # Guatemala: Decreto 1559, De2007 p 165
-L.incometax.d.nicaragua  = data.frame(ifelse(L.clogit$year>=1974 & L.clogit$country == "Nicaragua",1,0)) # Ley No. 662 de 5 de Noviembre de 1974 (http://legislacion.asamblea.gob.ni/Normaweb.nsf/($All)/024063C3B373125E062570A10057EE73?OpenDocument)
-L.incometax.d.peru  = data.frame(ifelse(L.clogit$year>=1934 & L.clogit$country == "Peru",1,0)) # Peru, Ley 7904 de 1934
-L.incometax.d.venezuela  = data.frame(ifelse(L.clogit$year>=1943 & L.clogit$country == "Venezuela",1,0)) # Venezuela, Ley de Impuesto sobre la Renta, Publicada en la Gaceta Oficial número 20.851 del 17 de julio de 1.942, pero entra en vigencia el ano siguiente
-L.incometax.d.mexico  = data.frame(ifelse(L.clogit$year>=1925 & L.clogit$country == "Mexico",1,0)) 
-L.incometax.d.argentina  = data.frame(ifelse(L.clogit$year>=1933 & L.clogit$country == "Argentina",1,0)) 
+L.incometax.d.chile = data.frame(ifelse(L.clogit$year>=1924 & L.clogit$country == "Chile",1,0)) # Chile
+L.incometax.d.colombia  = data.frame(ifelse(L.clogit$year>=1935 & L.clogit$country == "Colombia",1,0)) # Colombia
+L.incometax.d.ecuador  = data.frame(ifelse(L.clogit$year>=1945 & L.clogit$country == "Ecuador",1,0)) # Ecuador 
+L.incometax.d.guatemala  = data.frame(ifelse(L.clogit$year>=1963 & L.clogit$country == "Guatemala",1,0)) # Guatemala
+L.incometax.d.nicaragua  = data.frame(ifelse(L.clogit$year>=1974 & L.clogit$country == "Nicaragua",1,0)) # Nicaragua 
+L.incometax.d.peru  = data.frame(ifelse(L.clogit$year>=1934 & L.clogit$country == "Peru",1,0)) # Peru
+L.incometax.d.venezuela  = data.frame(ifelse(L.clogit$year>=1943 & L.clogit$country == "Venezuela",1,0)) # Venezuela
+L.incometax.d.mexico  = data.frame(ifelse(L.clogit$year>=1925 & L.clogit$country == "Mexico",1,0)) # Mexico
+L.incometax.d.argentina  = data.frame(ifelse(L.clogit$year>=1933 & L.clogit$country == "Argentina",1,0)) # Argentina
+L.incometax.d.brazil  = data.frame(ifelse(L.clogit$year>=1922 & L.clogit$country == "Brazil",1,0)) # Brazil
+L.incometax.d.bolivia  = data.frame(ifelse(L.clogit$year>=1969 & L.clogit$country == "Bolivia",1,0)) # Bolivia
+L.incometax.d.costa.rica  = data.frame(ifelse(L.clogit$year>=1946 & L.clogit$country == "Costa Rica",1,0)) # Costa Rica
+L.incometax.d.cuba  = data.frame(ifelse(L.clogit$year>=1941 & L.clogit$country == "Cuba",1,0)) # Cuba
+L.incometax.d.el.salvador  = data.frame(ifelse(L.clogit$year>=1915 & L.clogit$country == "El Salvador",1,0)) # El Salvador
+L.incometax.d.haiti  = data.frame(ifelse(L.clogit$year>=1942 & L.clogit$country == "Haiti",1,0)) # Haiti
+L.incometax.d.honduras  = data.frame(ifelse(L.clogit$year>=1963 & L.clogit$country == "Honduras",1,0)) # Honduras
+L.incometax.d.panama  = data.frame(ifelse(L.clogit$year>=1938 & L.clogit$country == "Panama",1,0)) # Panama
+L.incometax.d.paraguay  = data.frame(ifelse(L.clogit$year>=1991 & L.clogit$country == "Paraguay",1,0)) # Paraguay
+L.incometax.d.dominican.republic  = data.frame(ifelse(L.clogit$year>=1949 & L.clogit$country == "Dominican Republic",1,0)) # Dominican Republic
+L.incometax.d.uruguay  = data.frame(ifelse(L.clogit$year>=1960 & L.clogit$country == "Uruguay",1,0)) # Uruguay
+
 
 ## Summed across all the rows.
 L.incometax.d = L.incometax.d.chile +  L.incometax.d.colombia +  
@@ -1607,19 +1666,6 @@ chile.p = ggplot() +
         theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
         labs(title="Chile") 
 
-##### Peru
-peru.p = ggplot() + 
-        geom_line(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_line(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Legend") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Peru"), aes(xintercept = 1934, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
-        labs(title="Peru") 
-
 ##### Colombia
 colombia.p = ggplot() + 
         geom_line(data=subset(dissertation, country=="Colombia"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
@@ -1633,6 +1679,7 @@ colombia.p = ggplot() +
         theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
         labs(title="Colombia") 
 
+
 ##### Ecuador
 ecuador.p= ggplot() + 
         geom_line(data=subset(dissertation, country=="Ecuador"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
@@ -1645,33 +1692,6 @@ ecuador.p= ggplot() +
         theme_bw() + 
         theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
         labs(title="Ecuador") 
-
-##### Venezuela
-venezuela.p= ggplot() + 
-        geom_line(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_line(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Legend") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Venezuela"), aes(xintercept = 1943, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
-        labs(title="Venezuela") 
-
-
-##### Nicaragua
-nicaragua.p= ggplot() + 
-        geom_line(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_line(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
-        xlab("Year") +
-        ylab("GDP Output (ln)") +
-        labs(colour = "Legend") +
-        scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Nicaragua"), aes(xintercept = 1974, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
-        labs(title="Nicaragua")  
 
 
 ##### Guatemala
@@ -1688,18 +1708,48 @@ guatemala.p= ggplot() +
         labs(title="Guatemala")  
 
 
-##### Argentina
-argentina.p= ggplot() + 
-        geom_line(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
-        geom_line(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+
+##### Nicaragua
+nicaragua.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Nicaragua"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
         xlab("Year") +
         ylab("GDP Output (ln)") +
-        labs(colour = "Income Tax (ln)") +
+        labs(colour = "Legend") +
         scale_x_continuous(limits=c(1890,2010)) + 
-        geom_vline(data=subset(dissertation, country=="Argentina"), aes(xintercept = 1933, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        geom_vline(data=subset(dissertation, country=="Nicaragua"), aes(xintercept = 1974, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
         theme_bw() + 
         theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
-        labs(title="Argentina") 
+        labs(title="Nicaragua")  
+
+
+##### Peru
+peru.p = ggplot() + 
+        geom_line(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Peru"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Legend") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Peru"), aes(xintercept = 1934, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Peru") 
+
+
+
+##### Venezuela
+venezuela.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Venezuela"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Legend") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Venezuela"), aes(xintercept = 1943, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Venezuela") 
 
 
 
@@ -1716,6 +1766,172 @@ mexico.p= ggplot() +
         theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
         labs(title="Mexico") 
 
+
+##### Argentina
+argentina.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Argentina"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Argentina"), aes(xintercept = 1933, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Argentina") 
+
+##### Brazil
+brazil.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Brazil"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Brazil"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Brazil"), aes(xintercept = 1922, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Brazil") 
+
+
+##### Bolivia
+bolivia.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Bolivia"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Bolivia"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Bolivia"), aes(xintercept = 1969, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Bolivia") 
+
+
+##### Costa Rica
+costa.rica.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Costa Rica"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Costa Rica"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Costa Rica"), aes(xintercept = 1946, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Costa Rica") 
+
+
+##### Cuba
+cuba.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Cuba"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Cuba"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Cuba"), aes(xintercept = 1941, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Cuba") 
+
+
+##### El Salvador
+el.salvador.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="El Salvador"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="El Salvador"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="El Salvador"), aes(xintercept = 1915, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="El Salvador") 
+
+##### Haiti
+haiti.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Haiti"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Haiti"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Haiti"), aes(xintercept = 1942, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Haiti") 
+
+##### Honduras
+honduras.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Honduras"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Honduras"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Honduras"), aes(xintercept = 1963, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Honduras") 
+
+
+##### Panama
+panama.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Panama"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Panama"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Panama"), aes(xintercept = 1938, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Panama") 
+
+##### Paraguay
+paraguay.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Paraguay"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Paraguay"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Paraguay"), aes(xintercept = 1991, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Paraguay") 
+
+
+##### Dominican Republic
+dominican.republic.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Dominican Republic"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Dominican Republic"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Dominican Republic"), aes(xintercept = 1949, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Dominican Republic") 
+
+##### Uruguay
+uruguay.p= ggplot() + 
+        geom_line(data=subset(dissertation, country=="Uruguay"), aes(x=year, y=log(constagricult), colour="Agricultural Output"), fill=NA, size=1) +
+        geom_line(data=subset(dissertation, country=="Uruguay"), aes(x=year, y=log(constmanufact), colour="Industrial Output"), fill=NA, size=1) + 
+        xlab("Year") +
+        ylab("GDP Output (ln)") +
+        labs(colour = "Income Tax (ln)") +
+        scale_x_continuous(limits=c(1890,2010)) + 
+        geom_vline(data=subset(dissertation, country=="Uruguay"), aes(xintercept = 1960, colour= "Income Tax Law"), linetype = "longdash") + # Income Tax Law
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=12), axis.text.x = element_text(size=12), axis.title.y = element_text(size=10), axis.title.x = element_text(size=10), legend.text=element_text(size=15), legend.title=element_text(size=0),  legend.position = "bottom")  + 
+        labs(title="Uruguay") 
+
+
+# HERE
+
 ##### All
 grid_arrange_shared_legend(
         chile.p, 
@@ -1727,6 +1943,13 @@ grid_arrange_shared_legend(
         guatemala.p, 
         argentina.p, 
         mexico.p,
+        brazil.p,
+        bolivia.p,
+        costa.rica.p,
+        cuba.p,
+        el.salvador.p,
+        haiti.p,
+        
         ncol = 3, nrow = 3)
 
 outputstitle <- paste(
