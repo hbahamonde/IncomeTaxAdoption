@@ -1048,6 +1048,10 @@ load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/logitgee.R
 #load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/l_clogit.RData") # Lagged CONSTANT AGR MANUFACT for clogit  (fixed effects)
 
 
+# keep only countries for which I have complete data: exclude (1) Cuba, (2) El Salvador, (3) Haiti, (4) Panama, (5) Dominican Republic
+cox <- cox[!(cox$country=="Cuba" | cox$country=="El Salvador" | cox$country=="Haiti" | cox$country=="Panama" | cox$country=="Dominican Republic"),]
+
+
 
 if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load(survival)
@@ -1056,7 +1060,7 @@ p_load(survival)
 # this is the model I use for simulation
 cox2 <- coxph(Surv(year, year2, incometax.s) ~ 
                       L_constmanufact +
-                      L_constagricult +
+                      L_constagricult + 
                       totpop +
                       cluster(country),
               data = cox)
@@ -1133,7 +1137,6 @@ texreg(
 
 ## Appendix
 ## ---- results:2:data ----
-
 # Load Datasets
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/L_cox.RData") # Lagged Data 
 load("/Users/hectorbahamonde/RU/Dissertation/Papers/IncomeTaxAdoption/cox.RData") # Cox
@@ -1199,6 +1202,142 @@ texreg(
         float.pos = "!htbp"
         )
 ## ---- 
+
+
+
+
+## ---- simulation ----
+
+## industrial sector
+# simulate qi's
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(simPH)
+
+# quantities
+nsim = 1000 # original: 5000
+qi = "Hazard Rate" # original: Hazard Rate
+ci = 0.95
+
+
+set.seed(602)
+sim.m.ind <- coxsimLinear(cox2, 
+                          b = "L_constmanufact", 
+                          qi = qi, 
+                          ci = ci,
+                          #spin = T,
+                          extremesDrop = T,
+                          nsim = nsim,
+                          Xj = c(min(cox$L_constmanufact), max(cox$L_constmanufact))
+)
+
+
+### agricultural sector
+# simulate qi's
+set.seed(602)
+sim.m.agr <- coxsimLinear(cox2, 
+                          b = "L_constagricult", 
+                          qi = qi, 
+                          ci = ci,
+                          #spin = T,
+                          extremesDrop = T,
+                          nsim = nsim,
+                          Xj = c(min(cox$L_constagricult), max(cox$L_constagricult))
+)
+
+## function to combine the two plots
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(ggplot2,gridExtra,grid)
+
+grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c("bottom", "right")) {
+        
+        plots <- list(...)
+        position <- match.arg(position)
+        g <- ggplotGrob(plots[[1]] + theme(legend.position = position))$grobs
+        legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
+        lheight <- sum(legend$height)
+        lwidth <- sum(legend$width)
+        gl <- lapply(plots, function(x) x + theme(legend.position="none"))
+        gl <- c(gl, ncol = ncol, nrow = nrow)
+        
+        combined <- switch(position,
+                           "bottom" = arrangeGrob(do.call(arrangeGrob, gl),
+                                                  legend,
+                                                  ncol = 1,
+                                                  heights = unit.c(unit(1, "npc") - lheight, lheight)),
+                           "right" = arrangeGrob(do.call(arrangeGrob, gl),
+                                                 legend,
+                                                 ncol = 2,
+                                                 widths = unit.c(unit(1, "npc") - lwidth, lwidth)))
+        grid.newpage()
+        grid.draw(combined)
+        
+}
+
+simtitle <- paste(
+        paste0("{\\bf ",qi, " of Implementing the Income Tax Law", "}", "."),
+        "\\\\\\hspace{\\textwidth}", 
+        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1} (\\autoref{results:2}), figure shows", format(nsim,big.mark=",",scientific=FALSE), "simulations with different sectoral growth speeds. `Slow' is the minimum value, while `rapid' is the maximum value for each sectoral output."), 
+        paste("The figure also shows the", paste(ci*100, "\\% confidence intervals.", sep = "")), 
+        "\n")
+
+## ----
+
+
+
+
+
+## ---- simulation:plots ----
+# install.packages("devtools")
+# library(devtools)
+# devtools::install_github('christophergandrud/simPH')
+# library(simPH)
+
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(ggplot2,simPH)
+
+
+## IMPORTANT! A relative hazard for a unit at zero is always one, as it is a ratio of the hazards with itself. Gandrud2015 p. 10
+
+# Plot
+options(scipen=10000)
+sim.p.ind = simGG(sim.m.ind, type = 'lines',# type = 'points' // 'lines'
+                  xlab = "Year", 
+                  ylab = "Hazard Rate", 
+                  ribbons = F, alpha = 0.25) + 
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=8), 
+              axis.text.x = element_text(size=8), 
+              axis.title.y = element_text(size=8), 
+              axis.title.x = element_text(size=8),
+              title = element_text(size=9)
+        ) +
+        labs(title = "Industrial Output") +
+        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
+        guides(color=guide_legend("Sectoral Output"))
+
+
+# Plot
+options(scipen=10000)
+sim.p.agr = simGG(sim.m.agr, type = 'lines',# type = 'points' // 'lines'
+                  xlab = "Year", 
+                  ylab = "Hazard Rate", 
+                  ribbons = F, alpha = 0.25) + 
+        theme_bw() + 
+        theme(axis.text.y = element_text(size=8), 
+              axis.text.x = element_text(size=8), 
+              axis.title.y = element_text(size=8), 
+              axis.title.x = element_text(size=8),
+              title = element_text(size=9)
+        ) +
+        labs(title = "Agriculture Output") +
+        scale_color_manual(labels = c("Rapid", "Slow"), values = c("red", "blue")) +
+        guides(color=guide_legend("Sectoral Output"))
+
+grid_arrange_shared_legend(sim.p.ind, sim.p.agr, ncol = 2, nrow = 1)
+## ----
+
+
 
 
 
@@ -1282,145 +1421,6 @@ termplot(cox1.splines, term=2, se=TRUE)
 #### [simulation:1] [simulation:2]
 ########################################################
 
-
-
-
-
-
-
-## ---- simulation ----
-########################  
-
-## industrial sector
-# simulate qi's
-
-if (!require("pacman")) install.packages("pacman"); library(pacman)
-p_load(simPH)
-
-# quantities
-nsim = 5000 # original: 1000
-qi = "Hazard Rate" # original: Hazard Rate
-ci = 0.95
-
-
-set.seed(602)
-sim.m.ind <- coxsimLinear(cox2, 
-                          b = "L_constmanufact", 
-                          qi = qi, 
-                          ci = ci,
-                          #spin = T,
-                          extremesDrop = T,
-                          nsim = nsim,
-                          Xj = c(min(cox$L_constmanufact), max(cox$L_constmanufact))
-)
-
-
-### agricultural sector
-# simulate qi's
-set.seed(602)
-sim.m.agr <- coxsimLinear(cox2, 
-                          b = "L_constagricult", 
-                          qi = qi, 
-                          ci = ci,
-                          #spin = T,
-                          extremesDrop = T,
-                          nsim = nsim,
-                          Xj = c(min(cox$L_constagricult), max(cox$L_constagricult))
-)
-
-## function to combine the two plots
-
-
-if (!require("pacman")) install.packages("pacman"); library(pacman)
-p_load(ggplot2,gridExtra,grid)
-
-grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c("bottom", "right")) {
-        
-        plots <- list(...)
-        position <- match.arg(position)
-        g <- ggplotGrob(plots[[1]] + theme(legend.position = position))$grobs
-        legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
-        lheight <- sum(legend$height)
-        lwidth <- sum(legend$width)
-        gl <- lapply(plots, function(x) x + theme(legend.position="none"))
-        gl <- c(gl, ncol = ncol, nrow = nrow)
-        
-        combined <- switch(position,
-                           "bottom" = arrangeGrob(do.call(arrangeGrob, gl),
-                                                  legend,
-                                                  ncol = 1,
-                                                  heights = unit.c(unit(1, "npc") - lheight, lheight)),
-                           "right" = arrangeGrob(do.call(arrangeGrob, gl),
-                                                 legend,
-                                                 ncol = 2,
-                                                 widths = unit.c(unit(1, "npc") - lwidth, lwidth)))
-        grid.newpage()
-        grid.draw(combined)
-        
-}
-
-simtitle <- paste(
-        paste0("{\\bf ",qi, " of Implementing the Income Tax Law", "}", "."),
-        "\\\\\\hspace{\\textwidth}", 
-        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1} (\\autoref{results:2}), figure shows", format(nsim,big.mark=",",scientific=FALSE), "simulations with different sectoral growth speeds. `Slow' is the minimum value, while `rapid' is the maximum value for each sectoral output."), 
-        paste("The figure also shows the", paste(ci*100, "\\% confidence intervals.", sep = "")), 
-        "\n")
-
-## ----
-
-
-
-
-
-## ---- simulation:plots ----
-# install.packages("devtools")
-# library(devtools)
-# devtools::install_github('christophergandrud/simPH')
-# library(simPH)
-
-if (!require("pacman")) install.packages("pacman"); library(pacman)
-p_load(ggplot2,simPH)
-
-
-## IMPORTANT! A relative hazard for a unit at zero is always one, as it is a ratio of the hazards with itself. Gandrud2015 p. 10
-
-# Plot
-options(scipen=10000)
-sim.p.ind = simGG(sim.m.ind, type = 'lines',# type = 'points' // 'lines'
-                  xlab = "Year", 
-                  ylab = "Hazard Rate", 
-                  ribbons = F, alpha = 0.25) + 
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=8), 
-              axis.text.x = element_text(size=8), 
-              axis.title.y = element_text(size=8), 
-              axis.title.x = element_text(size=8),
-              title = element_text(size=9)
-        ) +
-        labs(title = "Industrial Output") +
-        scale_color_manual(labels = c("Slow", "Rapid"), values = c("red", "blue")) +
-        guides(color=guide_legend("Sectoral Output"))
-
-
-# Plot
-options(scipen=10000)
-sim.p.agr = simGG(sim.m.agr, type = 'lines',# type = 'points' // 'lines'
-                  xlab = "Year", 
-                  ylab = "Hazard Rate", 
-                  ribbons = F, alpha = 0.25) + 
-        theme_bw() + 
-        theme(axis.text.y = element_text(size=8), 
-              axis.text.x = element_text(size=8), 
-              axis.title.y = element_text(size=8), 
-              axis.title.x = element_text(size=8),
-              title = element_text(size=9)
-        ) +
-        labs(title = "Agriculture Output") +
-        scale_color_manual(labels = c("Slow", "Rapid"), values = c("red", "blue")) +
-        guides(color=guide_legend("Sectoral Output"))
-
-grid_arrange_shared_legend(sim.p.ind, sim.p.agr, ncol = 2, nrow = 1)
-## ----
 
 
 
@@ -1588,7 +1588,6 @@ ggplot(tax.dem.long,
 
 
 # ---- incometax ----
-
 # Load data
 load("/Users/hectorbahamonde/RU/Dissertation/Data/dissertation.Rdata") 
 
@@ -1930,7 +1929,7 @@ uruguay.p= ggplot() +
         labs(title="Uruguay") 
 
 
-# HERE
+
 
 ##### All
 grid_arrange_shared_legend(
@@ -1946,16 +1945,20 @@ grid_arrange_shared_legend(
         brazil.p,
         bolivia.p,
         costa.rica.p,
-        cuba.p,
-        el.salvador.p,
-        haiti.p,
-        
-        ncol = 3, nrow = 3)
+        # cuba.p, # excluded due to missing 
+        # el.salvador.p, # excluded due to missing 
+        # haiti.p, # excluded due to missing 
+        honduras.p, 
+        #panama.p,  # excluded due to missing 
+        paraguay.p, 
+        #dominican.republic.p,  # excluded due to missing 
+        uruguay.p,
+        ncol = 5, nrow = 3)
 
 outputstitle <- paste(
         "{\\bf Industrial and Agricultural Outputs, and The Passage of the Income Tax Law}.",
         "\\\\\\hspace{\\textwidth}", 
-        "{\\bf Note}: Figure shows historical sectoral outputs, and year of the passage of the income tax law. Following convention, the figure shows logged values.",
+        "{\\bf Note}: Figure shows historical sectoral outputs, and year of the passage of the income tax law. Following convention, the figure shows logged values. Figure shows all countries for which there are complete data.",
         "\\\\\\hspace{\\textwidth}", 
         paste("{\\bf Source}: \\href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD}, and other sources compiled by the author (see \\autoref{sample:data:income:tax:tab})."),
         "\n")
