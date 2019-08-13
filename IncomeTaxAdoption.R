@@ -1207,10 +1207,6 @@ texreg(
 
 
 ## ---- simulation ----
-
-## industrial sector
-# simulate qi's
-
 if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load(simPH)
 
@@ -1275,9 +1271,9 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
 }
 
 simtitle <- paste(
-        paste0("{\\bf ",qi, " of Implementing the Income Tax Law", "}", "."),
+        paste0("{\\bf ",qi, " of Implementing the Income Tax Law in Latin America", "}", "."),
         "\\\\\\hspace{\\textwidth}", 
-        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1} (\\autoref{results:2}), figure shows", format(nsim,big.mark=",",scientific=FALSE), "simulations with different sectoral growth speeds. `Slow' is the minimum value, while `rapid' is the maximum value for each sectoral output."), 
+        paste("{\\bf Note}:", "Using estimations of Model 1 in \\autoref{results:1}, figure shows", format(nsim,big.mark=",",scientific=FALSE), "simulations with different sectoral growth speeds. `Slow' is the minimum value, while `rapid' is the maximum value for each sectoral output."), 
         paste("The figure also shows the", paste(ci*100, "\\% confidence intervals.", sep = "")), 
         "\n")
 
@@ -1956,9 +1952,9 @@ grid_arrange_shared_legend(
         ncol = 5, nrow = 3)
 
 outputstitle <- paste(
-        "{\\bf Industrial and Agricultural Outputs, and The Passage of the Income Tax Law}.",
+        "{\\bf Industrial and Agricultural Outputs, and The Passage of the Income Tax Law in Latin America}.",
         "\\\\\\hspace{\\textwidth}", 
-        "{\\bf Note}: Figure shows historical sectoral outputs, and year of the passage of the income tax law. Following convention, the figure shows logged values. Figure shows all countries for which there are complete data.",
+        "{\\bf Note}: Figure shows historical sectoral outputs, and year of the passage of the income tax law. Following convention, the figure shows logged values. Figure shows all countries for which there were complete data.",
         "\\\\\\hspace{\\textwidth}", 
         paste("{\\bf Source}: \\href{http://moxlad-staging.herokuapp.com/home/en?}{MOxLAD}, and other sources compiled by the author (see \\autoref{sample:data:income:tax:tab})."),
         "\n")
